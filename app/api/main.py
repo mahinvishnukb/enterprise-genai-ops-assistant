@@ -62,16 +62,71 @@ def on_startup():
 def _auto_ingest_sample_docs():
     """Ingest built-in sample docs so the Knowledge Agent works out of the box."""
     from pathlib import Path
-    from app.rag.loaders import extract_text
-    sample_dir = Path(__file__).parent.parent.parent / "sample_docs"
     ka = get_knowledge_agent()
-    for doc_path in sample_dir.glob("*.txt"):
-        try:
-            text = extract_text(str(doc_path))
-            ka.ingest(doc_path.stem, text)
-            print(f"Auto-ingested: {doc_path.name}")
-        except Exception as e:
-            print(f"Failed to ingest {doc_path.name}: {e}")
+
+    # Try reading from disk first (dev), fall back to embedded strings (prod)
+    sample_dir = Path(__file__).resolve().parent.parent.parent / "sample_docs"
+    docs_loaded = 0
+    if sample_dir.exists():
+        for doc_path in sorted(sample_dir.glob("*.txt")):
+            if doc_path.name.startswith("._"):
+                continue
+            try:
+                text = doc_path.read_text(encoding="utf-8")
+                ka.ingest(doc_path.stem, text)
+                print(f"Auto-ingested from disk: {doc_path.name}")
+                docs_loaded += 1
+            except Exception as e:
+                print(f"Failed to ingest {doc_path.name}: {e}")
+
+    if docs_loaded == 0:
+        # Embedded fallback — always works in any environment
+        for doc_id, text in _EMBEDDED_DOCS.items():
+            try:
+                ka.ingest(doc_id, text)
+                print(f"Auto-ingested embedded: {doc_id}")
+            except Exception as e:
+                print(f"Failed to ingest embedded {doc_id}: {e}")
+
+
+_EMBEDDED_DOCS = {
+    "hr_leave_policy": """Enterprise Operations Inc. — HR Leave Policy (Effective January 2026)
+
+ANNUAL LEAVE: All full-time employees accrue 20 days of paid annual leave per calendar year, credited at the start of each quarter. Unused leave up to 5 days may be carried over; the remainder is forfeited on December 31st. Leave cannot be taken in the first 90 days of employment.
+
+SICK LEAVE: Employees receive 10 paid sick days per year with no carryover. A medical certificate is required for sick leave longer than 3 consecutive days. If exhausted, employees may apply for unpaid medical leave of up to 30 days with HR approval.
+
+PARENTAL LEAVE: Primary caregivers receive 16 weeks of paid parental leave. Secondary caregivers receive 4 weeks. Leave must commence within 12 months of birth or adoption.
+
+BEREAVEMENT LEAVE: 5 paid days for immediate family (spouse, child, parent, sibling). 2 paid days for extended family.
+
+REMOTE WORK: Up to 3 days per week with manager approval. Full remote requires VP approval, reviewed quarterly. Core hours: 10am–3pm local time.
+
+PERFORMANCE REVIEWS: Bi-annually in June and December. Compensation adjustments tied to year-end review. 2 weeks notice before scheduled review.
+
+LEAVE REQUEST PROCEDURE: Submit through HR portal at least 5 business days in advance. During Q4 peak (October–December), 10 business days required. Emergency leave: report to manager immediately, formal docs within 48 hours.
+
+ONBOARDING: Complete HR intake forms within 3 business days. Set up payroll within 2 weeks. Complete compliance training within 30 days. Register for health insurance within 14 days.""",
+
+    "q1_operations_report": """Enterprise Operations Inc. — Q1 2026 Operations Report
+
+EXECUTIVE SUMMARY: Shipment volume grew 12% QoQ to 1,847 total shipments. On-time delivery rate: 86% (target: 90%). Revenue up 9% to $4.2M. Gross margin 33%, down from 36% in Q4 due to carrier surcharges.
+
+SHIPMENT PERFORMANCE: Total: 1,847. On-time: 1,588 (86%). Delayed: 203 (11%). Cancelled: 56 (3%). Average delay: 3.8 days.
+
+TOP ROUTES (on-time): New York→Montreal 94%, Toronto→Calgary 92%, Seattle→Toronto 91%.
+UNDERPERFORMING ROUTES: Chicago→Vancouver 31% delay rate, Seattle→Montreal 24%, Calgary→New York 19%.
+
+VANCOUVER PORT CONGESTION: Added 2.3 days average delay to westbound shipments in Feb–Mar. Caused by labour disputes and increased Asian imports. Mitigation: rerouting through Seattle. Resolution expected Q2 2026.
+
+CARRIER PERFORMANCE: FastFreight Inc. (primary): 88% SLA compliance. NorthRoute Logistics (secondary): 79% — underperforming, contract review April. PacificLink (new, Feb 2026): 85% on Vancouver routes.
+
+CANCELLATIONS: 3% rate (56 shipments). Causes: customer holds 42%, carrier capacity 35%, customs 23%.
+
+FINANCIALS: Revenue $4.2M (+9% QoQ). Carrier costs $2.8M (+13%). Gross margin 33%. Delay penalties: $84,000.
+
+Q2 ACTION ITEMS: 1) Renegotiate Vancouver port SLA by April 30. 2) Pilot secondary carrier on Calgary–Montreal. 3) Implement real-time delay alerts for >2 day threshold. 4) Review NorthRoute contract. 5) Target 90% on-time rate by end of Q2.""",
+}
 
 
 @app.get("/api/health", response_model=HealthResponse)
