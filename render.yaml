@@ -2,7 +2,7 @@ services:
   - type: web
     name: genai-ops-backend
     runtime: python
-    buildCommand: pip install -r requirements-prod.txt && python -m app.db.seed
+    buildCommand: pip install -r requirements-prod.txt
     startCommand: uvicorn app.api.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
     envVars:

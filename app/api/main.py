@@ -54,6 +54,8 @@ app.add_middleware(
 @app.on_event("startup")
 def on_startup():
     Base.metadata.create_all(engine)
+    from app.db.seed import seed
+    seed()
 
 
 @app.get("/api/health", response_model=HealthResponse)
