@@ -27,33 +27,63 @@ function fmtTime(ms: number) {
 }
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
+const AGENT_META: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
+  sql_agent: { label: "SQL Agent", color: "bg-sky-950/70 text-sky-300 border-sky-700/50", icon: <Database size={9} /> },
+  analytics_agent: { label: "Analytics Agent", color: "bg-emerald-950/70 text-emerald-300 border-emerald-700/50", icon: <BarChart2 size={9} /> },
+  knowledge_agent: { label: "Knowledge Agent", color: "bg-violet-950/70 text-violet-300 border-violet-700/50", icon: <Brain size={9} /> },
+  conversation_agent: { label: "Assistant", color: "bg-gray-800/70 text-gray-300 border-gray-600/50", icon: <Zap size={9} /> },
+};
+
 function AgentPill({ agent }: { agent: string }) {
-  const isSQL = agent === "sql_agent";
+  const meta = AGENT_META[agent] ?? AGENT_META.conversation_agent;
   return (
-    <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border ${
-      isSQL
-        ? "bg-sky-950/70 text-sky-300 border-sky-700/50"
-        : "bg-violet-950/70 text-violet-300 border-violet-700/50"
-    }`}>
-      {isSQL ? <Database size={9} /> : <Brain size={9} />}
-      {isSQL ? "SQL Agent" : "Knowledge Agent"}
+    <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border ${meta.color}`}>
+      {meta.icon}{meta.label}
     </span>
   );
 }
 
+const AGENT_COLORS: Record<string, string> = {
+  sql_agent: "text-sky-500",
+  analytics_agent: "text-emerald-500",
+  knowledge_agent: "text-violet-500",
+  conversation_agent: "text-gray-400",
+};
+
 function RoutingTrace({ agent }: { agent: string }) {
-  const isSQL = agent === "sql_agent";
   return (
     <div className="flex items-center gap-2 text-[10px] text-gray-500 mb-2 font-mono">
       <span className="text-gray-600">router</span>
       <span className="text-gray-700">→</span>
-      <span className={isSQL ? "text-sky-500" : "text-violet-500"}>
-        {isSQL ? "sql_agent" : "knowledge_agent"}
-      </span>
+      <span className={AGENT_COLORS[agent] ?? "text-gray-400"}>{agent}</span>
       <span className="text-gray-700">→</span>
       <span className="text-green-600">done</span>
     </div>
   );
+}
+
+function MetricsGrid({ metrics }: { metrics: Record<string, string | number> }) {
+  return (
+    <div className="grid grid-cols-2 gap-2 mt-3">
+      {Object.entries(metrics).map(([k, v]) => (
+        <div key={k} className="bg-gray-900/60 border border-gray-700/30 rounded-lg px-3 py-2">
+          <p className="text-[10px] text-gray-500 uppercase tracking-wider">{k}</p>
+          <p className="text-sm font-bold text-white mt-0.5">{String(v)}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MarkdownText({ text }: { text: string }) {
+  const html = text
+    .replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em class="text-gray-300 italic">$1</em>')
+    .replace(/^• (.+)$/gm, '<li class="ml-3 list-disc text-gray-300">$1</li>')
+    .replace(/^(\d+)\. (.+)$/gm, '<li class="ml-3 list-decimal text-gray-300">$2</li>')
+    .replace(/\n\n/g, '</p><p class="mt-2">')
+    .replace(/\n/g, '<br/>');
+  return <p className="text-sm leading-relaxed text-gray-200" dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
 function SortableTable({ rows }: { rows: Record<string, unknown>[] }) {
@@ -205,25 +235,40 @@ function MessageBubble({ msg }: { msg: Message }) {
             ? "bg-red-950/50 border border-red-800/50 text-red-300"
             : "bg-gray-800/70 border border-gray-700/30 text-gray-100 backdrop-blur-sm"
         }`}>
-          {msg.meta?.agent === "sql_agent" ? (
+          {msg.meta?.agent === "sql_agent" && (
             <>
               <RoutingTrace agent={msg.meta.agent} />
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-gray-300 mb-1">
                 Found <span className="font-bold text-white text-base">{msg.meta.row_count}</span>{" "}
                 <span className="text-gray-400">rows</span>
               </p>
               {msg.meta.rows && <SortableTable rows={msg.meta.rows} />}
               {msg.meta.sql && <SQLViewer sql={msg.meta.sql} />}
             </>
-          ) : (
+          )}
+          {msg.meta?.agent === "analytics_agent" && (
+            <>
+              <RoutingTrace agent={msg.meta.agent} />
+              {msg.text && <MarkdownText text={msg.text} />}
+              {msg.meta.metrics && <MetricsGrid metrics={msg.meta.metrics} />}
+              {msg.meta.rows && msg.meta.rows.length > 0 && (
+                <div className="mt-3">
+                  <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">Underlying data</p>
+                  <SortableTable rows={msg.meta.rows} />
+                </div>
+              )}
+            </>
+          )}
+          {(!msg.meta || msg.meta.agent === "knowledge_agent" || msg.meta.agent === "conversation_agent") && (
             <>
               {msg.meta && <RoutingTrace agent={msg.meta.agent} />}
-              <p className="text-sm leading-relaxed text-gray-200">{msg.text}</p>
+              <MarkdownText text={msg.text} />
               {msg.meta?.sources && msg.meta.sources.length > 0 && (
                 <SourceChips sources={msg.meta.sources} />
               )}
             </>
           )}
+          {msg.error && !msg.meta && <p className="text-sm text-red-300">{msg.text}</p>}
         </div>
         <span className="text-[10px] text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity ml-1">{fmtTime(msg.ts)}</span>
       </div>
@@ -311,10 +356,11 @@ export default function App() {
     setMessages(prev => [...prev, { id: msgId++, role: "user", text: question, ts: ts() }]);
     setLoading(true);
     try {
-      const result = await sendChatMessage(question);
-      const text = result.agent === "knowledge_agent"
-        ? (result.answer ?? "(no answer)")
-        : `Found ${result.row_count} rows`;
+      const historySnapshot = messages.map(m => ({ role: m.role, text: m.text }));
+      const result = await sendChatMessage(question, historySnapshot);
+      const text = result.agent === "sql_agent"
+        ? `Found ${result.row_count} rows`
+        : (result.answer ?? "(no answer)");
       setMessages(prev => [...prev, { id: msgId++, role: "assistant", text, meta: result, ts: ts() }]);
     } catch (err) {
       setMessages(prev => [...prev, { id: msgId++, role: "assistant", text: `Error: ${(err as Error).message}`, error: true, ts: ts() }]);
@@ -361,10 +407,10 @@ export default function App() {
   }
 
   const suggestions = [
-    { label: "Delayed shipments", query: "Show all delayed shipments last month" },
-    { label: "Leave policy", query: "What is the annual leave policy?" },
-    { label: "Toronto routes", query: "How many shipments went to Toronto?" },
-    { label: "Sick leave", query: "What are the sick leave entitlements?" },
+    { label: "KPI Summary", query: "Give me a KPI summary of operations" },
+    { label: "Delay hotspots", query: "Which routes have the most delays?" },
+    { label: "Show delayed", query: "Show all delayed shipments" },
+    { label: "What can you do?", query: "What can you do?" },
   ];
 
   return (
@@ -446,8 +492,10 @@ export default function App() {
           <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3">Active Agents</p>
           <div className="space-y-2">
             {[
-              { icon: Brain, color: "text-violet-400", name: "KnowledgeAgent", desc: "RAG · vector search" },
+              { icon: Zap, color: "text-gray-400", name: "ConversationAgent", desc: "chat · context-aware" },
               { icon: Database, color: "text-sky-400", name: "SQLAgent", desc: "NL2SQL · read-only" },
+              { icon: BarChart2, color: "text-emerald-400", name: "AnalyticsAgent", desc: "trends · KPIs · insights" },
+              { icon: Brain, color: "text-violet-400", name: "KnowledgeAgent", desc: "RAG · vector search" },
             ].map(({ icon: Icon, color, name, desc }) => (
               <div key={name} className="flex items-center gap-2.5 px-2.5 py-2 bg-gray-800/30 rounded-lg border border-gray-700/20">
                 <div className="w-5 h-5 rounded-md bg-gray-800 flex items-center justify-center">

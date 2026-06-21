@@ -1,10 +1,12 @@
 export type ChatResponse = {
-  agent: "knowledge_agent" | "sql_agent";
+  agent: "knowledge_agent" | "sql_agent" | "analytics_agent" | "conversation_agent";
   answer?: string;
   sources?: { doc_id: string; chunk_id: string; score: number }[];
   sql?: string;
   rows?: Record<string, unknown>[];
   row_count?: number;
+  metrics?: Record<string, string | number>;
+  analysis_type?: string;
 };
 
 export type UploadResponse = { doc_id: string; filename: string; chunk_count: number };
@@ -23,11 +25,11 @@ async function req<T>(url: string, init?: RequestInit): Promise<T> {
   return res.json();
 }
 
-export function sendChatMessage(message: string): Promise<ChatResponse> {
+export function sendChatMessage(message: string, history?: {role: string; text: string}[]): Promise<ChatResponse> {
   return req("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message }),
+    body: JSON.stringify({ message, history }),
   });
 }
 

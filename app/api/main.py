@@ -80,7 +80,7 @@ async def stats(knowledge_agent: KnowledgeAgent = Depends(get_knowledge_agent)):
 async def chat(req: ChatRequest, router: RouterAgent = Depends(get_router_agent)):
     global _query_counter
     _query_counter += 1
-    result = router.handle(req.message)
+    result = router.handle(req.message, history=req.history)
     return ChatResponse(**result)
 
 
