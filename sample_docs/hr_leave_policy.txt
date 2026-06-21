@@ -1,21 +1,32 @@
-Enterprise Operations Inc. — HR Leave Policy
+Enterprise Operations Inc. — HR Leave Policy (Effective January 2026)
 
-All full-time employees accrue 20 days of paid annual leave per calendar
-year, credited at the start of each quarter. Unused leave up to 5 days may
-be carried over into the next calendar year; any remaining balance beyond
-that is forfeited on December 31st.
+ANNUAL LEAVE
+All full-time employees accrue 20 days of paid annual leave per calendar year, credited at the start of each quarter (5 days per quarter). Part-time employees accrue leave on a pro-rata basis. Unused leave up to 5 days may be carried over into the next calendar year; any remaining balance beyond that is forfeited on December 31st. Employees may not take annual leave during their first 90 days of employment.
 
-Sick leave is separate from annual leave: employees receive 10 paid sick
-days per year, no carryover. A medical certificate is required for sick
-leave longer than 3 consecutive days.
+SICK LEAVE
+Sick leave is entirely separate from annual leave. Employees receive 10 paid sick days per year with no carryover. A medical certificate is required for sick leave longer than 3 consecutive days. Employees who exhaust their sick leave entitlement may apply for unpaid medical leave of up to 30 days with manager and HR approval.
 
-Onboarding steps for new employees:
+PARENTAL LEAVE
+Primary caregivers receive 16 weeks of paid parental leave. Secondary caregivers receive 4 weeks of paid parental leave. Leave must commence within 12 months of the birth or adoption of a child.
+
+BEREAVEMENT LEAVE
+Employees are entitled to 5 paid bereavement days for the loss of an immediate family member (spouse, child, parent, sibling). 2 paid days are provided for extended family members.
+
+EMERGENCY AND UNPLANNED LEAVE
+Emergency leave should be reported to your manager as soon as possible. Formal documentation must be submitted to HR within 48 hours of return. Emergency leave of up to 3 days is paid; beyond that it is deducted from annual leave balance.
+
+LEAVE REQUEST PROCEDURE
+All planned leave requests must be submitted through the HR portal at least 5 business days in advance. Requests are subject to manager approval based on team capacity. During peak periods (Q4 October–December), leave requests require 10 business days notice.
+
+ONBOARDING CHECKLIST FOR NEW EMPLOYEES
 1. Complete HR intake forms within the first 3 business days.
 2. Set up payroll and benefits enrollment within the first 2 weeks.
 3. Complete mandatory compliance and security training within 30 days.
-4. Meet with your manager to set 90-day goals.
+4. Schedule 1-on-1 with your manager to set 90-day performance goals.
+5. Register for the company health insurance plan within 14 days.
 
-Leave requests must be submitted through the HR portal at least 5 business
-days in advance for planned leave. Emergency leave should be reported to
-your manager as soon as possible, with formal documentation submitted
-within 48 hours.
+REMOTE WORK POLICY
+Employees may work remotely up to 3 days per week with manager approval. Full remote work arrangements require VP-level approval and are reviewed quarterly. Remote employees must be available during core hours of 10am–3pm in their local timezone.
+
+PERFORMANCE REVIEW CYCLE
+Performance reviews are conducted bi-annually: mid-year in June and year-end in December. Compensation adjustments are tied to year-end reviews. Employees receive at least 2 weeks notice before their scheduled review.

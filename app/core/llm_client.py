@@ -229,9 +229,39 @@ def _mock_conversation(user: str) -> str:
 
 
 def _mock_knowledge(user: str) -> str:
+    u = user.lower()
+    # HR policy answers
+    if "sick" in u:
+        return "Employees receive **10 paid sick days per year** with no carryover. A medical certificate is required for sick leave longer than 3 consecutive days. If sick leave is exhausted, employees may apply for unpaid medical leave of up to 30 days with manager and HR approval."
+    if "annual leave" in u or "vacation" in u or "holiday" in u:
+        return "Full-time employees accrue **20 days of paid annual leave per calendar year**, credited at the start of each quarter (5 days per quarter). Up to 5 unused days may be carried over to the next year — anything beyond that is forfeited on December 31st. Leave cannot be taken in the first 90 days of employment."
+    if "parental" in u or "maternity" in u or "paternity" in u:
+        return "**Primary caregivers** receive 16 weeks of paid parental leave. **Secondary caregivers** receive 4 weeks of paid parental leave. Leave must commence within 12 months of the birth or adoption of a child."
+    if "bereavement" in u:
+        return "Employees receive **5 paid bereavement days** for the loss of an immediate family member (spouse, child, parent, sibling), and **2 paid days** for extended family members."
+    if "remote" in u or "work from home" in u or "wfh" in u:
+        return "Employees may work remotely **up to 3 days per week** with manager approval. Full remote arrangements require VP-level approval and are reviewed quarterly. Core hours of 10am–3pm in the employee's local timezone must be maintained."
+    if "performance" in u or "review" in u or "appraisal" in u:
+        return "Performance reviews are conducted **bi-annually**: mid-year in June and year-end in December. Compensation adjustments are tied to year-end reviews. Employees receive at least 2 weeks notice before their scheduled review."
+    if "onboard" in u or "new employee" in u or "joining" in u:
+        return "New employee onboarding steps:\n1. Complete HR intake forms within 3 business days\n2. Set up payroll and benefits within 2 weeks\n3. Complete mandatory compliance training within 30 days\n4. Schedule 90-day goal meeting with your manager\n5. Register for health insurance within 14 days"
+    if "leave request" in u or "how to apply" in u or "request leave" in u:
+        return "Planned leave must be submitted through the **HR portal at least 5 business days in advance**. During Q4 peak periods (October–December), 10 business days notice is required. Emergency leave must be reported to your manager immediately with formal documentation submitted within 48 hours."
+    # Q1 report answers
+    if "on-time" in u or "on time" in u or "delivery rate" in u:
+        return "Q1 2026 on-time delivery rate was **86%**, slightly below the 90% corporate target. Best performing route: New York → Montreal at 94%. Worst performing: Chicago → Vancouver at only 69% on-time due to port congestion."
+    if "vancouver" in u and ("congestion" in u or "delay" in u or "port" in u):
+        return "Vancouver port congestion added an average of **2.3 days of delay** to westbound shipments in February and March, caused by labour disputes and increased Asian import volumes. Mitigation: rerouting through Seattle port. Estimated resolution by end of Q2 2026."
+    if "q1" in u or "quarter" in u or "q2" in u:
+        return "Q1 2026 highlights: shipment volume up **12% QoQ** (1,847 total shipments), revenue up 9% to $4.2M, gross margin 33% (down from 36%). Key risk was Vancouver port congestion. Q2 action items include renegotiating Vancouver SLA terms and piloting a secondary carrier on Calgary–Montreal."
+    if "carrier" in u or "fastfreight" in u or "northroute" in u:
+        return "**FastFreight Inc.** (primary carrier): 88% SLA compliance. **NorthRoute Logistics** (secondary): underperforming at 79% — contract review scheduled. **PacificLink** (new, onboarded Feb 2026): 85% early compliance on Vancouver routes."
+    if "cancel" in u:
+        return "Q1 2026 cancellation rate: **3% of total shipments** (56 cancellations). Primary causes: customer-requested holds (42%), carrier capacity issues (35%), customs delays (23%). Rate is consistent with Q4 2025."
+    # Generic fallback using context
     return (
-        "Based on the retrieved document context, here is what I found:\n\n"
-        "The document addresses this topic in detail. Please ensure you have uploaded the relevant "
-        "document using the Upload button in the sidebar — once ingested, I can give you a precise, "
-        "grounded answer with source citations."
+        "Based on the retrieved document context from the HR Leave Policy and Q1 Operations Report, "
+        "I found relevant information. The documents cover employee leave entitlements (annual, sick, parental, bereavement), "
+        "remote work policy, performance reviews, and Q1 2026 shipment performance metrics. "
+        "Could you be more specific about what you'd like to know?"
     )

@@ -56,6 +56,22 @@ def on_startup():
     Base.metadata.create_all(engine)
     from app.db.seed import seed
     seed()
+    _auto_ingest_sample_docs()
+
+
+def _auto_ingest_sample_docs():
+    """Ingest built-in sample docs so the Knowledge Agent works out of the box."""
+    from pathlib import Path
+    from app.rag.loaders import extract_text
+    sample_dir = Path(__file__).parent.parent.parent / "sample_docs"
+    ka = get_knowledge_agent()
+    for doc_path in sample_dir.glob("*.txt"):
+        try:
+            text = extract_text(str(doc_path))
+            ka.ingest(doc_path.stem, text)
+            print(f"Auto-ingested: {doc_path.name}")
+        except Exception as e:
+            print(f"Failed to ingest {doc_path.name}: {e}")
 
 
 @app.get("/api/health", response_model=HealthResponse)

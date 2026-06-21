@@ -1,16 +1,44 @@
-Q1 Operations Report — Summary
+Enterprise Operations Inc. — Q1 2026 Operations Report
 
-Shipment volume grew 12% quarter-over-quarter, driven by increased demand
-on the Toronto-Vancouver and Calgary-Montreal corridors. On-time delivery
-rate held at 86%, slightly below the 90% target.
+EXECUTIVE SUMMARY
+Q1 2026 was a period of moderate growth with ongoing supply chain challenges. Shipment volume grew 12% quarter-over-quarter, driven by increased demand on the Toronto–Vancouver and Calgary–Montreal corridors. On-time delivery rate held at 86%, slightly below the 90% corporate target. Revenue increased 9% QoQ, slightly below volume growth due to carrier surcharges on delayed routes.
 
-Key risk: port congestion in Vancouver added an average of 2.3 days of
-delay to westbound shipments in February and March. Mitigation in
-progress: rerouting a portion of westbound volume through Seattle.
+SHIPMENT PERFORMANCE
+Total shipments in Q1: 1,847 (vs. 1,649 in Q4 2025)
+On-time deliveries: 1,588 (86%)
+Delayed deliveries: 203 (11%)
+Cancelled shipments: 56 (3%)
+Average delay duration: 3.8 days
 
-Cancellation rate remained low at 4% of total shipments, consistent with
-Q4. No material change in carrier performance was observed.
+TOP PERFORMING ROUTES (by on-time rate):
+- New York → Montreal: 94% on-time
+- Toronto → Calgary: 92% on-time
+- Seattle → Toronto: 91% on-time
 
-Recommended action items for Q2: renegotiate SLA terms with the Vancouver
-port operator, and pilot a secondary carrier on the Calgary-Montreal route
-to reduce single-carrier dependency.
+UNDERPERFORMING ROUTES (by delay rate):
+- Chicago → Vancouver: 31% delay rate (worst performing)
+- Seattle → Montreal: 24% delay rate
+- Calgary → New York: 19% delay rate
+
+KEY RISK: PORT CONGESTION IN VANCOUVER
+Port congestion in Vancouver added an average of 2.3 days of delay to westbound shipments in February and March. Root cause: labour disputes and increased container volume from Asian imports. Mitigation in progress: rerouting a portion of westbound volume through Seattle port. Estimated resolution: Q2 2026.
+
+CARRIER PERFORMANCE
+Primary carrier (FastFreight Inc.) maintained 88% SLA compliance. Secondary carrier (NorthRoute Logistics) underperformed at 79% SLA compliance — contract review scheduled for April. A third carrier (PacificLink) was onboarded in February for Vancouver routes with early results showing 85% compliance.
+
+CANCELLATION ANALYSIS
+Cancellation rate remained low at 3% of total shipments, consistent with Q4. Primary cancellation causes: customer-requested holds (42%), carrier capacity issues (35%), customs delays (23%). No material change in overall carrier performance was observed.
+
+FINANCIAL HIGHLIGHTS
+Gross revenue: $4.2M (up 9% QoQ)
+Carrier costs: $2.8M (up 13% QoQ due to surcharges)
+Gross margin: 33% (down from 36% in Q4)
+Delay-related penalties paid to customers: $84,000
+
+Q2 2026 RECOMMENDED ACTION ITEMS
+1. Renegotiate SLA terms with the Vancouver port operator before April 30.
+2. Pilot a secondary carrier on the Calgary–Montreal route to reduce single-carrier dependency.
+3. Implement real-time delay alerting for shipments exceeding 2-day threshold.
+4. Review and renegotiate NorthRoute Logistics contract — consider termination if Q2 SLA compliance does not improve to 85%.
+5. Expand Seattle rerouting capacity to absorb additional Vancouver overflow volume.
+6. Target on-time delivery rate of 90% by end of Q2 through route optimization.
