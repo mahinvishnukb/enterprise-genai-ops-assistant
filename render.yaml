@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: genai-ops-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python -m app.db.seed
+    startCommand: uvicorn app.api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: LLM_PROVIDER
+        value: mock
+      - key: DATABASE_URL
+        value: sqlite:///./genai_ops.db
+      - key: PYTHON_VERSION
+        value: 3.12.0
