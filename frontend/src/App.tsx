@@ -354,6 +354,7 @@ export default function App() {
   const [stats, setStats] = useState<StatsResponse|null>(null);
   const [sideCollapsed, setSideCollapsed] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [serverWaking, setServerWaking] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
 
@@ -363,16 +364,34 @@ export default function App() {
       fetchStats().then(setStats).catch(() => {});
       fetchDocuments().then(setServerDocs).catch(() => {});
     };
-    refresh();
+    // Warm up Render on load with retries
+    const warmUp = async () => {
+      for (let i = 0; i < 5; i++) {
+        try {
+          await fetchStats().then(setStats);
+          await fetchDocuments().then(setServerDocs);
+          setServerWaking(false);
+          return;
+        } catch {
+          if (i === 0) setServerWaking(true);
+          await new Promise(r => setTimeout(r, 4000));
+        }
+      }
+      setServerWaking(false);
+    };
+    warmUp();
     const t = setInterval(refresh, 8000);
     return () => clearInterval(t);
   }, []);
 
-  async function handleSend() {
-    const q = input.trim();
+  async function handleSend(directQuery?: string) {
+    const q = (directQuery ?? input).trim();
     if (!q || loading) return;
-    setInput("");
-    if (textRef.current) textRef.current.style.height = "auto";
+    if (!directQuery) {
+      setInput("");
+      if (textRef.current) textRef.current.style.height = "auto";
+    }
+    setActiveTab("chat");
     const userMsg: Message = { id: uid++, role: "user", text: q, ts: now() };
     setMessages(p => [...p, userMsg]);
     setLoading(true);
@@ -384,8 +403,16 @@ export default function App() {
       setMessages(p => [...p, assistantMsg]);
       setQueryHistory(p => [...p, { id: uid++, q, agent: result.agent, ts: now(), result }]);
       fetchStats().then(setStats).catch(() => {});
+      fetchDocuments().then(setServerDocs).catch(() => {});
     } catch (err) {
-      setMessages(p => [...p, { id: uid++, role: "assistant", text: `Error: ${(err as Error).message}`, ts: now(), error: true }]);
+      const msg = (err as Error).message;
+      const isTimeout = msg.includes("fetch") || msg.includes("network") || msg.includes("Failed");
+      setMessages(p => [...p, {
+        id: uid++, role: "assistant", ts: now(), error: true,
+        text: isTimeout
+          ? "The server is waking up (Render free tier sleeps after 15min). Please try again in 15 seconds."
+          : `Error: ${msg}`,
+      }]);
     } finally {
       setLoading(false);
     }
@@ -436,6 +463,14 @@ export default function App() {
       onDragOver={e => { e.preventDefault(); setDragOver(true); }}
       onDragLeave={() => setDragOver(false)}
       onDrop={e => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files?.[0]; if (f) ingestFile(f); }}>
+
+      {/* Server waking banner */}
+      {serverWaking && (
+        <div className="fixed top-0 left-0 right-0 z-50 bg-amber-900/90 border-b border-amber-700 px-4 py-2 flex items-center gap-2 text-[11px] text-amber-200 font-mono backdrop-blur-sm">
+          <Loader2 size={11} className="animate-spin shrink-0"/>
+          Server waking up (Render free tier sleeps after 15min of inactivity) — ready in ~15 seconds…
+        </div>
+      )}
 
       {/* Drag overlay */}
       {dragOver && (
@@ -489,7 +524,7 @@ export default function App() {
         {!sideCollapsed && (
           <div className="w-56 bg-[#0f0f12] border-r border-gray-800/60 flex flex-col shrink-0">
             {sidePanel === "explorer" && <DocumentsPanel docs={docs} serverDocs={serverDocs} onUpload={ingestFile} uploading={uploading}/>}
-            {sidePanel === "history" && <HistoryPanel history={queryHistory} onSelect={q => { setInput(q); setActiveTab("chat"); }}/>}
+            {sidePanel === "history" && <HistoryPanel history={queryHistory} onSelect={q => handleSend(q)}/>}
             {sidePanel === "stats" && <StatsPanel stats={stats}/>}
           </div>
         )}
@@ -573,7 +608,7 @@ export default function App() {
                         rows={1}
                         className="w-full bg-transparent text-[12px] text-gray-200 placeholder-gray-600 outline-none resize-none font-mono leading-relaxed"/>
                     </div>
-                    <button onClick={handleSend} disabled={loading || !input.trim()}
+                    <button onClick={() => handleSend()} disabled={loading || !input.trim()}
                       className="w-8 h-8 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-30 rounded flex items-center justify-center transition-colors shrink-0">
                       {loading ? <Loader2 size={12} className="animate-spin"/> : <Send size={12}/>}
                     </button>
@@ -592,11 +627,11 @@ export default function App() {
                     { label: "Toronto routes", q: "Show all shipments to Toronto" },
                     { label: "Recent shipments", q: "Show the 10 most recent shipments" },
                     { label: "Chicago origin", q: "Show all shipments from Chicago" },
-                    { label: "Worst delay routes", q: "Which routes have the most delays?" },
+                    { label: "Worst delay routes", q: "Show worst delay routes" },
                     { label: "Cancelled shipments", q: "Show all cancelled shipments" },
                     { label: "Vancouver routes", q: "Show shipments to Vancouver" },
                   ].map(({ label, q }) => (
-                    <button key={label} onClick={() => { setInput(q); setActiveTab("chat"); handleSend(); }}
+                    <button key={label} onClick={() => handleSend(q)}
                       className="flex items-center gap-2 px-3 py-2.5 bg-gray-800/40 border border-gray-700/30 hover:border-sky-600/40 hover:bg-gray-800/60 rounded text-left transition-all group">
                       <Database size={11} className="text-sky-400 shrink-0"/>
                       <span className="text-[11px] text-gray-300 group-hover:text-white transition-colors">{label}</span>
@@ -619,7 +654,7 @@ export default function App() {
                     { label: "Cancellation Report", q: "What's our cancellation rate by origin?", icon: X },
                     { label: "On-time Performance", q: "What's our on-time delivery performance?", icon: CheckCircle },
                   ].map(({ label, q, icon: Icon }) => (
-                    <button key={label} onClick={() => { setInput(q); setActiveTab("chat"); }}
+                    <button key={label} onClick={() => handleSend(q)}
                       className="flex items-center gap-2 px-3 py-2.5 bg-gray-800/40 border border-gray-700/30 hover:border-emerald-600/40 hover:bg-gray-800/60 rounded text-left transition-all group">
                       <Icon size={11} className="text-emerald-400 shrink-0"/>
                       <span className="text-[11px] text-gray-300 group-hover:text-white transition-colors">{label}</span>

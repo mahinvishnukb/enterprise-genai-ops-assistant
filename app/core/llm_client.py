@@ -104,24 +104,56 @@ def _mock_route(user: str) -> str:  # v5 — bulletproof routing
 
 def _mock_sql(user: str) -> str:
     u = user.lower()
-    if "delayed" in u:
-        return "SELECT id, origin, destination, delay_days, shipped_at FROM operations_data WHERE status = 'delayed' ORDER BY shipped_at DESC LIMIT 50;"
-    if "cancel" in u:
-        return "SELECT id, origin, destination, shipped_at FROM operations_data WHERE status = 'cancelled' ORDER BY shipped_at DESC LIMIT 50;"
-    if "on_time" in u or "on time" in u:
-        return "SELECT id, origin, destination, shipped_at FROM operations_data WHERE status = 'on_time' ORDER BY shipped_at DESC LIMIT 50;"
-    if "toronto" in u:
-        return "SELECT id, origin, destination, status, delay_days, shipped_at FROM operations_data WHERE destination = 'Toronto' OR origin = 'Toronto' ORDER BY shipped_at DESC LIMIT 50;"
-    if "vancouver" in u:
-        return "SELECT id, origin, destination, status, delay_days, shipped_at FROM operations_data WHERE destination = 'Vancouver' OR origin = 'Vancouver' ORDER BY shipped_at DESC LIMIT 50;"
-    if "chicago" in u:
-        return "SELECT id, origin, destination, status, delay_days, shipped_at FROM operations_data WHERE origin = 'Chicago' OR destination = 'Chicago' ORDER BY shipped_at DESC LIMIT 50;"
-    if "count" in u or "how many" in u:
+    cities = ["toronto", "vancouver", "calgary", "montreal", "chicago", "seattle", "new york"]
+
+    if "how many" in u or ("count" in u and "status" not in u):
+        if "delayed" in u:
+            return "SELECT COUNT(*) as delayed_count FROM operations_data WHERE status = 'delayed';"
+        if "cancel" in u:
+            return "SELECT COUNT(*) as cancelled_count FROM operations_data WHERE status = 'cancelled';"
+        for city in cities:
+            if city in u:
+                cap = city.title()
+                return f"SELECT COUNT(*) as count FROM operations_data WHERE destination = '{cap}' OR origin = '{cap}';"
         return "SELECT status, COUNT(*) as count FROM operations_data GROUP BY status ORDER BY count DESC;"
-    if "recent" in u or "latest" in u or "last" in u:
+
+    if "count" in u or "by status" in u:
+        return "SELECT status, COUNT(*) as count, ROUND(AVG(delay_days),1) as avg_delay FROM operations_data GROUP BY status ORDER BY count DESC;"
+
+    if "worst" in u or "most delay" in u or "highest delay" in u:
+        return "SELECT origin, destination, COUNT(*) as delays, ROUND(AVG(delay_days),1) as avg_delay FROM operations_data WHERE status='delayed' GROUP BY origin, destination ORDER BY delays DESC LIMIT 10;"
+
+    if "delayed" in u:
+        for city in cities:
+            if city in u:
+                cap = city.title()
+                return f"SELECT id, origin, destination, delay_days, shipped_at FROM operations_data WHERE status='delayed' AND (origin='{cap}' OR destination='{cap}') ORDER BY shipped_at DESC LIMIT 30;"
+        return "SELECT id, origin, destination, delay_days, shipped_at FROM operations_data WHERE status='delayed' ORDER BY shipped_at DESC LIMIT 50;"
+
+    if "cancel" in u:
+        return "SELECT id, origin, destination, shipped_at FROM operations_data WHERE status='cancelled' ORDER BY shipped_at DESC LIMIT 50;"
+
+    if "on_time" in u or "on time" in u or "on-time" in u:
+        return "SELECT id, origin, destination, shipped_at FROM operations_data WHERE status='on_time' ORDER BY shipped_at DESC LIMIT 50;"
+
+    for city in cities:
+        if city in u:
+            cap = city.title()
+            direction = ""
+            if "from" in u:
+                direction = f"WHERE origin = '{cap}'"
+            elif "to" in u:
+                direction = f"WHERE destination = '{cap}'"
+            else:
+                direction = f"WHERE origin = '{cap}' OR destination = '{cap}'"
+            return f"SELECT id, origin, destination, status, delay_days, shipped_at FROM operations_data {direction} ORDER BY shipped_at DESC LIMIT 50;"
+
+    if "recent" in u or "latest" in u or "last" in u or "all" in u:
         return "SELECT id, origin, destination, status, delay_days, shipped_at FROM operations_data ORDER BY shipped_at DESC LIMIT 20;"
-    if "worst" in u or "most delay" in u:
-        return "SELECT origin, destination, COUNT(*) as delay_count, AVG(delay_days) as avg_delay FROM operations_data WHERE status='delayed' GROUP BY origin, destination ORDER BY delay_count DESC LIMIT 10;"
+
+    if "route" in u:
+        return "SELECT origin, destination, COUNT(*) as shipments, SUM(CASE WHEN status='delayed' THEN 1 ELSE 0 END) as delays FROM operations_data GROUP BY origin, destination ORDER BY shipments DESC LIMIT 15;"
+
     return "SELECT id, origin, destination, status, delay_days, shipped_at FROM operations_data ORDER BY shipped_at DESC LIMIT 20;"
 
 
