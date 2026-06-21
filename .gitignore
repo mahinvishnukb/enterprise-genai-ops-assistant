@@ -9,3 +9,5 @@ dist/
 .pytest_cache/
 frontend/node_modules/
 frontend/dist/
+._*
+.DS_Store
