@@ -1,0 +1,49 @@
+# Three services wired together for a full local demo:
+#   db       -> Postgres, the production database the JD calls out.
+#   backend  -> FastAPI app, talks to `db` over the Docker network using the
+#               service name "db" as the hostname (that's how containers find
+#               each other in compose — no localhost, no manual IPs).
+#   frontend -> nginx serving the built React app, proxying /api to backend
+#               at runtime via nginx.conf.
+#
+# Run with: docker compose up --build
+# Then:     docker compose exec backend python -m app.db.seed
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: genai_user
+      POSTGRES_PASSWORD: genai_pass
+      POSTGRES_DB: genai_ops
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U genai_user"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: .
+    environment:
+      LLM_PROVIDER: mock # swap to "openai"/"anthropic" + set the API key below to go live
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      DATABASE_URL: postgresql://genai_user:genai_pass@db:5432/genai_ops
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

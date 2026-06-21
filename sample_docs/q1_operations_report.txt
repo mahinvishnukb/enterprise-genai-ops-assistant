@@ -1,0 +1,16 @@
+Q1 Operations Report — Summary
+
+Shipment volume grew 12% quarter-over-quarter, driven by increased demand
+on the Toronto-Vancouver and Calgary-Montreal corridors. On-time delivery
+rate held at 86%, slightly below the 90% target.
+
+Key risk: port congestion in Vancouver added an average of 2.3 days of
+delay to westbound shipments in February and March. Mitigation in
+progress: rerouting a portion of westbound volume through Seattle.
+
+Cancellation rate remained low at 4% of total shipments, consistent with
+Q4. No material change in carrier performance was observed.
+
+Recommended action items for Q2: renegotiate SLA terms with the Vancouver
+port operator, and pilot a secondary carrier on the Calgary-Montreal route
+to reduce single-carrier dependency.

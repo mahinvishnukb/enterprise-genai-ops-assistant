@@ -1,0 +1,54 @@
+# CI/CD CONCEPT: this file is what turns "tests exist" into "tests are
+# actually enforced." GitHub runs this on every push/PR; if pytest fails,
+# the PR gets a red X and (if branch protection is on) can't be merged.
+# That's the whole point of CI — humans forget to run tests locally,
+# pipelines don't.
+#
+# Two jobs run in parallel (independent, so a slow frontend build doesn't
+# block backend test feedback): `backend-tests` runs pytest with
+# LLM_PROVIDER=mock so it needs zero secrets/API keys to go green;
+# `frontend-build` runs the TypeScript build to catch type errors.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+    env:
+      LLM_PROVIDER: mock
+      DATABASE_URL: sqlite:///./test.db
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pytest
+        run: pytest -v
+
+  frontend-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type-check & build
+        run: npm run build
