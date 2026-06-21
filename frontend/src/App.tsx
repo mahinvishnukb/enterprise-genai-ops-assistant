@@ -521,20 +521,18 @@ export default function App() {
                   <div ref={bottomRef}/>
                 </div>
 
-                {/* Suggestions */}
-                {messages.length <= 1 && (
-                  <div className="px-6 pb-3">
-                    <p className="text-[9px] text-gray-600 uppercase tracking-widest mb-2">suggestions</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {suggestions.map(s => (
-                        <button key={s} onClick={() => setInput(s)}
-                          className="text-[10px] px-2.5 py-1 bg-gray-800/60 hover:bg-gray-700/60 border border-gray-700/40 hover:border-indigo-600/40 rounded text-gray-400 hover:text-gray-200 transition-all font-mono">
-                          {s}
-                        </button>
-                      ))}
-                    </div>
+                {/* Suggestions — always visible */}
+                <div className="px-4 pb-2 border-t border-gray-800/40">
+                  <div className="flex items-center gap-2 pt-2 flex-wrap">
+                    <span className="text-[9px] text-gray-600 uppercase tracking-widest shrink-0">quick:</span>
+                    {suggestions.map(s => (
+                      <button key={s} onClick={() => setInput(s)}
+                        className="text-[10px] px-2 py-0.5 bg-gray-800/50 hover:bg-gray-700/60 border border-gray-700/30 hover:border-indigo-600/40 rounded text-gray-500 hover:text-gray-200 transition-all font-mono whitespace-nowrap">
+                        {s}
+                      </button>
+                    ))}
                   </div>
-                )}
+                </div>
 
                 {/* Input */}
                 <div className="border-t border-gray-800/60 px-4 py-3 shrink-0 bg-[#0a0a0c]">

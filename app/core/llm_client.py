@@ -59,19 +59,37 @@ class LLMClient:
 
 def _mock_route(user: str) -> str:
     u = user.lower()
-    greetings = ["hi", "hello", "hey", "good morning", "good afternoon", "what's up", "howdy", "sup"]
-    meta = ["what can you do", "help", "capabilities", "what are you", "who are you", "how do you work", "tell me about"]
-    analytics = ["trend", "insight", "kpi", "summary", "overview", "report", "anomaly", "analysis", "rate", "percentage", "compare", "over time", "weekly", "monthly", "performance", "dashboard"]
-    sql_signals = ["show", "list", "find", "get", "fetch", "display", "how many", "count", "which", "all shipments", "delayed shipments", "from", "to toronto", "to calgary", "to vancouver"]
-    doc_signals = ["policy", "leave", "sick", "document", "sop", "procedure", "hr", "handbook", "regulation", "uploaded", "report", "according to"]
 
-    if any(g in u for g in greetings) or any(m in u for m in meta):
+    greetings = ["hi", "hello", "hey", "good morning", "good afternoon", "what's up", "howdy", "sup", "greetings"]
+    meta = ["what can you do", "capabilities", "what are you", "who are you", "how do you work", "tell me about yourself"]
+    doc_signals = ["policy", "leave entitlement", "sick leave", "sop", "procedure", "handbook", "regulation", "according to", "what does the document"]
+    analytics_signals = ["trend", "kpi", "summary", "overview", "anomaly", "over time", "weekly", "monthly", "performance", "dashboard", "insight", "hotspot", "cancellation rate", "on-time rate", "delay rate", "busiest", "comparison"]
+    # explicit data-retrieval patterns
+    sql_signals = [
+        "show", "list", "fetch", "display", "get all", "find all",
+        "how many", "count", "which shipment",
+        "delayed shipment", "cancelled shipment", "on_time shipment",
+        "shipment from", "shipment to",
+        "from chicago", "from seattle", "from toronto", "from vancouver",
+        "from calgary", "from montreal", "from new york",
+        "to toronto", "to calgary", "to vancouver", "to chicago",
+        "to seattle", "to montreal", "to new york",
+        "recent shipment", "latest shipment", "last shipment",
+        "all delayed", "all cancelled", "all shipment",
+    ]
+
+    if any(g in u for g in greetings):
+        return "conversation_agent"
+    if any(m in u for m in meta):
         return "conversation_agent"
     if any(d in u for d in doc_signals):
         return "knowledge_agent"
-    if any(a in u for a in analytics):
+    if any(a in u for a in analytics_signals):
         return "analytics_agent"
     if any(s in u for s in sql_signals):
+        return "sql_agent"
+    # fallback: raw data keywords → sql
+    if any(k in u for k in ["shipment", "delay", "cancel", "origin", "destination", "route", "cargo"]):
         return "sql_agent"
     return "conversation_agent"
 
