@@ -34,3 +34,9 @@ class UploadResponse(BaseModel):
 class HealthResponse(BaseModel):
     status: str
     llm_provider: str
+
+
+class StatsResponse(BaseModel):
+    db_rows: int
+    chunk_count: int
+    queries_this_session: int

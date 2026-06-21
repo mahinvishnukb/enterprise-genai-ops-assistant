@@ -16,6 +16,7 @@ from pathlib import Path
 
 from fastapi import Depends, FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
 
 from app.agents.knowledge_agent import KnowledgeAgent
 from app.agents.router_agent import RouterAgent
@@ -26,12 +27,15 @@ from app.api.schemas import (
     ChatResponse,
     HealthResponse,
     SQLRequest,
+    StatsResponse,
     UploadResponse,
 )
 from app.core.config import settings
 from app.db.models import Base
-from app.db.session import engine
+from app.db.session import SessionLocal, engine
 from app.rag.loaders import extract_text
+
+_query_counter = 0
 
 app = FastAPI(
     title="Enterprise GenAI Operations Assistant",
@@ -57,8 +61,23 @@ async def health():
     return HealthResponse(status="ok", llm_provider=settings.llm_provider)
 
 
+@app.get("/api/stats", response_model=StatsResponse)
+async def stats(knowledge_agent: KnowledgeAgent = Depends(get_knowledge_agent)):
+    db = SessionLocal()
+    try:
+        row = db.execute(text("SELECT COUNT(*) FROM operations_data")).scalar() or 0
+    except Exception:
+        row = 0
+    finally:
+        db.close()
+    chunk_count = len(knowledge_agent.vector_store._store) if hasattr(knowledge_agent.vector_store, "_store") else 0
+    return StatsResponse(db_rows=int(row), chunk_count=chunk_count, queries_this_session=_query_counter)
+
+
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest, router: RouterAgent = Depends(get_router_agent)):
+    global _query_counter
+    _query_counter += 1
     result = router.handle(req.message)
     return ChatResponse(**result)
 
