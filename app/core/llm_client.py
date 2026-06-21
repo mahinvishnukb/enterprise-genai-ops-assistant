@@ -57,40 +57,48 @@ class LLMClient:
 
 # ─── Mock implementations ─────────────────────────────────────────────────────
 
-def _mock_route(user: str) -> str:
+def _mock_route(user: str) -> str:  # v5 — bulletproof routing
     u = user.lower()
 
-    greetings = ["hi", "hello", "hey", "good morning", "good afternoon", "what's up", "howdy", "sup", "greetings"]
-    meta = ["what can you do", "capabilities", "what are you", "who are you", "how do you work", "tell me about yourself"]
-    doc_signals = ["policy", "leave entitlement", "sick leave", "sop", "procedure", "handbook", "regulation", "according to", "what does the document"]
-    analytics_signals = ["trend", "kpi", "summary", "overview", "anomaly", "over time", "weekly", "monthly", "performance", "dashboard", "insight", "hotspot", "cancellation rate", "on-time rate", "delay rate", "busiest", "comparison"]
-    # explicit data-retrieval patterns
-    sql_signals = [
-        "show", "list", "fetch", "display", "get all", "find all",
-        "how many", "count", "which shipment",
-        "delayed shipment", "cancelled shipment", "on_time shipment",
-        "shipment from", "shipment to",
-        "from chicago", "from seattle", "from toronto", "from vancouver",
-        "from calgary", "from montreal", "from new york",
-        "to toronto", "to calgary", "to vancouver", "to chicago",
-        "to seattle", "to montreal", "to new york",
-        "recent shipment", "latest shipment", "last shipment",
-        "all delayed", "all cancelled", "all shipment",
-    ]
+    # 1. Pure conversation — must match exactly, nothing data-related
+    pure_chat = ["hi", "hello", "hey", "good morning", "good afternoon",
+                 "what's up", "howdy", "sup", "greetings", "how are you",
+                 "thank you", "thanks", "great job", "who are you",
+                 "what are you", "what can you do", "who built you",
+                 "capabilities", "how do you work", "tell me about yourself"]
+    if any(u == g or u.startswith(g + " ") or u.startswith(g + "!") for g in pure_chat):
+        return "conversation_agent"
 
-    if any(g in u for g in greetings):
-        return "conversation_agent"
-    if any(m in u for m in meta):
-        return "conversation_agent"
+    # 2. Document / HR knowledge — must come before data checks
+    doc_signals = ["policy", "entitlement", "sick leave", "annual leave", "vacation",
+                   "parental", "maternity", "paternity", "bereavement", "remote work",
+                   "wfh", "onboard", "performance review", "appraisal", "hr ",
+                   "handbook", "sop", "procedure", "regulation", "compliance",
+                   "according to", "what does the document", "leave policy",
+                   "carrier performance", "q1", "q2", "q3", "q4", "quarter",
+                   "port congestion", "sla", "northroute", "fastfreight", "pacificlink"]
     if any(d in u for d in doc_signals):
         return "knowledge_agent"
+
+    # 3. Analytics — computed insights, not raw rows
+    analytics_signals = ["trend", "kpi", "summary", "overview", "insight",
+                         "anomaly", "over time", "weekly", "monthly", "performance",
+                         "dashboard", "hotspot", "busiest", "worst route", "best route",
+                         "most delay", "highest delay", "most delays", "which route",
+                         "rate", "percentage", "average delay", "analysis", "report"]
     if any(a in u for a in analytics_signals):
         return "analytics_agent"
-    if any(s in u for s in sql_signals):
+
+    # 4. SQL — anything mentioning show/list/find OR data objects
+    data_words = ["shipment", "delay", "cancel", "origin", "destination",
+                  "cargo", "route", "status", "toronto", "vancouver", "calgary",
+                  "montreal", "chicago", "seattle", "new york", "shipped",
+                  "show", "list", "find", "fetch", "display", "count", "how many",
+                  "get all", "all delayed", "all cancelled", "all on_time",
+                  "recent", "latest", "last month", "last week"]
+    if any(d in u for d in data_words):
         return "sql_agent"
-    # fallback: raw data keywords → sql
-    if any(k in u for k in ["shipment", "delay", "cancel", "origin", "destination", "route", "cargo"]):
-        return "sql_agent"
+
     return "conversation_agent"
 
 
