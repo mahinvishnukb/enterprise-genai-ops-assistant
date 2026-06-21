@@ -36,3 +36,9 @@ class StatsResponse(BaseModel):
     db_rows: int
     chunk_count: int
     queries_this_session: int
+
+
+class DocumentInfo(BaseModel):
+    doc_id: str
+    chunk_count: int
+    source: str  # "builtin" or "uploaded"

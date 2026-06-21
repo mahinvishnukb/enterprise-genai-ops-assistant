@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { sendChatMessage, uploadDocument, fetchStats, ChatResponse, StatsResponse } from "./api";
+import { sendChatMessage, uploadDocument, fetchStats, fetchDocuments, ChatResponse, StatsResponse, DocumentInfo as ServerDoc } from "./api";
 import {
   MessageSquare, Database, BarChart2, FileText, History,
   Send, Upload, Zap, Brain, ChevronRight, ChevronDown,
@@ -208,7 +208,7 @@ function MessageBubble({ msg }: { msg: Message }) {
 }
 
 // ─── Panel: Documents ──────────────────────────────────────────────────────────
-function DocumentsPanel({ docs, onUpload, uploading }: { docs: UploadedDoc[]; onUpload: (f: File) => void; uploading: boolean }) {
+function DocumentsPanel({ docs, serverDocs, onUpload, uploading }: { docs: UploadedDoc[]; serverDocs: ServerDoc[]; onUpload: (f: File) => void; uploading: boolean }) {
   const ref = useRef<HTMLInputElement>(null);
   return (
     <div className="flex flex-col h-full">
@@ -223,7 +223,39 @@ function DocumentsPanel({ docs, onUpload, uploading }: { docs: UploadedDoc[]; on
           onChange={e => { const f = e.target.files?.[0]; if (f) onUpload(f); e.target.value = ""; }} />
       </div>
       <div className="flex-1 overflow-y-auto p-2">
-        {docs.length === 0 ? (
+        {/* Built-in server docs */}
+        {serverDocs.length > 0 && (
+          <div className="mb-2">
+            <p className="text-[9px] text-gray-600 uppercase tracking-widest px-2 py-1">Built-in</p>
+            {serverDocs.map(d => (
+              <div key={d.doc_id} className="flex items-start gap-2 px-2 py-2 hover:bg-gray-800/40 rounded cursor-default">
+                <File size={12} className="text-emerald-400 mt-0.5 shrink-0"/>
+                <div className="min-w-0">
+                  <p className="text-[11px] text-gray-200 truncate">{d.doc_id.replace(/_/g, " ")}</p>
+                  <p className="text-[9px] text-gray-500 font-mono">{d.chunk_count} chunks · auto-loaded</p>
+                </div>
+                <CheckCircle size={10} className="text-emerald-500 ml-auto mt-0.5 shrink-0"/>
+              </div>
+            ))}
+          </div>
+        )}
+        {/* User-uploaded docs */}
+        {docs.length > 0 && (
+          <div>
+            <p className="text-[9px] text-gray-600 uppercase tracking-widest px-2 py-1">Uploaded</p>
+            {docs.map((d, i) => (
+              <div key={i} className="flex items-start gap-2 px-2 py-2 hover:bg-gray-800/40 rounded group cursor-default">
+                <File size={12} className="text-violet-400 mt-0.5 shrink-0"/>
+                <div className="min-w-0">
+                  <p className="text-[11px] text-gray-200 truncate">{d.name}</p>
+                  <p className="text-[9px] text-gray-500 font-mono">{d.chunks} chunks · {fmtDate(d.ts)}</p>
+                </div>
+                <CheckCircle size={10} className="text-green-500 ml-auto mt-0.5 shrink-0"/>
+              </div>
+            ))}
+          </div>
+        )}
+        {serverDocs.length === 0 && docs.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center py-8">
             <FolderOpen size={24} className="text-gray-700 mb-2"/>
             <p className="text-[11px] text-gray-600">No documents ingested</p>
@@ -233,16 +265,7 @@ function DocumentsPanel({ docs, onUpload, uploading }: { docs: UploadedDoc[]; on
               + Upload document
             </button>
           </div>
-        ) : docs.map((d, i) => (
-          <div key={i} className="flex items-start gap-2 px-2 py-2 hover:bg-gray-800/40 rounded group cursor-default">
-            <File size={12} className="text-violet-400 mt-0.5 shrink-0"/>
-            <div className="min-w-0">
-              <p className="text-[11px] text-gray-200 truncate">{d.name}</p>
-              <p className="text-[9px] text-gray-500 font-mono">{d.chunks} chunks · {fmtDate(d.ts)}</p>
-            </div>
-            <CheckCircle size={10} className="text-green-500 ml-auto mt-0.5 shrink-0"/>
-          </div>
-        ))}
+        )}
       </div>
     </div>
   );
@@ -325,6 +348,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>("chat");
   const [sidePanel, setSidePanel] = useState<"explorer"|"history"|"stats">("explorer");
   const [docs, setDocs] = useState<UploadedDoc[]>([]);
+  const [serverDocs, setServerDocs] = useState<ServerDoc[]>([]);
   const [uploading, setUploading] = useState(false);
   const [queryHistory, setQueryHistory] = useState<QueryRecord[]>([]);
   const [stats, setStats] = useState<StatsResponse|null>(null);
@@ -335,8 +359,12 @@ export default function App() {
 
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages, loading]);
   useEffect(() => {
-    fetchStats().then(setStats).catch(() => {});
-    const t = setInterval(() => fetchStats().then(setStats).catch(() => {}), 8000);
+    const refresh = () => {
+      fetchStats().then(setStats).catch(() => {});
+      fetchDocuments().then(setServerDocs).catch(() => {});
+    };
+    refresh();
+    const t = setInterval(refresh, 8000);
     return () => clearInterval(t);
   }, []);
 
@@ -460,7 +488,7 @@ export default function App() {
         {/* Side panel */}
         {!sideCollapsed && (
           <div className="w-56 bg-[#0f0f12] border-r border-gray-800/60 flex flex-col shrink-0">
-            {sidePanel === "explorer" && <DocumentsPanel docs={docs} onUpload={ingestFile} uploading={uploading}/>}
+            {sidePanel === "explorer" && <DocumentsPanel docs={docs} serverDocs={serverDocs} onUpload={ingestFile} uploading={uploading}/>}
             {sidePanel === "history" && <HistoryPanel history={queryHistory} onSelect={q => { setInput(q); setActiveTab("chat"); }}/>}
             {sidePanel === "stats" && <StatsPanel stats={stats}/>}
           </div>
@@ -604,7 +632,7 @@ export default function App() {
 
             {activeTab === "documents" && (
               <div className="flex-1 overflow-y-auto p-6">
-                <DocumentsPanel docs={docs} onUpload={ingestFile} uploading={uploading}/>
+                <DocumentsPanel docs={docs} serverDocs={serverDocs} onUpload={ingestFile} uploading={uploading}/>
               </div>
             )}
           </div>

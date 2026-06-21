@@ -25,6 +25,7 @@ from app.api.deps import get_knowledge_agent, get_router_agent, get_sql_agent
 from app.api.schemas import (
     ChatRequest,
     ChatResponse,
+    DocumentInfo,
     HealthResponse,
     SQLRequest,
     StatsResponse,
@@ -143,8 +144,21 @@ async def stats(knowledge_agent: KnowledgeAgent = Depends(get_knowledge_agent)):
         row = 0
     finally:
         db.close()
-    chunk_count = len(knowledge_agent.vector_store._store) if hasattr(knowledge_agent.vector_store, "_store") else 0
+    chunk_count = len(getattr(knowledge_agent.vector_store, "_chunks", []))
     return StatsResponse(db_rows=int(row), chunk_count=chunk_count, queries_this_session=_query_counter)
+
+
+@app.get("/api/documents", response_model=list[DocumentInfo])
+async def list_documents(knowledge_agent: KnowledgeAgent = Depends(get_knowledge_agent)):
+    chunks = getattr(knowledge_agent.vector_store, "_chunks", [])
+    counts: dict[str, int] = {}
+    for chunk in chunks:
+        counts[chunk.doc_id] = counts.get(chunk.doc_id, 0) + 1
+    builtin = set(_EMBEDDED_DOCS.keys())
+    return [
+        DocumentInfo(doc_id=doc_id, chunk_count=count, source="builtin" if doc_id in builtin else "uploaded")
+        for doc_id, count in counts.items()
+    ]
 
 
 @app.post("/api/chat", response_model=ChatResponse)

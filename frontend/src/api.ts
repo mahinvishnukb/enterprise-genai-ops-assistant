@@ -42,3 +42,9 @@ export function uploadDocument(file: File): Promise<UploadResponse> {
 export function fetchStats(): Promise<StatsResponse> {
   return req("/api/stats");
 }
+
+export type DocumentInfo = { doc_id: string; chunk_count: number; source: "builtin" | "uploaded" };
+
+export function fetchDocuments(): Promise<DocumentInfo[]> {
+  return req("/api/documents");
+}
