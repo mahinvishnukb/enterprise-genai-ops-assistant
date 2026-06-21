@@ -15,8 +15,10 @@ export type StatsResponse = {
   queries_this_session: number;
 };
 
+const BASE = import.meta.env.VITE_API_URL ?? "";
+
 async function req<T>(url: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(url, init);
+  const res = await fetch(`${BASE}${url}`, init);
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
   return res.json();
 }
