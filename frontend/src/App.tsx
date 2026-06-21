@@ -138,8 +138,8 @@ function SQLViewer({ sql }: { sql: string }) {
 function MessageBubble({ msg }: { msg: Message }) {
   if (msg.role === "user") return (
     <div className="flex justify-end mb-4 group">
-      <div className="max-w-[72%]">
-        <div className="bg-indigo-600/90 text-white rounded-lg rounded-br-sm px-4 py-2.5 text-[13px] leading-relaxed">{msg.text}</div>
+      <div className="max-w-[88%] sm:max-w-[72%]">
+        <div className="bg-indigo-600/90 text-white rounded-lg rounded-br-sm px-3 py-2 sm:px-4 sm:py-2.5 text-[12px] sm:text-[13px] leading-relaxed">{msg.text}</div>
         <p className="text-[9px] text-gray-600 text-right mt-1 opacity-0 group-hover:opacity-100 transition-opacity">{fmt(msg.ts)}</p>
       </div>
     </div>
@@ -459,7 +459,7 @@ export default function App() {
   ];
 
   return (
-    <div className="flex flex-col h-full bg-[#0d0d0f] text-gray-300 font-mono text-sm select-none"
+    <div className="flex flex-col h-full bg-[#0d0d0f] text-gray-300 font-mono text-sm select-none overflow-hidden"
       onDragOver={e => { e.preventDefault(); setDragOver(true); }}
       onDragLeave={() => setDragOver(false)}
       onDrop={e => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files?.[0]; if (f) ingestFile(f); }}>
@@ -483,27 +483,27 @@ export default function App() {
       )}
 
       {/* Title bar */}
-      <div className="h-9 border-b border-gray-800/80 flex items-center px-4 gap-3 shrink-0 bg-[#0a0a0c]">
-        <div className="flex items-center gap-2">
-          <div className="w-5 h-5 bg-gradient-to-br from-indigo-500 to-purple-600 rounded flex items-center justify-center">
+      <div className="h-9 border-b border-gray-800/80 flex items-center px-3 gap-2 shrink-0 bg-[#0a0a0c]">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="w-5 h-5 bg-gradient-to-br from-indigo-500 to-purple-600 rounded flex items-center justify-center shrink-0">
             <Zap size={11}/>
           </div>
-          <span className="text-[11px] text-gray-300 font-semibold tracking-tight">GenAI Ops Assistant</span>
-          <span className="text-gray-700">·</span>
-          <span className="text-[10px] text-gray-600">enterprise-genai-ops-assistant</span>
+          <span className="text-[11px] text-gray-300 font-semibold tracking-tight truncate">GenAI Ops Assistant</span>
+          <span className="text-gray-700 hidden sm:block">·</span>
+          <span className="text-[10px] text-gray-600 hidden sm:block truncate">enterprise-genai-ops-assistant</span>
         </div>
-        <div className="ml-auto flex items-center gap-3">
-          <span className="text-[9px] text-gray-600 font-mono">mock provider</span>
-          <div className="flex items-center gap-1.5">
+        <div className="ml-auto flex items-center gap-2 shrink-0">
+          <span className="text-[9px] text-gray-600 font-mono hidden md:block">mock provider</span>
+          <div className="flex items-center gap-1">
             <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"/>
-            <span className="text-[9px] text-gray-500">connected</span>
+            <span className="text-[9px] text-gray-500">live</span>
           </div>
         </div>
       </div>
 
       <div className="flex flex-1 min-h-0">
-        {/* Activity bar */}
-        <div className="w-12 bg-[#0a0a0c] border-r border-gray-800/80 flex flex-col items-center py-2 gap-1 shrink-0">
+        {/* Activity bar — hidden on mobile */}
+        <div className="hidden md:flex w-12 bg-[#0a0a0c] border-r border-gray-800/80 flex-col items-center py-2 gap-1 shrink-0">
           {SIDE_ICONS.map(({ id, icon, tip }) => (
             <button key={id} title={tip}
               onClick={() => { if (sidePanel === id) setSideCollapsed(c => !c); else { setSidePanel(id); setSideCollapsed(false); }}}
@@ -520,9 +520,9 @@ export default function App() {
           </div>
         </div>
 
-        {/* Side panel */}
+        {/* Side panel — hidden on mobile */}
         {!sideCollapsed && (
-          <div className="w-56 bg-[#0f0f12] border-r border-gray-800/60 flex flex-col shrink-0">
+          <div className="hidden md:flex w-56 bg-[#0f0f12] border-r border-gray-800/60 flex-col shrink-0">
             {sidePanel === "explorer" && <DocumentsPanel docs={docs} serverDocs={serverDocs} onUpload={ingestFile} uploading={uploading}/>}
             {sidePanel === "history" && <HistoryPanel history={queryHistory} onSelect={q => handleSend(q)}/>}
             {sidePanel === "stats" && <StatsPanel stats={stats}/>}
@@ -531,33 +531,33 @@ export default function App() {
 
         {/* Main editor area */}
         <div className="flex-1 flex flex-col min-w-0">
-          {/* Tab bar */}
-          <div className="h-9 bg-[#0a0a0c] border-b border-gray-800/80 flex items-end shrink-0">
+          {/* Tab bar — scrollable on mobile */}
+          <div className="h-9 bg-[#0a0a0c] border-b border-gray-800/80 flex items-end shrink-0 overflow-x-auto scrollbar-none">
             {TABS.map(t => (
               <button key={t.id} onClick={() => setActiveTab(t.id)}
-                className={`flex items-center gap-1.5 px-4 h-full text-[11px] border-r border-gray-800/60 transition-colors ${
+                className={`flex items-center gap-1.5 px-3 md:px-4 h-full text-[11px] border-r border-gray-800/60 transition-colors whitespace-nowrap ${
                   activeTab === t.id
                     ? "bg-[#0d0d0f] text-gray-200 border-t border-indigo-500 border-t-[1.5px]"
                     : "text-gray-500 hover:text-gray-300 hover:bg-gray-800/20"
                 }`}>
-                {t.icon}{t.label}
+                {t.icon}<span className="hidden sm:inline">{t.label}</span>
               </button>
             ))}
           </div>
 
-          {/* Breadcrumb */}
-          <div className="h-7 border-b border-gray-800/40 flex items-center px-4 gap-1 shrink-0 bg-[#0d0d0f]">
+          {/* Breadcrumb — hidden on mobile */}
+          <div className="hidden sm:flex h-7 border-b border-gray-800/40 items-center px-4 gap-1 shrink-0 bg-[#0d0d0f]">
             <span className="text-[10px] text-gray-600">workspace</span>
             <ChevronRight size={10} className="text-gray-700"/>
             <span className="text-[10px] text-gray-500">{activeTab}</span>
             {activeTab === "chat" && queryHistory.length > 0 && (
               <>
                 <ChevronRight size={10} className="text-gray-700"/>
-                <span className="text-[10px] text-gray-500 font-mono">{queryHistory[queryHistory.length-1]?.q.slice(0,30)}…</span>
+                <span className="text-[10px] text-gray-500 font-mono truncate max-w-[200px]">{queryHistory[queryHistory.length-1]?.q.slice(0,30)}…</span>
               </>
             )}
             <div className="ml-auto flex items-center gap-2">
-              <button onClick={() => fetchStats().then(setStats).catch(() => {})} className="text-gray-600 hover:text-gray-400 transition-colors">
+              <button onClick={() => { fetchStats().then(setStats).catch(() => {}); fetchDocuments().then(setServerDocs).catch(() => {}); }} className="text-gray-600 hover:text-gray-400 transition-colors">
                 <RefreshCw size={10}/>
               </button>
               {stats && <span className="text-[9px] text-gray-600 font-mono">{stats.db_rows} rows · {stats.chunk_count} chunks · {stats.queries_this_session} queries</span>}
@@ -584,13 +584,13 @@ export default function App() {
                   <div ref={bottomRef}/>
                 </div>
 
-                {/* Suggestions — always visible */}
-                <div className="px-4 pb-2 border-t border-gray-800/40">
-                  <div className="flex items-center gap-2 pt-2 flex-wrap">
-                    <span className="text-[9px] text-gray-600 uppercase tracking-widest shrink-0">quick:</span>
+                {/* Suggestions — scrollable on mobile */}
+                <div className="px-3 pb-2 border-t border-gray-800/40">
+                  <div className="flex items-center gap-1.5 pt-2 overflow-x-auto scrollbar-none">
+                    <span className="text-[9px] text-gray-600 uppercase tracking-widest shrink-0 hidden sm:block">quick:</span>
                     {suggestions.map(s => (
                       <button key={s} onClick={() => setInput(s)}
-                        className="text-[10px] px-2 py-0.5 bg-gray-800/50 hover:bg-gray-700/60 border border-gray-700/30 hover:border-indigo-600/40 rounded text-gray-500 hover:text-gray-200 transition-all font-mono whitespace-nowrap">
+                        className="text-[10px] px-2 py-1 bg-gray-800/50 hover:bg-gray-700/60 border border-gray-700/30 hover:border-indigo-600/40 rounded text-gray-500 hover:text-gray-200 transition-all font-mono whitespace-nowrap shrink-0">
                         {s}
                       </button>
                     ))}
@@ -598,21 +598,22 @@ export default function App() {
                 </div>
 
                 {/* Input */}
-                <div className="border-t border-gray-800/60 px-4 py-3 shrink-0 bg-[#0a0a0c]">
+                <div className="border-t border-gray-800/60 px-3 py-2 shrink-0 bg-[#0a0a0c]">
                   <div className="flex gap-2 items-end">
                     <div className="flex-1 bg-gray-800/50 border border-gray-700/50 focus-within:border-indigo-500/50 rounded px-3 py-2 transition-colors">
                       <textarea ref={textRef} value={input}
                         onChange={e => { setInput(e.target.value); e.target.style.height = "auto"; e.target.style.height = Math.min(e.target.scrollHeight, 100) + "px"; }}
                         onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); }}}
-                        placeholder="Ask anything… (⏎ send, ⇧⏎ newline)"
+                        placeholder="Ask anything…"
                         rows={1}
                         className="w-full bg-transparent text-[12px] text-gray-200 placeholder-gray-600 outline-none resize-none font-mono leading-relaxed"/>
                     </div>
                     <button onClick={() => handleSend()} disabled={loading || !input.trim()}
-                      className="w-8 h-8 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-30 rounded flex items-center justify-center transition-colors shrink-0">
-                      {loading ? <Loader2 size={12} className="animate-spin"/> : <Send size={12}/>}
+                      className="w-9 h-9 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-30 rounded-lg flex items-center justify-center transition-colors shrink-0 active:scale-95">
+                      {loading ? <Loader2 size={13} className="animate-spin"/> : <Send size={13}/>}
                     </button>
                   </div>
+                  <p className="hidden sm:block text-[9px] text-gray-600 mt-1.5 font-mono">⏎ send · ⇧⏎ newline · drag file to upload</p>
                 </div>
               </>
             )}
@@ -675,16 +676,12 @@ export default function App() {
       </div>
 
       {/* Status bar */}
-      <div className="h-6 bg-indigo-700/80 border-t border-indigo-600/50 flex items-center px-4 gap-4 shrink-0">
-        {[
-          { icon: <Zap size={9}/>, text: "4 agents active" },
-          { icon: <Database size={9}/>, text: `${stats?.db_rows ?? 0} rows` },
-          { icon: <Layers size={9}/>, text: `${stats?.chunk_count ?? 0} chunks` },
-          { icon: <Activity size={9}/>, text: `${stats?.queries_this_session ?? 0} queries` },
-        ].map(({ icon, text }, i) => (
-          <span key={i} className="flex items-center gap-1 text-[9px] text-indigo-200 font-mono">{icon}{text}</span>
-        ))}
-        <span className="ml-auto text-[9px] text-indigo-300 font-mono">{new Date().toLocaleString()}</span>
+      <div className="h-6 bg-indigo-700/80 border-t border-indigo-600/50 flex items-center px-3 gap-3 shrink-0 overflow-x-auto scrollbar-none">
+        <span className="flex items-center gap-1 text-[9px] text-indigo-200 font-mono shrink-0"><Zap size={9}/>4 agents</span>
+        <span className="flex items-center gap-1 text-[9px] text-indigo-200 font-mono shrink-0"><Database size={9}/>{stats?.db_rows ?? 0} rows</span>
+        <span className="hidden sm:flex items-center gap-1 text-[9px] text-indigo-200 font-mono shrink-0"><Layers size={9}/>{stats?.chunk_count ?? 0} chunks</span>
+        <span className="hidden sm:flex items-center gap-1 text-[9px] text-indigo-200 font-mono shrink-0"><Activity size={9}/>{stats?.queries_this_session ?? 0} queries</span>
+        <span className="ml-auto text-[9px] text-indigo-300 font-mono shrink-0 hidden md:block">{new Date().toLocaleString()}</span>
       </div>
     </div>
   );
