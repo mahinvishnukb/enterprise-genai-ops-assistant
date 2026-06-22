@@ -11,10 +11,25 @@ def test_mock_mode_sql_generation_for_delay_question():
 def test_mock_mode_router_routes_sql_keywords_to_sql_agent():
     client = LLMClient(provider="mock")
     route = client.chat(system="ROUTER blah", user="Show delayed shipments by count")
-    assert route == "sql_agent"
+    lines = route.splitlines()
+    assert lines[0] == "sql_agent"
+    assert 0.0 <= float(lines[1]) <= 1.0
 
 
 def test_mock_mode_router_routes_policy_questions_to_knowledge_agent():
     client = LLMClient(provider="mock")
     route = client.chat(system="ROUTER blah", user="What is the leave policy?")
-    assert route == "knowledge_agent"
+    lines = route.splitlines()
+    assert lines[0] == "knowledge_agent"
+    assert 0.0 <= float(lines[1]) <= 1.0
+
+
+def test_mock_mode_router_flags_low_confidence_for_ambiguous_message():
+    client = LLMClient(provider="mock")
+    # Mentions both a document signal ("q1") and an analytics signal
+    # ("report") and a SQL signal ("show") — genuinely ambiguous, so the
+    # router should report a secondary candidate rather than pretend it's
+    # sure of a single agent.
+    route = client.chat(system="ROUTER blah", user="Show Q1 delay report")
+    lines = route.splitlines()
+    assert lines[2] != "none"

@@ -10,7 +10,7 @@ import {
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Message = { id: number; role: "user"|"assistant"; text: string; meta?: ChatResponse; ts: number; error?: boolean };
-type Tab = "chat" | "query" | "analytics" | "documents";
+type Tab = "chat" | "query" | "analytics" | "documents" | "history" | "stats";
 type UploadedDoc = { name: string; chunks: number; ts: number };
 type QueryRecord = { id: number; q: string; agent: string; ts: number; result?: ChatResponse };
 
@@ -153,9 +153,14 @@ function MessageBubble({ msg }: { msg: Message }) {
       </div>
       <div className="flex-1 min-w-0">
         {msg.meta && (
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
             <AgentTag agent={msg.meta.agent} />
             <span className="text-[9px] text-gray-600 font-mono">router → {msg.meta.agent} → done</span>
+            {msg.meta.routing?.ambiguous && (
+              <span className="inline-flex items-center gap-1 text-[9px] text-amber-400 font-mono">
+                <AlertCircle size={9} />ambiguous · also checked {msg.meta.routing.also_considered}
+              </span>
+            )}
           </div>
         )}
         <div className={`rounded-lg rounded-tl-sm px-4 py-3 border ${
@@ -441,6 +446,11 @@ export default function App() {
     { id: "query", label: "Query", icon: <Terminal size={11}/> },
     { id: "analytics", label: "Analytics", icon: <BarChart2 size={11}/> },
     { id: "documents", label: "Documents", icon: <FileText size={11}/> },
+    // History/Stats also live in the desktop-only side panel, but they're
+    // duplicated here as tabs so they stay reachable on phones, where the
+    // activity bar and side panel are hidden for space.
+    { id: "history", label: "History", icon: <History size={11}/> },
+    { id: "stats", label: "Stats", icon: <Activity size={11}/> },
   ];
 
   const SIDE_ICONS = [
@@ -459,7 +469,7 @@ export default function App() {
   ];
 
   return (
-    <div className="flex flex-col h-full bg-[#0d0d0f] text-gray-300 font-mono text-sm select-none overflow-hidden"
+    <div className="flex flex-col h-full bg-[#0d0d0f] text-gray-300 font-mono text-sm overflow-hidden"
       onDragOver={e => { e.preventDefault(); setDragOver(true); }}
       onDragLeave={() => setDragOver(false)}
       onDrop={e => { e.preventDefault(); setDragOver(false); const f = e.dataTransfer.files?.[0]; if (f) ingestFile(f); }}>
@@ -483,7 +493,7 @@ export default function App() {
       )}
 
       {/* Title bar */}
-      <div className="h-9 border-b border-gray-800/80 flex items-center px-3 gap-2 shrink-0 bg-[#0a0a0c]">
+      <div className="h-9 border-b border-gray-800/80 flex items-center px-3 gap-2 shrink-0 bg-[#0a0a0c] select-none">
         <div className="flex items-center gap-2 min-w-0">
           <div className="w-5 h-5 bg-gradient-to-br from-indigo-500 to-purple-600 rounded flex items-center justify-center shrink-0">
             <Zap size={11}/>
@@ -503,7 +513,7 @@ export default function App() {
 
       <div className="flex flex-1 min-h-0">
         {/* Activity bar — hidden on mobile */}
-        <div className="hidden md:flex w-12 bg-[#0a0a0c] border-r border-gray-800/80 flex-col items-center py-2 gap-1 shrink-0">
+        <div className="hidden md:flex w-12 bg-[#0a0a0c] border-r border-gray-800/80 flex-col items-center py-2 gap-1 shrink-0 select-none">
           {SIDE_ICONS.map(({ id, icon, tip }) => (
             <button key={id} title={tip}
               onClick={() => { if (sidePanel === id) setSideCollapsed(c => !c); else { setSidePanel(id); setSideCollapsed(false); }}}
@@ -532,7 +542,7 @@ export default function App() {
         {/* Main editor area */}
         <div className="flex-1 flex flex-col min-w-0">
           {/* Tab bar — scrollable on mobile */}
-          <div className="h-9 bg-[#0a0a0c] border-b border-gray-800/80 flex items-end shrink-0 overflow-x-auto scrollbar-none">
+          <div className="h-9 bg-[#0a0a0c] border-b border-gray-800/80 flex items-end shrink-0 overflow-x-auto scrollbar-none select-none">
             {TABS.map(t => (
               <button key={t.id} onClick={() => setActiveTab(t.id)}
                 className={`flex items-center gap-1.5 px-3 md:px-4 h-full text-[11px] border-r border-gray-800/60 transition-colors whitespace-nowrap ${
@@ -546,7 +556,7 @@ export default function App() {
           </div>
 
           {/* Breadcrumb — hidden on mobile */}
-          <div className="hidden sm:flex h-7 border-b border-gray-800/40 items-center px-4 gap-1 shrink-0 bg-[#0d0d0f]">
+          <div className="hidden sm:flex h-7 border-b border-gray-800/40 items-center px-4 gap-1 shrink-0 bg-[#0d0d0f] select-none">
             <span className="text-[10px] text-gray-600">workspace</span>
             <ChevronRight size={10} className="text-gray-700"/>
             <span className="text-[10px] text-gray-500">{activeTab}</span>
@@ -606,10 +616,10 @@ export default function App() {
                         onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); }}}
                         placeholder="Ask anything…"
                         rows={1}
-                        className="w-full bg-transparent text-[12px] text-gray-200 placeholder-gray-600 outline-none resize-none font-mono leading-relaxed"/>
+                        className="w-full bg-transparent text-base sm:text-[12px] text-gray-200 placeholder-gray-600 outline-none resize-none font-mono leading-relaxed"/>
                     </div>
                     <button onClick={() => handleSend()} disabled={loading || !input.trim()}
-                      className="w-9 h-9 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-30 rounded-lg flex items-center justify-center transition-colors shrink-0 active:scale-95">
+                      className="w-11 h-11 sm:w-9 sm:h-9 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-30 rounded-lg flex items-center justify-center transition-colors shrink-0 active:scale-95 touch-manipulation">
                       {loading ? <Loader2 size={13} className="animate-spin"/> : <Send size={13}/>}
                     </button>
                   </div>
@@ -671,12 +681,24 @@ export default function App() {
                 <DocumentsPanel docs={docs} serverDocs={serverDocs} onUpload={ingestFile} uploading={uploading}/>
               </div>
             )}
+
+            {activeTab === "history" && (
+              <div className="flex-1 min-h-0">
+                <HistoryPanel history={queryHistory} onSelect={q => handleSend(q)}/>
+              </div>
+            )}
+
+            {activeTab === "stats" && (
+              <div className="flex-1 min-h-0">
+                <StatsPanel stats={stats}/>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       {/* Status bar */}
-      <div className="h-6 bg-indigo-700/80 border-t border-indigo-600/50 flex items-center px-3 gap-3 shrink-0 overflow-x-auto scrollbar-none">
+      <div className="h-6 bg-indigo-700/80 border-t border-indigo-600/50 flex items-center px-3 gap-3 shrink-0 overflow-x-auto scrollbar-none select-none">
         <span className="flex items-center gap-1 text-[9px] text-indigo-200 font-mono shrink-0"><Zap size={9}/>4 agents</span>
         <span className="flex items-center gap-1 text-[9px] text-indigo-200 font-mono shrink-0"><Database size={9}/>{stats?.db_rows ?? 0} rows</span>
         <span className="hidden sm:flex items-center gap-1 text-[9px] text-indigo-200 font-mono shrink-0"><Layers size={9}/>{stats?.chunk_count ?? 0} chunks</span>

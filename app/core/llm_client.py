@@ -57,19 +57,26 @@ class LLMClient:
 
 # ─── Mock implementations ─────────────────────────────────────────────────────
 
-def _mock_route(user: str) -> str:  # v5 — bulletproof routing
+def _mock_route(user: str) -> str:  # v6 — confidence-aware routing
+    """Returns a 3-line string mirroring what we ask real providers for:
+    line 1 = best agent, line 2 = confidence (0-1), line 3 = second-best
+    agent or 'none'. Confidence is a heuristic based on how decisively one
+    category's keywords won versus the runner-up — a message that only
+    matches one category's vocabulary gets high confidence; a message that
+    matches two categories' vocabulary about equally is genuinely ambiguous
+    and gets flagged as such instead of silently picking whichever category
+    happened to be checked first (the old behavior)."""
     u = user.lower()
 
-    # 1. Pure conversation — must match exactly, nothing data-related
+    # Pure conversation — must match exactly, nothing data-related
     pure_chat = ["hi", "hello", "hey", "good morning", "good afternoon",
                  "what's up", "howdy", "sup", "greetings", "how are you",
                  "thank you", "thanks", "great job", "who are you",
                  "what are you", "what can you do", "who built you",
                  "capabilities", "how do you work", "tell me about yourself"]
-    if any(u == g or u.startswith(g + " ") or u.startswith(g + "!") for g in pure_chat):
-        return "conversation_agent"
+    pure_chat_hit = any(u == g or u.startswith(g + " ") or u.startswith(g + "!") for g in pure_chat)
 
-    # 2. Document / HR knowledge — must come before data checks
+    # Document / HR knowledge signals
     doc_signals = ["policy", "entitlement", "sick leave", "annual leave", "vacation",
                    "parental", "maternity", "paternity", "bereavement", "remote work",
                    "wfh", "onboard", "performance review", "appraisal", "hr ",
@@ -77,29 +84,46 @@ def _mock_route(user: str) -> str:  # v5 — bulletproof routing
                    "according to", "what does the document", "leave policy",
                    "carrier performance", "q1", "q2", "q3", "q4", "quarter",
                    "port congestion", "sla", "northroute", "fastfreight", "pacificlink"]
-    if any(d in u for d in doc_signals):
-        return "knowledge_agent"
 
-    # 3. Analytics — computed insights, not raw rows
+    # Analytics signals — computed insights, not raw rows
     analytics_signals = ["trend", "kpi", "summary", "overview", "insight",
                          "anomaly", "over time", "weekly", "monthly", "performance",
                          "dashboard", "hotspot", "busiest", "worst route", "best route",
                          "most delay", "highest delay", "most delays", "which route",
                          "rate", "percentage", "average delay", "analysis", "report"]
-    if any(a in u for a in analytics_signals):
-        return "analytics_agent"
 
-    # 4. SQL — anything mentioning show/list/find OR data objects
+    # SQL signals — anything mentioning show/list/find OR data objects
     data_words = ["shipment", "delay", "cancel", "origin", "destination",
                   "cargo", "route", "status", "toronto", "vancouver", "calgary",
                   "montreal", "chicago", "seattle", "new york", "shipped",
                   "show", "list", "find", "fetch", "display", "count", "how many",
                   "get all", "all delayed", "all cancelled", "all on_time",
                   "recent", "latest", "last month", "last week"]
-    if any(d in u for d in data_words):
-        return "sql_agent"
 
-    return "conversation_agent"
+    def votes(keywords: list[str]) -> int:
+        return sum(1 for k in keywords if k in u)
+
+    scores = {
+        "conversation_agent": 3 if pure_chat_hit else 0,
+        "knowledge_agent": votes(doc_signals),
+        "analytics_agent": votes(analytics_signals),
+        "sql_agent": votes(data_words),
+    }
+    ranked = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
+    primary, primary_votes = ranked[0]
+    secondary, secondary_votes = ranked[1]
+
+    if primary_votes == 0:
+        # Nothing matched anything — safe default, and we're confident in
+        # that default precisely because no category claimed the message.
+        return "conversation_agent\n0.9\nnone"
+
+    if secondary_votes == 0:
+        return f"{primary}\n0.95\nnone"
+
+    confidence = round(primary_votes / (primary_votes + secondary_votes), 2)
+    confidence = max(0.5, min(confidence, 0.97))
+    return f"{primary}\n{confidence}\n{secondary}"
 
 
 def _mock_sql(user: str) -> str:

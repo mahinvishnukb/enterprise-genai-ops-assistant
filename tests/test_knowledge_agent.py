@@ -22,3 +22,20 @@ def test_ingest_then_answer_returns_sources():
     result = agent.answer("how many days of paid leave do employees get?")
     assert result["sources"]
     assert result["sources"][0]["doc_id"] == "hr_policy"
+
+
+def test_ingest_is_idempotent_and_does_not_duplicate_chunks():
+    agent = make_agent()
+    agent.ingest("hr_policy", "Employees receive 20 days of paid leave annually.")
+    agent.ingest("hr_policy", "Employees receive 20 days of paid leave annually.")
+
+    assert len(agent.vector_store._chunks) == 1
+
+
+def test_answer_refuses_when_ingested_docs_are_unrelated_to_the_question():
+    agent = make_agent()
+    agent.ingest("ops_report", "Shipment delays increased due to port congestion last quarter.")
+
+    result = agent.answer("what is the capital of France?")
+    assert result["sources"] == []
+    assert "enough" in result["answer"].lower() or "no documents" in result["answer"].lower()

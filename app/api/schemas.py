@@ -15,6 +15,9 @@ class ChatResponse(BaseModel):
     row_count: int | None = None
     metrics: dict | None = None
     analysis_type: str | None = None
+    # Router confidence + (when ambiguous) the secondary agent that was also
+    # consulted. None for direct calls to /api/sql that bypass the router.
+    routing: dict | None = None
 
 
 class SQLRequest(BaseModel):

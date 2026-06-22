@@ -7,6 +7,12 @@ export type ChatResponse = {
   row_count?: number;
   metrics?: Record<string, string | number>;
   analysis_type?: string;
+  routing?: {
+    confidence: number;
+    ambiguous: boolean;
+    also_considered?: string;
+    secondary_answer?: string;
+  };
 };
 
 export type UploadResponse = { doc_id: string; filename: string; chunk_count: number };

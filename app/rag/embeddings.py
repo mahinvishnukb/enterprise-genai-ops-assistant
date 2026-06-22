@@ -43,6 +43,11 @@ _STOPWORDS = {
     "what", "when", "where", "which", "who", "will", "with",
 }
 
+# Public alias — the reranker (app/rag/reranker.py) reuses the same stopword
+# list so lexical-overlap scoring is consistent with how the embedder itself
+# weighs content words vs. function words.
+STOPWORDS = _STOPWORDS
+
 
 class Embedder:
     """Interface every embedding backend implements."""

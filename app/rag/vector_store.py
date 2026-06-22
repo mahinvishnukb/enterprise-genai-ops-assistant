@@ -35,6 +35,16 @@ class VectorStore:
     def query(self, text: str, top_k: int = 4) -> list[tuple[Chunk, float]]:
         raise NotImplementedError
 
+    def delete(self, doc_id: str) -> None:
+        """Remove every chunk belonging to `doc_id`. Callers use this to make
+        re-ingesting a document idempotent (see KnowledgeAgent.ingest) —
+        without it, re-running auto-ingest on every server restart silently
+        duplicates the same chunks in the store on every boot, which both
+        inflates chunk counts and increases the odds that retrieval surfaces
+        several near-duplicate copies of the same passage instead of more
+        useful context."""
+        raise NotImplementedError
+
 
 class InMemoryVectorStore(VectorStore):
     def __init__(self, embedder: Embedder | None = None):
@@ -46,6 +56,11 @@ class InMemoryVectorStore(VectorStore):
         for chunk in chunks:
             self._chunks.append(chunk)
             self._vectors.append(self.embedder.embed(chunk.text))
+
+    def delete(self, doc_id: str) -> None:
+        kept = [(c, v) for c, v in zip(self._chunks, self._vectors) if c.doc_id != doc_id]
+        self._chunks = [c for c, _ in kept]
+        self._vectors = [v for _, v in kept]
 
     def query(self, text: str, top_k: int = 4) -> list[tuple[Chunk, float]]:
         if not self._chunks:
@@ -77,6 +92,14 @@ class ChromaVectorStore(VectorStore):
             documents=[c.text for c in chunks],
             metadatas=[{"doc_id": c.doc_id, "position": c.position} for c in chunks],
         )
+
+    def delete(self, doc_id: str) -> None:
+        try:
+            self._collection.delete(where={"doc_id": doc_id})
+        except Exception:
+            # Chroma raises if the collection has zero matching rows in some
+            # versions; deleting "nothing" should be a harmless no-op here.
+            pass
 
     def query(self, text: str, top_k: int = 4) -> list[tuple[Chunk, float]]:
         result = self._collection.query(query_embeddings=[self.embedder.embed(text)], n_results=top_k)

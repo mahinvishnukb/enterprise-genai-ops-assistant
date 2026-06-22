@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+/* Mobile reliability fixes -------------------------------------------- */
+
+html, body, #root {
+  /* 100vh ignores mobile browser chrome (address bar / keyboard), causing
+     the layout to overflow or jump on iOS/Android. 100dvh tracks the real
+     visible viewport; fall back to vh for older browsers that don't
+     support dvh yet. */
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Avoid the ~300ms tap-delay and accidental double-tap-to-zoom on buttons
+   and other tappable controls on mobile browsers. */
+button, [role="button"], a {
+  touch-action: manipulation;
+}
+
+/* iOS Safari auto-zooms the page when a focused input/textarea has a
+   font-size under 16px. The chat textarea already gets a 16px override at
+   the `sm:` breakpoint and below in App.tsx; this is a global backstop for
+   any other inputs. */
+@media (max-width: 640px) {
+  input, textarea, select {
+    font-size: 16px;
+  }
+}

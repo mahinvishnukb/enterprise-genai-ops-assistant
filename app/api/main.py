@@ -43,13 +43,6 @@ app = FastAPI(
     version="2.0.0",
 )
 
-ALLOWED_ORIGINS = [
-    "https://enterprise-genai-ops-assistant.vercel.app",
-    "https://enterprise-genai-ops-assistant-git-master-mahinvishnu.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:5174",
-]
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # wildcard kept for Vercel preview URLs
