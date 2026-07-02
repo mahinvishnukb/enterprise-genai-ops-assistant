@@ -1,0 +1,26 @@
+Propgatics Logistics Intelligence Platform — Platform Overview
+
+ABOUT PROPGATICS
+Propgatics is an end-to-end logistics and shipment analytics platform designed to simulate a real-world operational intelligence system used in logistics, transportation, and supply chain environments. The platform covers shipment lifecycle tracking, delay analysis, operational KPIs, route intelligence, carrier performance, and incident monitoring.
+
+DATASET SCALE
+- Shipments: 100,000 records across the full dataset; 5,000 representative rows loaded into this system
+- Incidents: 25,000 records; 1,000 rows loaded
+- Carriers: UPS, FedEx, DHL, Canada Post, Purolator
+- Geography: Major Canadian cities — Toronto, Vancouver, Calgary, Montreal, Edmonton, Halifax, Moncton, Kelowna, Ottawa, Winnipeg
+- Date range: Early 2026
+
+DATA GENERATION METHODOLOGY
+Route data (distance_km, estimated_duration_hours) was generated using the OpenRouteService (ORS) API — an open-source routing engine that computes real driving distances and durations between city pairs. ORS API keys must be configured in the request header. All other fields (carrier, weather, traffic, delay reasons, risk scores) were synthesised using controlled randomisation calibrated to reflect realistic logistics distributions.
+
+SHIPMENT STATUS VALUES
+- Delivered: shipment arrived on time or within acceptable window
+- Minor Delay: delayed by a small margin (under threshold)
+- Delayed: significant delay recorded
+- Critical Delay: severe delay, requires immediate attention
+
+RISK SCORING
+Route risk scores (0–100) are composite scores derived from distance, weather exposure, traffic levels, and historical delay patterns. Categories: Low (< 20), Medium (20–40), High (40–60), Critical (> 60). Mean risk score across full dataset: 16.32.
+
+TECHNOLOGIES USED
+Python, Pandas, NumPy, OpenRouteService API, SQLite, Plotly/Dash (dashboard visualisation), FastAPI (GenAI integration layer), React/TypeScript (frontend).

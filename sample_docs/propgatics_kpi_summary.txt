@@ -1,0 +1,31 @@
+Propgatics Platform — KPI Summary Report (Full Dataset: 100,000 Shipments)
+
+OVERALL PERFORMANCE
+Total shipments: 100,000
+On-time delivery rate: 75.26%
+Delayed shipment rate: 24.74%
+Average delay (delayed shipments only): 2.52 hours
+Total shipping revenue: CAD $7,430,259.50
+Total delivery cost: CAD $18,860,452.58
+Average route risk score: 16.32 / 100
+Total incidents recorded: 25,000
+
+CARRIER PERFORMANCE BREAKDOWN
+Canada Post  — 19,991 shipments | 75.59% on-time | avg delay 2.50 h | avg cost CAD $74.43
+DHL          — 19,967 shipments | 75.44% on-time | avg delay 2.44 h | avg cost CAD $74.37
+FedEx        — 20,039 shipments | 74.96% on-time | avg delay 2.59 h | avg cost CAD $74.06
+Purolator    — 19,905 shipments | 75.22% on-time | avg delay 2.56 h | avg cost CAD $74.32
+UPS          — 20,098 shipments | 75.59% on-time | avg delay 2.50 h | avg cost CAD $74.26
+
+KEY FINDINGS
+1. On-time delivery at 75.26% is below the industry benchmark of 85%, indicating systemic delay issues across all carriers rather than individual carrier failures.
+2. The carrier performance spread is narrow (0.63 percentage points between best and worst), confirming systemic rather than vendor-specific root causes.
+3. FedEx has the highest average delay (2.59 h) and lowest on-time rate (74.96%) — priority target for SLA review.
+4. Average delivery cost (CAD $188.60/shipment) significantly exceeds shipping revenue (CAD $74.30/shipment), indicating current pricing does not cover full logistics costs.
+5. With 25,000 incidents across 100,000 shipments, the incident rate is 25% — one incident per four shipments, which is high and warrants operational review.
+
+RECOMMENDATIONS
+- Negotiate performance-based SLAs with all carriers, benchmarked at 85% on-time
+- Implement weather-aware dynamic routing for High and Critical risk routes
+- Review pricing model: delivery cost exceeds revenue by 2.5x
+- Target incident rate reduction from 25% to under 10% through better routing and carrier coordination

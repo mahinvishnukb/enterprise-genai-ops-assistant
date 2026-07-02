@@ -5,6 +5,10 @@ Switch provider via LLM_PROVIDER env var:
   mock      — rich deterministic responses, no API key, used in CI and free deployments
   openai    — GPT-4o-mini via OpenAI SDK
   anthropic — Claude 3.5 Sonnet via Anthropic SDK
+
+Mock responses reflect the Propgatics Logistics Intelligence Platform dataset:
+  100K shipments across 5 Canadian carriers (UPS, FedEx, DHL, Canada Post, Purolator)
+  25K incidents, 75.26% on-time delivery, 24.74% delayed.
 """
 import random
 
@@ -57,18 +61,14 @@ class LLMClient:
 
 # ─── Mock implementations ─────────────────────────────────────────────────────
 
-def _mock_route(user: str) -> str:  # v6 — confidence-aware routing
-    """Returns a 3-line string mirroring what we ask real providers for:
-    line 1 = best agent, line 2 = confidence (0-1), line 3 = second-best
-    agent or 'none'. Confidence is a heuristic based on how decisively one
-    category's keywords won versus the runner-up — a message that only
-    matches one category's vocabulary gets high confidence; a message that
-    matches two categories' vocabulary about equally is genuinely ambiguous
-    and gets flagged as such instead of silently picking whichever category
-    happened to be checked first (the old behavior)."""
+def _mock_route(user: str) -> str:
+    """Returns a 3-line string:
+    line 1 = best agent name
+    line 2 = confidence (0.0–1.0)
+    line 3 = second-best agent or 'none'
+    Confidence is proportional to how decisively one category's keywords won."""
     u = user.lower()
 
-    # Pure conversation — must match exactly, nothing data-related
     pure_chat = ["hi", "hello", "hey", "good morning", "good afternoon",
                  "what's up", "howdy", "sup", "greetings", "how are you",
                  "thank you", "thanks", "great job", "who are you",
@@ -76,29 +76,41 @@ def _mock_route(user: str) -> str:  # v6 — confidence-aware routing
                  "capabilities", "how do you work", "tell me about yourself"]
     pure_chat_hit = any(u == g or u.startswith(g + " ") or u.startswith(g + "!") for g in pure_chat)
 
-    # Document / HR knowledge signals
-    doc_signals = ["policy", "entitlement", "sick leave", "annual leave", "vacation",
-                   "parental", "maternity", "paternity", "bereavement", "remote work",
-                   "wfh", "onboard", "performance review", "appraisal", "hr ",
-                   "handbook", "sop", "procedure", "regulation", "compliance",
-                   "according to", "what does the document", "leave policy",
-                   "carrier performance", "q1", "q2", "q3", "q4", "quarter",
-                   "port congestion", "sla", "northroute", "fastfreight", "pacificlink"]
+    # Document / knowledge signals — platform docs, policies, methodology
+    doc_signals = [
+        "policy", "entitlement", "sick leave", "annual leave", "vacation",
+        "parental", "maternity", "paternity", "bereavement", "remote work",
+        "wfh", "onboard", "performance review", "appraisal", "hr ",
+        "handbook", "sop", "procedure", "regulation", "compliance",
+        "according to", "what does the document", "leave policy",
+        "propgatics", "platform", "ors", "openrouteservice",
+        "how was the data", "methodology", "how does it work",
+        "carrier performance report", "q1 report", "q2 report",
+        "port congestion", "sla", "northroute", "fastfreight", "pacificlink",
+    ]
 
     # Analytics signals — computed insights, not raw rows
-    analytics_signals = ["trend", "kpi", "summary", "overview", "insight",
-                         "anomaly", "over time", "weekly", "monthly", "performance",
-                         "dashboard", "hotspot", "busiest", "worst route", "best route",
-                         "most delay", "highest delay", "most delays", "which route",
-                         "rate", "percentage", "average delay", "analysis", "report"]
+    analytics_signals = [
+        "trend", "kpi", "summary", "overview", "insight",
+        "anomaly", "over time", "weekly", "monthly", "performance",
+        "dashboard", "hotspot", "busiest", "worst route", "best route",
+        "most delay", "highest delay", "most delays", "which route",
+        "rate", "percentage", "average delay", "analysis", "report",
+        "breakdown", "distribution", "compare", "comparison",
+        "carrier performance", "on-time rate", "risk score",
+        "weather impact", "financial loss", "incident rate",
+    ]
 
-    # SQL signals — anything mentioning show/list/find OR data objects
-    data_words = ["shipment", "delay", "cancel", "origin", "destination",
-                  "cargo", "route", "status", "toronto", "vancouver", "calgary",
-                  "montreal", "chicago", "seattle", "new york", "shipped",
-                  "show", "list", "find", "fetch", "display", "count", "how many",
-                  "get all", "all delayed", "all cancelled", "all on_time",
-                  "recent", "latest", "last month", "last week"]
+    # SQL signals — show/list/find raw rows
+    data_words = [
+        "shipment", "delay", "cancel", "origin", "destination",
+        "tracking", "carrier", "route", "status", "toronto", "vancouver",
+        "calgary", "montreal", "edmonton", "halifax", "moncton", "ottawa",
+        "ups", "fedex", "dhl", "purolator",
+        "show", "list", "find", "fetch", "display", "count", "how many",
+        "get all", "all delayed", "all cancelled", "recent", "latest",
+        "last month", "last week", "incident", "warehouse", "driver",
+    ]
 
     def votes(keywords: list[str]) -> int:
         return sum(1 for k in keywords if k in u)
@@ -114,10 +126,7 @@ def _mock_route(user: str) -> str:  # v6 — confidence-aware routing
     secondary, secondary_votes = ranked[1]
 
     if primary_votes == 0:
-        # Nothing matched anything — safe default, and we're confident in
-        # that default precisely because no category claimed the message.
         return "conversation_agent\n0.9\nnone"
-
     if secondary_votes == 0:
         return f"{primary}\n0.95\nnone"
 
@@ -127,104 +136,193 @@ def _mock_route(user: str) -> str:  # v6 — confidence-aware routing
 
 
 def _mock_sql(user: str) -> str:
+    """Generate deterministic SQL against the shipments / incidents schema."""
     u = user.lower()
-    cities = ["toronto", "vancouver", "calgary", "montreal", "chicago", "seattle", "new york"]
+    cities = [
+        "toronto", "vancouver", "calgary", "montreal", "edmonton",
+        "halifax", "moncton", "ottawa", "kelowna", "winnipeg",
+    ]
+    carriers = ["ups", "fedex", "dhl", "canada post", "purolator"]
 
-    if "how many" in u or ("count" in u and "status" not in u):
-        if "delayed" in u:
-            return "SELECT COUNT(*) as delayed_count FROM operations_data WHERE status = 'delayed';"
+    # ── Incident queries ───────────────────────────────────────────────────
+    if "incident" in u:
+        if "critical" in u:
+            return "SELECT incident_id, carrier, origin, destination, incident_type, estimated_financial_loss_cad FROM incidents WHERE severity_level = 'Critical' ORDER BY estimated_financial_loss_cad DESC LIMIT 20;"
+        if "unresolved" in u or "open" in u or "investigation" in u:
+            return "SELECT incident_id, carrier, incident_type, severity_level, incident_status, delay_hours FROM incidents WHERE incident_status != 'Resolved' ORDER BY delay_hours DESC LIMIT 20;"
+        if "financial" in u or "loss" in u or "cost" in u:
+            return "SELECT carrier, COUNT(*) as incidents, ROUND(SUM(estimated_financial_loss_cad),2) as total_loss_cad FROM incidents GROUP BY carrier ORDER BY total_loss_cad DESC;"
+        return "SELECT incident_id, carrier, origin, destination, incident_type, severity_level, incident_status, delay_hours FROM incidents ORDER BY delay_hours DESC LIMIT 30;"
+
+    # ── Count / aggregate queries ──────────────────────────────────────────
+    if "how many" in u or ("count" in u and "group" not in u):
+        if "delayed" in u or "delay" in u:
+            return "SELECT COUNT(*) as delayed_count FROM shipments WHERE shipment_status IN ('Delayed', 'Minor Delay', 'Critical Delay');"
         if "cancel" in u:
-            return "SELECT COUNT(*) as cancelled_count FROM operations_data WHERE status = 'cancelled';"
+            return "SELECT COUNT(*) as cancelled_count FROM shipments WHERE shipment_status = 'Cancelled';"
         for city in cities:
             if city in u:
                 cap = city.title()
-                return f"SELECT COUNT(*) as count FROM operations_data WHERE destination = '{cap}' OR origin = '{cap}';"
-        return "SELECT status, COUNT(*) as count FROM operations_data GROUP BY status ORDER BY count DESC;"
+                return f"SELECT COUNT(*) as count FROM shipments WHERE destination = '{cap}' OR origin = '{cap}';"
+        return "SELECT shipment_status, COUNT(*) as count FROM shipments GROUP BY shipment_status ORDER BY count DESC;"
 
-    if "count" in u or "by status" in u:
-        return "SELECT status, COUNT(*) as count, ROUND(AVG(delay_days),1) as avg_delay FROM operations_data GROUP BY status ORDER BY count DESC;"
+    # ── Carrier queries ────────────────────────────────────────────────────
+    for carrier in carriers:
+        if carrier in u:
+            cap = carrier.title()
+            if "delay" in u or "late" in u:
+                return f"SELECT shipment_id, origin, destination, shipment_status, delay_hours, shipment_date FROM shipments WHERE carrier = '{cap}' AND shipment_status IN ('Delayed','Minor Delay','Critical Delay') ORDER BY delay_hours DESC LIMIT 30;"
+            if "performance" in u or "on-time" in u or "on time" in u:
+                return f"SELECT carrier, COUNT(*) as total, SUM(on_time_delivery) as on_time, ROUND(AVG(on_time_delivery)*100,1) as on_time_pct, ROUND(AVG(delay_hours),2) as avg_delay_hours FROM shipments WHERE carrier = '{cap}' GROUP BY carrier;"
+            return f"SELECT shipment_id, origin, destination, shipment_status, delay_hours, shipping_cost_cad, shipment_date FROM shipments WHERE carrier = '{cap}' ORDER BY shipment_date DESC LIMIT 30;"
 
+    # ── Risk / weather / traffic ───────────────────────────────────────────
+    if "risk" in u or "high risk" in u or "critical" in u:
+        return "SELECT shipment_id, carrier, origin, destination, route_risk_score, risk_category, shipment_status FROM shipments WHERE risk_category IN ('High','Critical') ORDER BY route_risk_score DESC LIMIT 30;"
+    if "weather" in u:
+        return "SELECT weather_condition, COUNT(*) as shipments, SUM(CASE WHEN shipment_status IN ('Delayed','Minor Delay','Critical Delay') THEN 1 ELSE 0 END) as delays, ROUND(AVG(delay_hours),2) as avg_delay FROM shipments GROUP BY weather_condition ORDER BY delays DESC;"
+    if "traffic" in u:
+        return "SELECT traffic_level, COUNT(*) as shipments, ROUND(AVG(delay_hours),2) as avg_delay_hours FROM shipments GROUP BY traffic_level ORDER BY avg_delay_hours DESC;"
+
+    # ── Worst / best routes ────────────────────────────────────────────────
     if "worst" in u or "most delay" in u or "highest delay" in u:
-        return "SELECT origin, destination, COUNT(*) as delays, ROUND(AVG(delay_days),1) as avg_delay FROM operations_data WHERE status='delayed' GROUP BY origin, destination ORDER BY delays DESC LIMIT 10;"
+        return "SELECT origin, destination, COUNT(*) as total, SUM(CASE WHEN shipment_status IN ('Delayed','Minor Delay','Critical Delay') THEN 1 ELSE 0 END) as delays, ROUND(AVG(delay_hours),2) as avg_delay_hours FROM shipments GROUP BY origin, destination HAVING delays > 0 ORDER BY avg_delay_hours DESC LIMIT 10;"
+    if "best" in u or "fastest" in u or "on-time" in u or "on time" in u:
+        return "SELECT carrier, ROUND(AVG(on_time_delivery)*100,1) as on_time_pct, ROUND(AVG(delay_hours),2) as avg_delay_hours FROM shipments GROUP BY carrier ORDER BY on_time_pct DESC;"
 
-    if "delayed" in u:
+    # ── Delayed shipments ──────────────────────────────────────────────────
+    if "delayed" in u or "delay" in u or "late" in u:
         for city in cities:
             if city in u:
                 cap = city.title()
-                return f"SELECT id, origin, destination, delay_days, shipped_at FROM operations_data WHERE status='delayed' AND (origin='{cap}' OR destination='{cap}') ORDER BY shipped_at DESC LIMIT 30;"
-        return "SELECT id, origin, destination, delay_days, shipped_at FROM operations_data WHERE status='delayed' ORDER BY shipped_at DESC LIMIT 50;"
+                return f"SELECT shipment_id, carrier, origin, destination, shipment_status, delay_hours, delay_reason, shipment_date FROM shipments WHERE shipment_status IN ('Delayed','Minor Delay','Critical Delay') AND (origin='{cap}' OR destination='{cap}') ORDER BY delay_hours DESC LIMIT 30;"
+        return "SELECT shipment_id, carrier, origin, destination, shipment_status, delay_hours, delay_reason, shipment_date FROM shipments WHERE shipment_status IN ('Delayed','Minor Delay','Critical Delay') ORDER BY delay_hours DESC LIMIT 50;"
 
-    if "cancel" in u:
-        return "SELECT id, origin, destination, shipped_at FROM operations_data WHERE status='cancelled' ORDER BY shipped_at DESC LIMIT 50;"
-
-    if "on_time" in u or "on time" in u or "on-time" in u:
-        return "SELECT id, origin, destination, shipped_at FROM operations_data WHERE status='on_time' ORDER BY shipped_at DESC LIMIT 50;"
-
+    # ── City-specific queries ──────────────────────────────────────────────
     for city in cities:
         if city in u:
             cap = city.title()
-            direction = ""
             if "from" in u:
                 direction = f"WHERE origin = '{cap}'"
             elif "to" in u:
                 direction = f"WHERE destination = '{cap}'"
             else:
                 direction = f"WHERE origin = '{cap}' OR destination = '{cap}'"
-            return f"SELECT id, origin, destination, status, delay_days, shipped_at FROM operations_data {direction} ORDER BY shipped_at DESC LIMIT 50;"
+            return f"SELECT shipment_id, carrier, origin, destination, shipment_status, delay_hours, shipment_date FROM shipments {direction} ORDER BY shipment_date DESC LIMIT 30;"
 
-    if "recent" in u or "latest" in u or "last" in u or "all" in u:
-        return "SELECT id, origin, destination, status, delay_days, shipped_at FROM operations_data ORDER BY shipped_at DESC LIMIT 20;"
-
+    # ── Route summary ──────────────────────────────────────────────────────
     if "route" in u:
-        return "SELECT origin, destination, COUNT(*) as shipments, SUM(CASE WHEN status='delayed' THEN 1 ELSE 0 END) as delays FROM operations_data GROUP BY origin, destination ORDER BY shipments DESC LIMIT 15;"
+        return "SELECT origin, destination, COUNT(*) as shipments, ROUND(AVG(delay_hours),2) as avg_delay, ROUND(AVG(on_time_delivery)*100,1) as on_time_pct FROM shipments GROUP BY origin, destination ORDER BY shipments DESC LIMIT 15;"
 
-    return "SELECT id, origin, destination, status, delay_days, shipped_at FROM operations_data ORDER BY shipped_at DESC LIMIT 20;"
+    # ── Carrier breakdown ──────────────────────────────────────────────────
+    if "carrier" in u or "by carrier" in u:
+        return "SELECT carrier, COUNT(*) as total_shipments, ROUND(AVG(on_time_delivery)*100,1) as on_time_pct, ROUND(AVG(delay_hours),2) as avg_delay_hours, ROUND(AVG(shipping_cost_cad),2) as avg_cost_cad FROM shipments GROUP BY carrier ORDER BY on_time_pct DESC;"
+
+    # ── Recent / latest / default ──────────────────────────────────────────
+    if "recent" in u or "latest" in u or "last" in u:
+        return "SELECT shipment_id, carrier, origin, destination, shipment_status, delay_hours, shipment_date FROM shipments ORDER BY shipment_date DESC LIMIT 20;"
+
+    return "SELECT shipment_id, carrier, origin, destination, shipment_status, delay_hours, shipping_cost_cad, shipment_date FROM shipments ORDER BY shipment_date DESC LIMIT 20;"
 
 
 def _mock_report(user: str) -> str:
+    """Narrate analytics findings using real Propgatics platform numbers."""
     u = user.lower()
-    if "kpi" in u or "summary" in u:
+
+    if "kpi" in u or "summary" in u or "overview" in u or "dashboard" in u:
         return (
-            "Operations are performing at a moderate efficiency level. "
-            "Approximately 25% of shipments are experiencing delays, with an average delay of 4 days — "
-            "this is above the industry benchmark of 15% and warrants immediate attention on high-traffic routes. "
-            "Cancellations remain low at under 10%, which is within acceptable thresholds. "
-            "Focus remediation efforts on the Chicago–Montreal and Seattle–Toronto corridors, which show the highest delay concentrations."
+            "The Propgatics platform is tracking 100,000 shipments across five major Canadian carriers. "
+            "Overall on-time delivery stands at 75.26%, with 24.74% of shipments experiencing some form "
+            "of delay — above the industry benchmark of 15%, signalling a need for carrier SLA review. "
+            "Average delay duration is 2.52 hours across affected shipments. "
+            "FedEx has the lowest on-time rate at 74.96%, while Canada Post leads at 75.59% — "
+            "a narrow spread suggesting systemic rather than carrier-specific issues. "
+            "Total shipping revenue is CAD $7.43M against delivery costs of CAD $18.86M; "
+            "close attention to route profitability is recommended."
         )
-    if "delay" in u:
+    if "carrier" in u or "performance" in u:
         return (
-            "Delay analysis reveals a concentration of late shipments on cross-border routes, "
-            "particularly those involving Chicago and Seattle as origin cities. "
-            "The Chicago → Montreal route is the single highest-risk corridor with a delay rate exceeding 30%. "
-            "Average delay duration is 4.2 days across all affected shipments. "
-            "Recommend reviewing carrier SLAs and introducing buffer time on these routes."
+            "Carrier performance analysis across 100,000 shipments shows FedEx as the lowest performer "
+            "at 74.96% on-time, followed by Purolator (75.22%), DHL (75.44%), UPS (75.59%), "
+            "and Canada Post leading at 75.59%. "
+            "Average delay hours are tightest for DHL at 2.44 h and widest for FedEx at 2.59 h. "
+            "Average shipping costs are consistent across all carriers at approximately CAD $74. "
+            "Given the narrow performance band, contract renegotiation and SLA enforcement are recommended "
+            "for all carriers rather than singling out one vendor."
         )
-    if "route" in u or "popular" in u:
+    if "delay" in u or "late" in u or "bottleneck" in u:
         return (
-            "Route analysis shows that Toronto, Vancouver, and Calgary are the highest-volume destination cities. "
-            "The busiest corridor sees roughly 18–22 shipments per month. "
-            "Routes involving New York as origin show the best on-time performance at over 80%. "
-            "Consider capacity rebalancing from underperforming routes to high-demand corridors."
+            "Delay analysis across the shipment dataset shows 24.74% of shipments delayed, "
+            "with an average delay of 2.52 hours. "
+            "Critical delays (> threshold) affect approximately 2% of total volume. "
+            "Weather is the single largest delay driver, particularly Snow and Storm conditions, "
+            "which correlate with a 40% higher average delay versus Clear-weather shipments. "
+            "High-traffic routes compound weather impact significantly. "
+            "Routes between major hubs (Toronto–Vancouver, Calgary–Montreal) show the highest absolute "
+            "delay volumes due to shipment density — recommend deploying buffer capacity on these corridors."
         )
-    if "trend" in u or "week" in u:
+    if "route" in u or "popular" in u or "busiest" in u:
         return (
-            "Weekly trend analysis shows shipment volumes are stable with slight week-over-week variance of ±8%. "
-            "Delay rates peaked three weeks ago and have shown a modest improvement of 5% since then. "
-            "This improvement correlates with a reduction in Chicago-origin shipments, suggesting a carrier or routing change may have had positive effects. "
-            "Continue monitoring to confirm the trend."
+            "Route analysis shows the Calgary–Edmonton corridor is the busiest single route by volume, "
+            "owing to its short distance (300 km) and high business customer density. "
+            "Toronto–Montreal and Toronto–Vancouver are the highest-revenue routes. "
+            "Delay rates are highest on long-haul routes involving Vancouver as destination, "
+            "likely influenced by weather exposure over mountain passes. "
+            "Short-haul routes within the Prairie provinces show the best on-time performance. "
+            "Recommend prioritising capacity on Toronto–Vancouver and Toronto–Montreal for maximum revenue impact."
+        )
+    if "trend" in u or "week" in u or "month" in u or "over time" in u:
+        return (
+            "Weekly shipment volume is stable with ±6% variance week-over-week. "
+            "Delay rates show a seasonal pattern, peaking in February and March — coinciding with "
+            "winter storm events across Prairie and Atlantic provinces. "
+            "On-time delivery improved by approximately 3 percentage points between January and March 2026, "
+            "suggesting positive effects from operational adjustments mid-quarter. "
+            "Incident rates track closely with delay rates, with a lag of roughly 48 hours, "
+            "consistent with incident reports being filed after resolution attempts."
+        )
+    if "incident" in u:
+        return (
+            "Incident analysis across 25,000 records shows Failed Delivery Attempt as the most common "
+            "incident type (~28%), followed by Damaged Shipment (22%) and Customs Hold (18%). "
+            "Critical-severity incidents account for approximately 10% of all incidents and carry "
+            "an average financial loss of CAD $2,800 per event. "
+            "DHL and FedEx have the highest incident-to-shipment ratios. "
+            "Mean resolution time is 68 hours across all severity levels; "
+            "Critical incidents average 96 hours, suggesting a need for escalation protocols."
+        )
+    if "risk" in u:
+        return (
+            "Route risk analysis shows a mean risk score of 16.3 out of 100 across all shipments, "
+            "with approximately 8% classified as High or Critical risk. "
+            "Risk correlates strongly with distance, traffic level, and adverse weather conditions. "
+            "The Vancouver-bound routes carry the highest composite risk scores. "
+            "Implementing pre-emptive rerouting for High-risk shipments during storm windows "
+            "could reduce Critical Delay incidents by an estimated 15-20%."
+        )
+    if "weather" in u:
+        return (
+            "Weather impact analysis shows Storm and Snow conditions add an average of 4.1 extra hours "
+            "of delay versus Clear conditions. Rain adds approximately 1.8 hours on average. "
+            "Snow-affected routes see a 35% higher incident rate than Clear routes. "
+            "Atlantic Canada and mountain pass routes are most exposed to adverse weather. "
+            "Recommend integrating a weather-based dynamic buffer into estimated delivery date calculations."
         )
     if "cancel" in u:
         return (
-            "Cancellation rates are within normal bounds at approximately 8% of total shipments. "
-            "Montreal and Calgary show the highest cancellation origination rates. "
-            "No single cause has been isolated — recommend cross-referencing with carrier incident logs to identify root causes. "
-            "If rates exceed 12%, consider issuing a formal vendor performance review."
+            "Cancellation analysis shows a sub-1% cancellation rate across the Propgatics dataset, "
+            "which is well within normal operational thresholds. "
+            "The primary drivers are customer-requested holds and customs documentation issues. "
+            "No single carrier or route is disproportionately responsible. "
+            "Monitor if cancellation rates rise above 2% as a leading indicator of systemic issues."
         )
     return (
-        "Overall operations summary: 120 shipments recorded over the past 60 days across 7 major cities. "
-        "On-time performance sits at approximately 67%, with delays and cancellations accounting for the remainder. "
-        "Key risk areas are the Chicago–Montreal and Seattle–Toronto corridors. "
-        "Recommend a targeted carrier review and SLA renegotiation for Q3."
+        "Propgatics operations summary: 100,000 shipments processed across 5 Canadian carriers "
+        "(UPS, FedEx, DHL, Canada Post, Purolator). "
+        "On-time delivery rate: 75.26%. Average delay: 2.52 hours. "
+        "Total shipping revenue: CAD $7.43M. Incident count: 25,000 across 19 incident types. "
+        "Key risk areas: long-haul routes in adverse weather, particularly Vancouver-bound corridors. "
+        "Recommend carrier SLA review and weather-aware dynamic routing for Q3."
     )
 
 
@@ -234,98 +332,154 @@ def _mock_conversation(user: str) -> str:
     greetings = ["hi", "hello", "hey", "good morning", "good afternoon", "howdy"]
     if any(g in u for g in greetings):
         return random.choice([
-            "Hello! I'm your Enterprise GenAI Operations Assistant. I can help you with:\n\n"
-            "• **Operations data** — query shipments, delays, routes, and cancellations\n"
-            "• **Analytics & insights** — trends, KPIs, delay hotspots, weekly reports\n"
-            "• **Document knowledge** — answer questions from uploaded policies and SOPs\n\n"
-            "Try asking: *\"Show delayed shipments\"*, *\"What's our on-time rate?\"*, or upload an HR policy and ask about it.",
+            "Hello! I'm your Enterprise GenAI Operations Assistant, powered by the Propgatics Logistics "
+            "Intelligence Platform. I can help you with:\n\n"
+            "• **Shipment data** — query 5,000 real shipments across UPS, FedEx, DHL, Canada Post, Purolator\n"
+            "• **Incident intelligence** — 1,000 incident records with severity, financial loss, resolution time\n"
+            "• **Analytics & KPIs** — on-time rates, delay trends, carrier benchmarks, risk scores\n"
+            "• **Document knowledge** — platform methodology, carrier reports, HR policies\n\n"
+            "Try: *\"Show delayed FedEx shipments\"*, *\"Which carrier has the worst on-time rate?\"*, "
+            "or *\"What's our overall KPI summary?\"*",
 
-            "Hi there! I'm your AI operations co-pilot. Ask me anything about your shipment data, "
-            "request an analytics summary, or upload a document and query it. What would you like to explore?",
+            "Hi! I'm your AI logistics co-pilot backed by 100K shipments of Propgatics data. "
+            "Ask me to pull shipment records, run carrier performance analysis, or explain the platform. "
+            "What would you like to explore?",
         ])
 
     if any(w in u for w in ["what can you do", "capabilities", "help", "how do you work", "what are you"]):
         return (
-            "I'm a multi-agent AI assistant with four specialized capabilities:\n\n"
-            "**1. SQL Agent** — retrieves precise data from your operations database\n"
-            "   → *\"Show all delayed shipments from Chicago\"*\n\n"
-            "**2. Analytics Agent** — computes trends, KPIs, and anomaly detection\n"
-            "   → *\"What's our delay trend over the past month?\"*\n\n"
-            "**3. Knowledge Agent** — answers questions from uploaded documents\n"
-            "   → *\"What is the annual leave policy?\"* (after uploading HR docs)\n\n"
-            "**4. Conversation Agent** — that's me! I handle everything else.\n\n"
-            "Your questions are automatically routed to the right agent — you don't need to specify which one."
+            "I'm a multi-agent AI assistant connected to the Propgatics Logistics Intelligence Platform:\n\n"
+            "**1. SQL Agent** — queries the live shipments & incidents database\n"
+            "   → *\"Show Critical Delay shipments from Calgary\"*\n"
+            "   → *\"How many incidents did FedEx have?\"*\n\n"
+            "**2. Analytics Agent** — computes KPIs, trends, carrier benchmarks, risk analysis\n"
+            "   → *\"Compare carrier on-time rates\"*\n"
+            "   → *\"What's the weather impact on delays?\"*\n\n"
+            "**3. Knowledge Agent** — answers questions from platform docs and uploaded files\n"
+            "   → *\"How was the Propgatics dataset generated?\"*\n"
+            "   → *\"What's the HR leave policy?\"*\n\n"
+            "**4. Conversation Agent** — that's me. I handle everything else.\n\n"
+            "Your questions are automatically routed to the right agent."
         )
 
     if any(w in u for w in ["thank", "thanks", "great", "awesome", "nice", "good job", "perfect"]):
         return random.choice([
-            "You're welcome! Let me know if there's anything else I can help you analyze.",
-            "Happy to help! Feel free to ask anything else about your operations data or documents.",
-            "Glad that was useful! What else would you like to explore?",
+            "You're welcome! Let me know if there's anything else you'd like to analyze.",
+            "Happy to help! Feel free to dig deeper into any carrier, route, or incident category.",
+            "Glad that was useful! What else would you like to explore in the Propgatics data?",
         ])
 
-    if any(w in u for w in ["who built", "who made", "who created", "what is this"]):
+    if any(w in u for w in ["who built", "who made", "who created", "what is this", "propgatics"]):
         return (
-            "This is the **Enterprise GenAI Operations Assistant** — a production-grade multi-agent AI platform "
-            "built with FastAPI, React, and a multi-agent architecture (Router → SQL/Analytics/Knowledge/Conversation agents). "
-            "It supports natural language querying over structured databases (NL2SQL) and unstructured documents (RAG), "
-            "with pluggable LLM providers (OpenAI, Anthropic, or mock mode)."
+            "This is the **Enterprise GenAI Operations Assistant**, integrated with the "
+            "**Propgatics Logistics Intelligence Platform** — an end-to-end logistics analytics "
+            "system covering 100K shipments, 25K incidents, 5 Canadian carriers, and real route "
+            "risk intelligence.\n\n"
+            "The GenAI layer is a production-grade multi-agent system built with FastAPI and React: "
+            "a Router agent dispatches natural-language questions to specialized SQL, Analytics, "
+            "Knowledge, and Conversation agents. It supports pluggable LLM providers "
+            "(OpenAI, Anthropic, or mock mode for offline use)."
         )
 
     if any(w in u for w in ["how are you", "how's it going", "how are things"]):
-        return "I'm running smoothly and ready to help! What can I analyze for you today?"
+        return "Running at full capacity and ready to analyze your logistics data! What can I help with?"
 
     if "?" not in u and len(u.split()) <= 3:
         return (
-            f"I received your message: *\"{user}\"*. Could you be more specific? "
-            "You can ask me to show shipment data, run analytics, or query an uploaded document. "
+            f"Received: *\"{user}\"*. Could you be more specific? "
+            "Try: *\"Show delayed shipments\"*, *\"KPI summary\"*, or *\"Which routes have the highest risk?\"* "
             "Type *\"help\"* to see everything I can do."
         )
 
     return (
-        f"I want to make sure I give you the most accurate answer. Could you clarify what you're looking for?\n\n"
-        "Here are some things I can help with:\n"
-        "• **Data queries**: *\"Show all shipments to Vancouver this month\"*\n"
-        "• **Analytics**: *\"What's the delay rate by route?\"*\n"
-        "• **Documents**: Upload a file and ask about its contents\n"
-        "• **Reports**: *\"Give me a KPI summary\"*"
+        "Let me make sure I give you the most accurate answer. Could you clarify?\n\n"
+        "Things I can help with:\n"
+        "• **Shipment queries**: *\"Show UPS shipments to Vancouver this month\"*\n"
+        "• **Incident analysis**: *\"List unresolved Critical incidents\"*\n"
+        "• **Analytics**: *\"What's the delay trend by weather condition?\"*\n"
+        "• **Reports**: *\"Give me a full KPI summary\"*"
     )
 
 
 def _mock_knowledge(user: str) -> str:
     u = user.lower()
-    # HR policy answers
+
+    # ── Propgatics platform knowledge ──────────────────────────────────────
+    if "propgatics" in u or "platform" in u or "how was" in u or "dataset" in u or "generated" in u:
+        return (
+            "Propgatics is an end-to-end logistics and shipment analytics platform simulating a "
+            "real-world operational intelligence system. The dataset was generated synthetically "
+            "using OpenRouteService (ORS) API for real Canadian route distances and durations, "
+            "with shipment attributes (carrier, weather, traffic, incidents) added via controlled "
+            "randomisation to reflect realistic logistics distributions. "
+            "The full dataset includes 100,000 shipment records and 25,000 incident records "
+            "across 5 carriers serving major Canadian cities."
+        )
+    if "ors" in u or "openrouteservice" in u or "api" in u:
+        return (
+            "OpenRouteService (ORS) is an open-source routing engine used by Propgatics to compute "
+            "real driving distances and estimated durations between Canadian city pairs. "
+            "The API was accessed with an authentication key passed in the request header. "
+            "Route data (distance_km, estimated_duration_hours) in the shipments dataset comes "
+            "directly from ORS responses, making the logistics simulation geographically accurate."
+        )
+
+    # ── KPI / performance knowledge ────────────────────────────────────────
+    if "on-time" in u or "on time" in u or "delivery rate" in u or "kpi" in u:
+        return (
+            "Propgatics platform KPIs (full 100K dataset): "
+            "**On-time delivery rate: 75.26%**. Delayed rate: 24.74%. "
+            "Average delay: 2.52 hours. Total shipping revenue: CAD $7,430,259. "
+            "Total delivery cost: CAD $18,860,452. Average route risk score: 16.32/100. "
+            "Total incidents recorded: 25,000."
+        )
+    if "carrier" in u:
+        return (
+            "Carrier performance across 100,000 shipments:\n"
+            "• **Canada Post** — 75.59% on-time, avg delay 2.50 h, avg cost CAD $74.43\n"
+            "• **UPS** — 75.59% on-time, avg delay 2.50 h, avg cost CAD $74.26\n"
+            "• **DHL** — 75.44% on-time, avg delay 2.44 h, avg cost CAD $74.37\n"
+            "• **Purolator** — 75.22% on-time, avg delay 2.56 h, avg cost CAD $74.32\n"
+            "• **FedEx** — 74.96% on-time, avg delay 2.59 h, avg cost CAD $74.06\n"
+            "All carriers perform within a 0.6 percentage-point band, suggesting systemic issues "
+            "rather than carrier-specific failures."
+        )
+    if "incident" in u and ("type" in u or "kind" in u or "what" in u):
+        return (
+            "Incident types in the Propgatics dataset include: Failed Delivery Attempt, "
+            "Damaged Shipment, Lost Package, Customs Hold, Weather Delay, Mechanical Failure, "
+            "and Address Error. Severity levels range from Low to Critical. "
+            "Incident status can be Resolved, Under Investigation, or Open. "
+            "Average financial loss per incident: approximately CAD $1,800; "
+            "Critical incidents average CAD $2,800."
+        )
+    if "risk" in u and ("category" in u or "score" in u or "what" in u):
+        return (
+            "Route risk scores in Propgatics are composite scores (0–100) computed from distance, "
+            "weather exposure, traffic levels, and historical delay patterns. "
+            "Risk categories: Low (score < 20), Medium (20–40), High (40–60), Critical (> 60). "
+            "Mean score across the full dataset is 16.32, indicating most routes are Low risk. "
+            "Approximately 8% of shipments fall into High or Critical risk categories."
+        )
+
+    # ── HR policy answers ──────────────────────────────────────────────────
     if "sick" in u:
-        return "Employees receive **10 paid sick days per year** with no carryover. A medical certificate is required for sick leave longer than 3 consecutive days. If sick leave is exhausted, employees may apply for unpaid medical leave of up to 30 days with manager and HR approval."
+        return "Employees receive **10 paid sick days per year** with no carryover. A medical certificate is required for sick leave exceeding 3 consecutive days. Exhausted sick leave may be followed by up to 30 days unpaid medical leave with HR approval."
     if "annual leave" in u or "vacation" in u or "holiday" in u:
-        return "Full-time employees accrue **20 days of paid annual leave per calendar year**, credited at the start of each quarter (5 days per quarter). Up to 5 unused days may be carried over to the next year — anything beyond that is forfeited on December 31st. Leave cannot be taken in the first 90 days of employment."
+        return "Full-time employees accrue **20 days of paid annual leave per calendar year**, credited quarterly (5 days/quarter). Up to 5 unused days carry over; the remainder is forfeited December 31st. Leave cannot be taken in the first 90 days of employment."
     if "parental" in u or "maternity" in u or "paternity" in u:
-        return "**Primary caregivers** receive 16 weeks of paid parental leave. **Secondary caregivers** receive 4 weeks of paid parental leave. Leave must commence within 12 months of the birth or adoption of a child."
+        return "**Primary caregivers** receive 16 weeks paid parental leave. **Secondary caregivers** receive 4 weeks. Leave must begin within 12 months of birth or adoption."
     if "bereavement" in u:
-        return "Employees receive **5 paid bereavement days** for the loss of an immediate family member (spouse, child, parent, sibling), and **2 paid days** for extended family members."
+        return "Employees receive **5 paid days** for immediate family (spouse, child, parent, sibling) and **2 paid days** for extended family."
     if "remote" in u or "work from home" in u or "wfh" in u:
-        return "Employees may work remotely **up to 3 days per week** with manager approval. Full remote arrangements require VP-level approval and are reviewed quarterly. Core hours of 10am–3pm in the employee's local timezone must be maintained."
-    if "performance" in u or "review" in u or "appraisal" in u:
-        return "Performance reviews are conducted **bi-annually**: mid-year in June and year-end in December. Compensation adjustments are tied to year-end reviews. Employees receive at least 2 weeks notice before their scheduled review."
-    if "onboard" in u or "new employee" in u or "joining" in u:
-        return "New employee onboarding steps:\n1. Complete HR intake forms within 3 business days\n2. Set up payroll and benefits within 2 weeks\n3. Complete mandatory compliance training within 30 days\n4. Schedule 90-day goal meeting with your manager\n5. Register for health insurance within 14 days"
-    if "leave request" in u or "how to apply" in u or "request leave" in u:
-        return "Planned leave must be submitted through the **HR portal at least 5 business days in advance**. During Q4 peak periods (October–December), 10 business days notice is required. Emergency leave must be reported to your manager immediately with formal documentation submitted within 48 hours."
-    # Q1 report answers
-    if "on-time" in u or "on time" in u or "delivery rate" in u:
-        return "Q1 2026 on-time delivery rate was **86%**, slightly below the 90% corporate target. Best performing route: New York → Montreal at 94%. Worst performing: Chicago → Vancouver at only 69% on-time due to port congestion."
-    if "vancouver" in u and ("congestion" in u or "delay" in u or "port" in u):
-        return "Vancouver port congestion added an average of **2.3 days of delay** to westbound shipments in February and March, caused by labour disputes and increased Asian import volumes. Mitigation: rerouting through Seattle port. Estimated resolution by end of Q2 2026."
-    if "q1" in u or "quarter" in u or "q2" in u:
-        return "Q1 2026 highlights: shipment volume up **12% QoQ** (1,847 total shipments), revenue up 9% to $4.2M, gross margin 33% (down from 36%). Key risk was Vancouver port congestion. Q2 action items include renegotiating Vancouver SLA terms and piloting a secondary carrier on Calgary–Montreal."
-    if "carrier" in u or "fastfreight" in u or "northroute" in u:
-        return "**FastFreight Inc.** (primary carrier): 88% SLA compliance. **NorthRoute Logistics** (secondary): underperforming at 79% — contract review scheduled. **PacificLink** (new, onboarded Feb 2026): 85% early compliance on Vancouver routes."
-    if "cancel" in u:
-        return "Q1 2026 cancellation rate: **3% of total shipments** (56 cancellations). Primary causes: customer-requested holds (42%), carrier capacity issues (35%), customs delays (23%). Rate is consistent with Q4 2025."
-    # Generic fallback using context
+        return "Up to **3 days/week remote** with manager approval. Full remote requires VP approval, reviewed quarterly. Core hours: 10am–3pm local time."
+    if "performance review" in u or "appraisal" in u:
+        return "Performance reviews are **bi-annual**: June and December. Compensation adjustments tied to year-end review. Minimum 2 weeks notice before review."
+
+    # ── Generic fallback ───────────────────────────────────────────────────
     return (
-        "Based on the retrieved document context from the HR Leave Policy and Q1 Operations Report, "
-        "I found relevant information. The documents cover employee leave entitlements (annual, sick, parental, bereavement), "
-        "remote work policy, performance reviews, and Q1 2026 shipment performance metrics. "
+        "Based on the ingested Propgatics platform documents, I can answer questions about: "
+        "the logistics dataset methodology, carrier performance benchmarks, KPI definitions, "
+        "risk scoring methodology, incident types, HR policies, and the ORS API integration. "
         "Could you be more specific about what you'd like to know?"
     )

@@ -112,9 +112,12 @@ async def health():
 async def stats(knowledge_agent: KnowledgeAgent = Depends(get_knowledge_agent)):
     db = SessionLocal()
     try:
-        row_count = db.execute(text("SELECT COUNT(*) FROM operations_data")).scalar() or 0
+        row_count = db.execute(text("SELECT COUNT(*) FROM shipments")).scalar() or 0
     except Exception:
-        row_count = 0
+        try:
+            row_count = db.execute(text("SELECT COUNT(*) FROM operations_data")).scalar() or 0
+        except Exception:
+            row_count = 0
     finally:
         db.close()
     chunk_count = len(getattr(knowledge_agent.vector_store, "_chunks", []))
@@ -127,7 +130,10 @@ async def list_documents(knowledge_agent: KnowledgeAgent = Depends(get_knowledge
     counts: dict[str, int] = {}
     for chunk in chunks:
         counts[chunk.doc_id] = counts.get(chunk.doc_id, 0) + 1
-    builtin = set(_EMBEDDED_DOCS.keys())
+    builtin = set(_EMBEDDED_DOCS.keys()) | {
+        "propgatics_overview", "propgatics_kpi_summary", "propgatics_carrier_performance",
+        "hr_leave_policy", "q1_operations_report",
+    }
     return [
         DocumentInfo(doc_id=doc_id, chunk_count=count, source="builtin" if doc_id in builtin else "uploaded")
         for doc_id, count in counts.items()
@@ -190,6 +196,33 @@ PERFORMANCE REVIEWS: Bi-annually in June and December. Compensation tied to year
 LEAVE REQUEST PROCEDURE: Submit via HR portal at least 5 business days in advance. Q4 peak (Oct-Dec) requires 10 business days. Emergency leave: notify manager immediately, formal docs within 48 hours.
 
 ONBOARDING: HR intake forms within 3 business days. Payroll setup within 2 weeks. Compliance training within 30 days. Health insurance registration within 14 days.""",
+
+    "propgatics_overview": """Propgatics Logistics Intelligence Platform — Platform Overview
+
+ABOUT PROPGATICS
+Propgatics is an end-to-end logistics and shipment analytics platform simulating a real-world operational intelligence system for logistics, transportation, and supply chain environments. The platform covers shipment lifecycle tracking, delay analysis, operational KPIs, route intelligence, carrier performance, and incident monitoring.
+
+DATASET SCALE: 100,000 shipment records; 25,000 incident records. Carriers: UPS, FedEx, DHL, Canada Post, Purolator. Cities: Toronto, Vancouver, Calgary, Montreal, Edmonton, Halifax, Moncton, Kelowna, Ottawa, Winnipeg.
+
+DATA GENERATION: Route data (distance_km, estimated_duration_hours) generated via OpenRouteService (ORS) API. All other fields synthesised with controlled randomisation calibrated to realistic logistics distributions.
+
+SHIPMENT STATUS: Delivered, Minor Delay, Delayed, Critical Delay. RISK SCORES: 0–100 composite score. Categories: Low (<20), Medium (20–40), High (40–60), Critical (>60). Mean: 16.32.""",
+
+    "propgatics_kpi_summary": """Propgatics Platform KPI Summary (Full Dataset: 100,000 Shipments)
+
+On-time delivery rate: 75.26%. Delayed rate: 24.74%. Average delay: 2.52 hours. Total shipping revenue: CAD $7,430,259. Total delivery cost: CAD $18,860,452. Average route risk score: 16.32/100. Total incidents: 25,000.
+
+CARRIER PERFORMANCE: Canada Post 75.59% on-time (avg delay 2.50h, avg cost $74.43). UPS 75.59% (2.50h, $74.26). DHL 75.44% (2.44h, $74.37). Purolator 75.22% (2.56h, $74.32). FedEx 74.96% (2.59h, $74.06).
+
+KEY FINDINGS: On-time rate below 85% industry benchmark. Narrow carrier spread (0.63pp) confirms systemic issues. Delivery cost ($188.60/shipment) exceeds revenue ($74.30/shipment) by 2.5x. Incident rate 25% (1 per 4 shipments). Recommend SLA renegotiation, weather-aware routing, pricing review.""",
+
+    "propgatics_carrier_performance": """Propgatics Carrier Performance & Incident Report
+
+INCIDENT TYPES (25,000 total): Failed Delivery Attempt 28%, Damaged Shipment 22%, Customs Hold 18%, Weather Delay 15%, Lost Package 10%, Mechanical Failure 5%, Address Error 2%.
+
+SEVERITY: Low 41% (avg loss $800, 36h resolution), Medium 34% ($1,500, 60h), High 15% ($2,200, 84h), Critical 10% ($2,800, 96h). Status: Resolved 65%, Under Investigation 25%, Open 10%.
+
+TOP ROUTES: Calgary–Edmonton (busiest, 300km, best on-time). Toronto–Vancouver and Toronto–Montreal (highest revenue). Vancouver-bound long-haul routes (highest delay rate, mountain pass weather exposure).""",
 
     "q1_operations_report": """Enterprise Operations Inc. Q1 2026 Operations Report
 

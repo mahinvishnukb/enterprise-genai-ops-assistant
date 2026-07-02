@@ -1,0 +1,37 @@
+Propgatics Platform — Carrier Performance & Incident Report
+
+CARRIER ON-TIME DELIVERY (100,000 shipments)
+Rank | Carrier       | Shipments | On-Time % | Avg Delay (h) | Avg Risk Score | Avg Cost (CAD)
+1    | Canada Post   | 19,991    | 75.59%    | 2.50          | 16.26          | $74.43
+1    | UPS           | 20,098    | 75.59%    | 2.50          | 16.47          | $74.26
+3    | DHL           | 19,967    | 75.44%    | 2.44          | 16.16          | $74.37
+4    | Purolator     | 19,905    | 75.22%    | 2.56          | 16.33          | $74.32
+5    | FedEx         | 20,039    | 74.96%    | 2.59          | 16.48          | $74.06
+
+INCIDENT SUMMARY BY CARRIER (25,000 total incidents)
+Each carrier contributes approximately 5,000 incidents (proportional to shipment volume).
+Most common incident types across all carriers:
+- Failed Delivery Attempt (~28% of all incidents)
+- Damaged Shipment (~22%)
+- Customs Hold (~18%)
+- Weather Delay (~15%)
+- Lost Package (~10%)
+- Mechanical Failure (~5%)
+- Address Error (~2%)
+
+SEVERITY DISTRIBUTION
+Low: ~41% of incidents | avg financial loss: CAD $800 | avg resolution: 36 h
+Medium: ~34% of incidents | avg financial loss: CAD $1,500 | avg resolution: 60 h
+High: ~15% of incidents | avg financial loss: CAD $2,200 | avg resolution: 84 h
+Critical: ~10% of incidents | avg financial loss: CAD $2,800 | avg resolution: 96 h
+
+INCIDENT STATUS
+Resolved: ~65% of incidents
+Under Investigation: ~25%
+Open: ~10%
+
+ROUTE PERFORMANCE HIGHLIGHTS
+- Shortest/most reliable: Calgary–Edmonton (300 km, highest on-time rate)
+- Highest revenue: Toronto–Vancouver, Toronto–Montreal
+- Highest delay rate: Long-haul routes to/from Vancouver (mountain pass exposure)
+- Best on-time for distance: Halifax–Moncton corridor

@@ -1,0 +1,1001 @@
+incident_id,shipment_id,tracking_number,carrier,origin,destination,incident_type,severity_level,incident_status,incident_date,delay_hours,weather_condition,traffic_level,route_risk_score,estimated_financial_loss_cad,resolution_action,resolution_time_hours,warehouse_id,driver_id
+INC009727,SHP052383,TRK8752293577,Purolator,Ottawa,Toronto,Mechanical Failure,Medium,Resolved,2026-02-13 06:00:00,2,Clear,Medium,8.8,2482.35,Shipment Reprocessed,58,WH-CGY-004,DRV00185
+INC007174,SHP078397,TRK4118034344,Canada Post,Vancouver,Kelowna,Weather Delay,Low,Open,2026-04-10 13:00:00,72,Rain,Severe,61.25,855.18,Shipment Reprocessed,40,WH-VAN-005,DRV01916
+INC016379,SHP087135,TRK2166029783,Canada Post,Vancouver,Kelowna,Weather Delay,Low,Under Investigation,2026-04-06 17:00:00,12,Rain,Medium,24.55,183.11,Shipment Reprocessed,84,WH-CGY-004,DRV02000
+INC022282,SHP076054,TRK5407867780,FedEx,Vancouver,Kelowna,Failed Delivery Attempt,Low,Open,2026-01-27 00:00:00,4,Snow,Medium,29.1,1614.92,Shipment Reprocessed,71,WH-OTT-006,DRV01866
+INC014936,SHP046895,TRK5427469685,UPS,Halifax,Moncton,Weather Delay,Low,Escalated,2026-05-07 07:00:00,8,Clear,High,19.45,2043.2,Customer Notified,81,WH-OTT-006,DRV02068
+INC004831,SHP018645,TRK6460465927,DHL,Halifax,Moncton,Failed Delivery Attempt,High,Resolved,2026-06-10 18:00:00,0,Storm,High,43.25,840.07,Carrier Investigation,15,WH-HFX-003,DRV02055
+INC019709,SHP023650,TRK9612995103,FedEx,Toronto,Montreal,Mechanical Failure,High,Resolved,2026-07-01 18:00:00,8,Clear,Low,7.45,586.57,Customer Notified,7,WH-VAN-005,DRV02226
+INC009287,SHP035046,TRK3296260909,FedEx,Halifax,Moncton,Customs Hold,Medium,Escalated,2026-06-14 20:00:00,2,Clear,Medium,8.8,665.39,Route Reassigned,55,WH-CGY-004,DRV01587
+INC004780,SHP087406,TRK5626553087,DHL,Halifax,Moncton,Mechanical Failure,Medium,Under Investigation,2026-02-03 04:00:00,2,Clear,Low,4.3,144.85,Refund Issued,26,WH-VAN-005,DRV00345
+INC024480,SHP058657,TRK5610412243,DHL,Calgary,Edmonton,Weather Delay,Medium,Under Investigation,2026-03-07 14:00:00,2,Clear,Medium,8.8,1947.89,Customer Notified,86,WH-HFX-003,DRV01566
+INC021803,SHP015266,TRK2293485009,FedEx,Calgary,Edmonton,Traffic Disruption,Medium,Under Investigation,2026-01-10 08:00:00,8,Clear,Low,7.45,1268.13,Carrier Investigation,56,WH-HFX-003,DRV01557
+INC023035,SHP030955,TRK7976367577,FedEx,Toronto,Montreal,Failed Delivery Attempt,Low,Resolved,2026-02-20 10:00:00,8,Rain,Medium,22.45,1537.66,Warehouse Escalation,13,WH-OTT-006,DRV00682
+INC001126,SHP038424,TRK1382472766,Purolator,Halifax,Moncton,Warehouse Processing Delay,High,Escalated,2026-02-17 23:00:00,1,Clear,Medium,8.28,1242.54,Refund Issued,19,WH-MTL-002,DRV00860
+INC019625,SHP065720,TRK6447661174,UPS,Halifax,Moncton,Damaged Shipment,Medium,Under Investigation,2026-03-10 15:00:00,1,Clear,Low,3.78,1408.82,Carrier Investigation,7,WH-OTT-006,DRV02008
+INC010491,SHP084079,TRK3843754197,Purolator,Vancouver,Kelowna,Mechanical Failure,Low,Resolved,2026-03-28 05:00:00,0,Storm,High,43.25,508.1,Driver Reassigned,26,WH-OTT-006,DRV00167
+INC010122,SHP045757,TRK9510970521,Canada Post,Halifax,Moncton,Customs Hold,Medium,Resolved,2026-02-22 07:00:00,2,Clear,Low,4.3,1600.3,Delivery Rescheduled,11,WH-TOR-001,DRV01623
+INC016462,SHP016750,TRK3902899785,Canada Post,Vancouver,Kelowna,Warehouse Processing Delay,High,Escalated,2026-05-04 23:00:00,48,Clear,Low,28.45,739.51,Delivery Rescheduled,7,WH-OTT-006,DRV01001
+INC022565,SHP034693,TRK7299713856,Canada Post,Vancouver,Kelowna,Traffic Disruption,Medium,Under Investigation,2026-06-04 04:00:00,12,Clear,Medium,14.05,2406.81,Shipment Reprocessed,8,WH-HFX-003,DRV00030
+INC004046,SHP092856,TRK9069020563,UPS,Calgary,Edmonton,Failed Delivery Attempt,Medium,Open,2026-03-12 21:00:00,1,Clear,Severe,23.28,1612.48,Refund Issued,68,WH-HFX-003,DRV02164
+INC008961,SHP050322,TRK5973561918,FedEx,Toronto,Montreal,Traffic Disruption,Medium,Under Investigation,2026-06-27 22:00:00,2,Storm,High,44.3,1331.5,Warehouse Escalation,48,WH-TOR-001,DRV01849
+INC023152,SHP007662,TRK3375018120,Purolator,Halifax,Moncton,Mechanical Failure,Low,Resolved,2026-01-19 03:00:00,24,Rain,Low,26.35,1540.84,Shipment Reprocessed,52,WH-VAN-005,DRV00444
+INC018808,SHP095781,TRK3434680239,DHL,Vancouver,Kelowna,Weather Delay,Medium,Resolved,2026-03-25 10:00:00,2,Fog,Severe,37.8,1329.72,Refund Issued,60,WH-OTT-006,DRV02206
+INC015673,SHP077201,TRK4188052967,Canada Post,Ottawa,Toronto,Weather Delay,High,Resolved,2026-05-09 01:00:00,2,Rain,Medium,19.3,2044.54,Shipment Reprocessed,35,WH-MTL-002,DRV02225
+INC020680,SHP015977,TRK6186565899,Canada Post,Toronto,Montreal,Weather Delay,Low,Under Investigation,2026-06-11 16:00:00,8,Rain,Medium,22.45,2304.71,Customer Notified,33,WH-TOR-001,DRV01579
+INC007069,SHP037281,TRK5565374756,DHL,Ottawa,Toronto,Damaged Shipment,Low,Resolved,2026-04-19 07:00:00,12,Fog,Low,23.55,390.16,Carrier Investigation,15,WH-HFX-003,DRV01307
+INC016221,SHP026732,TRK9590066254,FedEx,Toronto,Montreal,Customs Hold,Low,Resolved,2026-03-19 04:00:00,1,Rain,Low,14.28,2153.17,Customer Notified,56,WH-MTL-002,DRV01276
+INC009552,SHP058731,TRK3038788590,Canada Post,Calgary,Edmonton,Customs Hold,Low,Under Investigation,2026-05-12 17:00:00,2,Clear,Medium,8.8,53.28,Carrier Investigation,82,WH-MTL-002,DRV00689
+INC023074,SHP048668,TRK8372527157,Canada Post,Vancouver,Kelowna,Lost Package,Low,Resolved,2026-04-12 09:00:00,48,Clear,Medium,32.95,2020.66,Delivery Rescheduled,89,WH-MTL-002,DRV00794
+INC012344,SHP036082,TRK2185481510,Canada Post,Calgary,Edmonton,Address Issue,Low,Under Investigation,2026-02-19 04:00:00,48,Snow,High,59.7,2287.0,Carrier Investigation,19,WH-CGY-004,DRV01524
+INC001928,SHP075689,TRK2921737683,UPS,Toronto,Montreal,Weather Delay,High,Resolved,2026-06-14 10:00:00,8,Clear,Low,7.45,1371.4,Customer Notified,6,WH-OTT-006,DRV01113
+INC010917,SHP094911,TRK2730514696,DHL,Ottawa,Toronto,Warehouse Processing Delay,Low,Resolved,2026-07-01 18:00:00,8,Cloudy,Low,10.95,2420.72,Warehouse Escalation,67,WH-TOR-001,DRV02398
+INC005004,SHP010241,TRK8572519152,DHL,Halifax,Moncton,Damaged Shipment,Medium,Resolved,2026-03-25 11:00:00,4,Rain,Medium,20.35,1672.12,Delivery Rescheduled,62,WH-TOR-001,DRV01977
+INC023487,SHP086881,TRK6825116332,FedEx,Ottawa,Toronto,Customs Hold,Medium,Resolved,2026-04-01 10:00:00,1,Clear,High,15.78,2346.6,Refund Issued,46,WH-VAN-005,DRV01058
+INC006902,SHP038608,TRK4647171324,DHL,Toronto,Montreal,Damaged Shipment,High,Resolved,2026-05-02 22:00:00,8,Clear,Medium,11.95,2083.29,Customer Notified,74,WH-VAN-005,DRV00019
+INC024008,SHP072211,TRK8722169999,Purolator,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-05-25 01:00:00,4,Clear,Low,5.35,1088.22,Delivery Rescheduled,37,WH-CGY-004,DRV01458
+INC007376,SHP082170,TRK4886654160,DHL,Ottawa,Toronto,Damaged Shipment,Medium,Resolved,2026-05-04 23:00:00,4,Rain,Low,15.85,1368.2,Delivery Rescheduled,19,WH-HFX-003,DRV01457
+INC022951,SHP018998,TRK6467921310,Canada Post,Vancouver,Kelowna,Mechanical Failure,High,Escalated,2026-04-02 20:00:00,2,Clear,Low,4.3,1260.05,Driver Reassigned,81,WH-HFX-003,DRV00641
+INC024109,SHP015150,TRK5824044860,FedEx,Halifax,Moncton,Warehouse Processing Delay,High,Under Investigation,2026-02-22 14:00:00,12,Clear,Low,9.55,2433.92,Customer Notified,53,WH-OTT-006,DRV00937
+INC001723,SHP047615,TRK3294588207,FedEx,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-06-09 11:00:00,4,Clear,High,17.35,1075.02,Route Reassigned,76,WH-TOR-001,DRV02315
+INC005867,SHP089210,TRK5660597939,UPS,Calgary,Edmonton,Carrier Delay,Medium,Resolved,2026-01-15 18:00:00,12,Clear,High,21.55,585.47,Shipment Reprocessed,95,WH-OTT-006,DRV00855
+INC015975,SHP045041,TRK4923380788,UPS,Ottawa,Toronto,Carrier Delay,Low,Resolved,2026-06-17 10:00:00,24,Storm,High,55.85,1039.25,Refund Issued,12,WH-TOR-001,DRV02133
+INC023836,SHP094977,TRK8646496892,Purolator,Toronto,Montreal,Weather Delay,High,Resolved,2026-05-29 19:00:00,8,Rain,High,29.95,411.32,Customer Notified,59,WH-CGY-004,DRV01037
+INC012839,SHP062732,TRK7082290550,UPS,Calgary,Edmonton,Address Issue,Critical,Resolved,2026-01-20 00:00:00,2,Snow,Medium,28.05,1472.82,Driver Reassigned,37,WH-CGY-004,DRV01640
+INC009801,SHP028764,TRK3251447067,Canada Post,Halifax,Moncton,Lost Package,Low,Resolved,2026-04-04 01:00:00,48,Fog,Low,42.45,464.61,Route Reassigned,74,WH-TOR-001,DRV00270
+INC021603,SHP068290,TRK6303294271,FedEx,Vancouver,Kelowna,Failed Delivery Attempt,Low,Resolved,2026-03-01 10:00:00,8,Clear,Low,7.45,2153.94,Customer Notified,8,WH-TOR-001,DRV00318
+INC005217,SHP045741,TRK8258826562,UPS,Vancouver,Kelowna,Failed Delivery Attempt,Low,Resolved,2026-04-12 10:00:00,48,Cloudy,Low,31.95,1074.0,Warehouse Escalation,12,WH-CGY-004,DRV02203
+INC000707,SHP016908,TRK2227566799,UPS,Vancouver,Kelowna,Lost Package,Low,Resolved,2026-06-14 03:00:00,12,Clear,High,21.55,278.52,Refund Issued,76,WH-MTL-002,DRV02323
+INC017955,SHP084104,TRK5877095665,FedEx,Toronto,Montreal,Warehouse Processing Delay,Critical,Under Investigation,2026-05-26 13:00:00,48,Storm,Medium,60.95,1196.6,Refund Issued,41,WH-HFX-003,DRV00060
+INC012855,SHP010183,TRK1487004756,Purolator,Calgary,Edmonton,Address Issue,Medium,Resolved,2026-06-14 01:00:00,1,Clear,High,15.78,525.94,Carrier Investigation,39,WH-TOR-001,DRV00122
+INC011057,SHP045055,TRK5972671554,DHL,Toronto,Montreal,Traffic Disruption,Medium,Resolved,2026-05-14 03:00:00,12,Clear,Medium,14.05,2136.56,Route Reassigned,72,WH-CGY-004,DRV01967
+INC013843,SHP057095,TRK5247567526,Canada Post,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-01-08 15:00:00,2,Clear,Low,4.3,1110.36,Route Reassigned,14,WH-HFX-003,DRV02489
+INC022214,SHP099713,TRK2697849003,Canada Post,Halifax,Moncton,Lost Package,Medium,Resolved,2026-05-22 11:00:00,8,Fog,Medium,25.95,2423.97,Customer Notified,82,WH-HFX-003,DRV01104
+INC015514,SHP093508,TRK3744642603,DHL,Ottawa,Toronto,Mechanical Failure,Critical,Resolved,2026-01-16 09:00:00,8,Snow,Low,26.7,166.09,Delivery Rescheduled,11,WH-CGY-004,DRV01380
+INC011414,SHP039846,TRK1340828154,FedEx,Calgary,Edmonton,Address Issue,Low,Resolved,2026-01-25 08:00:00,8,Cloudy,Low,10.95,2302.31,Warehouse Escalation,43,WH-MTL-002,DRV00023
+INC024829,SHP078055,TRK5739903834,DHL,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-05-23 20:00:00,1,Fog,Severe,37.28,471.86,Delivery Rescheduled,31,WH-CGY-004,DRV00171
+INC012825,SHP025245,TRK2789585810,DHL,Vancouver,Kelowna,Traffic Disruption,Medium,Resolved,2026-03-22 06:00:00,4,Clear,Medium,9.85,1935.59,Delivery Rescheduled,51,WH-OTT-006,DRV00491
+INC012815,SHP095475,TRK9737797075,UPS,Toronto,Montreal,Traffic Disruption,Low,Resolved,2026-03-30 21:00:00,24,Snow,Medium,39.6,150.48,Delivery Rescheduled,28,WH-CGY-004,DRV02247
+INC002354,SHP044860,TRK8344676192,Purolator,Vancouver,Kelowna,Warehouse Processing Delay,Low,Open,2026-01-03 11:00:00,1,Snow,Low,23.02,346.49,Customer Notified,30,WH-MTL-002,DRV00389
+INC017297,SHP024653,TRK5615942369,UPS,Vancouver,Kelowna,Warehouse Processing Delay,High,Open,2026-03-02 10:00:00,4,Clear,High,17.35,1417.57,Customer Notified,90,WH-VAN-005,DRV01999
+INC023815,SHP071114,TRK2657253793,FedEx,Vancouver,Kelowna,Traffic Disruption,Low,Resolved,2026-04-30 06:00:00,1,Rain,High,26.28,1945.38,Customer Notified,52,WH-MTL-002,DRV01897
+INC009275,SHP030547,TRK2204100415,Purolator,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-06-28 22:00:00,1,Clear,Low,3.78,50.97,Carrier Investigation,60,WH-MTL-002,DRV00564
+INC009253,SHP039342,TRK4513173903,DHL,Halifax,Moncton,Weather Delay,Low,Resolved,2026-03-09 03:00:00,0,Snow,Severe,42.0,1633.31,Shipment Reprocessed,11,WH-CGY-004,DRV00825
+INC022819,SHP036361,TRK4661122243,Purolator,Toronto,Montreal,Traffic Disruption,Medium,Resolved,2026-03-15 20:00:00,0,Snow,Severe,42.0,292.8,Warehouse Escalation,7,WH-TOR-001,DRV00728
+INC006393,SHP085013,TRK9640235221,FedEx,Halifax,Moncton,Weather Delay,Medium,Resolved,2026-05-22 19:00:00,1,Clear,Low,3.78,1758.54,Customer Notified,62,WH-HFX-003,DRV00194
+INC022974,SHP008838,TRK9056138344,FedEx,Halifax,Moncton,Lost Package,Medium,Resolved,2026-03-23 18:00:00,8,Rain,Low,17.95,2242.62,Driver Reassigned,59,WH-OTT-006,DRV02025
+INC017958,SHP055473,TRK2815954620,FedEx,Vancouver,Kelowna,Weather Delay,High,Resolved,2026-06-09 02:00:00,2,Clear,Severe,23.8,343.74,Driver Reassigned,14,WH-TOR-001,DRV02168
+INC012904,SHP096227,TRK1093328943,Canada Post,Ottawa,Toronto,Damaged Shipment,High,Resolved,2026-06-05 12:00:00,8,Fog,High,33.45,1974.75,Customer Notified,70,WH-MTL-002,DRV00860
+INC003189,SHP091083,TRK3452004633,UPS,Toronto,Montreal,Weather Delay,Low,Open,2026-04-13 06:00:00,0,Storm,High,43.25,1812.72,Driver Reassigned,75,WH-OTT-006,DRV01114
+INC004290,SHP004419,TRK2250060616,DHL,Calgary,Edmonton,Customs Hold,Low,Resolved,2026-05-13 02:00:00,24,Clear,High,27.85,210.89,Refund Issued,26,WH-CGY-004,DRV00354
+INC010598,SHP098011,TRK7925075078,FedEx,Calgary,Edmonton,Weather Delay,High,Resolved,2026-04-23 19:00:00,2,Cloudy,Low,7.8,2329.35,Carrier Investigation,47,WH-TOR-001,DRV00122
+INC024651,SHP099746,TRK8509881955,DHL,Calgary,Edmonton,Traffic Disruption,Medium,Resolved,2026-05-03 06:00:00,4,Clear,Severe,24.85,1764.65,Refund Issued,90,WH-MTL-002,DRV00270
+INC019019,SHP088877,TRK6229137720,Canada Post,Toronto,Montreal,Traffic Disruption,Low,Resolved,2026-06-17 04:00:00,2,Clear,High,16.3,744.41,Warehouse Escalation,34,WH-OTT-006,DRV01193
+INC001774,SHP068904,TRK1907062894,Purolator,Halifax,Moncton,Address Issue,Low,Resolved,2026-04-07 01:00:00,24,Clear,Low,15.85,894.18,Delivery Rescheduled,65,WH-MTL-002,DRV01443
+INC023252,SHP094570,TRK3189298994,UPS,Toronto,Montreal,Weather Delay,High,Under Investigation,2026-06-29 17:00:00,0,Storm,High,43.25,811.68,Route Reassigned,94,WH-TOR-001,DRV02050
+INC009964,SHP071075,TRK8271135780,FedEx,Vancouver,Kelowna,Carrier Delay,High,Under Investigation,2026-02-21 22:00:00,4,Fog,Low,19.35,1247.7,Warehouse Escalation,46,WH-OTT-006,DRV00482
+INC014993,SHP039869,TRK9223297307,UPS,Toronto,Montreal,Carrier Delay,Medium,Resolved,2026-05-22 08:00:00,24,Clear,Medium,20.35,879.17,Carrier Investigation,36,WH-VAN-005,DRV00891
+INC021452,SHP095322,TRK2962492601,Purolator,Ottawa,Toronto,Weather Delay,Medium,Under Investigation,2026-02-27 14:00:00,1,Clear,Medium,8.28,680.19,Warehouse Escalation,11,WH-CGY-004,DRV01607
+INC005364,SHP041575,TRK1999335036,UPS,Ottawa,Toronto,Mechanical Failure,Low,Resolved,2026-03-24 14:00:00,2,Clear,Low,4.3,2300.65,Refund Issued,84,WH-OTT-006,DRV01104
+INC018913,SHP020249,TRK5239144940,FedEx,Halifax,Moncton,Mechanical Failure,Medium,Resolved,2026-01-22 04:00:00,24,Fog,High,41.85,1247.14,Delivery Rescheduled,58,WH-HFX-003,DRV01070
+INC004508,SHP030365,TRK2166792187,FedEx,Calgary,Edmonton,Mechanical Failure,Low,Under Investigation,2026-04-28 16:00:00,2,Clear,Low,4.3,2167.74,Route Reassigned,47,WH-CGY-004,DRV01768
+INC014480,SHP080468,TRK3340098619,FedEx,Calgary,Edmonton,Customs Hold,High,Resolved,2026-03-19 09:00:00,24,Cloudy,Medium,23.85,781.69,Refund Issued,41,WH-VAN-005,DRV01548
+INC022806,SHP064457,TRK9168149695,DHL,Toronto,Montreal,Traffic Disruption,High,Resolved,2026-01-04 09:00:00,2,Clear,High,16.3,52.52,Shipment Reprocessed,32,WH-MTL-002,DRV00332
+INC015809,SHP003569,TRK8731480108,DHL,Ottawa,Toronto,Failed Delivery Attempt,High,Under Investigation,2026-02-27 04:00:00,1,Fog,Low,17.77,1092.8,Delivery Rescheduled,49,WH-CGY-004,DRV01469
+INC009539,SHP092416,TRK5976333920,FedEx,Toronto,Montreal,Lost Package,Medium,Open,2026-03-10 00:00:00,48,Clear,Low,28.45,1946.32,Shipment Reprocessed,47,WH-CGY-004,DRV00526
+INC004746,SHP078867,TRK5316742848,Canada Post,Toronto,Montreal,Customs Hold,Medium,Open,2026-06-21 12:00:00,4,Clear,Medium,9.85,105.41,Warehouse Escalation,89,WH-MTL-002,DRV01704
+INC006874,SHP045521,TRK1393079029,DHL,Vancouver,Kelowna,Traffic Disruption,Low,Resolved,2026-04-13 12:00:00,0,Storm,High,43.25,1784.09,Carrier Investigation,17,WH-HFX-003,DRV01861
+INC007148,SHP056918,TRK2292250816,DHL,Calgary,Edmonton,Damaged Shipment,High,Resolved,2026-05-08 20:00:00,48,Fog,Low,42.45,65.45,Carrier Investigation,30,WH-OTT-006,DRV01092
+INC024523,SHP018316,TRK2841988107,Purolator,Ottawa,Toronto,Warehouse Processing Delay,High,Resolved,2026-03-12 20:00:00,2,Fog,High,30.3,228.27,Shipment Reprocessed,77,WH-MTL-002,DRV02115
+INC006412,SHP094360,TRK5637809796,Purolator,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-03-15 04:00:00,48,Clear,Low,28.45,1127.88,Delivery Rescheduled,13,WH-OTT-006,DRV00658
+INC024095,SHP029179,TRK2294411289,DHL,Halifax,Moncton,Failed Delivery Attempt,Medium,Resolved,2026-01-05 04:00:00,12,Rain,Low,20.05,359.09,Driver Reassigned,82,WH-MTL-002,DRV01129
+INC021340,SHP046279,TRK9521139391,FedEx,Toronto,Montreal,Traffic Disruption,Medium,Resolved,2026-06-12 20:00:00,1,Storm,Low,31.77,1303.54,Driver Reassigned,14,WH-VAN-005,DRV00361
+INC000300,SHP056824,TRK1892717034,Purolator,Toronto,Montreal,Weather Delay,Low,Resolved,2026-04-16 12:00:00,0,Storm,High,43.25,297.56,Delivery Rescheduled,81,WH-CGY-004,DRV02144
+INC011870,SHP025069,TRK8998475215,Purolator,Ottawa,Toronto,Warehouse Processing Delay,High,Resolved,2026-04-14 21:00:00,1,Cloudy,Low,7.28,1833.25,Carrier Investigation,21,WH-MTL-002,DRV01038
+INC023789,SHP050624,TRK4485089476,Purolator,Calgary,Edmonton,Damaged Shipment,High,Under Investigation,2026-04-28 23:00:00,8,Snow,High,38.7,612.0,Warehouse Escalation,45,WH-HFX-003,DRV00232
+INC018864,SHP042540,TRK1783311760,Purolator,Calgary,Edmonton,Carrier Delay,High,Resolved,2026-03-13 18:00:00,4,Clear,High,17.35,410.95,Driver Reassigned,79,WH-TOR-001,DRV00039
+INC003341,SHP063393,TRK1916495585,DHL,Calgary,Edmonton,Carrier Delay,Medium,Escalated,2026-04-15 21:00:00,2,Fog,High,30.3,1395.9,Carrier Investigation,37,WH-MTL-002,DRV00274
+INC022228,SHP005284,TRK8775856937,UPS,Ottawa,Toronto,Failed Delivery Attempt,High,Resolved,2026-02-08 15:00:00,4,Cloudy,Medium,13.35,777.74,Shipment Reprocessed,73,WH-TOR-001,DRV01787
+INC004837,SHP097561,TRK2775579560,Purolator,Halifax,Moncton,Failed Delivery Attempt,Low,Resolved,2026-02-03 16:00:00,2,Storm,Medium,36.8,1956.43,Shipment Reprocessed,28,WH-VAN-005,DRV02272
+INC012339,SHP064522,TRK9133297066,Purolator,Toronto,Montreal,Carrier Delay,High,Escalated,2026-04-27 04:00:00,8,Snow,High,38.7,2297.58,Route Reassigned,36,WH-TOR-001,DRV02087
+INC013996,SHP027006,TRK5334810411,FedEx,Ottawa,Toronto,Lost Package,Low,Resolved,2026-04-07 04:00:00,1,Clear,Low,3.78,1547.56,Warehouse Escalation,76,WH-OTT-006,DRV00262
+INC022265,SHP068992,TRK6588563565,Purolator,Ottawa,Toronto,Weather Delay,Low,Resolved,2026-01-20 05:00:00,0,Storm,High,43.25,2184.27,Carrier Investigation,27,WH-TOR-001,DRV00704
+INC005513,SHP051516,TRK8174213417,FedEx,Vancouver,Kelowna,Traffic Disruption,High,Resolved,2026-02-09 18:00:00,24,Fog,Medium,34.35,1280.68,Route Reassigned,86,WH-OTT-006,DRV00855
+INC001846,SHP014615,TRK1720206540,DHL,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-05-01 15:00:00,1,Rain,High,26.28,74.16,Refund Issued,53,WH-VAN-005,DRV01269
+INC003148,SHP066175,TRK8017492597,DHL,Calgary,Edmonton,Failed Delivery Attempt,Low,Escalated,2026-02-12 20:00:00,8,Clear,Low,7.45,2484.6,Carrier Investigation,69,WH-OTT-006,DRV01003
+INC011652,SHP031515,TRK8470685483,Canada Post,Calgary,Edmonton,Address Issue,Low,Under Investigation,2026-03-27 13:00:00,8,Rain,Severe,37.45,844.62,Customer Notified,22,WH-TOR-001,DRV01383
+INC015528,SHP037689,TRK4135958458,DHL,Toronto,Montreal,Traffic Disruption,Medium,Resolved,2026-04-27 12:00:00,0,Snow,Severe,42.0,228.27,Driver Reassigned,77,WH-TOR-001,DRV02369
+INC005887,SHP060194,TRK3229821965,Purolator,Toronto,Montreal,Mechanical Failure,Medium,Resolved,2026-02-23 01:00:00,24,Cloudy,Medium,23.85,747.14,Refund Issued,31,WH-OTT-006,DRV02421
+INC001720,SHP040567,TRK3127862392,DHL,Vancouver,Kelowna,Lost Package,Low,Under Investigation,2026-05-16 17:00:00,2,Clear,Low,4.3,1030.79,Delivery Rescheduled,34,WH-HFX-003,DRV00693
+INC003846,SHP099515,TRK6578012302,FedEx,Calgary,Edmonton,Lost Package,Low,Resolved,2026-02-24 21:00:00,8,Rain,Severe,37.45,693.74,Carrier Investigation,60,WH-OTT-006,DRV02247
+INC016890,SHP095546,TRK1560448311,DHL,Calgary,Edmonton,Damaged Shipment,Medium,Resolved,2026-03-18 16:00:00,2,Fog,Low,18.3,2124.37,Carrier Investigation,93,WH-VAN-005,DRV00336
+INC021303,SHP071932,TRK6402014179,DHL,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-01-29 00:00:00,12,Snow,Low,28.8,747.44,Delivery Rescheduled,82,WH-TOR-001,DRV00691
+INC011092,SHP016222,TRK7693888705,Purolator,Ottawa,Toronto,Weather Delay,Medium,Resolved,2026-06-30 04:00:00,8,Clear,High,19.45,1435.86,Customer Notified,34,WH-TOR-001,DRV01852
+INC019445,SHP002694,TRK5083517769,UPS,Halifax,Moncton,Weather Delay,Medium,Resolved,2026-03-08 19:00:00,1,Rain,Medium,18.77,212.96,Customer Notified,43,WH-TOR-001,DRV01972
+INC014216,SHP015666,TRK3104131432,FedEx,Vancouver,Kelowna,Failed Delivery Attempt,Low,Under Investigation,2026-02-12 00:00:00,1,Storm,Medium,36.28,269.57,Customer Notified,23,WH-OTT-006,DRV01090
+INC004869,SHP068843,TRK6557176299,DHL,Calgary,Edmonton,Weather Delay,Low,Under Investigation,2026-04-21 05:00:00,0,Snow,Severe,42.0,808.71,Refund Issued,77,WH-TOR-001,DRV01263
+INC020545,SHP088874,TRK1073014093,UPS,Vancouver,Kelowna,Weather Delay,Medium,Resolved,2026-04-29 13:00:00,8,Cloudy,Low,10.95,780.81,Customer Notified,79,WH-TOR-001,DRV00145
+INC023677,SHP035931,TRK1107300751,FedEx,Calgary,Edmonton,Traffic Disruption,Low,Under Investigation,2026-04-12 18:00:00,48,Clear,Low,28.45,1957.99,Carrier Investigation,20,WH-CGY-004,DRV01604
+INC013239,SHP001420,TRK8737139929,Purolator,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-05-21 21:00:00,2,Cloudy,Severe,27.3,1179.35,Delivery Rescheduled,93,WH-HFX-003,DRV00770
+INC008029,SHP025319,TRK5502896050,FedEx,Toronto,Montreal,Address Issue,Low,Open,2026-04-12 02:00:00,24,Clear,Medium,20.35,432.25,Route Reassigned,11,WH-HFX-003,DRV00655
+INC001114,SHP007202,TRK2134294703,UPS,Toronto,Montreal,Failed Delivery Attempt,Medium,Escalated,2026-06-20 07:00:00,4,Clear,High,17.35,730.83,Delivery Rescheduled,28,WH-CGY-004,DRV00219
+INC003893,SHP050002,TRK9608380655,Canada Post,Ottawa,Toronto,Weather Delay,Medium,Resolved,2026-05-11 10:00:00,8,Rain,Medium,22.45,2032.45,Customer Notified,76,WH-OTT-006,DRV01747
+INC007893,SHP080107,TRK4419805233,FedEx,Toronto,Montreal,Weather Delay,Medium,Under Investigation,2026-03-17 04:00:00,1,Cloudy,Medium,11.78,1386.58,Customer Notified,12,WH-CGY-004,DRV02001
+INC012998,SHP071427,TRK2322994626,Canada Post,Toronto,Montreal,Traffic Disruption,Low,Under Investigation,2026-01-05 10:00:00,2,Clear,Low,4.3,1450.31,Shipment Reprocessed,69,WH-VAN-005,DRV02093
+INC016012,SHP013517,TRK5821175214,UPS,Calgary,Edmonton,Failed Delivery Attempt,Medium,Resolved,2026-02-14 20:00:00,8,Rain,High,29.95,1777.57,Carrier Investigation,93,WH-OTT-006,DRV00074
+INC009919,SHP066416,TRK6499470677,Canada Post,Ottawa,Toronto,Weather Delay,Critical,Resolved,2026-04-24 00:00:00,4,Fog,Medium,23.85,1646.23,Warehouse Escalation,8,WH-HFX-003,DRV01557
+INC022544,SHP006700,TRK6483512386,UPS,Vancouver,Kelowna,Weather Delay,Low,Escalated,2026-06-09 20:00:00,1,Clear,Low,3.78,250.2,Shipment Reprocessed,68,WH-HFX-003,DRV02239
+INC019535,SHP094816,TRK5246718833,DHL,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-04-07 21:00:00,1,Clear,Low,3.78,743.2,Carrier Investigation,54,WH-TOR-001,DRV00212
+INC005653,SHP001096,TRK7962460215,Canada Post,Ottawa,Toronto,Mechanical Failure,Medium,Under Investigation,2026-05-14 15:00:00,2,Clear,Severe,23.8,2349.89,Delivery Rescheduled,62,WH-TOR-001,DRV01421
+INC021391,SHP003173,TRK4745728619,UPS,Ottawa,Toronto,Weather Delay,Low,Resolved,2026-03-10 13:00:00,12,Clear,Low,9.55,1060.96,Customer Notified,88,WH-VAN-005,DRV01008
+INC024419,SHP077528,TRK3209832826,DHL,Toronto,Montreal,Warehouse Processing Delay,Medium,Resolved,2026-02-05 20:00:00,1,Clear,High,15.78,536.85,Delivery Rescheduled,36,WH-VAN-005,DRV02091
+INC012301,SHP020155,TRK6211047967,FedEx,Ottawa,Toronto,Weather Delay,Medium,Under Investigation,2026-02-24 14:00:00,2,Clear,Low,4.3,1282.3,Shipment Reprocessed,3,WH-CGY-004,DRV02195
+INC022669,SHP097564,TRK9251723299,Canada Post,Vancouver,Kelowna,Warehouse Processing Delay,Medium,Resolved,2026-05-06 16:00:00,2,Clear,Medium,8.8,2067.47,Warehouse Escalation,74,WH-MTL-002,DRV00618
+INC021979,SHP039087,TRK3665778238,FedEx,Ottawa,Toronto,Traffic Disruption,Medium,Resolved,2026-06-05 17:00:00,0,Snow,Severe,42.0,1679.18,Route Reassigned,94,WH-CGY-004,DRV01433
+INC021579,SHP040927,TRK6128966712,FedEx,Calgary,Edmonton,Weather Delay,Medium,Escalated,2026-01-28 02:00:00,2,Rain,Medium,19.3,1752.62,Delivery Rescheduled,77,WH-MTL-002,DRV00674
+INC002937,SHP092090,TRK4835606512,Purolator,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-05-07 09:00:00,2,Clear,High,16.3,1697.02,Customer Notified,10,WH-TOR-001,DRV00889
+INC015194,SHP058907,TRK4107895197,FedEx,Vancouver,Kelowna,Damaged Shipment,Medium,Resolved,2026-03-15 16:00:00,1,Rain,Medium,18.77,1582.14,Carrier Investigation,93,WH-HFX-003,DRV00661
+INC021310,SHP093412,TRK1657972990,Purolator,Toronto,Montreal,Customs Hold,High,Escalated,2026-02-17 16:00:00,4,Clear,Medium,9.85,1646.96,Route Reassigned,4,WH-CGY-004,DRV01169
+INC012521,SHP015262,TRK7522954362,FedEx,Toronto,Montreal,Traffic Disruption,Low,Under Investigation,2026-01-15 11:00:00,0,Storm,High,43.25,244.75,Driver Reassigned,55,WH-TOR-001,DRV02021
+INC009019,SHP051757,TRK1020423509,FedEx,Halifax,Moncton,Mechanical Failure,Critical,Escalated,2026-03-16 18:00:00,12,Fog,Medium,28.05,931.74,Refund Issued,8,WH-CGY-004,DRV01177
+INC020721,SHP002424,TRK5377919239,DHL,Ottawa,Toronto,Failed Delivery Attempt,Low,Open,2026-04-22 06:00:00,1,Rain,Low,14.28,258.35,Refund Issued,73,WH-HFX-003,DRV01004
+INC021404,SHP071554,TRK6992051846,Purolator,Ottawa,Toronto,Traffic Disruption,High,Escalated,2026-06-15 10:00:00,2,Rain,Medium,19.3,1613.88,Warehouse Escalation,62,WH-OTT-006,DRV00973
+INC014586,SHP011209,TRK8480112483,Purolator,Toronto,Montreal,Traffic Disruption,Low,Open,2026-03-31 06:00:00,24,Clear,Low,15.85,747.75,Delivery Rescheduled,14,WH-CGY-004,DRV01906
+INC012037,SHP059097,TRK8553690358,Purolator,Ottawa,Toronto,Customs Hold,Medium,Under Investigation,2026-02-06 12:00:00,48,Storm,Low,56.45,1715.85,Warehouse Escalation,77,WH-VAN-005,DRV02335
+INC000381,SHP013479,TRK7506949585,FedEx,Calgary,Edmonton,Warehouse Processing Delay,High,Open,2026-01-08 13:00:00,4,Clear,Low,5.35,464.25,Warehouse Escalation,47,WH-VAN-005,DRV00846
+INC003933,SHP084791,TRK8204671980,UPS,Toronto,Montreal,Failed Delivery Attempt,Medium,Under Investigation,2026-02-08 00:00:00,2,Clear,Medium,8.8,2483.87,Route Reassigned,73,WH-TOR-001,DRV01573
+INC003822,SHP042342,TRK9645651420,Purolator,Ottawa,Toronto,Failed Delivery Attempt,Medium,Resolved,2026-01-18 07:00:00,1,Cloudy,Medium,11.78,2053.72,Carrier Investigation,28,WH-OTT-006,DRV00544
+INC002708,SHP001694,TRK5847092205,Canada Post,Ottawa,Toronto,Weather Delay,High,Resolved,2026-04-14 22:00:00,48,Clear,High,40.45,611.11,Carrier Investigation,64,WH-HFX-003,DRV01735
+INC004000,SHP076818,TRK1265306473,Canada Post,Ottawa,Toronto,Warehouse Processing Delay,Low,Resolved,2026-02-07 13:00:00,2,Rain,High,26.8,2350.72,Shipment Reprocessed,83,WH-MTL-002,DRV01883
+INC016031,SHP095510,TRK3342278109,DHL,Calgary,Edmonton,Traffic Disruption,Low,Escalated,2026-06-08 01:00:00,8,Clear,High,19.45,695.66,Driver Reassigned,12,WH-MTL-002,DRV01654
+INC021018,SHP054797,TRK7683823807,Purolator,Vancouver,Kelowna,Mechanical Failure,Low,Resolved,2026-06-11 12:00:00,2,Clear,Low,4.3,2137.8,Refund Issued,29,WH-TOR-001,DRV00783
+INC021915,SHP061262,TRK9302072644,DHL,Vancouver,Kelowna,Lost Package,High,Open,2026-06-12 20:00:00,1,Snow,High,35.02,1429.51,Driver Reassigned,42,WH-VAN-005,DRV02286
+INC016704,SHP012789,TRK7918096769,Canada Post,Ottawa,Toronto,Address Issue,Medium,Under Investigation,2026-01-14 14:00:00,8,Rain,Medium,22.45,527.25,Carrier Investigation,52,WH-HFX-003,DRV00894
+INC007371,SHP090507,TRK1090982999,FedEx,Calgary,Edmonton,Failed Delivery Attempt,Medium,Resolved,2026-05-26 13:00:00,8,Snow,Medium,31.2,932.05,Carrier Investigation,64,WH-TOR-001,DRV01062
+INC000755,SHP084424,TRK6752137956,FedEx,Ottawa,Toronto,Customs Hold,High,Resolved,2026-01-10 21:00:00,2,Rain,Medium,19.3,580.02,Driver Reassigned,34,WH-MTL-002,DRV01791
+INC019230,SHP027348,TRK1456230170,DHL,Ottawa,Toronto,Mechanical Failure,Low,Resolved,2026-04-11 13:00:00,2,Clear,Low,4.3,2020.41,Route Reassigned,83,WH-VAN-005,DRV01564
+INC018776,SHP009355,TRK1555787872,FedEx,Halifax,Moncton,Address Issue,Medium,Resolved,2026-05-08 22:00:00,1,Clear,Low,3.78,2261.27,Customer Notified,94,WH-TOR-001,DRV00452
+INC018764,SHP029559,TRK9223637593,Purolator,Vancouver,Kelowna,Weather Delay,High,Under Investigation,2026-02-22 04:00:00,0,Storm,High,43.25,665.1,Warehouse Escalation,15,WH-VAN-005,DRV01508
+INC015713,SHP002368,TRK8839810519,UPS,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-01-21 15:00:00,24,Rain,Low,26.35,443.32,Refund Issued,29,WH-HFX-003,DRV00009
+INC008970,SHP050681,TRK3643403867,FedEx,Halifax,Moncton,Failed Delivery Attempt,Medium,Under Investigation,2026-03-29 08:00:00,8,Clear,Low,7.45,325.68,Route Reassigned,13,WH-VAN-005,DRV02388
+INC022733,SHP094470,TRK9843955534,UPS,Ottawa,Toronto,Carrier Delay,High,Resolved,2026-06-07 02:00:00,0,Snow,Severe,42.0,826.55,Warehouse Escalation,25,WH-CGY-004,DRV00603
+INC024424,SHP072439,TRK7016614497,Purolator,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-05-13 21:00:00,12,Clear,Medium,14.05,1113.12,Customer Notified,83,WH-VAN-005,DRV02324
+INC003099,SHP092505,TRK2718455305,FedEx,Ottawa,Toronto,Weather Delay,Medium,Resolved,2026-05-09 14:00:00,4,Cloudy,Low,8.85,906.21,Delivery Rescheduled,11,WH-MTL-002,DRV01956
+INC019428,SHP027989,TRK8982551677,FedEx,Calgary,Edmonton,Weather Delay,Medium,Escalated,2026-06-10 05:00:00,4,Rain,Medium,20.35,178.52,Delivery Rescheduled,5,WH-OTT-006,DRV01878
+INC005935,SHP097223,TRK5314160428,Purolator,Calgary,Edmonton,Warehouse Processing Delay,Critical,Resolved,2026-04-14 12:00:00,8,Clear,Low,7.45,354.57,Route Reassigned,44,WH-TOR-001,DRV00280
+INC012582,SHP033598,TRK5264490581,FedEx,Halifax,Moncton,Damaged Shipment,Medium,Escalated,2026-03-19 13:00:00,4,Clear,Medium,9.85,299.93,Route Reassigned,88,WH-OTT-006,DRV00028
+INC015866,SHP062663,TRK5607489902,Canada Post,Vancouver,Kelowna,Traffic Disruption,High,Resolved,2026-05-29 21:00:00,4,Clear,Medium,9.85,1913.64,Driver Reassigned,19,WH-CGY-004,DRV01625
+INC021123,SHP043908,TRK3626215321,FedEx,Calgary,Edmonton,Warehouse Processing Delay,Low,Under Investigation,2026-04-14 14:00:00,8,Rain,Medium,22.45,915.18,Customer Notified,22,WH-HFX-003,DRV01072
+INC023028,SHP085212,TRK8687584693,Purolator,Vancouver,Kelowna,Customs Hold,Low,Resolved,2026-03-28 07:00:00,4,Clear,High,17.35,130.26,Driver Reassigned,18,WH-VAN-005,DRV02139
+INC014211,SHP093859,TRK3509013548,UPS,Vancouver,Kelowna,Carrier Delay,Medium,Resolved,2026-03-17 17:00:00,12,Clear,Medium,14.05,1196.29,Carrier Investigation,87,WH-MTL-002,DRV00466
+INC009777,SHP035765,TRK1392881298,Canada Post,Calgary,Edmonton,Carrier Delay,Medium,Resolved,2026-05-15 15:00:00,1,Clear,Medium,8.28,1676.65,Refund Issued,29,WH-VAN-005,DRV00993
+INC018725,SHP062729,TRK7696426335,DHL,Halifax,Moncton,Weather Delay,Low,Resolved,2026-05-23 10:00:00,4,Clear,Medium,9.85,471.47,Delivery Rescheduled,45,WH-CGY-004,DRV02452
+INC004104,SHP059455,TRK6696757226,UPS,Halifax,Moncton,Address Issue,Critical,Resolved,2026-02-23 20:00:00,1,Clear,High,15.78,2323.16,Carrier Investigation,51,WH-OTT-006,DRV00633
+INC003259,SHP021649,TRK7874320969,Canada Post,Calgary,Edmonton,Mechanical Failure,Medium,Resolved,2026-01-09 19:00:00,24,Cloudy,High,31.35,2263.67,Warehouse Escalation,48,WH-CGY-004,DRV02193
+INC010658,SHP005869,TRK5928838660,Purolator,Calgary,Edmonton,Weather Delay,High,Resolved,2026-01-12 03:00:00,0,Storm,High,43.25,514.26,Route Reassigned,19,WH-CGY-004,DRV02281
+INC002081,SHP051627,TRK1380299143,UPS,Halifax,Moncton,Traffic Disruption,High,Open,2026-04-21 01:00:00,8,Cloudy,Medium,15.45,101.51,Carrier Investigation,9,WH-OTT-006,DRV00044
+INC023389,SHP002384,TRK2004714797,Canada Post,Halifax,Moncton,Weather Delay,Medium,Resolved,2026-03-17 16:00:00,8,Clear,High,19.45,1154.35,Shipment Reprocessed,45,WH-MTL-002,DRV02339
+INC017614,SHP077496,TRK5072778592,Canada Post,Ottawa,Toronto,Failed Delivery Attempt,Medium,Resolved,2026-05-20 20:00:00,4,Cloudy,Medium,13.35,1205.0,Carrier Investigation,27,WH-TOR-001,DRV02215
+INC006059,SHP093225,TRK2685666039,FedEx,Vancouver,Kelowna,Warehouse Processing Delay,Low,Resolved,2026-03-20 16:00:00,1,Snow,Low,23.02,1334.45,Refund Issued,6,WH-CGY-004,DRV02390
+INC013282,SHP033354,TRK4820617098,FedEx,Ottawa,Toronto,Lost Package,Medium,Resolved,2026-02-24 01:00:00,72,Clear,High,43.25,1900.02,Customer Notified,26,WH-OTT-006,DRV02326
+INC022962,SHP004592,TRK4936910567,DHL,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-04-03 06:00:00,1,Clear,Medium,8.28,2008.12,Warehouse Escalation,74,WH-TOR-001,DRV02123
+INC000648,SHP094719,TRK9429852057,UPS,Toronto,Montreal,Address Issue,Low,Resolved,2026-06-26 04:00:00,12,Cloudy,High,25.05,2325.14,Route Reassigned,28,WH-MTL-002,DRV00377
+INC018221,SHP066216,TRK4277781209,FedEx,Ottawa,Toronto,Customs Hold,Low,Escalated,2026-06-12 23:00:00,12,Cloudy,Medium,17.55,122.14,Warehouse Escalation,40,WH-MTL-002,DRV02093
+INC017578,SHP075805,TRK7449152680,Canada Post,Ottawa,Toronto,Traffic Disruption,Medium,Resolved,2026-02-12 19:00:00,2,Snow,Severe,43.05,613.42,Carrier Investigation,81,WH-TOR-001,DRV01039
+INC017370,SHP081226,TRK9102436173,FedEx,Toronto,Montreal,Address Issue,High,Resolved,2026-05-14 11:00:00,48,Fog,Low,42.45,1143.04,Customer Notified,86,WH-VAN-005,DRV02135
+INC016010,SHP042939,TRK1896923115,Canada Post,Ottawa,Toronto,Failed Delivery Attempt,Low,Under Investigation,2026-03-05 01:00:00,8,Rain,High,29.95,1696.66,Driver Reassigned,28,WH-VAN-005,DRV01163
+INC002095,SHP046177,TRK7910677806,UPS,Ottawa,Toronto,Weather Delay,Low,Escalated,2026-06-13 22:00:00,1,Clear,High,15.78,1338.33,Shipment Reprocessed,78,WH-MTL-002,DRV02243
+INC017004,SHP096468,TRK2413209874,DHL,Ottawa,Toronto,Warehouse Processing Delay,Low,Resolved,2026-05-19 10:00:00,2,Clear,Low,4.3,141.09,Refund Issued,76,WH-VAN-005,DRV00791
+INC019161,SHP087312,TRK9451073620,UPS,Ottawa,Toronto,Weather Delay,Medium,Resolved,2026-03-29 13:00:00,2,Cloudy,Medium,12.3,2442.29,Delivery Rescheduled,69,WH-TOR-001,DRV01706
+INC017662,SHP007118,TRK2834471660,Canada Post,Halifax,Moncton,Traffic Disruption,Medium,Resolved,2026-04-20 03:00:00,8,Clear,Low,7.45,88.04,Warehouse Escalation,18,WH-HFX-003,DRV02196
+INC021355,SHP069900,TRK2208527985,Canada Post,Toronto,Montreal,Damaged Shipment,Critical,Resolved,2026-01-17 20:00:00,48,Clear,Low,28.45,749.59,Refund Issued,41,WH-HFX-003,DRV01235
+INC004067,SHP032134,TRK1180988275,DHL,Ottawa,Toronto,Warehouse Processing Delay,Medium,Resolved,2026-05-14 01:00:00,2,Clear,Medium,8.8,767.37,Route Reassigned,37,WH-TOR-001,DRV00319
+INC024691,SHP077832,TRK4512404273,UPS,Ottawa,Toronto,Lost Package,Low,Resolved,2026-04-21 18:00:00,24,Cloudy,Medium,23.85,1098.61,Delivery Rescheduled,95,WH-HFX-003,DRV02365
+INC024674,SHP005814,TRK6831845953,DHL,Ottawa,Toronto,Traffic Disruption,Medium,Open,2026-02-28 23:00:00,2,Clear,Low,4.3,1558.89,Route Reassigned,44,WH-VAN-005,DRV01468
+INC006799,SHP081687,TRK5917668612,DHL,Halifax,Moncton,Weather Delay,Critical,Resolved,2026-02-23 02:00:00,8,Rain,Medium,22.45,1974.94,Warehouse Escalation,16,WH-HFX-003,DRV01287
+INC021581,SHP004017,TRK4064655158,UPS,Halifax,Moncton,Customs Hold,Medium,Resolved,2026-06-09 01:00:00,8,Cloudy,High,22.95,511.79,Refund Issued,65,WH-VAN-005,DRV02288
+INC003845,SHP019616,TRK8167995973,Purolator,Vancouver,Kelowna,Damaged Shipment,Medium,Under Investigation,2026-06-09 19:00:00,12,Clear,Medium,14.05,448.34,Shipment Reprocessed,25,WH-CGY-004,DRV01212
+INC005921,SHP001008,TRK3103268658,FedEx,Ottawa,Toronto,Warehouse Processing Delay,High,Resolved,2026-01-24 17:00:00,1,Storm,High,43.78,2367.07,Warehouse Escalation,54,WH-CGY-004,DRV00459
+INC019632,SHP044042,TRK5885701178,UPS,Ottawa,Toronto,Damaged Shipment,Critical,Resolved,2026-05-16 08:00:00,8,Clear,Low,7.45,589.7,Delivery Rescheduled,71,WH-OTT-006,DRV01019
+INC022781,SHP037142,TRK3397497729,UPS,Vancouver,Kelowna,Carrier Delay,High,Resolved,2026-05-13 01:00:00,1,Rain,Medium,18.77,383.33,Delivery Rescheduled,13,WH-VAN-005,DRV01126
+INC005897,SHP027264,TRK2355960734,Canada Post,Ottawa,Toronto,Failed Delivery Attempt,Critical,Resolved,2026-03-04 10:00:00,2,Rain,Medium,19.3,1929.5,Shipment Reprocessed,66,WH-HFX-003,DRV00135
+INC000175,SHP063034,TRK1854843280,Purolator,Ottawa,Toronto,Failed Delivery Attempt,Medium,Resolved,2026-03-01 02:00:00,24,Fog,Medium,34.35,2130.53,Customer Notified,26,WH-VAN-005,DRV00706
+INC018178,SHP092962,TRK9450295443,Purolator,Toronto,Montreal,Traffic Disruption,High,Escalated,2026-03-27 16:00:00,48,Clear,Medium,32.95,1504.26,Delivery Rescheduled,71,WH-MTL-002,DRV01236
+INC014655,SHP092577,TRK1214553750,UPS,Toronto,Montreal,Weather Delay,Low,Under Investigation,2026-04-06 19:00:00,2,Cloudy,Medium,12.3,2251.03,Shipment Reprocessed,7,WH-VAN-005,DRV00942
+INC010299,SHP046324,TRK4860833444,Canada Post,Vancouver,Kelowna,Weather Delay,High,Under Investigation,2026-01-02 11:00:00,48,Storm,Medium,60.95,925.24,Customer Notified,86,WH-OTT-006,DRV01091
+INC004032,SHP018559,TRK3237295180,Canada Post,Calgary,Edmonton,Customs Hold,Medium,Resolved,2026-04-02 03:00:00,48,Snow,Low,47.7,1627.46,Customer Notified,29,WH-VAN-005,DRV01407
+INC001283,SHP053381,TRK5073599168,Purolator,Halifax,Moncton,Weather Delay,High,Escalated,2026-05-08 16:00:00,12,Clear,High,21.55,2367.15,Carrier Investigation,23,WH-OTT-006,DRV00416
+INC004222,SHP027332,TRK5394158480,Purolator,Ottawa,Toronto,Warehouse Processing Delay,Medium,Open,2026-01-22 11:00:00,1,Rain,Medium,18.77,921.97,Carrier Investigation,90,WH-OTT-006,DRV02249
+INC018845,SHP075912,TRK4202377080,Canada Post,Calgary,Edmonton,Warehouse Processing Delay,Medium,Resolved,2026-04-10 10:00:00,8,Clear,Low,7.45,1647.95,Refund Issued,12,WH-TOR-001,DRV01277
+INC006758,SHP034878,TRK4836672386,Canada Post,Vancouver,Kelowna,Mechanical Failure,Low,Open,2026-07-02 09:00:00,48,Clear,Low,28.45,1626.34,Route Reassigned,47,WH-VAN-005,DRV00171
+INC021386,SHP016327,TRK4644983168,FedEx,Vancouver,Kelowna,Weather Delay,Medium,Escalated,2026-02-12 10:00:00,4,Clear,Low,5.35,246.5,Customer Notified,80,WH-CGY-004,DRV01585
+INC005283,SHP087245,TRK4952650228,DHL,Vancouver,Kelowna,Traffic Disruption,Low,Resolved,2026-02-24 23:00:00,1,Clear,Medium,8.28,73.51,Carrier Investigation,88,WH-TOR-001,DRV00323
+INC002878,SHP054620,TRK9674096610,Purolator,Toronto,Montreal,Customs Hold,Critical,Resolved,2026-04-24 02:00:00,0,Snow,Severe,42.0,1699.13,Warehouse Escalation,73,WH-VAN-005,DRV02137
+INC018432,SHP021001,TRK3470370990,DHL,Toronto,Montreal,Weather Delay,Low,Resolved,2026-06-21 04:00:00,8,Fog,Low,21.45,1516.36,Refund Issued,15,WH-HFX-003,DRV02150
+INC008414,SHP052050,TRK6071305508,UPS,Halifax,Moncton,Warehouse Processing Delay,Medium,Open,2026-04-18 02:00:00,2,Rain,Medium,19.3,58.83,Shipment Reprocessed,41,WH-MTL-002,DRV00700
+INC024677,SHP041067,TRK7128762666,FedEx,Vancouver,Kelowna,Warehouse Processing Delay,Low,Under Investigation,2026-05-25 20:00:00,4,Clear,Low,5.35,399.3,Delivery Rescheduled,75,WH-MTL-002,DRV01471
+INC001148,SHP013787,TRK6538072470,FedEx,Calgary,Edmonton,Damaged Shipment,Medium,Open,2026-03-11 01:00:00,8,Snow,Medium,31.2,518.1,Route Reassigned,28,WH-CGY-004,DRV01426
+INC002773,SHP001588,TRK7467381627,FedEx,Halifax,Moncton,Warehouse Processing Delay,High,Open,2026-02-26 05:00:00,12,Clear,Low,9.55,225.27,Customer Notified,29,WH-MTL-002,DRV01527
+INC004087,SHP027347,TRK6846663926,Purolator,Toronto,Montreal,Traffic Disruption,High,Resolved,2026-04-20 16:00:00,12,Clear,High,21.55,1908.44,Customer Notified,11,WH-VAN-005,DRV00991
+INC016586,SHP049894,TRK6660321429,Purolator,Halifax,Moncton,Carrier Delay,Low,Resolved,2026-03-19 13:00:00,8,Cloudy,Severe,30.45,1425.24,Warehouse Escalation,20,WH-OTT-006,DRV01297
+INC009784,SHP002236,TRK4264021656,FedEx,Ottawa,Toronto,Weather Delay,Low,Escalated,2026-04-20 00:00:00,8,Rain,High,29.95,1576.9,Customer Notified,46,WH-TOR-001,DRV00201
+INC011914,SHP087745,TRK8362092419,FedEx,Halifax,Moncton,Weather Delay,Low,Resolved,2026-03-09 16:00:00,8,Clear,Low,7.45,2032.12,Customer Notified,52,WH-VAN-005,DRV00941
+INC017840,SHP087946,TRK9538296885,FedEx,Ottawa,Toronto,Weather Delay,Low,Resolved,2026-01-21 01:00:00,2,Clear,Medium,8.8,1564.54,Route Reassigned,61,WH-MTL-002,DRV01563
+INC005624,SHP066771,TRK8104719278,DHL,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-06-25 05:00:00,4,Clear,Medium,9.85,1280.88,Carrier Investigation,12,WH-TOR-001,DRV01167
+INC013863,SHP052708,TRK4098791263,DHL,Ottawa,Toronto,Damaged Shipment,High,Resolved,2026-03-22 17:00:00,24,Clear,Medium,20.35,537.02,Route Reassigned,37,WH-HFX-003,DRV00804
+INC021567,SHP064737,TRK3837380699,UPS,Vancouver,Kelowna,Damaged Shipment,Medium,Resolved,2026-06-24 15:00:00,1,Rain,Medium,18.77,98.15,Delivery Rescheduled,95,WH-CGY-004,DRV00602
+INC000003,SHP003523,TRK6422417149,Purolator,Halifax,Moncton,Mechanical Failure,Low,Under Investigation,2026-01-21 19:00:00,12,Clear,Low,9.55,499.34,Customer Notified,77,WH-HFX-003,DRV02273
+INC008138,SHP002646,TRK4566961505,UPS,Ottawa,Toronto,Traffic Disruption,Low,Open,2026-04-09 13:00:00,12,Clear,Low,9.55,2359.81,Customer Notified,93,WH-TOR-001,DRV00626
+INC009851,SHP006797,TRK8676748696,Canada Post,Vancouver,Kelowna,Carrier Delay,Low,Resolved,2026-03-29 11:00:00,2,Cloudy,Low,7.8,1258.23,Warehouse Escalation,80,WH-VAN-005,DRV01913
+INC001513,SHP093166,TRK8179624976,UPS,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-05-11 08:00:00,1,Clear,High,15.78,2370.57,Carrier Investigation,11,WH-MTL-002,DRV01915
+INC017022,SHP023466,TRK9944321792,FedEx,Ottawa,Toronto,Warehouse Processing Delay,Low,Escalated,2026-04-29 18:00:00,4,Clear,Medium,9.85,330.91,Route Reassigned,66,WH-OTT-006,DRV00279
+INC009615,SHP021129,TRK1896220448,UPS,Halifax,Moncton,Weather Delay,Low,Resolved,2026-04-16 15:00:00,2,Clear,Low,4.3,482.51,Warehouse Escalation,6,WH-VAN-005,DRV01590
+INC021600,SHP003530,TRK2352283049,DHL,Calgary,Edmonton,Address Issue,Low,Resolved,2026-06-29 07:00:00,2,Clear,Medium,8.8,2132.81,Warehouse Escalation,57,WH-CGY-004,DRV00138
+INC017502,SHP037421,TRK2130334176,DHL,Toronto,Montreal,Weather Delay,Low,Escalated,2026-05-09 00:00:00,4,Clear,Medium,9.85,75.8,Warehouse Escalation,25,WH-MTL-002,DRV00746
+INC014580,SHP042506,TRK5773384174,DHL,Ottawa,Toronto,Damaged Shipment,High,Resolved,2026-01-13 06:00:00,48,Rain,Severe,58.45,2284.95,Warehouse Escalation,83,WH-MTL-002,DRV01547
+INC004583,SHP099527,TRK3586668084,Canada Post,Toronto,Montreal,Carrier Delay,High,Resolved,2026-04-06 23:00:00,4,Rain,Severe,35.35,438.52,Driver Reassigned,95,WH-OTT-006,DRV01077
+INC018910,SHP084793,TRK7048974707,Purolator,Ottawa,Toronto,Customs Hold,High,Resolved,2026-05-31 19:00:00,48,Cloudy,High,43.95,2449.89,Delivery Rescheduled,62,WH-OTT-006,DRV01843
+INC016071,SHP049166,TRK1795373373,Canada Post,Toronto,Montreal,Traffic Disruption,Low,Resolved,2026-05-27 13:00:00,2,Rain,Low,14.8,2184.95,Customer Notified,29,WH-TOR-001,DRV00787
+INC022778,SHP046913,TRK9551007570,UPS,Calgary,Edmonton,Warehouse Processing Delay,Medium,Under Investigation,2026-03-26 07:00:00,12,Fog,Medium,28.05,2042.07,Delivery Rescheduled,41,WH-OTT-006,DRV00838
+INC010255,SHP051501,TRK3152684431,Canada Post,Toronto,Montreal,Carrier Delay,Low,Resolved,2026-04-09 12:00:00,12,Fog,Medium,28.05,742.33,Route Reassigned,46,WH-OTT-006,DRV00055
+INC017127,SHP010140,TRK3671705365,DHL,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-06-07 10:00:00,2,Rain,Low,14.8,591.95,Shipment Reprocessed,54,WH-MTL-002,DRV00515
+INC011539,SHP082980,TRK8948838749,Purolator,Toronto,Montreal,Traffic Disruption,Medium,Escalated,2026-03-15 07:00:00,4,Clear,Low,5.35,1878.89,Warehouse Escalation,80,WH-VAN-005,DRV01808
+INC019864,SHP012873,TRK3962686885,Purolator,Halifax,Moncton,Warehouse Processing Delay,Low,Resolved,2026-02-09 00:00:00,8,Clear,Medium,11.95,377.77,Route Reassigned,27,WH-OTT-006,DRV00455
+INC017637,SHP049286,TRK2930846305,Canada Post,Halifax,Moncton,Weather Delay,High,Resolved,2026-06-16 21:00:00,12,Snow,High,40.8,314.71,Carrier Investigation,68,WH-CGY-004,DRV00622
+INC016732,SHP081525,TRK5945818632,Purolator,Calgary,Edmonton,Customs Hold,Medium,Escalated,2026-04-17 18:00:00,24,Clear,Medium,20.35,94.31,Carrier Investigation,3,WH-OTT-006,DRV01520
+INC006877,SHP098628,TRK4471930932,Purolator,Vancouver,Kelowna,Traffic Disruption,Medium,Under Investigation,2026-03-20 21:00:00,12,Storm,Low,37.55,60.64,Delivery Rescheduled,19,WH-VAN-005,DRV01288
+INC022543,SHP029844,TRK5060208362,FedEx,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-05-30 16:00:00,24,Clear,Low,15.85,1610.37,Warehouse Escalation,80,WH-MTL-002,DRV00038
+INC003245,SHP086350,TRK1822354311,FedEx,Vancouver,Kelowna,Traffic Disruption,Low,Resolved,2026-06-09 14:00:00,4,Clear,High,17.35,1480.91,Route Reassigned,5,WH-OTT-006,DRV01850
+INC021713,SHP066985,TRK1526668565,Purolator,Vancouver,Kelowna,Traffic Disruption,Low,Resolved,2026-06-19 09:00:00,4,Storm,Medium,37.85,1853.32,Carrier Investigation,33,WH-MTL-002,DRV02226
+INC001466,SHP008291,TRK7164985317,Purolator,Halifax,Moncton,Mechanical Failure,Low,Resolved,2026-05-02 00:00:00,4,Cloudy,Low,8.85,2134.41,Refund Issued,38,WH-MTL-002,DRV01230
+INC007770,SHP087746,TRK8341010418,Purolator,Halifax,Moncton,Address Issue,Low,Resolved,2026-05-31 23:00:00,4,Rain,Medium,20.35,2233.56,Delivery Rescheduled,77,WH-VAN-005,DRV01860
+INC001204,SHP022537,TRK6855469317,DHL,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-02-01 15:00:00,1,Clear,High,15.78,2136.15,Warehouse Escalation,63,WH-OTT-006,DRV00640
+INC006163,SHP003303,TRK7418997117,FedEx,Vancouver,Kelowna,Lost Package,High,Resolved,2026-03-24 19:00:00,2,Rain,Medium,19.3,2381.34,Driver Reassigned,83,WH-TOR-001,DRV01483
+INC004643,SHP071861,TRK1865453376,UPS,Ottawa,Toronto,Damaged Shipment,Medium,Resolved,2026-06-13 13:00:00,1,Clear,High,15.78,457.19,Warehouse Escalation,57,WH-MTL-002,DRV00641
+INC009821,SHP011757,TRK4727248122,Canada Post,Ottawa,Toronto,Weather Delay,Critical,Resolved,2026-01-20 10:00:00,2,Storm,Medium,36.8,2042.55,Carrier Investigation,27,WH-MTL-002,DRV01291
+INC007053,SHP077234,TRK9603526428,UPS,Calgary,Edmonton,Warehouse Processing Delay,Medium,Under Investigation,2026-01-16 03:00:00,12,Clear,Medium,14.05,312.45,Shipment Reprocessed,40,WH-OTT-006,DRV02031
+INC004398,SHP005140,TRK7014344169,DHL,Halifax,Moncton,Failed Delivery Attempt,Low,Resolved,2026-05-22 12:00:00,48,Cloudy,Medium,36.45,1021.96,Delivery Rescheduled,21,WH-CGY-004,DRV00519
+INC019732,SHP092061,TRK6694373463,DHL,Ottawa,Toronto,Address Issue,Medium,Resolved,2026-03-15 11:00:00,12,Snow,Medium,33.3,993.47,Shipment Reprocessed,27,WH-HFX-003,DRV00716
+INC018091,SHP064983,TRK6810979105,FedEx,Calgary,Edmonton,Lost Package,Critical,Under Investigation,2026-06-01 18:00:00,24,Rain,Low,26.35,1863.73,Customer Notified,55,WH-TOR-001,DRV00028
+INC007080,SHP057128,TRK4626452201,Canada Post,Halifax,Moncton,Address Issue,Medium,Resolved,2026-04-21 02:00:00,12,Fog,Medium,28.05,538.0,Carrier Investigation,22,WH-HFX-003,DRV01495
+INC019392,SHP027156,TRK7215707149,Purolator,Ottawa,Toronto,Damaged Shipment,Medium,Under Investigation,2026-02-03 00:00:00,4,Fog,High,31.35,1111.22,Driver Reassigned,34,WH-CGY-004,DRV00293
+INC011766,SHP039112,TRK4388429754,DHL,Calgary,Edmonton,Customs Hold,Critical,Resolved,2026-03-08 18:00:00,8,Snow,Medium,31.2,817.67,Refund Issued,46,WH-HFX-003,DRV01702
+INC009090,SHP066426,TRK8067596423,DHL,Ottawa,Toronto,Traffic Disruption,Low,Resolved,2026-06-17 15:00:00,12,Rain,Low,20.05,1545.55,Driver Reassigned,92,WH-MTL-002,DRV01421
+INC004211,SHP006528,TRK7984948922,FedEx,Vancouver,Kelowna,Weather Delay,Low,Under Investigation,2026-06-15 20:00:00,0,Storm,Severe,50.75,1483.86,Shipment Reprocessed,42,WH-TOR-001,DRV00365
+INC023892,SHP065825,TRK5028112170,Canada Post,Ottawa,Toronto,Warehouse Processing Delay,High,Resolved,2026-03-23 23:00:00,4,Clear,Low,5.35,2413.98,Carrier Investigation,80,WH-HFX-003,DRV01704
+INC020392,SHP090618,TRK9722132303,DHL,Toronto,Montreal,Carrier Delay,Medium,Resolved,2026-03-21 18:00:00,1,Clear,Low,3.78,671.74,Delivery Rescheduled,14,WH-TOR-001,DRV01240
+INC013829,SHP096925,TRK5433477407,Canada Post,Toronto,Montreal,Weather Delay,Low,Resolved,2026-01-22 20:00:00,12,Clear,High,21.55,2014.33,Shipment Reprocessed,78,WH-OTT-006,DRV02348
+INC002437,SHP084206,TRK9040464590,UPS,Halifax,Moncton,Failed Delivery Attempt,High,Resolved,2026-04-30 17:00:00,4,Rain,Medium,20.35,528.4,Carrier Investigation,87,WH-MTL-002,DRV01270
+INC018018,SHP056966,TRK7686663633,FedEx,Ottawa,Toronto,Weather Delay,Medium,Resolved,2026-05-04 00:00:00,4,Clear,Medium,9.85,2423.33,Refund Issued,20,WH-VAN-005,DRV00503
+INC008355,SHP031833,TRK4839405762,Purolator,Vancouver,Kelowna,Weather Delay,Medium,Resolved,2026-05-15 07:00:00,12,Snow,High,40.8,879.22,Shipment Reprocessed,89,WH-HFX-003,DRV00982
+INC008542,SHP035952,TRK5969076673,Purolator,Vancouver,Kelowna,Customs Hold,Low,Under Investigation,2026-06-08 19:00:00,12,Fog,Low,23.55,465.67,Refund Issued,91,WH-VAN-005,DRV01899
+INC012511,SHP094601,TRK1840747744,UPS,Vancouver,Kelowna,Traffic Disruption,Low,Resolved,2026-01-24 16:00:00,8,Snow,Medium,31.2,1860.76,Carrier Investigation,26,WH-OTT-006,DRV01349
+INC021292,SHP094099,TRK2883015684,FedEx,Calgary,Edmonton,Failed Delivery Attempt,High,Resolved,2026-01-31 06:00:00,24,Fog,Low,29.85,2190.92,Warehouse Escalation,93,WH-OTT-006,DRV00827
+INC005352,SHP051799,TRK3805569318,UPS,Halifax,Moncton,Weather Delay,Low,Resolved,2026-04-06 14:00:00,2,Clear,Medium,8.8,649.79,Route Reassigned,29,WH-HFX-003,DRV01636
+INC013110,SHP057170,TRK9712500354,UPS,Calgary,Edmonton,Customs Hold,Medium,Resolved,2026-04-01 02:00:00,1,Cloudy,High,19.27,1685.16,Delivery Rescheduled,86,WH-VAN-005,DRV02482
+INC014945,SHP018846,TRK1624142486,UPS,Toronto,Montreal,Carrier Delay,Low,Resolved,2026-06-23 13:00:00,8,Cloudy,Severe,30.45,1836.7,Warehouse Escalation,67,WH-CGY-004,DRV01953
+INC002729,SHP018895,TRK8072678433,Purolator,Toronto,Montreal,Address Issue,Low,Under Investigation,2026-03-29 07:00:00,24,Clear,Low,15.85,2351.03,Route Reassigned,40,WH-HFX-003,DRV01176
+INC008329,SHP061243,TRK9979840804,Canada Post,Vancouver,Kelowna,Address Issue,Low,Under Investigation,2026-06-26 16:00:00,4,Cloudy,Medium,13.35,2084.02,Shipment Reprocessed,6,WH-CGY-004,DRV00177
+INC022169,SHP014174,TRK7097307177,Canada Post,Vancouver,Kelowna,Carrier Delay,High,Open,2026-04-12 08:00:00,2,Storm,Severe,51.8,1136.16,Carrier Investigation,9,WH-OTT-006,DRV00407
+INC013938,SHP060322,TRK7339328276,DHL,Ottawa,Toronto,Weather Delay,Critical,Resolved,2026-01-19 23:00:00,8,Clear,Medium,11.95,1516.47,Warehouse Escalation,88,WH-TOR-001,DRV01660
+INC022758,SHP063805,TRK4772594407,Canada Post,Vancouver,Kelowna,Address Issue,Medium,Resolved,2026-03-29 16:00:00,1,Clear,Low,3.78,363.69,Driver Reassigned,38,WH-VAN-005,DRV02005
+INC004694,SHP001574,TRK7560872609,DHL,Vancouver,Kelowna,Lost Package,High,Resolved,2026-01-02 04:00:00,4,Cloudy,Medium,13.35,2047.1,Customer Notified,55,WH-MTL-002,DRV01673
+INC017561,SHP076352,TRK8865946334,FedEx,Ottawa,Toronto,Lost Package,Medium,Resolved,2026-05-29 11:00:00,1,Clear,Medium,8.28,1890.42,Refund Issued,69,WH-OTT-006,DRV00470
+INC006677,SHP034253,TRK2774603835,Purolator,Ottawa,Toronto,Failed Delivery Attempt,Low,Resolved,2026-02-26 18:00:00,1,Clear,Medium,8.28,375.76,Shipment Reprocessed,47,WH-TOR-001,DRV01289
+INC002313,SHP031760,TRK7513397695,FedEx,Toronto,Montreal,Traffic Disruption,Medium,Escalated,2026-06-02 14:00:00,2,Cloudy,Medium,12.3,1109.34,Delivery Rescheduled,83,WH-HFX-003,DRV00801
+INC020630,SHP022316,TRK7140469908,Purolator,Ottawa,Toronto,Failed Delivery Attempt,Low,Resolved,2026-02-26 06:00:00,24,Clear,Low,15.85,1612.05,Warehouse Escalation,81,WH-CGY-004,DRV01006
+INC024009,SHP072818,TRK8799376878,Purolator,Halifax,Moncton,Warehouse Processing Delay,Medium,Open,2026-06-24 17:00:00,1,Snow,Low,23.02,2437.12,Customer Notified,76,WH-CGY-004,DRV01661
+INC008828,SHP047244,TRK3990610099,Purolator,Ottawa,Toronto,Weather Delay,Critical,Resolved,2026-01-09 19:00:00,8,Rain,High,29.95,2287.49,Shipment Reprocessed,17,WH-TOR-001,DRV01631
+INC020747,SHP068260,TRK1119829446,Purolator,Calgary,Edmonton,Damaged Shipment,Medium,Under Investigation,2026-01-12 10:00:00,8,Clear,High,19.45,2322.61,Shipment Reprocessed,78,WH-VAN-005,DRV01208
+INC022833,SHP015462,TRK7890345908,FedEx,Toronto,Montreal,Weather Delay,Low,Resolved,2026-06-23 20:00:00,0,Storm,Severe,50.75,373.87,Route Reassigned,61,WH-CGY-004,DRV00343
+INC021155,SHP057176,TRK9334345867,DHL,Vancouver,Kelowna,Damaged Shipment,High,Resolved,2026-03-03 12:00:00,2,Clear,High,16.3,2188.93,Carrier Investigation,95,WH-HFX-003,DRV00554
+INC006313,SHP081241,TRK9654992780,DHL,Halifax,Moncton,Damaged Shipment,Low,Resolved,2026-02-08 12:00:00,2,Fog,Medium,22.8,2459.57,Customer Notified,2,WH-TOR-001,DRV00844
+INC023411,SHP079687,TRK1741723626,UPS,Ottawa,Toronto,Weather Delay,Medium,Open,2026-04-13 21:00:00,72,Clear,High,43.25,516.99,Driver Reassigned,17,WH-CGY-004,DRV02238
+INC012195,SHP020630,TRK5829833366,Canada Post,Ottawa,Toronto,Warehouse Processing Delay,Medium,Escalated,2026-01-18 07:00:00,24,Cloudy,Low,19.35,1058.46,Delivery Rescheduled,8,WH-OTT-006,DRV02010
+INC018470,SHP021070,TRK7309777698,FedEx,Calgary,Edmonton,Traffic Disruption,High,Escalated,2026-02-04 09:00:00,2,Rain,Low,14.8,1841.64,Customer Notified,14,WH-VAN-005,DRV01882
+INC021539,SHP087994,TRK3583204496,UPS,Toronto,Montreal,Weather Delay,Low,Resolved,2026-01-31 09:00:00,12,Clear,Low,9.55,170.11,Refund Issued,90,WH-VAN-005,DRV02192
+INC021227,SHP081751,TRK5026127586,Purolator,Vancouver,Kelowna,Address Issue,Medium,Resolved,2026-02-20 09:00:00,72,Clear,Medium,35.75,1300.83,Warehouse Escalation,42,WH-TOR-001,DRV00326
+INC016759,SHP080506,TRK9881293283,FedEx,Vancouver,Kelowna,Customs Hold,Low,Open,2026-05-24 20:00:00,8,Rain,High,29.95,306.26,Refund Issued,46,WH-OTT-006,DRV00876
+INC019823,SHP090797,TRK8459149025,DHL,Halifax,Moncton,Traffic Disruption,Low,Open,2026-05-27 23:00:00,1,Snow,Medium,27.52,1699.09,Refund Issued,72,WH-OTT-006,DRV02003
+INC005376,SHP052593,TRK5868445447,DHL,Halifax,Moncton,Weather Delay,Medium,Escalated,2026-04-08 14:00:00,24,Clear,Low,15.85,888.08,Refund Issued,3,WH-TOR-001,DRV02434
+INC013753,SHP003931,TRK5501902568,Purolator,Calgary,Edmonton,Damaged Shipment,High,Resolved,2026-06-13 04:00:00,4,Cloudy,Low,8.85,137.68,Refund Issued,55,WH-VAN-005,DRV01583
+INC005030,SHP074342,TRK4133595607,FedEx,Halifax,Moncton,Weather Delay,Low,Under Investigation,2026-05-08 22:00:00,1,Cloudy,Low,7.28,1428.93,Delivery Rescheduled,60,WH-MTL-002,DRV00970
+INC010367,SHP065937,TRK6065979954,DHL,Toronto,Montreal,Weather Delay,Low,Under Investigation,2026-05-30 00:00:00,8,Cloudy,Medium,15.45,1565.61,Delivery Rescheduled,26,WH-HFX-003,DRV00942
+INC014210,SHP089034,TRK1705975764,Purolator,Vancouver,Kelowna,Weather Delay,Critical,Under Investigation,2026-02-22 05:00:00,0,Storm,High,43.25,1489.71,Carrier Investigation,18,WH-VAN-005,DRV01530
+INC012418,SHP099532,TRK4983910223,UPS,Vancouver,Kelowna,Carrier Delay,High,Escalated,2026-04-18 09:00:00,2,Cloudy,Low,7.8,1060.75,Refund Issued,45,WH-HFX-003,DRV00430
+INC000850,SHP018803,TRK5068606155,UPS,Vancouver,Kelowna,Lost Package,Medium,Under Investigation,2026-05-18 15:00:00,8,Clear,Low,7.45,1060.3,Customer Notified,64,WH-OTT-006,DRV02391
+INC019780,SHP061153,TRK3603780710,FedEx,Calgary,Edmonton,Weather Delay,Low,Escalated,2026-05-07 04:00:00,12,Cloudy,Medium,17.55,1129.93,Customer Notified,27,WH-MTL-002,DRV02120
+INC008111,SHP018667,TRK2344010270,Canada Post,Ottawa,Toronto,Address Issue,Medium,Resolved,2026-02-15 00:00:00,2,Rain,High,26.8,593.79,Shipment Reprocessed,81,WH-MTL-002,DRV00083
+INC002541,SHP037797,TRK3210693630,Canada Post,Ottawa,Toronto,Traffic Disruption,High,Resolved,2026-04-20 20:00:00,2,Clear,Low,4.3,2138.27,Delivery Rescheduled,93,WH-HFX-003,DRV01339
+INC008852,SHP055687,TRK7398898471,FedEx,Halifax,Moncton,Mechanical Failure,Medium,Escalated,2026-06-10 18:00:00,24,Fog,Low,29.85,1871.59,Warehouse Escalation,19,WH-MTL-002,DRV02229
+INC004084,SHP049075,TRK8218882756,Purolator,Ottawa,Toronto,Address Issue,High,Resolved,2026-04-22 17:00:00,2,Clear,Low,4.3,1770.76,Carrier Investigation,5,WH-MTL-002,DRV01121
+INC017416,SHP073988,TRK6532426305,FedEx,Halifax,Moncton,Failed Delivery Attempt,Critical,Escalated,2026-06-05 22:00:00,2,Clear,Medium,8.8,1597.93,Refund Issued,32,WH-TOR-001,DRV02095
+INC003605,SHP045984,TRK6568170770,Canada Post,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-02-26 01:00:00,2,Snow,Medium,28.05,1895.28,Route Reassigned,88,WH-HFX-003,DRV01956
+INC022413,SHP051337,TRK6579890917,DHL,Ottawa,Toronto,Failed Delivery Attempt,Low,Resolved,2026-03-25 12:00:00,4,Clear,Low,5.35,1662.87,Refund Issued,56,WH-HFX-003,DRV00454
+INC017969,SHP002132,TRK7954044659,Purolator,Ottawa,Toronto,Customs Hold,Low,Resolved,2026-01-04 08:00:00,1,Clear,High,15.78,2106.5,Refund Issued,93,WH-OTT-006,DRV00192
+INC013330,SHP002547,TRK8019225995,DHL,Halifax,Moncton,Failed Delivery Attempt,Low,Open,2026-05-09 16:00:00,2,Clear,Medium,8.8,1129.77,Route Reassigned,10,WH-CGY-004,DRV01773
+INC002162,SHP047375,TRK1378038536,Purolator,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-05-22 04:00:00,2,Snow,Medium,28.05,1484.44,Refund Issued,82,WH-VAN-005,DRV02015
+INC010793,SHP099492,TRK7498518926,DHL,Ottawa,Toronto,Damaged Shipment,Low,Escalated,2026-01-23 06:00:00,24,Cloudy,High,31.35,541.09,Refund Issued,26,WH-HFX-003,DRV00836
+INC020978,SHP081187,TRK3055336887,Purolator,Toronto,Montreal,Traffic Disruption,Low,Resolved,2026-06-28 04:00:00,2,Clear,Medium,8.8,1804.66,Driver Reassigned,8,WH-OTT-006,DRV00329
+INC002916,SHP015998,TRK4605172120,Canada Post,Vancouver,Kelowna,Address Issue,Critical,Escalated,2026-03-11 13:00:00,2,Snow,Medium,28.05,693.0,Shipment Reprocessed,71,WH-MTL-002,DRV02156
+INC011889,SHP074499,TRK6729992168,FedEx,Calgary,Edmonton,Weather Delay,Low,Under Investigation,2026-03-17 13:00:00,1,Cloudy,High,19.27,2463.44,Carrier Investigation,39,WH-VAN-005,DRV01870
+INC010929,SHP030492,TRK2437141363,Canada Post,Toronto,Montreal,Damaged Shipment,Low,Open,2026-06-09 00:00:00,2,Fog,Low,18.3,1949.34,Driver Reassigned,39,WH-OTT-006,DRV01999
+INC008954,SHP096401,TRK4338520044,DHL,Halifax,Moncton,Address Issue,Medium,Resolved,2026-02-23 21:00:00,2,Snow,High,35.55,1307.68,Delivery Rescheduled,92,WH-VAN-005,DRV01173
+INC004795,SHP021958,TRK9627920813,Purolator,Toronto,Montreal,Customs Hold,Medium,Resolved,2026-02-09 15:00:00,8,Snow,Low,26.7,1345.67,Customer Notified,93,WH-CGY-004,DRV01882
+INC007398,SHP021829,TRK8162880686,UPS,Toronto,Montreal,Weather Delay,Medium,Escalated,2026-04-13 17:00:00,48,Fog,Medium,46.95,1086.17,Delivery Rescheduled,28,WH-CGY-004,DRV01577
+INC008967,SHP047470,TRK7337831976,Canada Post,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-03-04 21:00:00,1,Clear,High,15.78,2158.64,Route Reassigned,45,WH-CGY-004,DRV00444
+INC000324,SHP064073,TRK8028180073,Canada Post,Halifax,Moncton,Failed Delivery Attempt,Medium,Under Investigation,2026-02-10 11:00:00,4,Snow,Medium,29.1,181.95,Warehouse Escalation,87,WH-VAN-005,DRV00975
+INC003210,SHP049413,TRK8969148755,FedEx,Ottawa,Toronto,Weather Delay,Low,Resolved,2026-01-05 06:00:00,8,Rain,High,29.95,1431.67,Shipment Reprocessed,33,WH-MTL-002,DRV00944
+INC012359,SHP068703,TRK8398575424,UPS,Ottawa,Toronto,Weather Delay,Low,Escalated,2026-04-20 07:00:00,2,Clear,Medium,8.8,168.72,Driver Reassigned,43,WH-MTL-002,DRV01438
+INC007282,SHP087010,TRK8279902205,FedEx,Toronto,Montreal,Traffic Disruption,Critical,Open,2026-02-08 21:00:00,48,Cloudy,Low,31.95,940.41,Delivery Rescheduled,78,WH-MTL-002,DRV00121
+INC012408,SHP040117,TRK5335421890,FedEx,Ottawa,Toronto,Customs Hold,Low,Resolved,2026-02-28 15:00:00,4,Cloudy,High,20.85,854.94,Delivery Rescheduled,89,WH-CGY-004,DRV02310
+INC003441,SHP085432,TRK1101690389,DHL,Vancouver,Kelowna,Damaged Shipment,Medium,Resolved,2026-05-26 16:00:00,4,Cloudy,Low,8.85,1665.32,Driver Reassigned,22,WH-CGY-004,DRV02047
+INC004047,SHP052038,TRK7154574157,Purolator,Toronto,Montreal,Weather Delay,Low,Open,2026-03-05 22:00:00,1,Clear,High,15.78,425.47,Customer Notified,18,WH-HFX-003,DRV00684
+INC005759,SHP025821,TRK1863426231,Purolator,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-04-14 09:00:00,2,Clear,Low,4.3,357.16,Refund Issued,29,WH-VAN-005,DRV02328
+INC017252,SHP072855,TRK4771066535,Canada Post,Vancouver,Kelowna,Traffic Disruption,Low,Resolved,2026-03-10 18:00:00,1,Fog,High,29.78,2187.55,Refund Issued,33,WH-CGY-004,DRV00954
+INC023866,SHP029737,TRK3240736398,Purolator,Ottawa,Toronto,Customs Hold,Low,Resolved,2026-02-17 17:00:00,12,Clear,Low,9.55,1563.49,Carrier Investigation,54,WH-VAN-005,DRV01212
+INC010046,SHP074088,TRK1168281811,FedEx,Calgary,Edmonton,Warehouse Processing Delay,Medium,Resolved,2026-05-07 08:00:00,8,Clear,Low,7.45,668.5,Shipment Reprocessed,46,WH-MTL-002,DRV00833
+INC019295,SHP078229,TRK8856380803,Canada Post,Toronto,Montreal,Weather Delay,High,Resolved,2026-02-10 18:00:00,12,Clear,Low,9.55,1571.38,Refund Issued,6,WH-TOR-001,DRV02474
+INC016044,SHP010228,TRK4999707128,FedEx,Halifax,Moncton,Customs Hold,Low,Under Investigation,2026-05-10 12:00:00,2,Fog,Medium,22.8,105.96,Shipment Reprocessed,21,WH-VAN-005,DRV00406
+INC003131,SHP038319,TRK7505910060,DHL,Vancouver,Kelowna,Mechanical Failure,Medium,Resolved,2026-03-13 10:00:00,12,Clear,Low,9.55,2478.17,Customer Notified,2,WH-TOR-001,DRV01512
+INC017333,SHP069619,TRK6630635694,Purolator,Halifax,Moncton,Weather Delay,Medium,Resolved,2026-05-21 01:00:00,8,Rain,High,29.95,1265.74,Shipment Reprocessed,12,WH-MTL-002,DRV01919
+INC011433,SHP076768,TRK4040456649,Purolator,Halifax,Moncton,Damaged Shipment,High,Resolved,2026-01-12 08:00:00,12,Rain,Medium,24.55,2188.5,Shipment Reprocessed,66,WH-OTT-006,DRV00029
+INC022953,SHP073127,TRK1453066295,UPS,Ottawa,Toronto,Customs Hold,High,Resolved,2026-05-29 16:00:00,8,Snow,Medium,31.2,2055.46,Shipment Reprocessed,71,WH-CGY-004,DRV01918
+INC018749,SHP023549,TRK2875986088,DHL,Toronto,Montreal,Weather Delay,High,Under Investigation,2026-02-05 11:00:00,24,Cloudy,Medium,23.85,613.45,Driver Reassigned,52,WH-OTT-006,DRV00131
+INC009241,SHP037007,TRK9960751778,Purolator,Toronto,Montreal,Customs Hold,Low,Under Investigation,2026-05-10 11:00:00,8,Snow,High,38.7,1583.64,Shipment Reprocessed,15,WH-VAN-005,DRV00161
+INC018073,SHP028491,TRK5950373636,Canada Post,Ottawa,Toronto,Failed Delivery Attempt,High,Under Investigation,2026-05-23 10:00:00,1,Cloudy,High,19.27,838.17,Shipment Reprocessed,75,WH-HFX-003,DRV00454
+INC008882,SHP044440,TRK2962974561,UPS,Ottawa,Toronto,Weather Delay,High,Resolved,2026-04-27 04:00:00,48,Cloudy,Low,31.95,2322.07,Customer Notified,6,WH-HFX-003,DRV00872
+INC019906,SHP046428,TRK5315404256,Purolator,Toronto,Montreal,Weather Delay,Low,Escalated,2026-02-25 02:00:00,48,Clear,Medium,32.95,1561.98,Delivery Rescheduled,81,WH-TOR-001,DRV00229
+INC003247,SHP078915,TRK2362417314,Purolator,Halifax,Moncton,Address Issue,Low,Resolved,2026-04-11 14:00:00,0,Storm,High,43.25,1039.52,Refund Issued,63,WH-TOR-001,DRV00479
+INC001572,SHP048207,TRK1731620121,Purolator,Vancouver,Kelowna,Weather Delay,High,Escalated,2026-02-07 14:00:00,2,Storm,Medium,36.8,1172.79,Route Reassigned,84,WH-OTT-006,DRV00708
+INC005596,SHP074367,TRK8229043687,DHL,Vancouver,Kelowna,Weather Delay,Medium,Resolved,2026-03-24 23:00:00,0,Snow,Severe,42.0,1211.9,Driver Reassigned,12,WH-TOR-001,DRV01544
+INC010421,SHP037425,TRK3958224400,Canada Post,Vancouver,Kelowna,Traffic Disruption,Medium,Open,2026-01-25 22:00:00,1,Clear,High,15.78,2228.78,Carrier Investigation,21,WH-VAN-005,DRV02363
+INC024638,SHP083716,TRK2143272684,UPS,Toronto,Montreal,Failed Delivery Attempt,Medium,Resolved,2026-04-15 00:00:00,8,Clear,High,19.45,251.29,Driver Reassigned,42,WH-OTT-006,DRV02223
+INC012766,SHP036703,TRK7010846094,UPS,Ottawa,Toronto,Address Issue,High,Resolved,2026-02-07 20:00:00,24,Fog,Medium,34.35,2355.7,Delivery Rescheduled,3,WH-MTL-002,DRV00602
+INC011311,SHP066480,TRK8103249874,DHL,Ottawa,Toronto,Carrier Delay,Low,Resolved,2026-01-07 03:00:00,4,Clear,High,17.35,374.33,Route Reassigned,59,WH-CGY-004,DRV01390
+INC024291,SHP025704,TRK8087140835,UPS,Calgary,Edmonton,Damaged Shipment,Low,Under Investigation,2026-01-27 11:00:00,4,Rain,Medium,20.35,1635.87,Customer Notified,75,WH-VAN-005,DRV02270
+INC022211,SHP029608,TRK2808203290,UPS,Halifax,Moncton,Damaged Shipment,High,Resolved,2026-01-24 01:00:00,4,Rain,High,27.85,739.16,Refund Issued,28,WH-VAN-005,DRV02348
+INC017423,SHP004453,TRK7150132277,Canada Post,Vancouver,Kelowna,Traffic Disruption,High,Resolved,2026-05-29 05:00:00,0,Storm,High,43.25,859.38,Delivery Rescheduled,14,WH-HFX-003,DRV01908
+INC018078,SHP096189,TRK4482803176,FedEx,Vancouver,Kelowna,Weather Delay,Low,Under Investigation,2026-01-23 10:00:00,12,Storm,High,49.55,925.95,Driver Reassigned,23,WH-CGY-004,DRV00071
+INC019485,SHP069577,TRK7510610285,Purolator,Ottawa,Toronto,Damaged Shipment,Medium,Under Investigation,2026-06-27 18:00:00,1,Storm,High,43.78,559.8,Warehouse Escalation,65,WH-OTT-006,DRV02342
+INC013195,SHP096924,TRK1751758946,UPS,Ottawa,Toronto,Carrier Delay,Medium,Resolved,2026-05-08 06:00:00,4,Clear,Low,5.35,1856.86,Delivery Rescheduled,33,WH-CGY-004,DRV00641
+INC015626,SHP097493,TRK6774970063,FedEx,Ottawa,Toronto,Damaged Shipment,Low,Escalated,2026-01-10 04:00:00,8,Clear,Medium,11.95,488.8,Customer Notified,18,WH-HFX-003,DRV00364
+INC019409,SHP066594,TRK7976291458,UPS,Calgary,Edmonton,Customs Hold,High,Under Investigation,2026-04-27 19:00:00,2,Snow,Severe,43.05,2004.52,Route Reassigned,89,WH-VAN-005,DRV01880
+INC004181,SHP078598,TRK9605213847,FedEx,Halifax,Moncton,Mechanical Failure,Low,Escalated,2026-05-16 04:00:00,2,Clear,Low,4.3,1532.6,Refund Issued,37,WH-MTL-002,DRV01670
+INC008489,SHP019127,TRK6982933592,DHL,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-04-19 16:00:00,4,Cloudy,Medium,13.35,1146.77,Carrier Investigation,31,WH-VAN-005,DRV01348
+INC000312,SHP024573,TRK5134523195,UPS,Halifax,Moncton,Lost Package,Low,Resolved,2026-04-19 18:00:00,1,Clear,Medium,8.28,1304.94,Refund Issued,9,WH-MTL-002,DRV01784
+INC022501,SHP023293,TRK9127313677,DHL,Ottawa,Toronto,Weather Delay,Low,Open,2026-05-08 09:00:00,4,Rain,Low,15.85,57.13,Shipment Reprocessed,21,WH-MTL-002,DRV00050
+INC016829,SHP008960,TRK9448472376,UPS,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-03-12 10:00:00,4,Cloudy,Low,8.85,1087.29,Refund Issued,58,WH-OTT-006,DRV00495
+INC023371,SHP003055,TRK1959451313,DHL,Halifax,Moncton,Damaged Shipment,Low,Resolved,2026-05-21 05:00:00,12,Snow,Medium,33.3,2305.45,Delivery Rescheduled,68,WH-MTL-002,DRV01452
+INC005096,SHP047414,TRK7747039150,Canada Post,Halifax,Moncton,Weather Delay,Low,Resolved,2026-05-29 15:00:00,2,Clear,Severe,23.8,756.78,Delivery Rescheduled,54,WH-MTL-002,DRV01693
+INC021548,SHP067021,TRK9420382265,DHL,Ottawa,Toronto,Carrier Delay,Low,Resolved,2026-05-06 16:00:00,2,Clear,Low,4.3,1177.29,Carrier Investigation,71,WH-TOR-001,DRV01781
+INC004141,SHP094573,TRK2148101990,FedEx,Toronto,Montreal,Damaged Shipment,High,Resolved,2026-06-26 11:00:00,8,Fog,High,33.45,1350.61,Customer Notified,18,WH-VAN-005,DRV01476
+INC004676,SHP068561,TRK7694200276,Purolator,Ottawa,Toronto,Lost Package,Low,Resolved,2026-04-24 17:00:00,4,Cloudy,Medium,13.35,1132.69,Customer Notified,39,WH-TOR-001,DRV01976
+INC012413,SHP044229,TRK3919401066,Purolator,Calgary,Edmonton,Failed Delivery Attempt,High,Resolved,2026-03-19 04:00:00,8,Snow,High,38.7,1621.24,Delivery Rescheduled,27,WH-OTT-006,DRV02317
+INC018598,SHP033997,TRK9098358035,Canada Post,Vancouver,Kelowna,Traffic Disruption,Medium,Resolved,2026-06-07 08:00:00,8,Fog,Medium,25.95,109.17,Refund Issued,54,WH-OTT-006,DRV01022
+INC024099,SHP006878,TRK9943547919,DHL,Vancouver,Kelowna,Lost Package,Low,Resolved,2026-03-25 16:00:00,8,Clear,Medium,11.95,1148.74,Shipment Reprocessed,8,WH-MTL-002,DRV00730
+INC008762,SHP086692,TRK6231061789,UPS,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-03-14 20:00:00,48,Clear,High,40.45,168.59,Driver Reassigned,25,WH-CGY-004,DRV01596
+INC001733,SHP058018,TRK8757175098,Purolator,Calgary,Edmonton,Customs Hold,Critical,Resolved,2026-06-23 15:00:00,12,Fog,High,35.55,2384.03,Carrier Investigation,88,WH-MTL-002,DRV01551
+INC023771,SHP049833,TRK8684791625,UPS,Ottawa,Toronto,Weather Delay,Low,Open,2026-05-04 14:00:00,2,Fog,Medium,22.8,124.23,Delivery Rescheduled,16,WH-CGY-004,DRV00072
+INC020946,SHP042763,TRK9857212517,DHL,Halifax,Moncton,Mechanical Failure,Medium,Under Investigation,2026-04-07 05:00:00,24,Snow,Medium,39.6,284.03,Delivery Rescheduled,2,WH-MTL-002,DRV01600
+INC012130,SHP006806,TRK6351233611,FedEx,Toronto,Montreal,Weather Delay,Low,Resolved,2026-04-26 04:00:00,1,Fog,Medium,22.28,574.3,Driver Reassigned,66,WH-VAN-005,DRV01279
+INC023184,SHP011255,TRK6150689836,Canada Post,Vancouver,Kelowna,Warehouse Processing Delay,Medium,Resolved,2026-04-20 07:00:00,4,Clear,High,17.35,1012.67,Shipment Reprocessed,56,WH-MTL-002,DRV01560
+INC008163,SHP073345,TRK9511107876,Purolator,Halifax,Moncton,Failed Delivery Attempt,Low,Resolved,2026-04-30 07:00:00,2,Rain,Low,14.8,1265.12,Route Reassigned,15,WH-VAN-005,DRV00114
+INC022224,SHP072327,TRK2604339489,Purolator,Ottawa,Toronto,Warehouse Processing Delay,High,Resolved,2026-02-26 08:00:00,48,Rain,Medium,43.45,1660.02,Customer Notified,58,WH-TOR-001,DRV00433
+INC019946,SHP082114,TRK9598261451,Purolator,Ottawa,Toronto,Damaged Shipment,Medium,Resolved,2026-06-24 15:00:00,1,Rain,Medium,18.77,842.21,Shipment Reprocessed,56,WH-CGY-004,DRV01843
+INC013706,SHP032049,TRK6076818165,Purolator,Ottawa,Toronto,Warehouse Processing Delay,Medium,Resolved,2026-03-01 18:00:00,1,Storm,High,43.78,1964.78,Route Reassigned,18,WH-TOR-001,DRV02424
+INC023160,SHP061294,TRK9905908305,Purolator,Calgary,Edmonton,Mechanical Failure,Low,Resolved,2026-03-30 19:00:00,4,Cloudy,Medium,13.35,2406.92,Route Reassigned,64,WH-TOR-001,DRV00277
+INC015001,SHP055852,TRK1719937161,Canada Post,Vancouver,Kelowna,Traffic Disruption,Medium,Resolved,2026-02-11 05:00:00,4,Rain,Medium,20.35,2032.62,Warehouse Escalation,9,WH-HFX-003,DRV01960
+INC006000,SHP061561,TRK8212293178,FedEx,Ottawa,Toronto,Warehouse Processing Delay,Low,Resolved,2026-01-24 04:00:00,1,Snow,Medium,27.52,756.8,Refund Issued,14,WH-VAN-005,DRV01007
+INC014384,SHP079873,TRK4582452810,UPS,Ottawa,Toronto,Warehouse Processing Delay,Medium,Resolved,2026-05-06 12:00:00,8,Clear,Low,7.45,1012.8,Carrier Investigation,62,WH-VAN-005,DRV00180
+INC011600,SHP090530,TRK3162825370,DHL,Ottawa,Toronto,Traffic Disruption,High,Under Investigation,2026-01-04 06:00:00,8,Clear,Severe,26.95,2406.6,Carrier Investigation,87,WH-MTL-002,DRV01606
+INC015358,SHP017225,TRK5071064148,DHL,Vancouver,Kelowna,Warehouse Processing Delay,Low,Resolved,2026-03-02 04:00:00,2,Cloudy,Medium,12.3,296.62,Warehouse Escalation,71,WH-HFX-003,DRV01845
+INC016458,SHP020251,TRK1334624282,Purolator,Halifax,Moncton,Mechanical Failure,Low,Resolved,2026-01-27 07:00:00,4,Storm,Medium,37.85,772.14,Route Reassigned,65,WH-VAN-005,DRV02176
+INC009399,SHP081365,TRK1938976847,DHL,Calgary,Edmonton,Mechanical Failure,High,Resolved,2026-04-08 04:00:00,24,Rain,Medium,30.85,1971.22,Warehouse Escalation,18,WH-VAN-005,DRV02049
+INC009039,SHP007279,TRK1532497344,DHL,Calgary,Edmonton,Traffic Disruption,Medium,Resolved,2026-06-22 08:00:00,2,Fog,High,30.3,2401.42,Shipment Reprocessed,45,WH-TOR-001,DRV00393
+INC014018,SHP066452,TRK8537542490,Purolator,Halifax,Moncton,Damaged Shipment,Low,Resolved,2026-03-18 10:00:00,8,Rain,Low,17.95,999.16,Warehouse Escalation,89,WH-CGY-004,DRV00497
+INC017059,SHP030363,TRK9154831630,UPS,Halifax,Moncton,Weather Delay,High,Resolved,2026-01-21 09:00:00,8,Clear,Medium,11.95,241.37,Warehouse Escalation,22,WH-OTT-006,DRV01608
+INC023543,SHP098029,TRK2910895145,FedEx,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-02-17 23:00:00,12,Fog,Medium,28.05,388.71,Warehouse Escalation,14,WH-HFX-003,DRV00820
+INC007497,SHP019407,TRK9547600018,Canada Post,Vancouver,Kelowna,Customs Hold,Low,Under Investigation,2026-03-10 19:00:00,4,Clear,Low,5.35,1477.27,Warehouse Escalation,8,WH-VAN-005,DRV00673
+INC010001,SHP016686,TRK9923423227,FedEx,Calgary,Edmonton,Failed Delivery Attempt,Medium,Resolved,2026-03-17 11:00:00,12,Clear,High,21.55,1445.27,Shipment Reprocessed,92,WH-CGY-004,DRV01908
+INC020829,SHP065598,TRK3184361718,UPS,Calgary,Edmonton,Warehouse Processing Delay,Low,Resolved,2026-02-23 04:00:00,1,Cloudy,High,19.27,1080.5,Carrier Investigation,15,WH-VAN-005,DRV00190
+INC002849,SHP008675,TRK5692231453,Canada Post,Calgary,Edmonton,Warehouse Processing Delay,Low,Resolved,2026-06-30 17:00:00,12,Clear,Low,9.55,1417.08,Route Reassigned,6,WH-CGY-004,DRV00512
+INC010016,SHP021603,TRK2571606081,DHL,Ottawa,Toronto,Damaged Shipment,High,Open,2026-05-08 17:00:00,72,Snow,Low,50.5,188.25,Driver Reassigned,45,WH-TOR-001,DRV02493
+INC013321,SHP014913,TRK3864521022,UPS,Halifax,Moncton,Weather Delay,Low,Resolved,2026-03-22 01:00:00,1,Fog,High,29.78,2303.35,Delivery Rescheduled,19,WH-HFX-003,DRV00566
+INC010248,SHP040962,TRK6030644451,UPS,Toronto,Montreal,Mechanical Failure,Medium,Under Investigation,2026-03-23 17:00:00,8,Snow,Medium,31.2,298.17,Carrier Investigation,78,WH-HFX-003,DRV01505
+INC002954,SHP056733,TRK6298703623,UPS,Halifax,Moncton,Lost Package,Low,Resolved,2026-03-25 02:00:00,4,Rain,Severe,35.35,526.6,Refund Issued,3,WH-CGY-004,DRV02017
+INC020798,SHP060888,TRK4205102078,UPS,Vancouver,Kelowna,Weather Delay,Low,Under Investigation,2026-04-28 06:00:00,1,Cloudy,Low,7.28,2389.96,Warehouse Escalation,57,WH-TOR-001,DRV00890
+INC002605,SHP096732,TRK7662054128,UPS,Toronto,Montreal,Carrier Delay,High,Resolved,2026-05-28 22:00:00,2,Clear,Low,4.3,948.83,Driver Reassigned,29,WH-TOR-001,DRV01667
+INC002514,SHP084878,TRK9891216722,DHL,Toronto,Montreal,Weather Delay,Medium,Open,2026-05-06 11:00:00,8,Cloudy,Severe,30.45,2077.91,Carrier Investigation,11,WH-CGY-004,DRV02003
+INC023920,SHP002290,TRK3297319013,UPS,Halifax,Moncton,Damaged Shipment,Medium,Open,2026-04-26 06:00:00,12,Clear,Medium,14.05,2203.52,Route Reassigned,15,WH-VAN-005,DRV00229
+INC007866,SHP099401,TRK8946861085,Purolator,Vancouver,Kelowna,Mechanical Failure,Low,Open,2026-03-28 07:00:00,4,Clear,High,17.35,1857.43,Carrier Investigation,82,WH-HFX-003,DRV01798
+INC003069,SHP085429,TRK5385261477,UPS,Calgary,Edmonton,Traffic Disruption,High,Resolved,2026-01-29 16:00:00,12,Rain,Medium,24.55,1507.58,Driver Reassigned,34,WH-MTL-002,DRV01185
+INC005411,SHP055406,TRK3302196990,DHL,Vancouver,Kelowna,Damaged Shipment,Low,Resolved,2026-05-23 14:00:00,4,Rain,Low,15.85,1454.24,Shipment Reprocessed,31,WH-HFX-003,DRV00699
+INC018852,SHP093375,TRK7511733886,Canada Post,Vancouver,Kelowna,Traffic Disruption,High,Resolved,2026-04-16 00:00:00,24,Cloudy,Low,19.35,1075.94,Delivery Rescheduled,11,WH-HFX-003,DRV01249
+INC001882,SHP067583,TRK8810588505,UPS,Toronto,Montreal,Warehouse Processing Delay,Medium,Under Investigation,2026-06-11 04:00:00,1,Rain,Medium,18.77,2248.83,Warehouse Escalation,75,WH-HFX-003,DRV00793
+INC002772,SHP012548,TRK5250800607,Canada Post,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-04-11 16:00:00,4,Snow,Medium,29.1,1490.54,Delivery Rescheduled,54,WH-CGY-004,DRV01207
+INC024361,SHP039852,TRK9065866048,DHL,Halifax,Moncton,Mechanical Failure,Medium,Escalated,2026-01-23 08:00:00,1,Rain,Medium,18.77,501.01,Route Reassigned,43,WH-TOR-001,DRV02053
+INC009367,SHP090201,TRK7484520565,Purolator,Toronto,Montreal,Warehouse Processing Delay,High,Under Investigation,2026-04-06 00:00:00,0,Storm,High,43.25,630.94,Driver Reassigned,33,WH-OTT-006,DRV00307
+INC018159,SHP094816,TRK5246718833,DHL,Toronto,Montreal,Traffic Disruption,High,Resolved,2026-04-08 22:00:00,1,Clear,Low,3.78,1331.74,Warehouse Escalation,95,WH-TOR-001,DRV00212
+INC016150,SHP084707,TRK2883159313,UPS,Halifax,Moncton,Warehouse Processing Delay,Critical,Escalated,2026-06-02 16:00:00,8,Snow,High,38.7,2119.79,Refund Issued,71,WH-HFX-003,DRV00082
+INC000351,SHP076889,TRK1386131177,DHL,Halifax,Moncton,Traffic Disruption,High,Open,2026-06-04 23:00:00,4,Cloudy,High,20.85,630.12,Delivery Rescheduled,33,WH-OTT-006,DRV00181
+INC013894,SHP005620,TRK5728382615,FedEx,Halifax,Moncton,Damaged Shipment,High,Resolved,2026-02-28 11:00:00,1,Clear,High,15.78,1345.24,Route Reassigned,38,WH-MTL-002,DRV02205
+INC022186,SHP087276,TRK8424000551,UPS,Ottawa,Toronto,Mechanical Failure,Medium,Open,2026-01-06 03:00:00,48,Clear,High,40.45,839.11,Route Reassigned,57,WH-OTT-006,DRV01486
+INC016669,SHP098620,TRK9117109964,Canada Post,Halifax,Moncton,Traffic Disruption,Low,Under Investigation,2026-03-18 07:00:00,12,Cloudy,Low,13.05,1911.01,Refund Issued,28,WH-VAN-005,DRV00083
+INC023947,SHP049255,TRK1227780524,FedEx,Ottawa,Toronto,Customs Hold,Low,Resolved,2026-03-30 03:00:00,1,Clear,High,15.78,2001.88,Warehouse Escalation,28,WH-VAN-005,DRV00482
+INC004471,SHP019386,TRK2166407951,DHL,Toronto,Montreal,Lost Package,Low,Resolved,2026-05-27 12:00:00,72,Cloudy,Medium,39.25,1125.59,Carrier Investigation,25,WH-MTL-002,DRV00803
+INC015718,SHP055586,TRK5603057899,Purolator,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-01-25 09:00:00,2,Cloudy,High,19.8,745.9,Delivery Rescheduled,89,WH-HFX-003,DRV01511
+INC016313,SHP099190,TRK8511621949,DHL,Calgary,Edmonton,Carrier Delay,Medium,Escalated,2026-04-20 15:00:00,2,Fog,Severe,37.8,1216.56,Customer Notified,29,WH-VAN-005,DRV01657
+INC016876,SHP024413,TRK4088287420,Purolator,Toronto,Montreal,Warehouse Processing Delay,Medium,Resolved,2026-01-23 07:00:00,24,Fog,Low,29.85,1361.52,Route Reassigned,6,WH-HFX-003,DRV00500
+INC022451,SHP001764,TRK8309490391,Canada Post,Ottawa,Toronto,Mechanical Failure,Medium,Resolved,2026-01-29 23:00:00,2,Rain,Low,14.8,935.9,Driver Reassigned,56,WH-TOR-001,DRV00708
+INC022177,SHP057642,TRK9416082568,Purolator,Toronto,Montreal,Weather Delay,Low,Resolved,2026-06-27 22:00:00,8,Cloudy,Low,10.95,1241.31,Refund Issued,22,WH-VAN-005,DRV01121
+INC017446,SHP020274,TRK5560533127,DHL,Ottawa,Toronto,Warehouse Processing Delay,Low,Open,2026-03-04 13:00:00,2,Cloudy,Low,7.8,2473.57,Customer Notified,40,WH-CGY-004,DRV01181
+INC022869,SHP097859,TRK9607065653,UPS,Toronto,Montreal,Weather Delay,Low,Resolved,2026-03-21 22:00:00,8,Clear,Medium,11.95,2320.86,Refund Issued,19,WH-MTL-002,DRV01903
+INC004086,SHP052091,TRK3155368471,FedEx,Halifax,Moncton,Traffic Disruption,High,Resolved,2026-02-21 08:00:00,8,Snow,Low,26.7,629.09,Refund Issued,91,WH-CGY-004,DRV02218
+INC013287,SHP090942,TRK5186672934,DHL,Toronto,Montreal,Address Issue,Low,Under Investigation,2026-01-29 14:00:00,1,Clear,Low,3.78,1749.54,Driver Reassigned,59,WH-VAN-005,DRV00375
+INC000456,SHP003500,TRK8217248136,FedEx,Calgary,Edmonton,Damaged Shipment,Critical,Open,2026-05-18 01:00:00,4,Fog,Medium,23.85,1733.2,Refund Issued,91,WH-MTL-002,DRV01328
+INC020195,SHP012937,TRK4636887052,DHL,Vancouver,Kelowna,Warehouse Processing Delay,Low,Resolved,2026-05-08 13:00:00,8,Rain,High,29.95,616.41,Delivery Rescheduled,42,WH-HFX-003,DRV00873
+INC006232,SHP086339,TRK2869451880,FedEx,Halifax,Moncton,Weather Delay,Medium,Resolved,2026-04-29 08:00:00,8,Clear,Low,7.45,696.21,Carrier Investigation,57,WH-MTL-002,DRV00989
+INC024443,SHP002790,TRK6034532562,Purolator,Vancouver,Kelowna,Warehouse Processing Delay,Medium,Resolved,2026-02-07 19:00:00,2,Cloudy,Medium,12.3,1188.49,Customer Notified,17,WH-CGY-004,DRV01680
+INC000239,SHP019317,TRK7933632998,Purolator,Calgary,Edmonton,Damaged Shipment,Medium,Resolved,2026-02-15 15:00:00,2,Clear,High,16.3,1673.42,Route Reassigned,71,WH-MTL-002,DRV01683
+INC023402,SHP020851,TRK8883191315,Canada Post,Vancouver,Kelowna,Weather Delay,High,Resolved,2026-04-27 09:00:00,2,Clear,Medium,8.8,2354.31,Refund Issued,40,WH-TOR-001,DRV01445
+INC013926,SHP029676,TRK8345299462,DHL,Ottawa,Toronto,Damaged Shipment,Medium,Resolved,2026-01-20 08:00:00,2,Clear,Medium,8.8,2323.92,Refund Issued,34,WH-CGY-004,DRV02219
+INC023023,SHP002917,TRK5514252383,Canada Post,Calgary,Edmonton,Mechanical Failure,Medium,Escalated,2026-01-11 10:00:00,8,Fog,Severe,40.95,706.4,Driver Reassigned,27,WH-MTL-002,DRV00607
+INC017509,SHP068090,TRK9718901999,UPS,Ottawa,Toronto,Weather Delay,Low,Under Investigation,2026-06-04 21:00:00,1,Clear,High,15.78,543.21,Delivery Rescheduled,64,WH-MTL-002,DRV00109
+INC024566,SHP058054,TRK7265558761,FedEx,Vancouver,Kelowna,Traffic Disruption,High,Resolved,2026-01-23 18:00:00,2,Clear,Low,4.3,1006.77,Customer Notified,94,WH-HFX-003,DRV00299
+INC011307,SHP015200,TRK3919891207,Purolator,Ottawa,Toronto,Failed Delivery Attempt,High,Under Investigation,2026-01-04 00:00:00,4,Rain,Low,15.85,2407.36,Carrier Investigation,51,WH-VAN-005,DRV02055
+INC008003,SHP023229,TRK3881707072,Purolator,Halifax,Moncton,Warehouse Processing Delay,Low,Resolved,2026-04-18 20:00:00,48,Clear,Low,28.45,432.04,Carrier Investigation,36,WH-HFX-003,DRV01048
+INC024215,SHP080683,TRK9466813901,UPS,Toronto,Montreal,Weather Delay,Low,Resolved,2026-03-22 19:00:00,4,Clear,High,17.35,2093.82,Route Reassigned,88,WH-VAN-005,DRV02223
+INC021666,SHP074495,TRK2332792128,DHL,Vancouver,Kelowna,Lost Package,Critical,Resolved,2026-04-05 06:00:00,1,Snow,Medium,27.52,1842.64,Customer Notified,76,WH-OTT-006,DRV01361
+INC017306,SHP061710,TRK4597468303,UPS,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-04-07 20:00:00,2,Storm,Low,32.3,2026.18,Warehouse Escalation,49,WH-MTL-002,DRV02480
+INC022416,SHP004407,TRK6586736995,UPS,Halifax,Moncton,Weather Delay,High,Resolved,2026-04-12 20:00:00,4,Cloudy,Low,8.85,1895.7,Carrier Investigation,18,WH-OTT-006,DRV01335
+INC019963,SHP093301,TRK7132027482,Canada Post,Ottawa,Toronto,Customs Hold,Medium,Resolved,2026-01-28 11:00:00,4,Fog,Medium,23.85,2131.87,Route Reassigned,46,WH-OTT-006,DRV01214
+INC001388,SHP087958,TRK7399914037,DHL,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-02-02 15:00:00,12,Clear,Low,9.55,1972.57,Customer Notified,81,WH-HFX-003,DRV00297
+INC019903,SHP094369,TRK3919686022,UPS,Halifax,Moncton,Customs Hold,Low,Resolved,2026-06-08 21:00:00,1,Clear,Low,3.78,1262.6,Driver Reassigned,86,WH-MTL-002,DRV01149
+INC014702,SHP019877,TRK5393874148,Canada Post,Vancouver,Kelowna,Traffic Disruption,Low,Under Investigation,2026-03-08 23:00:00,4,Clear,High,17.35,329.62,Customer Notified,9,WH-TOR-001,DRV00338
+INC005523,SHP067775,TRK8708951982,FedEx,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-04-21 08:00:00,1,Clear,Medium,8.28,1766.77,Customer Notified,6,WH-OTT-006,DRV01573
+INC022103,SHP079908,TRK5632030805,DHL,Ottawa,Toronto,Lost Package,Medium,Resolved,2026-05-18 05:00:00,4,Cloudy,Medium,13.35,1428.68,Driver Reassigned,67,WH-MTL-002,DRV00851
+INC017155,SHP005635,TRK9474521517,Purolator,Vancouver,Kelowna,Customs Hold,High,Escalated,2026-04-29 16:00:00,2,Clear,Severe,23.8,265.47,Customer Notified,64,WH-MTL-002,DRV00839
+INC005729,SHP042428,TRK2437865908,Canada Post,Toronto,Montreal,Weather Delay,Medium,Under Investigation,2026-01-07 14:00:00,4,Fog,Low,19.35,2018.96,Shipment Reprocessed,61,WH-CGY-004,DRV01850
+INC002462,SHP089475,TRK8139034765,FedEx,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-04-07 17:00:00,8,Rain,Medium,22.45,205.13,Warehouse Escalation,62,WH-TOR-001,DRV01390
+INC012028,SHP053790,TRK1293886698,DHL,Halifax,Moncton,Weather Delay,Low,Resolved,2026-02-16 20:00:00,12,Clear,Medium,14.05,1785.0,Driver Reassigned,24,WH-TOR-001,DRV00643
+INC004369,SHP045481,TRK7632495708,DHL,Vancouver,Kelowna,Traffic Disruption,Critical,Open,2026-04-05 16:00:00,48,Rain,High,50.95,2350.28,Carrier Investigation,31,WH-MTL-002,DRV01848
+INC016833,SHP098628,TRK4471930932,Purolator,Vancouver,Kelowna,Weather Delay,Critical,Under Investigation,2026-03-20 17:00:00,12,Storm,Low,37.55,985.0,Refund Issued,2,WH-VAN-005,DRV01288
+INC011577,SHP035017,TRK2101113846,UPS,Halifax,Moncton,Carrier Delay,Low,Escalated,2026-02-19 03:00:00,48,Clear,Low,28.45,1106.63,Carrier Investigation,78,WH-MTL-002,DRV00599
+INC001669,SHP045543,TRK6377551920,UPS,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-02-21 15:00:00,4,Rain,Medium,20.35,1249.49,Customer Notified,16,WH-OTT-006,DRV01021
+INC013852,SHP021210,TRK6581996266,UPS,Vancouver,Kelowna,Traffic Disruption,Low,Under Investigation,2026-05-30 10:00:00,1,Clear,Low,3.78,292.98,Carrier Investigation,30,WH-TOR-001,DRV02068
+INC016237,SHP078360,TRK8554927721,FedEx,Toronto,Montreal,Lost Package,Medium,Resolved,2026-02-15 12:00:00,1,Clear,Medium,8.28,986.63,Driver Reassigned,57,WH-CGY-004,DRV01769
+INC012423,SHP092041,TRK6105051381,UPS,Toronto,Montreal,Mechanical Failure,Low,Resolved,2026-04-09 05:00:00,8,Cloudy,High,22.95,1354.99,Driver Reassigned,54,WH-TOR-001,DRV01552
+INC005587,SHP092696,TRK1407981041,Purolator,Calgary,Edmonton,Warehouse Processing Delay,Low,Under Investigation,2026-04-18 22:00:00,8,Clear,Medium,11.95,1445.67,Delivery Rescheduled,31,WH-VAN-005,DRV02259
+INC012232,SHP065989,TRK1786742408,DHL,Calgary,Edmonton,Lost Package,Low,Resolved,2026-04-04 14:00:00,1,Cloudy,Medium,11.78,761.31,Carrier Investigation,40,WH-OTT-006,DRV00824
+INC003711,SHP010540,TRK7766779056,FedEx,Vancouver,Kelowna,Warehouse Processing Delay,Medium,Open,2026-04-06 14:00:00,8,Rain,High,29.95,913.98,Route Reassigned,93,WH-MTL-002,DRV00295
+INC011075,SHP082535,TRK7930602755,Purolator,Calgary,Edmonton,Damaged Shipment,Medium,Under Investigation,2026-06-14 18:00:00,1,Rain,High,26.28,1005.58,Refund Issued,29,WH-MTL-002,DRV02402
+INC022252,SHP000120,TRK8007497767,Purolator,Calgary,Edmonton,Warehouse Processing Delay,Medium,Resolved,2026-06-21 12:00:00,48,Rain,Low,38.95,2357.3,Customer Notified,42,WH-VAN-005,DRV00453
+INC008185,SHP017146,TRK1010829761,DHL,Calgary,Edmonton,Customs Hold,Medium,Open,2026-06-30 09:00:00,48,Snow,Medium,52.2,999.81,Carrier Investigation,56,WH-CGY-004,DRV00092
+INC017666,SHP023031,TRK9152334698,UPS,Calgary,Edmonton,Lost Package,Low,Under Investigation,2026-06-02 12:00:00,12,Clear,Low,9.55,1241.1,Route Reassigned,70,WH-TOR-001,DRV00113
+INC003863,SHP005181,TRK5342917734,DHL,Halifax,Moncton,Customs Hold,Medium,Open,2026-04-26 22:00:00,1,Clear,High,15.78,1412.95,Driver Reassigned,83,WH-HFX-003,DRV01529
+INC009505,SHP039505,TRK5936103233,DHL,Halifax,Moncton,Damaged Shipment,Low,Resolved,2026-02-21 00:00:00,48,Rain,Medium,43.45,927.85,Warehouse Escalation,59,WH-VAN-005,DRV01269
+INC009804,SHP009207,TRK5125155665,FedEx,Toronto,Montreal,Traffic Disruption,Low,Escalated,2026-02-22 12:00:00,8,Rain,Medium,22.45,1205.58,Delivery Rescheduled,28,WH-VAN-005,DRV00987
+INC015832,SHP027061,TRK3006234330,Canada Post,Halifax,Moncton,Warehouse Processing Delay,Low,Resolved,2026-03-15 16:00:00,12,Rain,Medium,24.55,2407.14,Route Reassigned,19,WH-HFX-003,DRV01383
+INC009619,SHP019281,TRK5324473522,Purolator,Toronto,Montreal,Traffic Disruption,Critical,Resolved,2026-03-11 00:00:00,12,Clear,High,21.55,705.26,Refund Issued,74,WH-VAN-005,DRV01516
+INC008676,SHP006113,TRK7521347050,DHL,Vancouver,Kelowna,Carrier Delay,High,Under Investigation,2026-05-12 20:00:00,4,Cloudy,Medium,13.35,1078.78,Refund Issued,33,WH-MTL-002,DRV00467
+INC006982,SHP077133,TRK2034541045,DHL,Vancouver,Kelowna,Weather Delay,Critical,Resolved,2026-01-15 06:00:00,24,Rain,Low,26.35,230.04,Refund Issued,55,WH-TOR-001,DRV00257
+INC000074,SHP041951,TRK9564898481,DHL,Halifax,Moncton,Weather Delay,High,Escalated,2026-05-26 12:00:00,8,Snow,Medium,31.2,2490.03,Shipment Reprocessed,6,WH-HFX-003,DRV01632
+INC024184,SHP087915,TRK9368188936,FedEx,Ottawa,Toronto,Failed Delivery Attempt,High,Resolved,2026-03-13 04:00:00,72,Snow,Low,50.5,1003.67,Delivery Rescheduled,58,WH-HFX-003,DRV01980
+INC020683,SHP049885,TRK2351932128,DHL,Calgary,Edmonton,Customs Hold,Medium,Under Investigation,2026-05-14 13:00:00,4,Clear,Medium,9.85,1334.63,Customer Notified,78,WH-CGY-004,DRV01330
+INC018640,SHP043328,TRK5464634716,Canada Post,Vancouver,Kelowna,Damaged Shipment,Low,Resolved,2026-03-01 17:00:00,1,Snow,High,35.02,2000.57,Customer Notified,12,WH-TOR-001,DRV00420
+INC012899,SHP084338,TRK7398876540,Canada Post,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-05-18 04:00:00,1,Rain,Low,14.28,2127.38,Route Reassigned,79,WH-CGY-004,DRV02215
+INC007126,SHP021915,TRK6394484439,UPS,Toronto,Montreal,Customs Hold,Medium,Resolved,2026-03-11 00:00:00,12,Snow,Medium,33.3,2272.72,Route Reassigned,90,WH-VAN-005,DRV01263
+INC009989,SHP003906,TRK5209952469,DHL,Vancouver,Kelowna,Customs Hold,Medium,Under Investigation,2026-05-22 02:00:00,2,Rain,Medium,19.3,1659.13,Driver Reassigned,80,WH-HFX-003,DRV01402
+INC021069,SHP041651,TRK9430067607,DHL,Toronto,Montreal,Mechanical Failure,High,Resolved,2026-01-25 21:00:00,48,Rain,Low,38.95,2456.1,Refund Issued,35,WH-MTL-002,DRV01837
+INC016893,SHP064781,TRK1774893788,Canada Post,Halifax,Moncton,Traffic Disruption,Medium,Under Investigation,2026-03-13 12:00:00,2,Rain,Low,14.8,1705.69,Refund Issued,95,WH-VAN-005,DRV01637
+INC001161,SHP088369,TRK8481493249,FedEx,Halifax,Moncton,Customs Hold,Medium,Resolved,2026-06-08 20:00:00,24,Fog,Low,29.85,1878.81,Refund Issued,88,WH-MTL-002,DRV00480
+INC015174,SHP044943,TRK6294186715,UPS,Vancouver,Kelowna,Weather Delay,Low,Under Investigation,2026-05-24 09:00:00,8,Rain,Medium,22.45,2311.05,Driver Reassigned,88,WH-TOR-001,DRV01875
+INC020243,SHP064622,TRK8516953310,DHL,Vancouver,Kelowna,Carrier Delay,Low,Resolved,2026-01-13 18:00:00,2,Cloudy,Medium,12.3,1295.43,Refund Issued,83,WH-VAN-005,DRV00648
+INC016000,SHP061407,TRK4836058005,FedEx,Calgary,Edmonton,Lost Package,Low,Under Investigation,2026-06-30 04:00:00,4,Clear,High,17.35,2130.08,Route Reassigned,30,WH-HFX-003,DRV00417
+INC001885,SHP031494,TRK5430308927,Canada Post,Calgary,Edmonton,Weather Delay,High,Escalated,2026-05-17 11:00:00,12,Clear,Low,9.55,266.99,Shipment Reprocessed,13,WH-HFX-003,DRV01513
+INC011658,SHP099817,TRK3185965531,Purolator,Calgary,Edmonton,Damaged Shipment,Critical,Under Investigation,2026-03-26 16:00:00,12,Rain,Medium,24.55,1658.75,Shipment Reprocessed,79,WH-TOR-001,DRV00139
+INC000194,SHP044700,TRK4073609625,FedEx,Ottawa,Toronto,Weather Delay,High,Resolved,2026-01-22 18:00:00,1,Snow,High,35.02,1170.71,Shipment Reprocessed,57,WH-CGY-004,DRV02265
+INC020170,SHP072477,TRK2432500166,FedEx,Calgary,Edmonton,Mechanical Failure,Medium,Resolved,2026-04-10 12:00:00,1,Snow,Medium,27.52,2410.57,Delivery Rescheduled,71,WH-TOR-001,DRV02170
+INC015085,SHP061451,TRK6556474301,DHL,Halifax,Moncton,Customs Hold,Low,Resolved,2026-01-24 05:00:00,48,Rain,Low,38.95,2293.69,Customer Notified,75,WH-VAN-005,DRV00266
+INC010766,SHP010904,TRK6414257579,Purolator,Ottawa,Toronto,Weather Delay,Low,Under Investigation,2026-01-10 07:00:00,4,Snow,Low,24.6,2423.8,Shipment Reprocessed,22,WH-HFX-003,DRV00912
+INC011597,SHP014078,TRK8166197598,Purolator,Ottawa,Toronto,Failed Delivery Attempt,Low,Resolved,2026-03-06 10:00:00,1,Clear,Medium,8.28,2009.12,Route Reassigned,6,WH-MTL-002,DRV00152
+INC003512,SHP030524,TRK1177378722,UPS,Vancouver,Kelowna,Damaged Shipment,Medium,Resolved,2026-04-03 18:00:00,1,Rain,Medium,18.77,1559.15,Driver Reassigned,73,WH-TOR-001,DRV01832
+INC000169,SHP090310,TRK9338424661,Canada Post,Halifax,Moncton,Warehouse Processing Delay,High,Resolved,2026-03-06 10:00:00,1,Storm,Medium,36.28,576.6,Carrier Investigation,37,WH-HFX-003,DRV00098
+INC011460,SHP006138,TRK6821898566,DHL,Ottawa,Toronto,Weather Delay,Medium,Open,2026-04-06 01:00:00,2,Cloudy,Low,7.8,1114.21,Delivery Rescheduled,75,WH-MTL-002,DRV01386
+INC023673,SHP087755,TRK3876737708,Canada Post,Calgary,Edmonton,Customs Hold,High,Resolved,2026-03-25 06:00:00,48,Clear,Low,28.45,791.77,Shipment Reprocessed,78,WH-TOR-001,DRV00310
+INC006101,SHP066434,TRK7390774041,FedEx,Ottawa,Toronto,Warehouse Processing Delay,Low,Resolved,2026-01-05 04:00:00,72,Clear,Low,31.25,783.94,Shipment Reprocessed,25,WH-HFX-003,DRV02030
+INC013175,SHP063980,TRK9505432180,UPS,Halifax,Moncton,Customs Hold,High,Open,2026-04-10 18:00:00,4,Clear,Medium,9.85,689.1,Warehouse Escalation,59,WH-VAN-005,DRV01693
+INC011618,SHP016123,TRK1257720151,FedEx,Calgary,Edmonton,Lost Package,Low,Resolved,2026-01-06 20:00:00,4,Clear,Medium,9.85,1287.93,Shipment Reprocessed,58,WH-HFX-003,DRV00278
+INC000291,SHP054770,TRK7511480380,Canada Post,Toronto,Montreal,Warehouse Processing Delay,Medium,Resolved,2026-03-07 13:00:00,0,Storm,High,43.25,1817.48,Delivery Rescheduled,68,WH-OTT-006,DRV01498
+INC003321,SHP003736,TRK1590100580,DHL,Vancouver,Kelowna,Traffic Disruption,Medium,Escalated,2026-04-28 22:00:00,2,Rain,Medium,19.3,1153.02,Carrier Investigation,7,WH-HFX-003,DRV01740
+INC014117,SHP050294,TRK5762163171,DHL,Calgary,Edmonton,Warehouse Processing Delay,Low,Under Investigation,2026-04-14 06:00:00,8,Rain,High,29.95,1499.42,Carrier Investigation,58,WH-TOR-001,DRV00607
+INC016124,SHP071535,TRK4553455267,UPS,Toronto,Montreal,Failed Delivery Attempt,Low,Resolved,2026-03-30 11:00:00,4,Clear,Low,5.35,1286.85,Driver Reassigned,66,WH-TOR-001,DRV00091
+INC006474,SHP043023,TRK9582237869,Purolator,Halifax,Moncton,Damaged Shipment,Medium,Resolved,2026-05-16 21:00:00,4,Clear,Medium,9.85,1664.8,Driver Reassigned,79,WH-OTT-006,DRV01645
+INC002777,SHP014137,TRK1689120490,Canada Post,Toronto,Montreal,Warehouse Processing Delay,Medium,Open,2026-02-19 16:00:00,72,Clear,Low,31.25,762.13,Warehouse Escalation,89,WH-CGY-004,DRV00198
+INC017338,SHP052612,TRK6490610057,DHL,Halifax,Moncton,Address Issue,Medium,Resolved,2026-02-24 08:00:00,72,Clear,Medium,35.75,2290.97,Driver Reassigned,61,WH-VAN-005,DRV01500
+INC016854,SHP050475,TRK3268552460,FedEx,Ottawa,Toronto,Weather Delay,Medium,Under Investigation,2026-05-10 16:00:00,48,Fog,High,54.45,241.56,Route Reassigned,89,WH-TOR-001,DRV00190
+INC005037,SHP087000,TRK8369844231,UPS,Toronto,Montreal,Damaged Shipment,Medium,Resolved,2026-03-28 18:00:00,4,Snow,High,36.6,1151.5,Delivery Rescheduled,32,WH-HFX-003,DRV00124
+INC013459,SHP003222,TRK5661689829,DHL,Calgary,Edmonton,Customs Hold,Low,Resolved,2026-05-25 21:00:00,2,Clear,Low,4.3,226.32,Delivery Rescheduled,48,WH-VAN-005,DRV01876
+INC004059,SHP006250,TRK2825161779,FedEx,Calgary,Edmonton,Warehouse Processing Delay,High,Under Investigation,2026-03-19 07:00:00,4,Clear,Medium,9.85,1423.84,Driver Reassigned,41,WH-HFX-003,DRV01730
+INC015972,SHP037218,TRK5050135502,Purolator,Ottawa,Toronto,Weather Delay,Low,Resolved,2026-02-21 12:00:00,1,Rain,Low,14.28,1960.3,Route Reassigned,24,WH-TOR-001,DRV02260
+INC000227,SHP054025,TRK1309459757,UPS,Toronto,Montreal,Address Issue,High,Resolved,2026-05-03 21:00:00,2,Clear,Medium,8.8,1969.39,Shipment Reprocessed,8,WH-VAN-005,DRV00130
+INC005100,SHP021665,TRK3970563608,DHL,Ottawa,Toronto,Lost Package,Low,Resolved,2026-06-19 05:00:00,8,Clear,High,19.45,951.63,Driver Reassigned,8,WH-CGY-004,DRV02178
+INC021517,SHP042431,TRK4463452351,UPS,Toronto,Montreal,Damaged Shipment,Low,Resolved,2026-03-26 23:00:00,2,Cloudy,Low,7.8,1756.6,Customer Notified,95,WH-VAN-005,DRV00059
+INC008197,SHP036090,TRK7388582365,UPS,Ottawa,Toronto,Address Issue,Low,Resolved,2026-04-03 23:00:00,2,Cloudy,Medium,12.3,219.22,Carrier Investigation,86,WH-VAN-005,DRV00418
+INC007409,SHP062063,TRK3575423648,FedEx,Toronto,Montreal,Lost Package,Low,Open,2026-02-20 20:00:00,12,Clear,High,21.55,1369.97,Driver Reassigned,86,WH-TOR-001,DRV01647
+INC015424,SHP082677,TRK1373772879,DHL,Ottawa,Toronto,Traffic Disruption,Low,Resolved,2026-02-11 01:00:00,48,Clear,High,40.45,1404.52,Route Reassigned,64,WH-HFX-003,DRV00291
+INC012956,SHP002270,TRK8726870110,Canada Post,Toronto,Montreal,Failed Delivery Attempt,Medium,Resolved,2026-05-12 06:00:00,2,Rain,Low,14.8,1353.52,Route Reassigned,71,WH-CGY-004,DRV00222
+INC012266,SHP072879,TRK9775372354,Purolator,Halifax,Moncton,Damaged Shipment,Low,Resolved,2026-02-15 23:00:00,48,Rain,Low,38.95,1440.17,Customer Notified,53,WH-CGY-004,DRV01632
+INC009807,SHP076259,TRK8079867225,Canada Post,Calgary,Edmonton,Lost Package,Medium,Resolved,2026-06-05 05:00:00,24,Rain,Medium,30.85,2367.68,Delivery Rescheduled,76,WH-OTT-006,DRV01024
+INC011944,SHP043586,TRK4374123999,Canada Post,Vancouver,Kelowna,Lost Package,Critical,Resolved,2026-01-30 00:00:00,2,Clear,Medium,8.8,1299.57,Customer Notified,74,WH-VAN-005,DRV01129
+INC014036,SHP004527,TRK5689945751,Canada Post,Toronto,Montreal,Weather Delay,Critical,Resolved,2026-03-11 10:00:00,2,Fog,High,30.3,782.24,Route Reassigned,4,WH-OTT-006,DRV01909
+INC005970,SHP022991,TRK3345720569,UPS,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-03-30 06:00:00,4,Clear,Low,5.35,1985.34,Route Reassigned,9,WH-OTT-006,DRV02353
+INC008831,SHP003909,TRK9283893163,Canada Post,Ottawa,Toronto,Traffic Disruption,High,Under Investigation,2026-01-13 15:00:00,4,Rain,Medium,20.35,538.97,Shipment Reprocessed,42,WH-HFX-003,DRV00024
+INC003562,SHP026190,TRK2854658571,DHL,Vancouver,Kelowna,Traffic Disruption,Medium,Resolved,2026-02-15 02:00:00,24,Rain,High,38.35,1278.29,Shipment Reprocessed,25,WH-TOR-001,DRV00162
+INC014372,SHP013549,TRK1481456747,FedEx,Vancouver,Kelowna,Weather Delay,Medium,Escalated,2026-03-25 04:00:00,1,Cloudy,Low,7.28,2333.01,Shipment Reprocessed,14,WH-MTL-002,DRV01852
+INC021505,SHP022706,TRK8195173692,UPS,Halifax,Moncton,Warehouse Processing Delay,High,Resolved,2026-02-04 02:00:00,8,Clear,Low,7.45,2479.5,Route Reassigned,82,WH-TOR-001,DRV00217
+INC014397,SHP077699,TRK5350918521,DHL,Toronto,Montreal,Warehouse Processing Delay,Low,Escalated,2026-02-22 12:00:00,8,Clear,Medium,11.95,1963.84,Route Reassigned,83,WH-OTT-006,DRV00551
+INC005303,SHP064265,TRK5029522839,UPS,Ottawa,Toronto,Address Issue,Medium,Resolved,2026-04-07 21:00:00,2,Snow,Medium,28.05,1567.67,Customer Notified,36,WH-OTT-006,DRV01305
+INC004584,SHP064450,TRK9142851020,FedEx,Halifax,Moncton,Damaged Shipment,Medium,Resolved,2026-04-10 09:00:00,1,Rain,Medium,18.77,737.34,Customer Notified,93,WH-OTT-006,DRV00870
+INC011592,SHP030237,TRK8894515445,UPS,Vancouver,Kelowna,Customs Hold,Medium,Open,2026-05-29 22:00:00,0,Snow,Severe,42.0,332.77,Warehouse Escalation,53,WH-HFX-003,DRV02013
+INC024481,SHP065761,TRK9650776070,DHL,Ottawa,Toronto,Traffic Disruption,Low,Resolved,2026-03-03 00:00:00,12,Snow,Severe,48.3,560.94,Delivery Rescheduled,14,WH-MTL-002,DRV01095
+INC014221,SHP055415,TRK8993477051,UPS,Ottawa,Toronto,Mechanical Failure,High,Resolved,2026-06-22 19:00:00,4,Snow,Low,24.6,1576.37,Delivery Rescheduled,8,WH-VAN-005,DRV00536
+INC000191,SHP039779,TRK7057551985,UPS,Ottawa,Toronto,Damaged Shipment,Low,Escalated,2026-04-03 05:00:00,8,Rain,Low,17.95,2074.2,Refund Issued,6,WH-OTT-006,DRV00624
+INC011772,SHP094322,TRK2934788466,FedEx,Calgary,Edmonton,Weather Delay,Medium,Open,2026-05-18 19:00:00,12,Rain,Low,20.05,1553.53,Refund Issued,7,WH-TOR-001,DRV01653
+INC023240,SHP031660,TRK7990894114,Canada Post,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-01-09 10:00:00,1,Clear,Low,3.78,1679.31,Warehouse Escalation,25,WH-CGY-004,DRV00152
+INC006504,SHP086339,TRK2869451880,FedEx,Halifax,Moncton,Mechanical Failure,Low,Resolved,2026-05-02 00:00:00,8,Clear,Low,7.45,541.67,Delivery Rescheduled,28,WH-MTL-002,DRV00989
+INC003627,SHP025664,TRK2178624525,Purolator,Ottawa,Toronto,Traffic Disruption,Medium,Resolved,2026-01-14 17:00:00,1,Clear,High,15.78,97.58,Driver Reassigned,44,WH-MTL-002,DRV00356
+INC006212,SHP038904,TRK4606164775,Purolator,Halifax,Moncton,Traffic Disruption,Medium,Resolved,2026-05-13 10:00:00,1,Cloudy,High,19.27,1130.01,Customer Notified,4,WH-OTT-006,DRV00448
+INC009336,SHP032837,TRK6426785841,Purolator,Halifax,Moncton,Damaged Shipment,Medium,Resolved,2026-05-30 08:00:00,2,Clear,Medium,8.8,2406.22,Warehouse Escalation,69,WH-VAN-005,DRV02487
+INC001320,SHP014022,TRK7794829416,UPS,Vancouver,Kelowna,Lost Package,High,Escalated,2026-01-21 10:00:00,4,Clear,Medium,9.85,185.13,Driver Reassigned,39,WH-CGY-004,DRV02044
+INC004381,SHP049999,TRK6128606340,Purolator,Ottawa,Toronto,Customs Hold,High,Escalated,2026-05-08 10:00:00,1,Rain,Low,14.28,1052.63,Driver Reassigned,51,WH-HFX-003,DRV00223
+INC012929,SHP050832,TRK9583550209,DHL,Toronto,Montreal,Failed Delivery Attempt,Low,Resolved,2026-04-21 05:00:00,12,Clear,Medium,14.05,2484.86,Driver Reassigned,57,WH-TOR-001,DRV02305
+INC013798,SHP046293,TRK2138254891,UPS,Ottawa,Toronto,Weather Delay,Low,Escalated,2026-03-12 17:00:00,12,Rain,Low,20.05,1447.65,Driver Reassigned,11,WH-VAN-005,DRV00263
+INC024377,SHP000787,TRK5581657450,FedEx,Ottawa,Toronto,Weather Delay,Low,Under Investigation,2026-06-06 02:00:00,1,Rain,High,26.28,264.66,Driver Reassigned,73,WH-TOR-001,DRV02322
+INC010854,SHP071670,TRK4265954365,Canada Post,Ottawa,Toronto,Address Issue,Medium,Resolved,2026-03-02 22:00:00,1,Storm,High,43.78,818.07,Driver Reassigned,71,WH-CGY-004,DRV01977
+INC001036,SHP024021,TRK4704099310,Purolator,Vancouver,Kelowna,Traffic Disruption,Critical,Resolved,2026-01-20 05:00:00,4,Clear,Low,5.35,1049.45,Shipment Reprocessed,30,WH-VAN-005,DRV00776
+INC005254,SHP003853,TRK4261371500,Canada Post,Toronto,Montreal,Lost Package,Low,Resolved,2026-01-24 20:00:00,4,Rain,High,27.85,716.8,Driver Reassigned,73,WH-HFX-003,DRV01075
+INC021831,SHP064748,TRK8885544140,FedEx,Calgary,Edmonton,Traffic Disruption,Medium,Resolved,2026-02-24 04:00:00,4,Clear,High,17.35,879.49,Customer Notified,85,WH-CGY-004,DRV00558
+INC006521,SHP025909,TRK3020909673,UPS,Ottawa,Toronto,Damaged Shipment,Low,Resolved,2026-06-11 03:00:00,4,Rain,Low,15.85,271.58,Carrier Investigation,89,WH-VAN-005,DRV00612
+INC015706,SHP030740,TRK3854778561,Purolator,Vancouver,Kelowna,Damaged Shipment,Low,Resolved,2026-01-28 12:00:00,48,Rain,Low,38.95,2422.62,Route Reassigned,74,WH-HFX-003,DRV00093
+INC021799,SHP075979,TRK6953344046,DHL,Vancouver,Kelowna,Failed Delivery Attempt,Low,Resolved,2026-03-19 20:00:00,1,Rain,Low,14.28,351.09,Delivery Rescheduled,42,WH-VAN-005,DRV02421
+INC008710,SHP011011,TRK6098507141,Purolator,Vancouver,Kelowna,Lost Package,Low,Escalated,2026-02-18 20:00:00,2,Rain,Low,14.8,1827.67,Carrier Investigation,3,WH-CGY-004,DRV00470
+INC013799,SHP062330,TRK8414509843,UPS,Halifax,Moncton,Warehouse Processing Delay,High,Resolved,2026-03-10 22:00:00,8,Rain,Medium,22.45,1859.83,Refund Issued,43,WH-HFX-003,DRV02136
+INC016026,SHP005928,TRK7086809948,UPS,Ottawa,Toronto,Traffic Disruption,Low,Resolved,2026-07-01 12:00:00,1,Snow,Medium,27.52,1600.17,Refund Issued,43,WH-VAN-005,DRV00589
+INC018027,SHP038347,TRK1485636005,Purolator,Halifax,Moncton,Traffic Disruption,High,Resolved,2026-02-14 02:00:00,4,Rain,High,27.85,593.87,Warehouse Escalation,46,WH-HFX-003,DRV00069
+INC016239,SHP077163,TRK7218523850,DHL,Ottawa,Toronto,Weather Delay,Critical,Escalated,2026-04-24 14:00:00,12,Cloudy,Medium,17.55,2070.99,Shipment Reprocessed,31,WH-VAN-005,DRV00947
+INC022340,SHP082090,TRK2857433406,Purolator,Ottawa,Toronto,Lost Package,High,Open,2026-01-12 01:00:00,2,Fog,Low,18.3,2197.74,Carrier Investigation,20,WH-CGY-004,DRV00390
+INC023407,SHP067583,TRK8810588505,UPS,Toronto,Montreal,Weather Delay,Medium,Under Investigation,2026-06-14 04:00:00,1,Rain,Medium,18.77,2027.09,Refund Issued,40,WH-HFX-003,DRV00793
+INC004176,SHP052190,TRK2069706007,DHL,Halifax,Moncton,Customs Hold,High,Resolved,2026-04-10 22:00:00,72,Clear,Low,31.25,2273.39,Customer Notified,92,WH-OTT-006,DRV02006
+INC010646,SHP037936,TRK6844930745,FedEx,Halifax,Moncton,Mechanical Failure,Low,Resolved,2026-04-13 12:00:00,4,Clear,Low,5.35,1558.63,Driver Reassigned,42,WH-TOR-001,DRV00751
+INC024612,SHP039659,TRK5692821525,DHL,Vancouver,Kelowna,Damaged Shipment,Low,Resolved,2026-03-18 06:00:00,4,Snow,Medium,29.1,1783.8,Refund Issued,55,WH-MTL-002,DRV02151
+INC013104,SHP033189,TRK1056719943,Canada Post,Halifax,Moncton,Weather Delay,Low,Escalated,2026-05-21 14:00:00,4,Clear,Medium,9.85,1697.96,Delivery Rescheduled,60,WH-OTT-006,DRV01398
+INC016445,SHP094079,TRK9820972153,Purolator,Calgary,Edmonton,Mechanical Failure,Medium,Resolved,2026-04-26 06:00:00,12,Clear,Low,9.55,509.6,Warehouse Escalation,8,WH-TOR-001,DRV01745
+INC023790,SHP067788,TRK1311911780,UPS,Calgary,Edmonton,Damaged Shipment,Low,Resolved,2026-03-16 15:00:00,2,Rain,High,26.8,1050.73,Driver Reassigned,50,WH-CGY-004,DRV01122
+INC024311,SHP001312,TRK1569865054,DHL,Calgary,Edmonton,Traffic Disruption,Medium,Under Investigation,2026-03-11 17:00:00,1,Cloudy,Low,7.28,379.94,Route Reassigned,7,WH-VAN-005,DRV01405
+INC012742,SHP007101,TRK8927825790,UPS,Halifax,Moncton,Failed Delivery Attempt,Low,Resolved,2026-04-20 23:00:00,2,Clear,Low,4.3,1043.42,Customer Notified,4,WH-VAN-005,DRV00119
+INC004307,SHP038020,TRK9430462056,Canada Post,Ottawa,Toronto,Failed Delivery Attempt,Low,Resolved,2026-02-17 08:00:00,0,Snow,Severe,42.0,2498.23,Delivery Rescheduled,23,WH-CGY-004,DRV02384
+INC003596,SHP021420,TRK6854691786,Canada Post,Ottawa,Toronto,Traffic Disruption,Low,Resolved,2026-05-13 14:00:00,8,Rain,Severe,37.45,1008.95,Refund Issued,79,WH-CGY-004,DRV00648
+INC003535,SHP065192,TRK8748651362,Purolator,Calgary,Edmonton,Carrier Delay,Medium,Resolved,2026-05-25 17:00:00,8,Clear,Low,7.45,2106.52,Warehouse Escalation,91,WH-OTT-006,DRV01935
+INC000694,SHP024637,TRK3253650383,DHL,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-01-05 17:00:00,4,Clear,Low,5.35,1133.16,Carrier Investigation,68,WH-OTT-006,DRV01047
+INC004133,SHP091064,TRK7658754707,Purolator,Halifax,Moncton,Lost Package,Medium,Under Investigation,2026-01-17 01:00:00,2,Cloudy,Medium,12.3,2293.2,Warehouse Escalation,71,WH-MTL-002,DRV01951
+INC005097,SHP000962,TRK5692489893,Canada Post,Vancouver,Kelowna,Carrier Delay,High,Escalated,2026-03-20 20:00:00,8,Rain,Low,17.95,1071.23,Driver Reassigned,25,WH-CGY-004,DRV01793
+INC011277,SHP004902,TRK4381876078,FedEx,Calgary,Edmonton,Carrier Delay,Low,Resolved,2026-05-23 23:00:00,2,Rain,Severe,34.3,233.04,Driver Reassigned,92,WH-VAN-005,DRV00966
+INC016385,SHP044966,TRK9720097292,Purolator,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-01-17 11:00:00,48,Clear,High,40.45,2199.0,Carrier Investigation,56,WH-CGY-004,DRV00101
+INC000448,SHP098928,TRK4269023997,UPS,Toronto,Montreal,Damaged Shipment,Medium,Under Investigation,2026-01-05 22:00:00,1,Rain,Low,14.28,2227.21,Delivery Rescheduled,24,WH-CGY-004,DRV02449
+INC022428,SHP066181,TRK1906630214,UPS,Halifax,Moncton,Traffic Disruption,Medium,Resolved,2026-06-12 18:00:00,0,Storm,High,43.25,1224.98,Carrier Investigation,26,WH-HFX-003,DRV01479
+INC007750,SHP067007,TRK3059594169,DHL,Halifax,Moncton,Lost Package,Medium,Resolved,2026-05-15 11:00:00,4,Fog,Medium,23.85,1166.94,Driver Reassigned,54,WH-HFX-003,DRV01456
+INC001706,SHP000555,TRK2469679392,Canada Post,Toronto,Montreal,Lost Package,Low,Open,2026-03-21 10:00:00,2,Cloudy,Medium,12.3,1055.16,Refund Issued,82,WH-TOR-001,DRV00657
+INC022227,SHP059021,TRK3792907555,DHL,Ottawa,Toronto,Mechanical Failure,Medium,Resolved,2026-03-01 20:00:00,1,Clear,Severe,23.28,1216.33,Route Reassigned,43,WH-VAN-005,DRV00679
+INC011212,SHP000043,TRK6962567303,UPS,Vancouver,Kelowna,Mechanical Failure,Medium,Open,2026-01-20 03:00:00,8,Clear,High,19.45,2203.31,Carrier Investigation,38,WH-MTL-002,DRV00763
+INC014080,SHP030388,TRK4177811035,UPS,Vancouver,Kelowna,Traffic Disruption,High,Resolved,2026-06-29 23:00:00,8,Storm,High,47.45,1488.6,Route Reassigned,77,WH-MTL-002,DRV00755
+INC019566,SHP083631,TRK6112270486,FedEx,Halifax,Moncton,Mechanical Failure,Medium,Under Investigation,2026-03-03 10:00:00,4,Rain,Medium,20.35,920.88,Warehouse Escalation,15,WH-VAN-005,DRV00461
+INC024165,SHP078083,TRK8995895746,UPS,Ottawa,Toronto,Customs Hold,High,Under Investigation,2026-01-12 14:00:00,8,Rain,Medium,22.45,1638.57,Warehouse Escalation,52,WH-TOR-001,DRV00470
+INC000264,SHP011137,TRK4452897722,DHL,Toronto,Montreal,Traffic Disruption,High,Open,2026-04-26 18:00:00,24,Clear,Medium,20.35,2339.37,Shipment Reprocessed,87,WH-HFX-003,DRV00689
+INC014233,SHP091800,TRK9938586991,Purolator,Halifax,Moncton,Weather Delay,High,Resolved,2026-06-22 07:00:00,4,Clear,Low,5.35,1731.19,Refund Issued,22,WH-VAN-005,DRV00754
+INC015735,SHP034717,TRK2451132416,DHL,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-04-29 05:00:00,12,Rain,High,32.05,856.96,Route Reassigned,15,WH-HFX-003,DRV01950
+INC009486,SHP025249,TRK2930338924,DHL,Toronto,Montreal,Carrier Delay,Low,Resolved,2026-04-12 10:00:00,1,Clear,Low,3.78,2066.15,Carrier Investigation,6,WH-HFX-003,DRV01296
+INC009248,SHP090212,TRK7768471018,DHL,Ottawa,Toronto,Lost Package,High,Resolved,2026-01-29 20:00:00,8,Rain,Low,17.95,1279.86,Shipment Reprocessed,79,WH-CGY-004,DRV02418
+INC015923,SHP064816,TRK1482873117,Canada Post,Calgary,Edmonton,Mechanical Failure,High,Resolved,2026-05-10 12:00:00,2,Cloudy,Medium,12.3,1670.25,Delivery Rescheduled,15,WH-TOR-001,DRV00164
+INC024934,SHP080419,TRK9350449161,UPS,Ottawa,Toronto,Mechanical Failure,Medium,Resolved,2026-02-26 09:00:00,12,Rain,Low,20.05,1921.39,Carrier Investigation,15,WH-VAN-005,DRV00771
+INC014056,SHP071321,TRK1676549655,FedEx,Halifax,Moncton,Weather Delay,Medium,Resolved,2026-05-15 07:00:00,4,Cloudy,Low,8.85,962.96,Carrier Investigation,12,WH-TOR-001,DRV02228
+INC008119,SHP023494,TRK4543085301,FedEx,Calgary,Edmonton,Traffic Disruption,Low,Under Investigation,2026-07-02 07:00:00,24,Clear,Low,15.85,990.76,Route Reassigned,26,WH-HFX-003,DRV00343
+INC020238,SHP092306,TRK8224088511,UPS,Vancouver,Kelowna,Damaged Shipment,Low,Open,2026-05-14 13:00:00,1,Clear,Low,3.78,999.81,Warehouse Escalation,63,WH-CGY-004,DRV01594
+INC004997,SHP096270,TRK3519335669,Purolator,Toronto,Montreal,Traffic Disruption,Low,Resolved,2026-03-05 10:00:00,12,Cloudy,High,25.05,745.93,Carrier Investigation,89,WH-CGY-004,DRV00904
+INC023897,SHP071417,TRK8237554522,FedEx,Toronto,Montreal,Lost Package,Critical,Under Investigation,2026-04-05 22:00:00,2,Rain,Medium,19.3,428.06,Delivery Rescheduled,74,WH-CGY-004,DRV01113
+INC016753,SHP060476,TRK4246034792,Purolator,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-01-01 17:00:00,8,Cloudy,Medium,15.45,1140.3,Carrier Investigation,34,WH-MTL-002,DRV01571
+INC006124,SHP065242,TRK1921546316,Canada Post,Ottawa,Toronto,Warehouse Processing Delay,Medium,Open,2026-03-14 12:00:00,24,Rain,Medium,30.85,1883.34,Route Reassigned,93,WH-OTT-006,DRV02072
+INC008175,SHP031499,TRK9237668310,UPS,Toronto,Montreal,Failed Delivery Attempt,High,Resolved,2026-06-21 15:00:00,8,Rain,High,29.95,1722.33,Shipment Reprocessed,37,WH-MTL-002,DRV01863
+INC009213,SHP007962,TRK9660283341,DHL,Toronto,Montreal,Warehouse Processing Delay,High,Escalated,2026-01-10 08:00:00,4,Clear,High,17.35,259.94,Carrier Investigation,45,WH-CGY-004,DRV01712
+INC003769,SHP067627,TRK4420737110,DHL,Calgary,Edmonton,Address Issue,Medium,Resolved,2026-04-20 21:00:00,4,Clear,Medium,9.85,875.73,Refund Issued,24,WH-HFX-003,DRV01169
+INC008636,SHP058925,TRK1284160225,UPS,Vancouver,Kelowna,Warehouse Processing Delay,Medium,Open,2026-01-06 22:00:00,1,Clear,High,15.78,2024.77,Delivery Rescheduled,7,WH-TOR-001,DRV01426
+INC022969,SHP087267,TRK5282113863,FedEx,Toronto,Montreal,Customs Hold,Low,Open,2026-03-29 04:00:00,1,Rain,Medium,18.77,664.78,Route Reassigned,52,WH-OTT-006,DRV02282
+INC008106,SHP058518,TRK1588909124,DHL,Ottawa,Toronto,Damaged Shipment,Medium,Escalated,2026-06-06 17:00:00,1,Clear,High,15.78,606.93,Carrier Investigation,84,WH-HFX-003,DRV00205
+INC021835,SHP065207,TRK2005097059,DHL,Vancouver,Kelowna,Traffic Disruption,High,Escalated,2026-05-01 09:00:00,24,Fog,High,41.85,1023.2,Route Reassigned,64,WH-TOR-001,DRV02028
+INC014063,SHP045653,TRK4895819601,UPS,Vancouver,Kelowna,Weather Delay,Medium,Under Investigation,2026-03-29 00:00:00,8,Snow,High,38.7,1615.42,Driver Reassigned,29,WH-CGY-004,DRV00478
+INC006502,SHP019851,TRK7988320459,DHL,Ottawa,Toronto,Customs Hold,Medium,Resolved,2026-01-26 05:00:00,1,Clear,Medium,8.28,1651.2,Warehouse Escalation,13,WH-VAN-005,DRV01495
+INC015529,SHP036608,TRK6678852154,Purolator,Ottawa,Toronto,Address Issue,High,Resolved,2026-05-03 13:00:00,1,Clear,Medium,8.28,2477.69,Carrier Investigation,87,WH-MTL-002,DRV01220
+INC023150,SHP081215,TRK6942738060,Purolator,Calgary,Edmonton,Failed Delivery Attempt,Medium,Under Investigation,2026-06-30 06:00:00,4,Rain,Medium,20.35,1929.25,Carrier Investigation,90,WH-MTL-002,DRV01245
+INC003378,SHP043078,TRK6017437445,UPS,Calgary,Edmonton,Traffic Disruption,Low,Escalated,2026-06-24 04:00:00,48,Clear,Medium,32.95,2282.07,Carrier Investigation,94,WH-TOR-001,DRV01182
+INC022976,SHP006927,TRK3673666665,Purolator,Vancouver,Kelowna,Weather Delay,Medium,Resolved,2026-02-17 16:00:00,12,Clear,Severe,29.05,1851.88,Route Reassigned,14,WH-OTT-006,DRV00966
+INC023936,SHP093893,TRK8039727504,FedEx,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-03-02 19:00:00,1,Cloudy,Low,7.28,1821.62,Warehouse Escalation,3,WH-VAN-005,DRV00662
+INC016461,SHP062408,TRK2122070253,UPS,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-03-19 11:00:00,12,Snow,Low,28.8,2430.07,Warehouse Escalation,28,WH-CGY-004,DRV01193
+INC020025,SHP052547,TRK1737386451,FedEx,Halifax,Moncton,Warehouse Processing Delay,Medium,Resolved,2026-05-29 11:00:00,2,Rain,High,26.8,2171.81,Carrier Investigation,85,WH-HFX-003,DRV01287
+INC005938,SHP050650,TRK1363280958,FedEx,Calgary,Edmonton,Traffic Disruption,Medium,Under Investigation,2026-05-26 07:00:00,1,Snow,High,35.02,496.46,Refund Issued,32,WH-TOR-001,DRV01935
+INC006183,SHP056279,TRK1707476532,UPS,Vancouver,Kelowna,Traffic Disruption,Low,Escalated,2026-05-10 16:00:00,8,Clear,Low,7.45,407.22,Carrier Investigation,90,WH-HFX-003,DRV01632
+INC019373,SHP032475,TRK4321602409,Purolator,Toronto,Montreal,Failed Delivery Attempt,Low,Resolved,2026-02-18 00:00:00,8,Storm,Medium,39.95,1978.29,Warehouse Escalation,47,WH-VAN-005,DRV00284
+INC020609,SHP040389,TRK2318611314,Purolator,Halifax,Moncton,Address Issue,Medium,Under Investigation,2026-01-08 06:00:00,8,Rain,Severe,37.45,1503.35,Shipment Reprocessed,18,WH-HFX-003,DRV00652
+INC020791,SHP011762,TRK6159653535,UPS,Vancouver,Kelowna,Damaged Shipment,High,Resolved,2026-05-24 09:00:00,4,Clear,Medium,9.85,262.96,Shipment Reprocessed,29,WH-VAN-005,DRV00591
+INC004874,SHP094740,TRK2243499793,Canada Post,Ottawa,Toronto,Customs Hold,High,Resolved,2026-04-23 10:00:00,1,Clear,Medium,8.28,2036.44,Route Reassigned,67,WH-MTL-002,DRV01346
+INC007517,SHP022921,TRK2129017871,FedEx,Calgary,Edmonton,Damaged Shipment,High,Open,2026-06-25 04:00:00,0,Storm,High,43.25,523.1,Refund Issued,17,WH-HFX-003,DRV01404
+INC003948,SHP077648,TRK2403648649,Purolator,Vancouver,Kelowna,Address Issue,Low,Resolved,2026-03-14 11:00:00,1,Fog,Medium,22.28,1877.61,Carrier Investigation,49,WH-HFX-003,DRV02418
+INC004336,SHP082097,TRK7315389222,DHL,Ottawa,Toronto,Traffic Disruption,Low,Resolved,2026-01-09 09:00:00,4,Clear,Low,5.35,2458.66,Refund Issued,23,WH-VAN-005,DRV01350
+INC013150,SHP066139,TRK6250054378,DHL,Halifax,Moncton,Address Issue,Medium,Resolved,2026-03-22 08:00:00,2,Clear,High,16.3,2130.09,Refund Issued,66,WH-HFX-003,DRV02456
+INC001258,SHP030277,TRK6871508452,DHL,Calgary,Edmonton,Failed Delivery Attempt,Low,Under Investigation,2026-02-28 17:00:00,2,Clear,Medium,8.8,297.85,Shipment Reprocessed,72,WH-VAN-005,DRV00339
+INC008974,SHP016243,TRK2693413473,FedEx,Vancouver,Kelowna,Damaged Shipment,Medium,Escalated,2026-03-15 19:00:00,1,Clear,Low,3.78,1911.69,Warehouse Escalation,81,WH-VAN-005,DRV00840
+INC006298,SHP096306,TRK5797218390,UPS,Halifax,Moncton,Weather Delay,Low,Resolved,2026-05-24 02:00:00,12,Cloudy,Low,13.05,567.84,Carrier Investigation,80,WH-TOR-001,DRV01344
+INC004791,SHP050799,TRK6388169058,UPS,Ottawa,Toronto,Failed Delivery Attempt,Medium,Resolved,2026-03-01 13:00:00,1,Clear,Low,3.78,478.72,Delivery Rescheduled,3,WH-OTT-006,DRV02230
+INC013970,SHP041058,TRK6037288005,Canada Post,Ottawa,Toronto,Warehouse Processing Delay,Medium,Resolved,2026-01-28 02:00:00,1,Clear,Medium,8.28,1013.73,Carrier Investigation,76,WH-MTL-002,DRV00658
+INC000579,SHP067672,TRK3751365760,UPS,Calgary,Edmonton,Failed Delivery Attempt,Low,Under Investigation,2026-05-25 13:00:00,2,Cloudy,Medium,12.3,1797.43,Carrier Investigation,60,WH-VAN-005,DRV02114
+INC020201,SHP096695,TRK4036843533,FedEx,Ottawa,Toronto,Failed Delivery Attempt,Low,Resolved,2026-03-24 12:00:00,12,Clear,Low,9.55,1206.73,Shipment Reprocessed,3,WH-VAN-005,DRV02422
+INC006542,SHP020495,TRK6181839836,Canada Post,Ottawa,Toronto,Warehouse Processing Delay,Medium,Resolved,2026-02-17 13:00:00,24,Snow,Medium,39.6,1687.09,Warehouse Escalation,60,WH-CGY-004,DRV01393
+INC002980,SHP046947,TRK6023088730,Canada Post,Calgary,Edmonton,Warehouse Processing Delay,Medium,Resolved,2026-05-30 16:00:00,72,Fog,Medium,49.75,1685.99,Warehouse Escalation,69,WH-HFX-003,DRV02177
+INC001670,SHP033142,TRK3004545999,FedEx,Calgary,Edmonton,Weather Delay,Low,Open,2026-02-02 04:00:00,48,Clear,Medium,32.95,981.37,Customer Notified,23,WH-TOR-001,DRV02341
+INC012464,SHP066410,TRK8257108217,FedEx,Toronto,Montreal,Traffic Disruption,Low,Escalated,2026-04-01 22:00:00,48,Rain,High,50.95,1822.5,Shipment Reprocessed,25,WH-TOR-001,DRV01645
+INC013347,SHP086215,TRK5651580514,UPS,Ottawa,Toronto,Carrier Delay,Low,Resolved,2026-05-26 21:00:00,12,Snow,Medium,33.3,733.86,Shipment Reprocessed,26,WH-CGY-004,DRV02045
+INC017203,SHP065555,TRK8489402352,UPS,Calgary,Edmonton,Lost Package,Low,Under Investigation,2026-03-12 04:00:00,48,Rain,Severe,58.45,1052.94,Driver Reassigned,81,WH-HFX-003,DRV02236
+INC010042,SHP049422,TRK6003868767,UPS,Vancouver,Kelowna,Damaged Shipment,Low,Resolved,2026-03-02 07:00:00,8,Rain,Medium,22.45,2160.14,Shipment Reprocessed,2,WH-MTL-002,DRV00648
+INC022943,SHP021050,TRK2760386040,Purolator,Ottawa,Toronto,Address Issue,Low,Under Investigation,2026-03-07 10:00:00,4,Clear,Low,5.35,83.84,Shipment Reprocessed,90,WH-OTT-006,DRV00099
+INC020753,SHP055418,TRK4030542754,Canada Post,Halifax,Moncton,Damaged Shipment,Low,Resolved,2026-03-12 20:00:00,24,Clear,High,27.85,1188.12,Driver Reassigned,25,WH-OTT-006,DRV01303
+INC007584,SHP046118,TRK6636893686,Canada Post,Toronto,Montreal,Carrier Delay,Low,Resolved,2026-04-01 18:00:00,2,Cloudy,Medium,12.3,679.85,Warehouse Escalation,92,WH-HFX-003,DRV00289
+INC007268,SHP089721,TRK5584356291,DHL,Toronto,Montreal,Damaged Shipment,Medium,Resolved,2026-03-16 02:00:00,24,Clear,High,27.85,732.36,Warehouse Escalation,18,WH-HFX-003,DRV01499
+INC011016,SHP082766,TRK4760352383,FedEx,Vancouver,Kelowna,Damaged Shipment,Low,Resolved,2026-02-24 04:00:00,1,Clear,High,15.78,1774.58,Shipment Reprocessed,68,WH-MTL-002,DRV01142
+INC013962,SHP092147,TRK6045973928,FedEx,Vancouver,Kelowna,Carrier Delay,Low,Resolved,2026-04-23 12:00:00,8,Clear,Low,7.45,714.84,Delivery Rescheduled,29,WH-OTT-006,DRV00943
+INC015703,SHP086367,TRK4643194231,Canada Post,Vancouver,Kelowna,Traffic Disruption,Medium,Under Investigation,2026-06-25 14:00:00,1,Clear,Medium,8.28,1559.61,Warehouse Escalation,95,WH-HFX-003,DRV02065
+INC002011,SHP066507,TRK2717710934,Purolator,Toronto,Montreal,Failed Delivery Attempt,Medium,Resolved,2026-03-08 19:00:00,8,Clear,High,19.45,874.85,Delivery Rescheduled,44,WH-HFX-003,DRV00134
+INC016708,SHP041450,TRK4942774824,Canada Post,Vancouver,Kelowna,Mechanical Failure,High,Resolved,2026-02-01 22:00:00,8,Rain,Low,17.95,260.01,Warehouse Escalation,43,WH-CGY-004,DRV01340
+INC013995,SHP030511,TRK5376345399,Canada Post,Vancouver,Kelowna,Failed Delivery Attempt,Low,Resolved,2026-05-26 07:00:00,8,Clear,Low,7.45,1969.63,Refund Issued,46,WH-HFX-003,DRV02494
+INC021099,SHP012422,TRK4868342927,FedEx,Ottawa,Toronto,Warehouse Processing Delay,Low,Resolved,2026-06-17 16:00:00,24,Clear,Medium,20.35,920.0,Warehouse Escalation,26,WH-MTL-002,DRV01884
+INC001693,SHP067048,TRK9081700118,FedEx,Calgary,Edmonton,Warehouse Processing Delay,High,Resolved,2026-05-26 23:00:00,1,Rain,Medium,18.77,472.89,Driver Reassigned,47,WH-MTL-002,DRV01796
+INC009971,SHP059836,TRK3459148181,DHL,Toronto,Montreal,Traffic Disruption,High,Resolved,2026-06-18 08:00:00,1,Clear,Low,3.78,1652.69,Driver Reassigned,2,WH-HFX-003,DRV01599
+INC003607,SHP064339,TRK7388393605,FedEx,Calgary,Edmonton,Customs Hold,Medium,Resolved,2026-02-24 02:00:00,1,Clear,Severe,23.28,231.13,Route Reassigned,79,WH-HFX-003,DRV00515
+INC008823,SHP093205,TRK9475358606,Purolator,Ottawa,Toronto,Mechanical Failure,Critical,Resolved,2026-06-20 23:00:00,1,Cloudy,High,19.27,1870.33,Delivery Rescheduled,55,WH-TOR-001,DRV01221
+INC009194,SHP076912,TRK5362514903,Purolator,Toronto,Montreal,Damaged Shipment,Low,Resolved,2026-05-14 23:00:00,8,Rain,Low,17.95,1539.67,Customer Notified,20,WH-TOR-001,DRV00188
+INC011503,SHP027316,TRK8821550613,DHL,Toronto,Montreal,Carrier Delay,High,Open,2026-03-04 15:00:00,8,Clear,Medium,11.95,746.45,Refund Issued,31,WH-TOR-001,DRV00738
+INC023318,SHP061798,TRK9315481753,Purolator,Ottawa,Toronto,Warehouse Processing Delay,High,Open,2026-06-16 11:00:00,8,Fog,High,33.45,856.05,Route Reassigned,55,WH-MTL-002,DRV00623
+INC013700,SHP028265,TRK7078354896,UPS,Vancouver,Kelowna,Failed Delivery Attempt,Medium,Resolved,2026-05-11 07:00:00,2,Fog,Medium,22.8,1065.48,Refund Issued,36,WH-TOR-001,DRV00001
+INC008093,SHP082521,TRK2144614346,Canada Post,Vancouver,Kelowna,Damaged Shipment,Low,Resolved,2026-04-22 21:00:00,8,Clear,Medium,11.95,313.16,Refund Issued,93,WH-CGY-004,DRV00489
+INC010481,SHP010932,TRK4959888196,Purolator,Toronto,Montreal,Weather Delay,Medium,Open,2026-03-29 10:00:00,12,Clear,Low,9.55,2368.17,Route Reassigned,20,WH-CGY-004,DRV01096
+INC001559,SHP008346,TRK7655163803,DHL,Halifax,Moncton,Warehouse Processing Delay,Medium,Open,2026-03-17 17:00:00,24,Fog,High,41.85,2239.16,Driver Reassigned,35,WH-MTL-002,DRV01358
+INC005956,SHP006752,TRK1731837438,Purolator,Vancouver,Kelowna,Damaged Shipment,Critical,Under Investigation,2026-01-06 07:00:00,2,Rain,Medium,19.3,1008.93,Driver Reassigned,74,WH-HFX-003,DRV00113
+INC001340,SHP063197,TRK7052696385,FedEx,Vancouver,Kelowna,Carrier Delay,Low,Open,2026-02-11 04:00:00,1,Rain,High,26.28,2347.0,Driver Reassigned,72,WH-CGY-004,DRV01390
+INC000018,SHP003169,TRK8862226865,UPS,Toronto,Montreal,Weather Delay,Low,Open,2026-06-18 21:00:00,1,Fog,Medium,22.28,1609.21,Refund Issued,53,WH-CGY-004,DRV01303
+INC001709,SHP030438,TRK2373102584,DHL,Halifax,Moncton,Lost Package,Medium,Resolved,2026-04-08 00:00:00,1,Fog,Low,17.77,2338.39,Carrier Investigation,6,WH-CGY-004,DRV00081
+INC021641,SHP082659,TRK2671377041,Purolator,Calgary,Edmonton,Failed Delivery Attempt,Critical,Resolved,2026-05-17 14:00:00,4,Snow,Low,24.6,1589.53,Shipment Reprocessed,16,WH-HFX-003,DRV01197
+INC024405,SHP000787,TRK5581657450,FedEx,Ottawa,Toronto,Weather Delay,Medium,Escalated,2026-06-05 14:00:00,1,Rain,High,26.28,1679.54,Driver Reassigned,3,WH-TOR-001,DRV02322
+INC010540,SHP076994,TRK3761862477,DHL,Halifax,Moncton,Weather Delay,Medium,Resolved,2026-05-27 09:00:00,48,Storm,Low,56.45,874.79,Shipment Reprocessed,64,WH-MTL-002,DRV02012
+INC006947,SHP060131,TRK2216574909,FedEx,Calgary,Edmonton,Address Issue,Medium,Under Investigation,2026-06-26 22:00:00,0,Storm,High,43.25,273.15,Driver Reassigned,64,WH-CGY-004,DRV02146
+INC009350,SHP076166,TRK5329183946,Purolator,Vancouver,Kelowna,Failed Delivery Attempt,Low,Open,2026-01-09 11:00:00,1,Clear,Medium,8.28,905.87,Shipment Reprocessed,15,WH-MTL-002,DRV01176
+INC015469,SHP021452,TRK1969693648,Purolator,Toronto,Montreal,Weather Delay,Low,Resolved,2026-01-25 20:00:00,8,Snow,Medium,31.2,1494.2,Warehouse Escalation,58,WH-VAN-005,DRV02170
+INC009181,SHP063590,TRK3725851222,Canada Post,Halifax,Moncton,Weather Delay,Low,Resolved,2026-02-27 04:00:00,2,Cloudy,Low,7.8,167.23,Driver Reassigned,39,WH-OTT-006,DRV02493
+INC019875,SHP068557,TRK3997585336,DHL,Toronto,Montreal,Lost Package,Medium,Resolved,2026-01-19 06:00:00,8,Rain,Low,17.95,1849.5,Delivery Rescheduled,75,WH-TOR-001,DRV00998
+INC003302,SHP097568,TRK7418983143,Purolator,Toronto,Montreal,Weather Delay,Low,Escalated,2026-01-26 11:00:00,4,Clear,High,17.35,1457.61,Warehouse Escalation,10,WH-MTL-002,DRV00689
+INC014120,SHP078480,TRK8500356699,UPS,Vancouver,Kelowna,Customs Hold,Low,Resolved,2026-01-15 16:00:00,8,Snow,Medium,31.2,1085.49,Route Reassigned,30,WH-HFX-003,DRV01976
+INC006057,SHP047771,TRK2557127117,UPS,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-04-02 16:00:00,0,Storm,High,43.25,437.48,Warehouse Escalation,75,WH-OTT-006,DRV02141
+INC008267,SHP033569,TRK9599318895,UPS,Vancouver,Kelowna,Address Issue,Medium,Escalated,2026-06-12 00:00:00,12,Cloudy,Medium,17.55,2051.51,Delivery Rescheduled,12,WH-VAN-005,DRV00343
+INC016099,SHP087125,TRK1801374336,Purolator,Halifax,Moncton,Carrier Delay,Medium,Resolved,2026-05-16 16:00:00,1,Cloudy,Medium,11.78,1635.46,Warehouse Escalation,95,WH-VAN-005,DRV02118
+INC010954,SHP088770,TRK9797219250,Canada Post,Vancouver,Kelowna,Mechanical Failure,High,Resolved,2026-05-01 15:00:00,12,Fog,High,35.55,1614.92,Customer Notified,12,WH-CGY-004,DRV00124
+INC009974,SHP091778,TRK2652274190,Canada Post,Halifax,Moncton,Weather Delay,Low,Open,2026-05-26 02:00:00,48,Clear,Medium,32.95,973.47,Route Reassigned,13,WH-MTL-002,DRV00312
+INC003655,SHP041368,TRK9575620183,Canada Post,Ottawa,Toronto,Lost Package,Critical,Resolved,2026-01-24 13:00:00,72,Clear,Medium,35.75,2098.01,Route Reassigned,11,WH-OTT-006,DRV01961
+INC003175,SHP096795,TRK5954366842,Canada Post,Toronto,Montreal,Weather Delay,Critical,Under Investigation,2026-03-01 16:00:00,4,Clear,Medium,9.85,323.49,Customer Notified,4,WH-CGY-004,DRV01554
+INC021921,SHP043729,TRK9967081703,FedEx,Toronto,Montreal,Weather Delay,Critical,Resolved,2026-05-13 21:00:00,24,Fog,High,41.85,2327.75,Delivery Rescheduled,11,WH-CGY-004,DRV01115
+INC022380,SHP090660,TRK7074856300,Canada Post,Ottawa,Toronto,Weather Delay,Low,Resolved,2026-04-20 10:00:00,12,Fog,Medium,28.05,1158.94,Refund Issued,45,WH-MTL-002,DRV01893
+INC018081,SHP005250,TRK3974765846,Canada Post,Ottawa,Toronto,Traffic Disruption,Low,Escalated,2026-04-27 00:00:00,1,Rain,Low,14.28,550.23,Carrier Investigation,88,WH-MTL-002,DRV00524
+INC004270,SHP067270,TRK6707044733,DHL,Calgary,Edmonton,Damaged Shipment,High,Escalated,2026-02-10 12:00:00,1,Clear,Medium,8.28,589.17,Warehouse Escalation,27,WH-MTL-002,DRV01459
+INC011816,SHP086850,TRK1475349334,FedEx,Halifax,Moncton,Weather Delay,Low,Open,2026-04-07 23:00:00,24,Clear,High,27.85,503.35,Refund Issued,11,WH-VAN-005,DRV00665
+INC011842,SHP096980,TRK5160245541,UPS,Ottawa,Toronto,Weather Delay,Low,Resolved,2026-05-02 06:00:00,4,Cloudy,High,20.85,307.21,Refund Issued,74,WH-MTL-002,DRV01821
+INC024345,SHP015618,TRK1942726908,FedEx,Vancouver,Kelowna,Failed Delivery Attempt,Critical,Open,2026-06-14 12:00:00,1,Snow,High,35.02,2070.22,Refund Issued,46,WH-OTT-006,DRV02134
+INC019298,SHP042965,TRK1242472589,Purolator,Halifax,Moncton,Traffic Disruption,Medium,Resolved,2026-01-25 15:00:00,2,Clear,Low,4.3,1294.75,Customer Notified,75,WH-HFX-003,DRV01214
+INC017330,SHP035492,TRK9122873045,DHL,Ottawa,Toronto,Failed Delivery Attempt,Low,Resolved,2026-01-11 02:00:00,1,Snow,Low,23.02,2059.94,Delivery Rescheduled,49,WH-TOR-001,DRV00050
+INC019816,SHP073241,TRK9644168932,DHL,Ottawa,Toronto,Carrier Delay,Medium,Resolved,2026-02-28 16:00:00,12,Rain,Low,20.05,1684.76,Customer Notified,28,WH-MTL-002,DRV00015
+INC012177,SHP072205,TRK2656390202,UPS,Calgary,Edmonton,Weather Delay,Medium,Escalated,2026-06-04 15:00:00,2,Clear,Medium,8.8,1995.8,Delivery Rescheduled,41,WH-HFX-003,DRV00197
+INC007808,SHP054821,TRK3249418239,UPS,Vancouver,Kelowna,Mechanical Failure,Low,Resolved,2026-04-09 05:00:00,12,Rain,Medium,24.55,1704.98,Route Reassigned,3,WH-CGY-004,DRV02040
+INC021308,SHP082170,TRK4886654160,DHL,Ottawa,Toronto,Warehouse Processing Delay,Medium,Resolved,2026-05-04 23:00:00,4,Rain,Low,15.85,1702.83,Delivery Rescheduled,10,WH-HFX-003,DRV01457
+INC009043,SHP080610,TRK2371505790,DHL,Halifax,Moncton,Customs Hold,Low,Resolved,2026-01-21 09:00:00,2,Clear,Low,4.3,1064.8,Carrier Investigation,83,WH-OTT-006,DRV01989
+INC006883,SHP053101,TRK6511080202,DHL,Halifax,Moncton,Damaged Shipment,High,Resolved,2026-05-20 10:00:00,4,Rain,High,27.85,1763.15,Delivery Rescheduled,80,WH-OTT-006,DRV02275
+INC019148,SHP027620,TRK7688381096,DHL,Ottawa,Toronto,Weather Delay,High,Resolved,2026-02-09 22:00:00,1,Clear,Low,3.78,1316.27,Delivery Rescheduled,49,WH-HFX-003,DRV01611
+INC012585,SHP035736,TRK2845003705,Canada Post,Ottawa,Toronto,Weather Delay,Low,Escalated,2026-06-12 05:00:00,1,Clear,Medium,8.28,2169.69,Refund Issued,32,WH-TOR-001,DRV02290
+INC002859,SHP015618,TRK1942726908,FedEx,Vancouver,Kelowna,Weather Delay,Medium,Resolved,2026-06-14 23:00:00,1,Snow,High,35.02,93.1,Customer Notified,16,WH-OTT-006,DRV02134
+INC003486,SHP043618,TRK1717547332,FedEx,Calgary,Edmonton,Weather Delay,Low,Under Investigation,2026-06-08 00:00:00,2,Clear,Medium,8.8,1357.84,Carrier Investigation,27,WH-CGY-004,DRV00437
+INC004276,SHP017330,TRK6136226377,UPS,Ottawa,Toronto,Carrier Delay,High,Escalated,2026-02-28 18:00:00,2,Clear,Severe,23.8,2025.51,Warehouse Escalation,4,WH-TOR-001,DRV01388
+INC024334,SHP072829,TRK8185097877,DHL,Vancouver,Kelowna,Carrier Delay,Low,Resolved,2026-02-19 10:00:00,8,Cloudy,High,22.95,2347.32,Warehouse Escalation,26,WH-MTL-002,DRV00333
+INC019721,SHP011209,TRK8480112483,Purolator,Toronto,Montreal,Traffic Disruption,Low,Resolved,2026-04-02 06:00:00,24,Clear,Low,15.85,496.68,Shipment Reprocessed,84,WH-CGY-004,DRV01906
+INC003944,SHP013381,TRK9352953400,Purolator,Ottawa,Toronto,Lost Package,Medium,Resolved,2026-01-04 04:00:00,4,Clear,Low,5.35,51.25,Driver Reassigned,2,WH-MTL-002,DRV01486
+INC001345,SHP076837,TRK4974769357,FedEx,Vancouver,Kelowna,Failed Delivery Attempt,Low,Open,2026-03-13 23:00:00,1,Cloudy,Low,7.28,1224.82,Refund Issued,10,WH-TOR-001,DRV01664
+INC019221,SHP064365,TRK6254606211,FedEx,Halifax,Moncton,Lost Package,Medium,Resolved,2026-03-06 06:00:00,4,Clear,Low,5.35,1055.51,Refund Issued,43,WH-OTT-006,DRV00181
+INC021442,SHP067910,TRK5753813892,Canada Post,Halifax,Moncton,Weather Delay,Low,Resolved,2026-06-07 15:00:00,2,Storm,Medium,36.8,1738.32,Shipment Reprocessed,56,WH-TOR-001,DRV01805
+INC006241,SHP096810,TRK1935324015,Purolator,Ottawa,Toronto,Warehouse Processing Delay,Low,Under Investigation,2026-05-18 12:00:00,8,Cloudy,Medium,15.45,1160.33,Shipment Reprocessed,25,WH-OTT-006,DRV01225
+INC006322,SHP094098,TRK8489434400,Canada Post,Ottawa,Toronto,Weather Delay,Low,Resolved,2026-05-06 11:00:00,8,Clear,Low,7.45,124.84,Carrier Investigation,85,WH-CGY-004,DRV01005
+INC023091,SHP030561,TRK3455893181,FedEx,Ottawa,Toronto,Damaged Shipment,High,Resolved,2026-05-20 08:00:00,24,Clear,High,27.85,99.38,Delivery Rescheduled,68,WH-HFX-003,DRV01605
+INC014607,SHP090893,TRK5509011056,FedEx,Toronto,Montreal,Traffic Disruption,Low,Resolved,2026-04-25 14:00:00,8,Clear,Low,7.45,1896.59,Shipment Reprocessed,7,WH-OTT-006,DRV01506
+INC003233,SHP070380,TRK4576446941,FedEx,Toronto,Montreal,Weather Delay,Low,Resolved,2026-04-17 10:00:00,4,Clear,Low,5.35,860.96,Delivery Rescheduled,85,WH-VAN-005,DRV01394
+INC002454,SHP024573,TRK5134523195,UPS,Halifax,Moncton,Customs Hold,Low,Resolved,2026-04-18 09:00:00,1,Clear,Medium,8.28,1537.95,Customer Notified,89,WH-MTL-002,DRV01784
+INC017911,SHP097526,TRK7384518938,UPS,Halifax,Moncton,Weather Delay,High,Resolved,2026-01-30 08:00:00,24,Clear,High,27.85,128.68,Warehouse Escalation,92,WH-HFX-003,DRV01040
+INC020284,SHP069619,TRK6630635694,Purolator,Halifax,Moncton,Traffic Disruption,Medium,Escalated,2026-05-21 08:00:00,8,Rain,High,29.95,1385.39,Carrier Investigation,54,WH-MTL-002,DRV01919
+INC011237,SHP067274,TRK3966457616,Purolator,Vancouver,Kelowna,Weather Delay,Medium,Resolved,2026-05-15 18:00:00,2,Clear,Medium,8.8,2461.58,Shipment Reprocessed,2,WH-VAN-005,DRV02355
+INC009879,SHP000842,TRK4324030340,UPS,Calgary,Edmonton,Warehouse Processing Delay,Low,Open,2026-02-11 12:00:00,1,Snow,High,35.02,2082.23,Customer Notified,32,WH-CGY-004,DRV02221
+INC023769,SHP036023,TRK5668866840,Canada Post,Vancouver,Kelowna,Warehouse Processing Delay,High,Under Investigation,2026-05-22 12:00:00,8,Clear,Low,7.45,2398.41,Carrier Investigation,49,WH-HFX-003,DRV02111
+INC015539,SHP037015,TRK9930788618,FedEx,Toronto,Montreal,Warehouse Processing Delay,Critical,Resolved,2026-06-05 11:00:00,4,Clear,Medium,9.85,1244.16,Driver Reassigned,41,WH-OTT-006,DRV00697
+INC024937,SHP028864,TRK6936698119,DHL,Ottawa,Toronto,Address Issue,Low,Under Investigation,2026-05-19 05:00:00,8,Clear,Medium,11.95,938.43,Warehouse Escalation,19,WH-MTL-002,DRV02043
+INC006620,SHP007984,TRK4551312056,UPS,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-03-24 02:00:00,1,Clear,Medium,8.28,1712.72,Route Reassigned,26,WH-HFX-003,DRV00491
+INC017484,SHP004269,TRK2948233118,Purolator,Halifax,Moncton,Lost Package,Medium,Resolved,2026-04-15 20:00:00,1,Storm,High,43.78,893.05,Warehouse Escalation,15,WH-CGY-004,DRV00150
+INC023619,SHP009350,TRK7415506036,FedEx,Toronto,Montreal,Traffic Disruption,Medium,Resolved,2026-02-28 23:00:00,4,Cloudy,High,20.85,1850.39,Refund Issued,82,WH-VAN-005,DRV00237
+INC005036,SHP069985,TRK2309399138,DHL,Halifax,Moncton,Failed Delivery Attempt,Low,Escalated,2026-05-14 20:00:00,1,Clear,Medium,8.28,2077.01,Shipment Reprocessed,70,WH-CGY-004,DRV00335
+INC001436,SHP013509,TRK9292212105,Canada Post,Toronto,Montreal,Traffic Disruption,Medium,Resolved,2026-01-27 10:00:00,1,Clear,Low,3.78,322.04,Refund Issued,33,WH-TOR-001,DRV00585
+INC004189,SHP078927,TRK6632424334,Canada Post,Calgary,Edmonton,Traffic Disruption,Medium,Resolved,2026-01-08 09:00:00,72,Snow,Medium,55.0,847.4,Driver Reassigned,90,WH-OTT-006,DRV02157
+INC006282,SHP075835,TRK3175052634,DHL,Calgary,Edmonton,Carrier Delay,Medium,Resolved,2026-02-02 18:00:00,72,Storm,Medium,63.75,638.96,Driver Reassigned,24,WH-HFX-003,DRV00431
+INC013704,SHP045609,TRK1006748317,UPS,Calgary,Edmonton,Warehouse Processing Delay,Low,Resolved,2026-04-30 12:00:00,1,Clear,Medium,8.28,724.63,Warehouse Escalation,78,WH-VAN-005,DRV02334
+INC018039,SHP047713,TRK9729156546,UPS,Toronto,Montreal,Mechanical Failure,Low,Escalated,2026-02-09 22:00:00,1,Clear,Medium,8.28,627.58,Refund Issued,66,WH-OTT-006,DRV00768
+INC008275,SHP014948,TRK9844812321,Purolator,Ottawa,Toronto,Weather Delay,Medium,Resolved,2026-02-26 05:00:00,4,Clear,Medium,9.85,1474.62,Warehouse Escalation,30,WH-CGY-004,DRV00457
+INC024883,SHP098623,TRK6802482405,UPS,Calgary,Edmonton,Failed Delivery Attempt,High,Resolved,2026-01-27 10:00:00,2,Clear,Low,4.3,2340.47,Carrier Investigation,29,WH-OTT-006,DRV01845
+INC018362,SHP038491,TRK9550797080,DHL,Toronto,Montreal,Warehouse Processing Delay,Low,Resolved,2026-05-20 01:00:00,24,Clear,Low,15.85,2341.74,Route Reassigned,9,WH-TOR-001,DRV02437
+INC011382,SHP070266,TRK7107973250,UPS,Vancouver,Kelowna,Traffic Disruption,Low,Under Investigation,2026-03-01 10:00:00,2,Rain,High,26.8,1890.33,Shipment Reprocessed,32,WH-CGY-004,DRV01457
+INC011994,SHP083524,TRK2588109663,Purolator,Toronto,Montreal,Mechanical Failure,High,Open,2026-02-09 03:00:00,1,Rain,Low,14.28,2248.56,Carrier Investigation,50,WH-HFX-003,DRV00197
+INC014696,SHP018055,TRK9163443616,FedEx,Halifax,Moncton,Customs Hold,Low,Resolved,2026-03-26 18:00:00,2,Clear,Medium,8.8,397.34,Route Reassigned,2,WH-VAN-005,DRV00071
+INC020640,SHP091007,TRK2331621675,Purolator,Halifax,Moncton,Customs Hold,Medium,Open,2026-04-13 12:00:00,12,Rain,Low,20.05,2148.08,Warehouse Escalation,23,WH-OTT-006,DRV02403
+INC023506,SHP028648,TRK2170084742,Canada Post,Toronto,Montreal,Customs Hold,Critical,Resolved,2026-01-13 10:00:00,2,Rain,High,26.8,574.95,Customer Notified,64,WH-HFX-003,DRV01399
+INC003848,SHP025946,TRK2509050440,FedEx,Toronto,Montreal,Lost Package,Low,Under Investigation,2026-02-25 17:00:00,4,Cloudy,Low,8.85,461.49,Shipment Reprocessed,83,WH-CGY-004,DRV01012
+INC014291,SHP066543,TRK9956455413,Purolator,Vancouver,Kelowna,Address Issue,Medium,Resolved,2026-05-31 13:00:00,1,Clear,Medium,8.28,1308.53,Shipment Reprocessed,18,WH-TOR-001,DRV01254
+INC002219,SHP055022,TRK6576733251,Purolator,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-06-06 22:00:00,2,Clear,Low,4.3,584.29,Shipment Reprocessed,25,WH-HFX-003,DRV01030
+INC015822,SHP065962,TRK3671579302,FedEx,Calgary,Edmonton,Warehouse Processing Delay,High,Resolved,2026-01-09 04:00:00,2,Rain,Low,14.8,1583.52,Refund Issued,95,WH-TOR-001,DRV00644
+INC013730,SHP093365,TRK7158791323,UPS,Vancouver,Kelowna,Customs Hold,Critical,Resolved,2026-05-23 04:00:00,4,Clear,Low,5.35,1569.71,Warehouse Escalation,70,WH-CGY-004,DRV01863
+INC017163,SHP069992,TRK1781030723,UPS,Toronto,Montreal,Failed Delivery Attempt,Low,Under Investigation,2026-02-04 04:00:00,12,Rain,Severe,39.55,1838.37,Delivery Rescheduled,93,WH-OTT-006,DRV01053
+INC016511,SHP040199,TRK2443760384,DHL,Toronto,Montreal,Traffic Disruption,High,Under Investigation,2026-02-19 17:00:00,4,Rain,Low,15.85,460.08,Carrier Investigation,23,WH-MTL-002,DRV00958
+INC000717,SHP079757,TRK4372020112,Purolator,Toronto,Montreal,Traffic Disruption,Medium,Resolved,2026-01-12 00:00:00,8,Fog,Medium,25.95,2255.65,Delivery Rescheduled,90,WH-OTT-006,DRV00082
+INC005471,SHP087048,TRK8754696050,DHL,Vancouver,Kelowna,Traffic Disruption,Medium,Resolved,2026-06-11 09:00:00,12,Clear,Low,9.55,2389.57,Route Reassigned,24,WH-OTT-006,DRV00138
+INC019634,SHP061340,TRK6460828128,DHL,Vancouver,Kelowna,Mechanical Failure,Low,Escalated,2026-03-18 17:00:00,24,Clear,High,27.85,2206.17,Carrier Investigation,38,WH-VAN-005,DRV01595
+INC008984,SHP077567,TRK7916466966,Purolator,Toronto,Montreal,Carrier Delay,Low,Resolved,2026-06-28 04:00:00,1,Clear,Medium,8.28,2214.99,Shipment Reprocessed,58,WH-MTL-002,DRV00057
+INC022830,SHP093587,TRK1337837630,Canada Post,Calgary,Edmonton,Lost Package,Medium,Resolved,2026-02-10 09:00:00,4,Clear,Low,5.35,419.5,Driver Reassigned,55,WH-CGY-004,DRV00489
+INC004225,SHP094738,TRK1915147655,UPS,Halifax,Moncton,Warehouse Processing Delay,Low,Open,2026-01-28 04:00:00,4,Clear,Low,5.35,539.63,Carrier Investigation,74,WH-MTL-002,DRV02318
+INC009492,SHP090055,TRK1599818912,FedEx,Halifax,Moncton,Address Issue,Low,Resolved,2026-01-06 05:00:00,1,Cloudy,Low,7.28,1247.85,Warehouse Escalation,36,WH-HFX-003,DRV02061
+INC001490,SHP021400,TRK7819820958,Purolator,Toronto,Montreal,Traffic Disruption,Critical,Resolved,2026-05-19 16:00:00,8,Snow,High,38.7,1671.15,Refund Issued,21,WH-CGY-004,DRV00981
+INC018553,SHP077008,TRK1735157211,Purolator,Ottawa,Toronto,Damaged Shipment,Low,Resolved,2026-03-11 17:00:00,4,Clear,Low,5.35,627.35,Customer Notified,52,WH-MTL-002,DRV01074
+INC001993,SHP020036,TRK2560384275,Canada Post,Vancouver,Kelowna,Customs Hold,Low,Resolved,2026-04-18 14:00:00,8,Storm,Low,35.45,1918.21,Warehouse Escalation,34,WH-HFX-003,DRV01037
+INC022735,SHP029824,TRK9762752528,Purolator,Halifax,Moncton,Weather Delay,Medium,Resolved,2026-02-20 17:00:00,2,Clear,Low,4.3,1501.74,Warehouse Escalation,10,WH-HFX-003,DRV02447
+INC006233,SHP069586,TRK3759026424,UPS,Vancouver,Kelowna,Warehouse Processing Delay,Medium,Open,2026-06-26 06:00:00,2,Clear,Low,4.3,479.57,Warehouse Escalation,31,WH-TOR-001,DRV01606
+INC024272,SHP073496,TRK5917207614,FedEx,Toronto,Montreal,Weather Delay,Low,Escalated,2026-01-02 08:00:00,12,Clear,Low,9.55,574.43,Driver Reassigned,86,WH-MTL-002,DRV01799
+INC013026,SHP029739,TRK6059027712,Canada Post,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-07-01 11:00:00,2,Snow,Medium,28.05,1596.57,Driver Reassigned,53,WH-TOR-001,DRV02265
+INC016222,SHP034885,TRK6295910970,Purolator,Vancouver,Kelowna,Lost Package,High,Resolved,2026-01-29 15:00:00,24,Rain,Medium,30.85,332.43,Warehouse Escalation,81,WH-MTL-002,DRV00420
+INC022437,SHP094684,TRK1053475132,Purolator,Halifax,Moncton,Damaged Shipment,Low,Resolved,2026-01-29 15:00:00,1,Cloudy,Medium,11.78,2491.23,Route Reassigned,79,WH-OTT-006,DRV00260
+INC017448,SHP099007,TRK1167289157,Canada Post,Halifax,Moncton,Warehouse Processing Delay,Low,Resolved,2026-06-29 01:00:00,1,Fog,Low,17.77,1582.87,Customer Notified,75,WH-VAN-005,DRV02318
+INC016826,SHP052005,TRK1406870810,Canada Post,Vancouver,Kelowna,Lost Package,Medium,Resolved,2026-06-21 13:00:00,8,Rain,Low,17.95,1017.83,Carrier Investigation,45,WH-HFX-003,DRV02404
+INC002458,SHP005229,TRK1027276140,Canada Post,Ottawa,Toronto,Customs Hold,Low,Under Investigation,2026-04-12 19:00:00,2,Clear,Medium,8.8,1235.91,Driver Reassigned,12,WH-MTL-002,DRV02136
+INC005424,SHP013365,TRK4129543787,UPS,Ottawa,Toronto,Weather Delay,Medium,Resolved,2026-05-03 15:00:00,12,Clear,Low,9.55,2008.2,Refund Issued,95,WH-HFX-003,DRV02023
+INC014345,SHP063470,TRK8149472304,Canada Post,Halifax,Moncton,Failed Delivery Attempt,Low,Resolved,2026-05-15 13:00:00,8,Clear,Medium,11.95,2297.39,Shipment Reprocessed,23,WH-VAN-005,DRV00154
+INC024600,SHP013100,TRK8105672813,Purolator,Calgary,Edmonton,Traffic Disruption,Medium,Resolved,2026-02-28 03:00:00,2,Rain,High,26.8,2475.53,Delivery Rescheduled,20,WH-OTT-006,DRV00665
+INC016689,SHP086666,TRK4592095297,UPS,Toronto,Montreal,Mechanical Failure,Low,Resolved,2026-06-06 08:00:00,8,Clear,Low,7.45,1984.78,Shipment Reprocessed,32,WH-OTT-006,DRV00373
+INC012588,SHP072145,TRK6562879185,UPS,Vancouver,Kelowna,Traffic Disruption,Medium,Escalated,2026-04-16 14:00:00,2,Clear,Medium,8.8,950.3,Delivery Rescheduled,28,WH-VAN-005,DRV02051
+INC012788,SHP068886,TRK5505236893,Canada Post,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-05-25 15:00:00,1,Fog,Low,17.77,1753.24,Customer Notified,11,WH-CGY-004,DRV01853
+INC013136,SHP059174,TRK4868945110,Purolator,Ottawa,Toronto,Weather Delay,Low,Escalated,2026-01-09 08:00:00,1,Snow,Low,23.02,1073.59,Shipment Reprocessed,38,WH-TOR-001,DRV00029
+INC019898,SHP094850,TRK2663633208,Canada Post,Ottawa,Toronto,Traffic Disruption,Medium,Under Investigation,2026-06-25 21:00:00,4,Cloudy,Low,8.85,2129.95,Route Reassigned,67,WH-CGY-004,DRV01621
+INC008897,SHP028165,TRK6936068126,UPS,Ottawa,Toronto,Customs Hold,Medium,Under Investigation,2026-02-13 02:00:00,0,Storm,High,43.25,2315.81,Route Reassigned,75,WH-OTT-006,DRV01852
+INC006781,SHP030470,TRK9975437810,DHL,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-02-23 14:00:00,2,Cloudy,Medium,12.3,1353.53,Refund Issued,20,WH-VAN-005,DRV01298
+INC006032,SHP009776,TRK7823111452,DHL,Halifax,Moncton,Lost Package,Low,Resolved,2026-05-04 18:00:00,1,Rain,Medium,18.77,1714.42,Delivery Rescheduled,4,WH-OTT-006,DRV01761
+INC000118,SHP049166,TRK1795373373,Canada Post,Toronto,Montreal,Damaged Shipment,Critical,Under Investigation,2026-05-27 10:00:00,2,Rain,Low,14.8,1024.75,Shipment Reprocessed,93,WH-TOR-001,DRV00787
+INC005243,SHP077684,TRK9788273961,Purolator,Vancouver,Kelowna,Lost Package,Critical,Resolved,2026-05-18 06:00:00,0,Storm,High,43.25,128.37,Customer Notified,88,WH-VAN-005,DRV00700
+INC018740,SHP000630,TRK7278411022,Canada Post,Halifax,Moncton,Traffic Disruption,Low,Under Investigation,2026-05-01 10:00:00,2,Clear,High,16.3,1657.65,Delivery Rescheduled,88,WH-TOR-001,DRV00364
+INC007138,SHP032111,TRK8941083470,FedEx,Vancouver,Kelowna,Mechanical Failure,Low,Resolved,2026-06-13 09:00:00,2,Clear,High,16.3,1339.38,Customer Notified,81,WH-CGY-004,DRV02323
+INC019403,SHP019307,TRK1806967009,Canada Post,Ottawa,Toronto,Weather Delay,Low,Resolved,2026-02-18 12:00:00,8,Clear,Medium,11.95,743.34,Customer Notified,2,WH-CGY-004,DRV01539
+INC022831,SHP053118,TRK7179596770,UPS,Halifax,Moncton,Customs Hold,Medium,Resolved,2026-04-06 09:00:00,48,Cloudy,Medium,36.45,323.26,Route Reassigned,4,WH-VAN-005,DRV02314
+INC016804,SHP005092,TRK3674426699,Canada Post,Toronto,Montreal,Address Issue,High,Escalated,2026-06-23 14:00:00,1,Clear,High,15.78,926.8,Customer Notified,95,WH-CGY-004,DRV02317
+INC014924,SHP066884,TRK8531275159,UPS,Halifax,Moncton,Damaged Shipment,Low,Resolved,2026-05-25 06:00:00,1,Rain,Medium,18.77,1228.75,Refund Issued,39,WH-HFX-003,DRV00093
+INC016510,SHP036168,TRK4640975804,UPS,Ottawa,Toronto,Traffic Disruption,Medium,Resolved,2026-06-25 19:00:00,24,Clear,Low,15.85,136.54,Carrier Investigation,75,WH-MTL-002,DRV02325
+INC023192,SHP025517,TRK6442080939,Purolator,Calgary,Edmonton,Lost Package,High,Resolved,2026-03-10 21:00:00,1,Cloudy,Severe,26.78,1551.99,Customer Notified,93,WH-CGY-004,DRV00497
+INC023612,SHP057078,TRK5957005261,FedEx,Calgary,Edmonton,Carrier Delay,Medium,Under Investigation,2026-02-24 08:00:00,24,Cloudy,Medium,23.85,974.1,Carrier Investigation,16,WH-VAN-005,DRV00527
+INC017206,SHP045973,TRK2579402045,FedEx,Vancouver,Kelowna,Mechanical Failure,Medium,Under Investigation,2026-01-23 20:00:00,24,Clear,Low,15.85,2062.6,Customer Notified,50,WH-VAN-005,DRV00293
+INC008482,SHP016108,TRK3535136994,DHL,Toronto,Montreal,Failed Delivery Attempt,Medium,Resolved,2026-02-06 09:00:00,72,Fog,High,57.25,1877.62,Carrier Investigation,49,WH-CGY-004,DRV00817
+INC009943,SHP029211,TRK6199261743,FedEx,Halifax,Moncton,Weather Delay,Low,Resolved,2026-06-26 05:00:00,1,Clear,Medium,8.28,323.91,Driver Reassigned,47,WH-CGY-004,DRV00929
+INC007220,SHP011060,TRK8661482684,DHL,Ottawa,Toronto,Warehouse Processing Delay,Low,Resolved,2026-02-13 12:00:00,12,Snow,Medium,33.3,307.39,Customer Notified,11,WH-HFX-003,DRV01766
+INC009712,SHP077308,TRK7824831138,Canada Post,Ottawa,Toronto,Customs Hold,High,Resolved,2026-05-12 16:00:00,12,Rain,Medium,24.55,2111.65,Driver Reassigned,30,WH-CGY-004,DRV00815
+INC023209,SHP040875,TRK2360059886,Canada Post,Halifax,Moncton,Traffic Disruption,High,Resolved,2026-03-21 14:00:00,1,Cloudy,High,19.27,2299.96,Route Reassigned,92,WH-TOR-001,DRV02013
+INC008799,SHP051812,TRK7634375785,Purolator,Ottawa,Toronto,Warehouse Processing Delay,Low,Escalated,2026-06-11 05:00:00,12,Snow,Low,28.8,2399.72,Customer Notified,22,WH-VAN-005,DRV00886
+INC018093,SHP076766,TRK3791798582,UPS,Ottawa,Toronto,Lost Package,Low,Resolved,2026-05-29 21:00:00,12,Clear,Medium,14.05,2255.72,Customer Notified,5,WH-HFX-003,DRV01990
+INC003903,SHP071192,TRK6355283936,DHL,Halifax,Moncton,Mechanical Failure,High,Open,2026-02-03 09:00:00,48,Clear,Medium,32.95,655.31,Route Reassigned,78,WH-OTT-006,DRV00384
+INC005607,SHP065682,TRK2524664159,UPS,Halifax,Moncton,Traffic Disruption,Low,Resolved,2026-04-05 15:00:00,8,Clear,Medium,11.95,475.89,Refund Issued,94,WH-MTL-002,DRV01027
+INC007338,SHP087274,TRK9044142717,Canada Post,Calgary,Edmonton,Customs Hold,Medium,Open,2026-02-06 06:00:00,12,Clear,Medium,14.05,909.7,Warehouse Escalation,88,WH-HFX-003,DRV01053
+INC001495,SHP050022,TRK8542707522,UPS,Vancouver,Kelowna,Customs Hold,High,Resolved,2026-05-18 22:00:00,8,Fog,High,33.45,1147.99,Delivery Rescheduled,93,WH-VAN-005,DRV01964
+INC007806,SHP094606,TRK4681766551,DHL,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-02-24 10:00:00,12,Snow,Medium,33.3,568.46,Warehouse Escalation,64,WH-HFX-003,DRV00358
+INC009564,SHP029338,TRK7874724668,UPS,Toronto,Montreal,Lost Package,Low,Under Investigation,2026-05-13 00:00:00,12,Clear,Medium,14.05,677.52,Driver Reassigned,35,WH-MTL-002,DRV00076
+INC001281,SHP014872,TRK5588548134,DHL,Halifax,Moncton,Damaged Shipment,Medium,Under Investigation,2026-06-13 09:00:00,8,Clear,Low,7.45,351.16,Refund Issued,23,WH-HFX-003,DRV01983
+INC020959,SHP033443,TRK2283068329,UPS,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-06-28 01:00:00,2,Clear,Low,4.3,849.02,Route Reassigned,34,WH-CGY-004,DRV00690
+INC004855,SHP050131,TRK9389592215,UPS,Ottawa,Toronto,Weather Delay,High,Escalated,2026-04-19 18:00:00,4,Rain,Medium,20.35,1831.73,Route Reassigned,46,WH-TOR-001,DRV00751
+INC009102,SHP033884,TRK8434484380,UPS,Vancouver,Kelowna,Weather Delay,Medium,Resolved,2026-05-16 19:00:00,1,Clear,Low,3.78,2060.15,Driver Reassigned,87,WH-OTT-006,DRV00369
+INC004358,SHP073836,TRK9120537855,DHL,Vancouver,Kelowna,Lost Package,Medium,Resolved,2026-02-27 13:00:00,8,Clear,Low,7.45,1451.29,Delivery Rescheduled,79,WH-TOR-001,DRV00744
+INC008862,SHP000478,TRK9623292065,UPS,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-04-19 03:00:00,48,Rain,Low,38.95,2124.74,Refund Issued,5,WH-HFX-003,DRV00563
+INC001689,SHP099999,TRK3594731636,Purolator,Vancouver,Kelowna,Traffic Disruption,Medium,Open,2026-03-15 23:00:00,2,Rain,Medium,19.3,816.91,Driver Reassigned,21,WH-MTL-002,DRV01710
+INC021051,SHP004418,TRK1062787752,UPS,Halifax,Moncton,Warehouse Processing Delay,Medium,Resolved,2026-05-01 00:00:00,1,Clear,Medium,8.28,573.72,Shipment Reprocessed,39,WH-MTL-002,DRV00873
+INC008160,SHP067423,TRK3275514614,UPS,Vancouver,Kelowna,Damaged Shipment,High,Under Investigation,2026-04-25 20:00:00,1,Rain,High,26.28,1696.65,Refund Issued,47,WH-OTT-006,DRV00705
+INC006881,SHP072036,TRK8518830256,DHL,Vancouver,Kelowna,Lost Package,Medium,Resolved,2026-03-14 20:00:00,2,Clear,Medium,8.8,2003.93,Refund Issued,31,WH-TOR-001,DRV01976
+INC017518,SHP025337,TRK2046654395,DHL,Halifax,Moncton,Warehouse Processing Delay,Medium,Resolved,2026-01-26 21:00:00,8,Fog,Medium,25.95,2343.54,Refund Issued,19,WH-CGY-004,DRV02469
+INC003808,SHP073003,TRK8978777323,UPS,Toronto,Montreal,Warehouse Processing Delay,Medium,Under Investigation,2026-01-09 10:00:00,1,Clear,Low,3.78,838.34,Warehouse Escalation,4,WH-TOR-001,DRV01846
+INC000046,SHP034428,TRK4247464923,UPS,Calgary,Edmonton,Warehouse Processing Delay,Critical,Under Investigation,2026-06-20 21:00:00,2,Fog,Low,18.3,1319.91,Customer Notified,3,WH-HFX-003,DRV00372
+INC021255,SHP037242,TRK4454084291,UPS,Ottawa,Toronto,Address Issue,Low,Open,2026-03-16 03:00:00,4,Clear,Low,5.35,1464.93,Delivery Rescheduled,20,WH-HFX-003,DRV02048
+INC011386,SHP066847,TRK1995153777,Canada Post,Halifax,Moncton,Weather Delay,Medium,Under Investigation,2026-02-27 01:00:00,1,Clear,Low,3.78,2267.65,Shipment Reprocessed,84,WH-TOR-001,DRV00327
+INC020732,SHP057353,TRK2787665681,Canada Post,Toronto,Montreal,Weather Delay,High,Resolved,2026-02-07 21:00:00,4,Snow,Medium,29.1,675.82,Delivery Rescheduled,19,WH-OTT-006,DRV01321
+INC019830,SHP042414,TRK3560676879,DHL,Toronto,Montreal,Mechanical Failure,Low,Resolved,2026-05-30 21:00:00,1,Fog,Medium,22.28,2360.71,Carrier Investigation,25,WH-OTT-006,DRV02291
+INC012096,SHP072439,TRK7016614497,Purolator,Calgary,Edmonton,Carrier Delay,Low,Resolved,2026-05-13 03:00:00,12,Clear,Medium,14.05,1317.91,Warehouse Escalation,28,WH-VAN-005,DRV02324
+INC010636,SHP041977,TRK4733966128,Purolator,Toronto,Montreal,Traffic Disruption,Low,Resolved,2026-01-31 13:00:00,4,Clear,Low,5.35,675.9,Customer Notified,32,WH-HFX-003,DRV01785
+INC002728,SHP072511,TRK7265523136,Purolator,Ottawa,Toronto,Warehouse Processing Delay,Low,Resolved,2026-01-10 07:00:00,2,Rain,Low,14.8,2253.43,Delivery Rescheduled,29,WH-VAN-005,DRV01805
+INC023117,SHP035286,TRK3249172432,UPS,Calgary,Edmonton,Customs Hold,Low,Resolved,2026-07-01 13:00:00,8,Snow,Low,26.7,1474.26,Delivery Rescheduled,43,WH-VAN-005,DRV01691
+INC017999,SHP073997,TRK5425847493,Canada Post,Calgary,Edmonton,Failed Delivery Attempt,Low,Resolved,2026-03-30 00:00:00,0,Storm,High,43.25,1443.65,Delivery Rescheduled,5,WH-VAN-005,DRV01357
+INC008653,SHP071506,TRK6285762063,FedEx,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-05-19 05:00:00,4,Fog,Low,19.35,1737.18,Customer Notified,87,WH-VAN-005,DRV01432
+INC023662,SHP073037,TRK2980851806,Purolator,Vancouver,Kelowna,Customs Hold,High,Resolved,2026-01-26 09:00:00,4,Cloudy,Medium,13.35,1503.19,Refund Issued,25,WH-TOR-001,DRV02484
+INC004379,SHP038211,TRK5889119567,FedEx,Calgary,Edmonton,Damaged Shipment,Medium,Open,2026-03-09 05:00:00,12,Cloudy,Medium,17.55,1895.0,Driver Reassigned,42,WH-MTL-002,DRV01869
+INC013381,SHP042291,TRK4322363732,UPS,Calgary,Edmonton,Traffic Disruption,Low,Under Investigation,2026-02-17 23:00:00,48,Clear,Medium,32.95,1075.21,Warehouse Escalation,60,WH-VAN-005,DRV01344
+INC020038,SHP071543,TRK2863587006,FedEx,Calgary,Edmonton,Customs Hold,Medium,Resolved,2026-01-09 16:00:00,8,Cloudy,Low,10.95,1594.94,Refund Issued,42,WH-MTL-002,DRV02487
+INC009664,SHP080657,TRK4835396761,Canada Post,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-01-13 04:00:00,1,Clear,High,15.78,2059.42,Customer Notified,70,WH-CGY-004,DRV00564
+INC010638,SHP033375,TRK8926261791,FedEx,Ottawa,Toronto,Mechanical Failure,High,Resolved,2026-01-31 15:00:00,1,Clear,Medium,8.28,1711.43,Customer Notified,63,WH-TOR-001,DRV01908
+INC001877,SHP070958,TRK8287886669,DHL,Halifax,Moncton,Traffic Disruption,High,Resolved,2026-05-24 05:00:00,2,Cloudy,Medium,12.3,1789.24,Refund Issued,86,WH-OTT-006,DRV01507
+INC020512,SHP060575,TRK4194778131,Purolator,Halifax,Moncton,Failed Delivery Attempt,Medium,Resolved,2026-01-21 17:00:00,2,Fog,Severe,37.8,2467.94,Delivery Rescheduled,72,WH-VAN-005,DRV00691
+INC000342,SHP052339,TRK2527505073,Canada Post,Toronto,Montreal,Failed Delivery Attempt,Critical,Under Investigation,2026-06-18 06:00:00,8,Storm,High,47.45,1435.6,Customer Notified,11,WH-OTT-006,DRV02259
+INC011649,SHP073292,TRK1567806792,Canada Post,Halifax,Moncton,Failed Delivery Attempt,High,Under Investigation,2026-01-05 15:00:00,8,Snow,Medium,31.2,1447.75,Carrier Investigation,51,WH-TOR-001,DRV01944
+INC007186,SHP048390,TRK7180382976,Purolator,Calgary,Edmonton,Damaged Shipment,Critical,Resolved,2026-06-20 15:00:00,2,Cloudy,Low,7.8,2231.19,Warehouse Escalation,64,WH-MTL-002,DRV01760
+INC023937,SHP077055,TRK5476159985,FedEx,Calgary,Edmonton,Damaged Shipment,Medium,Resolved,2026-03-14 06:00:00,1,Snow,Medium,27.52,1605.59,Carrier Investigation,35,WH-HFX-003,DRV00265
+INC009165,SHP023579,TRK5293042058,Purolator,Vancouver,Kelowna,Failed Delivery Attempt,Critical,Resolved,2026-06-19 18:00:00,12,Snow,High,40.8,240.2,Carrier Investigation,67,WH-MTL-002,DRV01478
+INC005792,SHP041386,TRK6851909364,FedEx,Calgary,Edmonton,Weather Delay,Medium,Under Investigation,2026-03-01 10:00:00,4,Cloudy,Low,8.85,1031.74,Carrier Investigation,73,WH-MTL-002,DRV02358
+INC008389,SHP015210,TRK1294221581,Canada Post,Ottawa,Toronto,Weather Delay,High,Resolved,2026-01-20 03:00:00,8,Clear,High,19.45,349.05,Driver Reassigned,78,WH-MTL-002,DRV01004
+INC000513,SHP077803,TRK7676678454,FedEx,Calgary,Edmonton,Weather Delay,Critical,Resolved,2026-03-06 20:00:00,1,Clear,High,15.78,439.61,Delivery Rescheduled,16,WH-TOR-001,DRV00779
+INC017610,SHP061072,TRK8908216579,UPS,Halifax,Moncton,Failed Delivery Attempt,Low,Resolved,2026-07-02 22:00:00,1,Clear,Medium,8.28,2377.4,Customer Notified,87,WH-TOR-001,DRV02038
+INC019113,SHP057575,TRK1231388378,DHL,Vancouver,Kelowna,Warehouse Processing Delay,Low,Resolved,2026-02-06 13:00:00,2,Rain,High,26.8,134.99,Warehouse Escalation,86,WH-OTT-006,DRV01179
+INC003488,SHP022691,TRK3177476790,DHL,Halifax,Moncton,Carrier Delay,Medium,Resolved,2026-04-08 16:00:00,2,Fog,High,30.3,269.31,Route Reassigned,56,WH-VAN-005,DRV00468
+INC023679,SHP060080,TRK5751232376,DHL,Halifax,Moncton,Mechanical Failure,Medium,Open,2026-04-10 06:00:00,8,Cloudy,Low,10.95,1539.45,Warehouse Escalation,48,WH-VAN-005,DRV00790
+INC024438,SHP088400,TRK4593069145,Canada Post,Ottawa,Toronto,Traffic Disruption,Low,Resolved,2026-03-25 12:00:00,1,Snow,Low,23.02,1507.55,Customer Notified,70,WH-TOR-001,DRV01391
+INC022549,SHP034905,TRK6879826063,Canada Post,Halifax,Moncton,Carrier Delay,Low,Resolved,2026-01-22 19:00:00,4,Cloudy,Low,8.85,1251.92,Shipment Reprocessed,80,WH-CGY-004,DRV00111
+INC012517,SHP057302,TRK1369143674,DHL,Calgary,Edmonton,Traffic Disruption,High,Open,2026-01-29 03:00:00,12,Clear,Low,9.55,1689.18,Driver Reassigned,6,WH-CGY-004,DRV01415
+INC021425,SHP038726,TRK1675636077,Purolator,Vancouver,Kelowna,Customs Hold,High,Under Investigation,2026-02-03 01:00:00,2,Cloudy,Low,7.8,615.17,Warehouse Escalation,45,WH-HFX-003,DRV00639
+INC008433,SHP085185,TRK1762697961,Canada Post,Vancouver,Kelowna,Lost Package,Medium,Resolved,2026-05-12 23:00:00,4,Cloudy,Low,8.85,2354.89,Refund Issued,94,WH-HFX-003,DRV02207
+INC020521,SHP033473,TRK6236576389,Purolator,Vancouver,Kelowna,Traffic Disruption,Low,Resolved,2026-04-21 19:00:00,1,Cloudy,High,19.27,1394.71,Delivery Rescheduled,4,WH-CGY-004,DRV01141
+INC020785,SHP058223,TRK3504014911,UPS,Toronto,Montreal,Weather Delay,Low,Under Investigation,2026-01-11 09:00:00,2,Rain,Low,14.8,1132.39,Customer Notified,48,WH-HFX-003,DRV00547
+INC019804,SHP094891,TRK7451811417,FedEx,Toronto,Montreal,Traffic Disruption,Low,Resolved,2026-01-05 18:00:00,0,Snow,Severe,42.0,2322.34,Route Reassigned,80,WH-HFX-003,DRV01519
+INC018052,SHP033834,TRK1476512683,FedEx,Toronto,Montreal,Damaged Shipment,Critical,Resolved,2026-06-07 11:00:00,1,Clear,Low,3.78,519.62,Carrier Investigation,77,WH-VAN-005,DRV00693
+INC006756,SHP072687,TRK2461906901,FedEx,Ottawa,Toronto,Damaged Shipment,High,Resolved,2026-01-21 13:00:00,48,Fog,Medium,46.95,343.4,Carrier Investigation,90,WH-HFX-003,DRV01409
+INC014490,SHP082648,TRK7749768659,DHL,Toronto,Montreal,Warehouse Processing Delay,Critical,Resolved,2026-05-14 16:00:00,12,Storm,Low,37.55,1314.69,Warehouse Escalation,37,WH-OTT-006,DRV01914
+INC007230,SHP042426,TRK1010987709,Canada Post,Halifax,Moncton,Failed Delivery Attempt,High,Resolved,2026-02-28 20:00:00,24,Rain,Medium,30.85,1480.55,Driver Reassigned,66,WH-TOR-001,DRV01532
+INC010626,SHP082965,TRK5113641775,DHL,Vancouver,Kelowna,Address Issue,Low,Resolved,2026-05-08 00:00:00,48,Clear,Low,28.45,1490.99,Delivery Rescheduled,79,WH-VAN-005,DRV01402
+INC008808,SHP093423,TRK7141497504,FedEx,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-04-14 12:00:00,48,Fog,Low,42.45,2310.57,Delivery Rescheduled,62,WH-TOR-001,DRV00255
+INC006683,SHP036213,TRK9209153344,DHL,Toronto,Montreal,Mechanical Failure,Low,Resolved,2026-02-06 10:00:00,4,Clear,High,17.35,1371.83,Shipment Reprocessed,51,WH-MTL-002,DRV01070
+INC019060,SHP018546,TRK1981747250,Canada Post,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-05-05 01:00:00,0,Snow,Severe,42.0,305.53,Carrier Investigation,93,WH-OTT-006,DRV01293
+INC020638,SHP050012,TRK6849195449,Canada Post,Halifax,Moncton,Warehouse Processing Delay,Low,Escalated,2026-02-02 07:00:00,4,Clear,Low,5.35,2096.77,Delivery Rescheduled,33,WH-OTT-006,DRV02443
+INC024671,SHP059863,TRK9745602060,UPS,Halifax,Moncton,Warehouse Processing Delay,Medium,Resolved,2026-03-12 17:00:00,24,Clear,Medium,20.35,1573.37,Driver Reassigned,62,WH-TOR-001,DRV02130
+INC012959,SHP081248,TRK1000576114,Canada Post,Ottawa,Toronto,Failed Delivery Attempt,Low,Resolved,2026-01-02 04:00:00,4,Snow,Low,24.6,1295.05,Driver Reassigned,78,WH-MTL-002,DRV01270
+INC005101,SHP019293,TRK8397056218,Canada Post,Vancouver,Kelowna,Customs Hold,Low,Resolved,2026-05-21 05:00:00,2,Fog,Medium,22.8,1019.67,Customer Notified,14,WH-VAN-005,DRV01262
+INC014617,SHP026155,TRK7757293903,DHL,Halifax,Moncton,Mechanical Failure,Low,Resolved,2026-01-14 01:00:00,2,Clear,Medium,8.8,2497.03,Shipment Reprocessed,95,WH-HFX-003,DRV02113
+INC007594,SHP091984,TRK4011724982,DHL,Vancouver,Kelowna,Weather Delay,Low,Escalated,2026-04-27 06:00:00,12,Clear,High,21.55,1623.8,Route Reassigned,43,WH-TOR-001,DRV00276
+INC023915,SHP035362,TRK7176130781,Canada Post,Ottawa,Toronto,Lost Package,Low,Resolved,2026-03-07 02:00:00,24,Cloudy,Medium,23.85,2358.72,Delivery Rescheduled,15,WH-TOR-001,DRV01384
+INC023799,SHP099980,TRK3347515738,Canada Post,Vancouver,Kelowna,Carrier Delay,High,Resolved,2026-03-24 15:00:00,4,Snow,Low,24.6,2467.32,Warehouse Escalation,90,WH-CGY-004,DRV01277
+INC014219,SHP099605,TRK3696101692,Canada Post,Toronto,Montreal,Lost Package,High,Resolved,2026-03-31 08:00:00,4,Clear,Medium,9.85,848.8,Route Reassigned,32,WH-HFX-003,DRV01006
+INC012080,SHP030937,TRK2158897324,FedEx,Vancouver,Kelowna,Traffic Disruption,Medium,Resolved,2026-01-16 00:00:00,1,Clear,High,15.78,1367.55,Driver Reassigned,7,WH-TOR-001,DRV01467
+INC004861,SHP019329,TRK7485873931,Canada Post,Halifax,Moncton,Weather Delay,Low,Resolved,2026-02-08 16:00:00,48,Clear,Medium,32.95,2018.12,Delivery Rescheduled,30,WH-TOR-001,DRV02121
+INC015697,SHP084170,TRK1607217388,Purolator,Vancouver,Kelowna,Warehouse Processing Delay,Low,Open,2026-04-03 21:00:00,4,Clear,Low,5.35,836.49,Delivery Rescheduled,82,WH-MTL-002,DRV00146
+INC003071,SHP032472,TRK2033206243,UPS,Vancouver,Kelowna,Warehouse Processing Delay,Low,Resolved,2026-04-27 04:00:00,4,Clear,Low,5.35,650.56,Route Reassigned,58,WH-MTL-002,DRV00690
+INC016252,SHP092529,TRK9017214182,FedEx,Vancouver,Kelowna,Damaged Shipment,Medium,Resolved,2026-05-06 13:00:00,1,Clear,Medium,8.28,1349.31,Shipment Reprocessed,38,WH-MTL-002,DRV00495
+INC005948,SHP004068,TRK8410154913,FedEx,Calgary,Edmonton,Failed Delivery Attempt,High,Resolved,2026-01-13 23:00:00,1,Cloudy,High,19.27,1382.49,Delivery Rescheduled,19,WH-OTT-006,DRV00135
+INC015054,SHP006900,TRK4323633412,DHL,Halifax,Moncton,Weather Delay,Low,Resolved,2026-01-07 04:00:00,2,Clear,Medium,8.8,104.08,Delivery Rescheduled,25,WH-TOR-001,DRV01960
+INC006063,SHP073180,TRK3290738732,FedEx,Calgary,Edmonton,Traffic Disruption,Medium,Resolved,2026-05-30 15:00:00,8,Cloudy,Low,10.95,352.35,Shipment Reprocessed,77,WH-HFX-003,DRV00756
+INC005771,SHP055087,TRK2739346075,Purolator,Ottawa,Toronto,Damaged Shipment,High,Escalated,2026-01-11 02:00:00,1,Rain,High,26.28,1653.46,Driver Reassigned,45,WH-HFX-003,DRV01924
+INC006189,SHP064171,TRK5020799789,FedEx,Calgary,Edmonton,Damaged Shipment,Medium,Escalated,2026-03-15 08:00:00,1,Cloudy,Medium,11.78,1920.73,Shipment Reprocessed,9,WH-CGY-004,DRV00430
+INC018667,SHP076472,TRK7523906456,UPS,Toronto,Montreal,Damaged Shipment,Low,Resolved,2026-01-02 21:00:00,4,Cloudy,High,20.85,146.36,Refund Issued,95,WH-MTL-002,DRV01234
+INC016074,SHP028611,TRK1342601948,FedEx,Calgary,Edmonton,Mechanical Failure,High,Resolved,2026-05-06 22:00:00,8,Rain,Low,17.95,1481.46,Route Reassigned,72,WH-TOR-001,DRV01674
+INC023904,SHP013525,TRK1010149388,DHL,Calgary,Edmonton,Carrier Delay,High,Under Investigation,2026-03-30 09:00:00,48,Rain,Medium,43.45,1313.16,Carrier Investigation,49,WH-MTL-002,DRV00754
+INC005912,SHP002514,TRK6938959008,FedEx,Calgary,Edmonton,Damaged Shipment,Low,Escalated,2026-02-24 01:00:00,1,Rain,Low,14.28,1005.74,Driver Reassigned,37,WH-MTL-002,DRV02484
+INC021220,SHP017771,TRK4041774411,UPS,Ottawa,Toronto,Damaged Shipment,High,Resolved,2026-06-21 16:00:00,1,Snow,Low,23.02,2281.93,Customer Notified,11,WH-TOR-001,DRV01707
+INC009243,SHP027226,TRK8596739476,Canada Post,Calgary,Edmonton,Traffic Disruption,High,Under Investigation,2026-04-15 13:00:00,1,Clear,Low,3.78,1484.49,Driver Reassigned,31,WH-MTL-002,DRV02045
+INC000690,SHP006094,TRK8215141041,UPS,Toronto,Montreal,Damaged Shipment,Medium,Open,2026-02-12 07:00:00,2,Rain,Low,14.8,201.62,Shipment Reprocessed,28,WH-MTL-002,DRV01482
+INC010164,SHP090085,TRK2187422984,FedEx,Vancouver,Kelowna,Failed Delivery Attempt,High,Resolved,2026-04-23 18:00:00,12,Rain,Medium,24.55,434.67,Carrier Investigation,60,WH-VAN-005,DRV00941
+INC005339,SHP033094,TRK2941044252,DHL,Halifax,Moncton,Carrier Delay,Medium,Resolved,2026-06-11 03:00:00,1,Clear,Low,3.78,505.45,Shipment Reprocessed,9,WH-MTL-002,DRV00112
+INC005824,SHP056585,TRK8387005144,Purolator,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-02-16 06:00:00,1,Clear,Medium,8.28,1408.69,Carrier Investigation,44,WH-HFX-003,DRV00242
+INC012918,SHP043698,TRK2445616042,FedEx,Toronto,Montreal,Customs Hold,Low,Resolved,2026-01-23 03:00:00,2,Clear,Medium,8.8,845.45,Delivery Rescheduled,62,WH-VAN-005,DRV00435
+INC022524,SHP016019,TRK5889011659,Canada Post,Halifax,Moncton,Warehouse Processing Delay,Low,Resolved,2026-01-19 17:00:00,8,Cloudy,Low,10.95,838.63,Driver Reassigned,31,WH-VAN-005,DRV00376
+INC019918,SHP080719,TRK4964095259,FedEx,Ottawa,Toronto,Warehouse Processing Delay,Low,Under Investigation,2026-03-06 01:00:00,4,Rain,High,27.85,1041.0,Carrier Investigation,8,WH-HFX-003,DRV01104
+INC006156,SHP075761,TRK6551229678,DHL,Ottawa,Toronto,Traffic Disruption,Medium,Resolved,2026-04-05 18:00:00,24,Clear,Medium,20.35,2172.18,Route Reassigned,66,WH-CGY-004,DRV00869
+INC002276,SHP095696,TRK2469256877,Canada Post,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-06-09 01:00:00,2,Clear,Low,4.3,129.58,Refund Issued,37,WH-HFX-003,DRV00621
+INC004703,SHP077755,TRK6286483173,Purolator,Halifax,Moncton,Traffic Disruption,High,Resolved,2026-04-14 18:00:00,1,Clear,Medium,8.28,537.91,Route Reassigned,54,WH-MTL-002,DRV01101
+INC002361,SHP035951,TRK7155985161,FedEx,Vancouver,Kelowna,Weather Delay,High,Under Investigation,2026-02-14 11:00:00,4,Clear,Medium,9.85,1712.42,Delivery Rescheduled,38,WH-TOR-001,DRV01455
+INC013973,SHP044418,TRK9554660345,DHL,Toronto,Montreal,Customs Hold,Medium,Escalated,2026-02-03 09:00:00,48,Rain,Low,38.95,553.22,Refund Issued,62,WH-OTT-006,DRV01652
+INC008037,SHP028623,TRK5314773563,FedEx,Toronto,Montreal,Warehouse Processing Delay,Medium,Under Investigation,2026-06-05 14:00:00,2,Fog,Medium,22.8,1014.4,Refund Issued,34,WH-VAN-005,DRV00837
+INC014911,SHP075283,TRK6532115593,DHL,Calgary,Edmonton,Mechanical Failure,Medium,Resolved,2026-04-24 05:00:00,12,Snow,Medium,33.3,2455.76,Route Reassigned,38,WH-OTT-006,DRV00868
+INC021140,SHP070204,TRK7753857832,UPS,Ottawa,Toronto,Address Issue,Medium,Resolved,2026-02-12 20:00:00,48,Cloudy,Medium,36.45,1108.59,Route Reassigned,91,WH-OTT-006,DRV00918
+INC013190,SHP062463,TRK9381284910,Canada Post,Toronto,Montreal,Weather Delay,Critical,Resolved,2026-03-09 20:00:00,4,Clear,Low,5.35,1757.64,Customer Notified,12,WH-TOR-001,DRV00949
+INC003285,SHP019342,TRK6725469816,Canada Post,Halifax,Moncton,Weather Delay,Medium,Resolved,2026-06-10 22:00:00,48,Snow,High,59.7,958.12,Carrier Investigation,50,WH-CGY-004,DRV01917
+INC023735,SHP066625,TRK6624633188,Canada Post,Toronto,Montreal,Lost Package,Medium,Resolved,2026-02-25 20:00:00,48,Snow,Medium,52.2,401.83,Customer Notified,79,WH-HFX-003,DRV02278
+INC017262,SHP024674,TRK7033937875,FedEx,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-01-28 06:00:00,12,Rain,Medium,24.55,1925.01,Carrier Investigation,79,WH-OTT-006,DRV02239
+INC004499,SHP040906,TRK4402466914,FedEx,Vancouver,Kelowna,Warehouse Processing Delay,Low,Resolved,2026-06-09 10:00:00,2,Clear,Medium,8.8,852.86,Customer Notified,54,WH-HFX-003,DRV02463
+INC024591,SHP059097,TRK8553690358,Purolator,Ottawa,Toronto,Mechanical Failure,Critical,Resolved,2026-02-09 14:00:00,48,Storm,Low,56.45,781.56,Warehouse Escalation,92,WH-VAN-005,DRV02335
+INC000387,SHP001231,TRK4435751115,DHL,Ottawa,Toronto,Lost Package,Low,Resolved,2026-02-10 12:00:00,1,Cloudy,Medium,11.78,778.23,Warehouse Escalation,60,WH-TOR-001,DRV02251
+INC019769,SHP018743,TRK6481984286,Canada Post,Calgary,Edmonton,Weather Delay,Medium,Resolved,2026-03-29 00:00:00,8,Snow,Low,26.7,519.5,Carrier Investigation,71,WH-HFX-003,DRV00189
+INC003268,SHP040461,TRK5673689781,Purolator,Halifax,Moncton,Weather Delay,High,Resolved,2026-01-13 09:00:00,48,Fog,Low,42.45,1140.1,Warehouse Escalation,50,WH-CGY-004,DRV00257
+INC012383,SHP032106,TRK1740924048,UPS,Vancouver,Kelowna,Lost Package,Low,Resolved,2026-01-16 04:00:00,2,Clear,Low,4.3,170.12,Shipment Reprocessed,2,WH-HFX-003,DRV01432
+INC012583,SHP039911,TRK2009743172,Canada Post,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-01-09 13:00:00,2,Fog,Medium,22.8,1096.46,Driver Reassigned,63,WH-TOR-001,DRV00119
+INC000679,SHP094444,TRK2071215414,FedEx,Ottawa,Toronto,Lost Package,Medium,Under Investigation,2026-01-17 02:00:00,1,Clear,Medium,8.28,1391.31,Refund Issued,74,WH-CGY-004,DRV02433
+INC003606,SHP063376,TRK4097695608,UPS,Toronto,Montreal,Customs Hold,Low,Resolved,2026-02-21 12:00:00,0,Snow,Severe,42.0,2418.3,Carrier Investigation,70,WH-CGY-004,DRV01109
+INC000445,SHP031894,TRK5459863602,UPS,Calgary,Edmonton,Failed Delivery Attempt,Medium,Open,2026-06-23 13:00:00,2,Cloudy,High,19.8,228.61,Delivery Rescheduled,14,WH-CGY-004,DRV02090
+INC021119,SHP039033,TRK4744647000,Canada Post,Vancouver,Kelowna,Weather Delay,Medium,Under Investigation,2026-02-14 05:00:00,2,Clear,Low,4.3,2361.47,Route Reassigned,41,WH-TOR-001,DRV01219
+INC001434,SHP079982,TRK8072905518,Canada Post,Toronto,Montreal,Address Issue,High,Under Investigation,2026-06-17 21:00:00,1,Storm,Medium,36.28,660.55,Route Reassigned,16,WH-CGY-004,DRV01643
+INC004332,SHP038164,TRK7061635374,FedEx,Ottawa,Toronto,Mechanical Failure,Medium,Open,2026-07-01 04:00:00,4,Rain,Medium,20.35,915.17,Warehouse Escalation,38,WH-CGY-004,DRV02196
+INC002740,SHP057783,TRK1275236079,DHL,Calgary,Edmonton,Traffic Disruption,Medium,Resolved,2026-06-16 03:00:00,1,Fog,Low,17.77,158.52,Shipment Reprocessed,44,WH-CGY-004,DRV02209
+INC008771,SHP089308,TRK3133452688,Purolator,Calgary,Edmonton,Lost Package,Medium,Under Investigation,2026-06-02 14:00:00,1,Clear,Low,3.78,2259.77,Carrier Investigation,86,WH-VAN-005,DRV00049
+INC004674,SHP016375,TRK3310373278,UPS,Halifax,Moncton,Damaged Shipment,Medium,Open,2026-06-11 09:00:00,1,Clear,Medium,8.28,1398.36,Warehouse Escalation,49,WH-TOR-001,DRV00820
+INC020559,SHP003758,TRK8892090031,Purolator,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-05-05 02:00:00,8,Clear,Medium,11.95,2389.75,Shipment Reprocessed,79,WH-CGY-004,DRV01489
+INC019649,SHP088531,TRK4474496888,UPS,Toronto,Montreal,Carrier Delay,High,Under Investigation,2026-01-21 23:00:00,1,Rain,High,26.28,1882.58,Carrier Investigation,81,WH-OTT-006,DRV01391
+INC000443,SHP046770,TRK8702382822,FedEx,Ottawa,Toronto,Weather Delay,Low,Under Investigation,2026-06-28 02:00:00,1,Snow,High,35.02,2030.18,Delivery Rescheduled,46,WH-HFX-003,DRV00288
+INC000308,SHP058992,TRK6895072318,FedEx,Halifax,Moncton,Lost Package,Low,Resolved,2026-01-09 13:00:00,0,Snow,Severe,42.0,1175.64,Customer Notified,22,WH-MTL-002,DRV01639
+INC003485,SHP070453,TRK5826825521,Purolator,Vancouver,Kelowna,Customs Hold,High,Resolved,2026-03-11 22:00:00,1,Clear,Medium,8.28,2178.01,Customer Notified,81,WH-OTT-006,DRV01276
+INC017773,SHP096565,TRK6428007377,DHL,Toronto,Montreal,Carrier Delay,Low,Resolved,2026-06-26 03:00:00,4,Rain,Low,15.85,961.73,Carrier Investigation,90,WH-OTT-006,DRV01965
+INC024122,SHP034552,TRK5091671352,Canada Post,Vancouver,Kelowna,Warehouse Processing Delay,High,Resolved,2026-06-22 17:00:00,12,Cloudy,Medium,17.55,1937.29,Driver Reassigned,90,WH-OTT-006,DRV02260
+INC011089,SHP038406,TRK4215823722,UPS,Calgary,Edmonton,Weather Delay,Low,Escalated,2026-03-29 03:00:00,1,Fog,High,29.78,2372.0,Customer Notified,19,WH-OTT-006,DRV00518
+INC023182,SHP095751,TRK2637129721,Canada Post,Toronto,Montreal,Customs Hold,Medium,Resolved,2026-01-09 20:00:00,2,Clear,Medium,8.8,1168.42,Route Reassigned,72,WH-VAN-005,DRV00831
+INC002785,SHP098198,TRK7679253064,FedEx,Toronto,Montreal,Traffic Disruption,Medium,Resolved,2026-01-19 13:00:00,24,Clear,High,27.85,1384.94,Shipment Reprocessed,3,WH-CGY-004,DRV00578
+INC006630,SHP003736,TRK1590100580,DHL,Vancouver,Kelowna,Weather Delay,Medium,Resolved,2026-04-29 03:00:00,2,Rain,Medium,19.3,1044.33,Customer Notified,3,WH-HFX-003,DRV01740
+INC004563,SHP045055,TRK5972671554,DHL,Toronto,Montreal,Damaged Shipment,Medium,Resolved,2026-05-15 22:00:00,12,Clear,Medium,14.05,856.2,Carrier Investigation,83,WH-CGY-004,DRV01967
+INC015743,SHP081320,TRK3757871878,DHL,Halifax,Moncton,Traffic Disruption,Low,Resolved,2026-06-19 08:00:00,1,Snow,Medium,27.52,1697.57,Refund Issued,32,WH-CGY-004,DRV01986
+INC024893,SHP065799,TRK1182324757,Purolator,Calgary,Edmonton,Damaged Shipment,Low,Escalated,2026-06-19 06:00:00,2,Clear,Medium,8.8,616.27,Warehouse Escalation,74,WH-OTT-006,DRV01868
+INC018444,SHP079517,TRK6081339777,Canada Post,Toronto,Montreal,Failed Delivery Attempt,High,Under Investigation,2026-04-16 04:00:00,1,Clear,Low,3.78,1633.91,Route Reassigned,28,WH-MTL-002,DRV00035
+INC014560,SHP053607,TRK2795887579,Canada Post,Halifax,Moncton,Lost Package,Low,Open,2026-05-12 15:00:00,12,Snow,High,40.8,1384.14,Customer Notified,50,WH-OTT-006,DRV00052
+INC005346,SHP090663,TRK2579992809,UPS,Ottawa,Toronto,Weather Delay,Medium,Resolved,2026-03-18 03:00:00,24,Rain,Medium,30.85,2251.58,Shipment Reprocessed,18,WH-TOR-001,DRV00830
+INC010073,SHP006941,TRK9301766145,Canada Post,Ottawa,Toronto,Lost Package,Critical,Resolved,2026-02-15 19:00:00,8,Storm,Medium,39.95,1844.7,Carrier Investigation,47,WH-HFX-003,DRV01381
+INC010871,SHP052694,TRK8407593824,UPS,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-02-10 22:00:00,2,Snow,High,35.55,1366.77,Carrier Investigation,37,WH-CGY-004,DRV00786
+INC015693,SHP067497,TRK2822380470,UPS,Ottawa,Toronto,Weather Delay,Low,Escalated,2026-07-01 11:00:00,24,Clear,Low,15.85,2199.04,Customer Notified,54,WH-MTL-002,DRV00590
+INC005064,SHP091365,TRK5522372682,Canada Post,Vancouver,Kelowna,Mechanical Failure,Medium,Resolved,2026-01-20 15:00:00,1,Clear,Medium,8.28,1097.35,Route Reassigned,90,WH-CGY-004,DRV02045
+INC007990,SHP072481,TRK4779159381,UPS,Toronto,Montreal,Address Issue,High,Resolved,2026-03-31 21:00:00,8,Fog,Low,21.45,2355.7,Refund Issued,13,WH-MTL-002,DRV00439
+INC001831,SHP009809,TRK7864052020,DHL,Calgary,Edmonton,Warehouse Processing Delay,Low,Resolved,2026-02-28 08:00:00,4,Cloudy,High,20.85,1880.58,Delivery Rescheduled,23,WH-CGY-004,DRV00901
+INC017811,SHP092382,TRK6867865973,FedEx,Calgary,Edmonton,Traffic Disruption,High,Resolved,2026-04-21 17:00:00,4,Rain,Medium,20.35,305.75,Driver Reassigned,68,WH-VAN-005,DRV02138
+INC022677,SHP093896,TRK4646770550,DHL,Vancouver,Kelowna,Address Issue,Critical,Resolved,2026-01-16 15:00:00,1,Cloudy,Severe,26.78,258.67,Warehouse Escalation,32,WH-TOR-001,DRV00052
+INC008765,SHP056571,TRK8489473718,FedEx,Ottawa,Toronto,Damaged Shipment,Medium,Resolved,2026-01-04 12:00:00,4,Storm,Medium,37.85,1279.43,Refund Issued,61,WH-MTL-002,DRV02428
+INC020562,SHP008919,TRK9370152841,Purolator,Vancouver,Kelowna,Mechanical Failure,Low,Resolved,2026-04-11 12:00:00,12,Clear,Medium,14.05,2302.22,Customer Notified,29,WH-VAN-005,DRV01752
+INC017814,SHP010035,TRK7773508903,Canada Post,Toronto,Montreal,Weather Delay,Medium,Resolved,2026-03-17 13:00:00,72,Snow,Low,50.5,269.6,Warehouse Escalation,3,WH-HFX-003,DRV01641
+INC004033,SHP078904,TRK5305848003,UPS,Calgary,Edmonton,Weather Delay,Low,Open,2026-03-05 21:00:00,2,Cloudy,Medium,12.3,908.29,Driver Reassigned,89,WH-TOR-001,DRV02229
+INC000695,SHP090460,TRK5794837929,DHL,Vancouver,Kelowna,Warehouse Processing Delay,Medium,Under Investigation,2026-04-12 07:00:00,8,Clear,Medium,11.95,561.04,Shipment Reprocessed,38,WH-TOR-001,DRV01224
+INC001460,SHP085417,TRK4917741130,DHL,Vancouver,Kelowna,Warehouse Processing Delay,Low,Under Investigation,2026-05-01 12:00:00,8,Rain,Medium,22.45,1120.73,Route Reassigned,31,WH-MTL-002,DRV00817
+INC003370,SHP072634,TRK4632737046,DHL,Ottawa,Toronto,Address Issue,Medium,Resolved,2026-04-09 16:00:00,8,Clear,Low,7.45,1386.1,Shipment Reprocessed,58,WH-VAN-005,DRV00528
+INC017847,SHP036037,TRK6487726529,UPS,Calgary,Edmonton,Traffic Disruption,Low,Resolved,2026-04-06 10:00:00,1,Rain,Medium,18.77,988.11,Delivery Rescheduled,92,WH-VAN-005,DRV01063
+INC009724,SHP020897,TRK2434936632,DHL,Ottawa,Toronto,Mechanical Failure,Low,Resolved,2026-02-04 13:00:00,0,Storm,High,43.25,1861.95,Driver Reassigned,8,WH-TOR-001,DRV01733
+INC003361,SHP098959,TRK3022267695,FedEx,Ottawa,Toronto,Mechanical Failure,Low,Under Investigation,2026-03-25 18:00:00,8,Rain,Medium,22.45,356.53,Refund Issued,26,WH-TOR-001,DRV02188
+INC016763,SHP049977,TRK5264459116,Canada Post,Toronto,Montreal,Lost Package,Low,Open,2026-04-14 22:00:00,1,Rain,Low,14.28,1055.81,Delivery Rescheduled,49,WH-OTT-006,DRV01067
+INC013609,SHP054893,TRK9735379685,FedEx,Calgary,Edmonton,Damaged Shipment,Low,Resolved,2026-04-20 04:00:00,8,Clear,Medium,11.95,272.09,Shipment Reprocessed,50,WH-CGY-004,DRV01016
+INC004648,SHP009056,TRK1707079971,DHL,Ottawa,Toronto,Failed Delivery Attempt,High,Resolved,2026-06-17 06:00:00,2,Cloudy,Low,7.8,1063.35,Carrier Investigation,21,WH-OTT-006,DRV00702
+INC000040,SHP093471,TRK7455985546,DHL,Halifax,Moncton,Carrier Delay,Low,Resolved,2026-01-31 09:00:00,1,Cloudy,Low,7.28,1596.29,Warehouse Escalation,22,WH-VAN-005,DRV00723
+INC007351,SHP032381,TRK2094295318,DHL,Ottawa,Toronto,Damaged Shipment,Low,Escalated,2026-05-12 17:00:00,48,Snow,Low,47.7,857.19,Driver Reassigned,62,WH-OTT-006,DRV01116
+INC000787,SHP074219,TRK1666433040,FedEx,Calgary,Edmonton,Weather Delay,High,Resolved,2026-06-02 04:00:00,72,Cloudy,Medium,39.25,2232.11,Shipment Reprocessed,94,WH-VAN-005,DRV00122
+INC007428,SHP005920,TRK7849245096,Canada Post,Vancouver,Kelowna,Customs Hold,Medium,Resolved,2026-01-10 12:00:00,2,Rain,Severe,34.3,810.11,Shipment Reprocessed,33,WH-HFX-003,DRV00521
+INC013997,SHP017059,TRK8863232438,UPS,Ottawa,Toronto,Mechanical Failure,Medium,Resolved,2026-05-18 05:00:00,24,Snow,High,47.1,1424.16,Driver Reassigned,29,WH-HFX-003,DRV00613
+INC012629,SHP015916,TRK9092111746,Purolator,Ottawa,Toronto,Customs Hold,High,Resolved,2026-03-22 13:00:00,2,Clear,Medium,8.8,2328.12,Refund Issued,39,WH-HFX-003,DRV01781
+INC004830,SHP060910,TRK1068284425,DHL,Toronto,Montreal,Warehouse Processing Delay,High,Resolved,2026-03-18 16:00:00,12,Clear,Medium,14.05,122.3,Shipment Reprocessed,35,WH-VAN-005,DRV01430
+INC011578,SHP002556,TRK3350642079,FedEx,Halifax,Moncton,Failed Delivery Attempt,Low,Resolved,2026-04-01 20:00:00,1,Cloudy,Medium,11.78,176.15,Customer Notified,24,WH-MTL-002,DRV00878
+INC021475,SHP027573,TRK3742514966,Purolator,Halifax,Moncton,Warehouse Processing Delay,Low,Resolved,2026-04-19 22:00:00,8,Clear,Medium,11.95,589.69,Shipment Reprocessed,68,WH-CGY-004,DRV02013
+INC009400,SHP046722,TRK8900475838,Canada Post,Halifax,Moncton,Mechanical Failure,Medium,Resolved,2026-04-17 18:00:00,1,Clear,Low,3.78,1877.64,Carrier Investigation,8,WH-OTT-006,DRV01882
+INC007402,SHP098760,TRK2214717435,Canada Post,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-02-18 00:00:00,0,Storm,High,43.25,1195.51,Route Reassigned,79,WH-CGY-004,DRV02110
+INC022427,SHP016787,TRK7689417265,Canada Post,Calgary,Edmonton,Carrier Delay,Low,Resolved,2026-02-17 03:00:00,12,Clear,High,21.55,53.22,Driver Reassigned,86,WH-TOR-001,DRV01539
+INC012608,SHP029696,TRK9121790232,FedEx,Ottawa,Toronto,Damaged Shipment,High,Under Investigation,2026-02-01 16:00:00,2,Rain,Low,14.8,799.94,Carrier Investigation,56,WH-CGY-004,DRV01166
+INC022504,SHP035643,TRK6716861344,FedEx,Calgary,Edmonton,Mechanical Failure,Medium,Resolved,2026-01-27 11:00:00,8,Snow,High,38.7,2041.11,Refund Issued,62,WH-HFX-003,DRV00076
+INC023425,SHP022223,TRK7901486652,DHL,Halifax,Moncton,Traffic Disruption,Low,Escalated,2026-05-20 17:00:00,12,Clear,Low,9.55,735.42,Shipment Reprocessed,55,WH-HFX-003,DRV02197
+INC003684,SHP023541,TRK2874693804,Purolator,Ottawa,Toronto,Traffic Disruption,Medium,Resolved,2026-06-11 00:00:00,2,Cloudy,High,19.8,624.11,Carrier Investigation,51,WH-VAN-005,DRV01591
+INC016116,SHP053202,TRK3469508247,Canada Post,Vancouver,Kelowna,Weather Delay,Low,Escalated,2026-06-07 00:00:00,2,Cloudy,High,19.8,1098.5,Refund Issued,7,WH-CGY-004,DRV01324
+INC005557,SHP067554,TRK5456724817,DHL,Ottawa,Toronto,Traffic Disruption,Low,Resolved,2026-01-11 12:00:00,8,Clear,Low,7.45,422.28,Route Reassigned,58,WH-HFX-003,DRV00062
+INC003609,SHP085601,TRK3968447508,Canada Post,Ottawa,Toronto,Traffic Disruption,Low,Resolved,2026-05-02 21:00:00,1,Snow,Low,23.02,1203.6,Customer Notified,13,WH-TOR-001,DRV02168
+INC007358,SHP074902,TRK7635982974,DHL,Vancouver,Kelowna,Failed Delivery Attempt,Medium,Under Investigation,2026-05-21 00:00:00,24,Fog,Low,29.85,320.21,Warehouse Escalation,66,WH-VAN-005,DRV02459
+INC003334,SHP000911,TRK7315912340,Canada Post,Calgary,Edmonton,Damaged Shipment,Medium,Resolved,2026-06-22 04:00:00,8,Rain,High,29.95,917.62,Driver Reassigned,39,WH-MTL-002,DRV02043
+INC009235,SHP082655,TRK6727270209,UPS,Calgary,Edmonton,Traffic Disruption,Medium,Resolved,2026-03-20 10:00:00,1,Clear,High,15.78,2208.57,Warehouse Escalation,63,WH-MTL-002,DRV01191
+INC011709,SHP072081,TRK7579285591,UPS,Calgary,Edmonton,Warehouse Processing Delay,High,Under Investigation,2026-06-22 22:00:00,8,Clear,Low,7.45,1330.48,Route Reassigned,66,WH-MTL-002,DRV00627
+INC002500,SHP022240,TRK5845573905,Canada Post,Vancouver,Kelowna,Carrier Delay,Medium,Escalated,2026-02-03 22:00:00,4,Clear,Medium,9.85,962.54,Carrier Investigation,91,WH-CGY-004,DRV00386
+INC020176,SHP038167,TRK9036195220,UPS,Toronto,Montreal,Weather Delay,Critical,Escalated,2026-02-24 04:00:00,8,Clear,Medium,11.95,538.33,Shipment Reprocessed,29,WH-HFX-003,DRV00875
+INC010936,SHP082219,TRK5472198848,UPS,Vancouver,Kelowna,Weather Delay,Low,Open,2026-02-08 01:00:00,2,Cloudy,High,19.8,1594.92,Delivery Rescheduled,85,WH-CGY-004,DRV00494
+INC003879,SHP088861,TRK8670662617,DHL,Calgary,Edmonton,Weather Delay,Low,Resolved,2026-05-20 18:00:00,12,Clear,Low,9.55,716.41,Customer Notified,83,WH-OTT-006,DRV01332
+INC011813,SHP078094,TRK3857486604,UPS,Toronto,Montreal,Mechanical Failure,Low,Resolved,2026-03-21 21:00:00,4,Clear,Medium,9.85,382.05,Refund Issued,38,WH-OTT-006,DRV01284
+INC002779,SHP036293,TRK5454442773,UPS,Vancouver,Kelowna,Weather Delay,Low,Resolved,2026-04-16 22:00:00,2,Clear,Medium,8.8,401.08,Route Reassigned,18,WH-VAN-005,DRV00224
+INC001421,SHP085417,TRK4917741130,DHL,Vancouver,Kelowna,Damaged Shipment,Critical,Open,2026-04-28 13:00:00,8,Rain,Medium,22.45,794.12,Shipment Reprocessed,57,WH-MTL-002,DRV00817
+INC019809,SHP044819,TRK8548921832,UPS,Halifax,Moncton,Customs Hold,Low,Resolved,2026-02-09 14:00:00,24,Clear,Low,15.85,310.29,Route Reassigned,80,WH-CGY-004,DRV00615
+INC004952,SHP022096,TRK7559607651,FedEx,Vancouver,Kelowna,Damaged Shipment,Medium,Escalated,2026-06-07 17:00:00,2,Rain,Low,14.8,1541.13,Refund Issued,59,WH-TOR-001,DRV00395
+INC005835,SHP071805,TRK1146921068,Purolator,Toronto,Montreal,Weather Delay,High,Escalated,2026-06-06 11:00:00,2,Clear,Low,4.3,1439.15,Driver Reassigned,94,WH-OTT-006,DRV00706
+INC014046,SHP093730,TRK5858361442,Purolator,Toronto,Montreal,Weather Delay,Low,Open,2026-01-31 04:00:00,8,Clear,Medium,11.95,1564.8,Refund Issued,29,WH-CGY-004,DRV02009
+INC017383,SHP029217,TRK9791125720,DHL,Ottawa,Toronto,Customs Hold,Low,Resolved,2026-04-16 01:00:00,24,Clear,High,27.85,189.24,Shipment Reprocessed,5,WH-VAN-005,DRV01036
