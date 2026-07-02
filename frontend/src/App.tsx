@@ -461,11 +461,11 @@ export default function App() {
 
   const suggestions = [
     "Give me a KPI summary of operations",
+    "Which carrier has the best on-time rate?",
+    "Show all Critical Delay shipments",
     "Which routes have the most delays?",
-    "Show all delayed shipments",
-    "What can you do?",
-    "Show shipments to Toronto",
-    "What's our cancellation rate?",
+    "Show shipments to Vancouver",
+    "What are the top incident types?",
   ];
 
   return (
@@ -498,9 +498,9 @@ export default function App() {
           <div className="w-5 h-5 bg-gradient-to-br from-indigo-500 to-purple-600 rounded flex items-center justify-center shrink-0">
             <Zap size={11}/>
           </div>
-          <span className="text-[11px] text-gray-300 font-semibold tracking-tight truncate">GenAI Ops Assistant</span>
+          <span className="text-[11px] text-gray-300 font-semibold tracking-tight truncate">Propgatics · GenAI Ops Intelligence</span>
           <span className="text-gray-700 hidden sm:block">·</span>
-          <span className="text-[10px] text-gray-600 hidden sm:block truncate">enterprise-genai-ops-assistant</span>
+          <span className="text-[10px] text-gray-600 hidden sm:block truncate">logistics-ai-assistant</span>
         </div>
         <div className="ml-auto flex items-center gap-2 shrink-0">
           <span className="text-[9px] text-gray-600 font-mono hidden md:block">mock provider</span>
@@ -637,9 +637,9 @@ export default function App() {
                     { label: "Shipments by status", q: "Count shipments by status" },
                     { label: "Toronto routes", q: "Show all shipments to Toronto" },
                     { label: "Recent shipments", q: "Show the 10 most recent shipments" },
-                    { label: "Chicago origin", q: "Show all shipments from Chicago" },
+                    { label: "Critical delays", q: "Show all Critical Delay shipments" },
                     { label: "Worst delay routes", q: "Show worst delay routes" },
-                    { label: "Cancelled shipments", q: "Show all cancelled shipments" },
+                    { label: "FedEx shipments", q: "Show all FedEx shipments" },
                     { label: "Vancouver routes", q: "Show shipments to Vancouver" },
                   ].map(({ label, q }) => (
                     <button key={label} onClick={() => handleSend(q)}
@@ -660,9 +660,9 @@ export default function App() {
                   {[
                     { label: "KPI Summary", q: "Give me a KPI summary of operations", icon: Activity },
                     { label: "Delay Hotspots", q: "Which routes have the most delays?", icon: AlertCircle },
-                    { label: "Weekly Trends", q: "Show me weekly shipment trends", icon: BarChart2 },
+                    { label: "Carrier Performance", q: "Which carrier has the best on-time rate?", icon: BarChart2 },
                     { label: "Route Analysis", q: "What are the busiest routes?", icon: ChevronRight },
-                    { label: "Cancellation Report", q: "What's our cancellation rate by origin?", icon: X },
+                    { label: "Incident Report", q: "What are the top incident types and their financial impact?", icon: X },
                     { label: "On-time Performance", q: "What's our on-time delivery performance?", icon: CheckCircle },
                   ].map(({ label, q, icon: Icon }) => (
                     <button key={label} onClick={() => handleSend(q)}

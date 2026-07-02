@@ -38,8 +38,8 @@ from app.db.session import SessionLocal, engine
 from app.rag.loaders import extract_text
 
 app = FastAPI(
-    title="Enterprise GenAI Operations Assistant",
-    description="4-agent RAG + NL2SQL platform",
+    title="Propgatics GenAI Operations Assistant",
+    description="4-agent RAG + NL2SQL + Analytics platform on top of the Propgatics Logistics Intelligence Platform",
     version="2.0.0",
 )
 
@@ -179,7 +179,7 @@ async def upload(
 # ─── Embedded sample docs ─────────────────────────────────────────────────────
 
 _EMBEDDED_DOCS = {
-    "hr_leave_policy": """Enterprise Operations Inc. HR Leave Policy (Effective January 2026)
+    "hr_leave_policy": """Propgatics Logistics Intelligence Platform — HR Leave Policy (Effective January 2026)
 
 ANNUAL LEAVE: All full-time employees accrue 20 days of paid annual leave per calendar year, credited quarterly (5 days/quarter). Unused leave up to 5 days may carry over; remainder forfeited December 31st. Leave cannot be taken in first 90 days of employment.
 
@@ -224,22 +224,21 @@ SEVERITY: Low 41% (avg loss $800, 36h resolution), Medium 34% ($1,500, 60h), Hig
 
 TOP ROUTES: Calgary–Edmonton (busiest, 300km, best on-time). Toronto–Vancouver and Toronto–Montreal (highest revenue). Vancouver-bound long-haul routes (highest delay rate, mountain pass weather exposure).""",
 
-    "q1_operations_report": """Enterprise Operations Inc. Q1 2026 Operations Report
+    "q1_operations_report": """Propgatics Logistics Intelligence Platform — Q1 2026 Operations Report
 
-EXECUTIVE SUMMARY: Shipment volume grew 12% QoQ to 1,847 total. On-time delivery: 86% (target 90%). Revenue $4.2M (+9% QoQ). Gross margin 33%, down from 36% due to carrier surcharges.
+EXECUTIVE SUMMARY: Q1 2026 shipment volume reached 24,823 across all routes. On-time delivery rate: 75.3% (industry benchmark: 85%). Total shipping revenue: CAD $1.84M. Delivery cost: CAD $4.68M. Cost-to-revenue ratio remains elevated at 2.5x — pricing review initiated.
 
-SHIPMENT METRICS: Total 1,847. On-time 1,588 (86%). Delayed 203 (11%). Cancelled 56 (3%). Average delay 3.8 days.
+SHIPMENT STATUS BREAKDOWN: Delivered (on-time) 18,703 (75.3%). Minor Delay 4,421 (17.8%). Delayed 1,239 (5.0%). Critical Delay 460 (1.9%).
 
-TOP ROUTES (on-time rate): New York to Montreal 94%, Toronto to Calgary 92%, Seattle to Toronto 91%.
-WORST ROUTES (delay rate): Chicago to Vancouver 31%, Seattle to Montreal 24%, Calgary to New York 19%.
+TOP ROUTES BY VOLUME: Toronto–Montreal (busiest corridor, 2,180 shipments, 76.1% on-time). Calgary–Edmonton (300km, highest on-time rate among top-10, 78.4%). Vancouver–Toronto (highest revenue corridor, longest distance, most weather exposure).
 
-VANCOUVER PORT CONGESTION: Added 2.3 days average delay to westbound shipments Feb-Mar. Cause: labour disputes and increased Asian imports. Mitigation: rerouting through Seattle. Resolution expected Q2 2026.
+WORST ROUTES (delay rate): Vancouver-bound long-haul routes (mountain pass weather exposure, 31% delay rate in Feb snow events). Halifax–Montreal (Atlantic weather, 27% delay rate). Edmonton–Kelowna (winter road conditions, 24%).
 
-CARRIER PERFORMANCE: FastFreight Inc (primary): 88% SLA compliance. NorthRoute Logistics (secondary): 79% SLA - underperforming, contract review April. PacificLink (new, Feb 2026): 85% on Vancouver routes.
+CARRIER PERFORMANCE: Canada Post 75.6% on-time (avg delay 2.50h, avg cost CAD $74.43). UPS 75.6% (2.50h, $74.26). DHL 75.4% (2.44h, $74.37). Purolator 75.2% (2.56h, $74.32). FedEx 75.0% (2.59h, $74.06). Narrow 0.6pp spread across all carriers indicates systemic network-wide factors rather than carrier-specific issues.
 
-CANCELLATIONS: 3% rate (56 shipments). Causes: customer holds 42%, carrier capacity 35%, customs 23%.
+INCIDENT SUMMARY: 6,203 incidents in Q1. Top types: Failed Delivery Attempt (28%), Damaged Shipment (22%), Customs Hold (18%), Weather Delay (15%). Critical severity: 620 incidents, avg financial loss CAD $2,800, avg resolution 96h.
 
-FINANCIALS: Revenue $4.2M. Carrier costs $2.8M (+13%). Gross margin 33%. Delay penalties $84,000.
+ROUTE RISK: Average route risk score 16.3/100. High/Critical risk shipments: 8.2% of total. Riskiest corridors: Vancouver–Toronto, Halifax–Montreal (weather + distance compounding).
 
-Q2 ACTION ITEMS: Renegotiate Vancouver port SLA by April 30. Pilot secondary carrier Calgary-Montreal. Real-time delay alerts for 2+ day delays. Review NorthRoute contract. Target 90% on-time by Q2 end.""",
+Q2 ACTION ITEMS: Implement weather-aware routing for Vancouver-bound shipments. Renegotiate SLA with FedEx (lowest on-time rate). Review pricing model — delivery cost 2.5x revenue is unsustainable. Target on-time rate 80%+ by Q2 end. Pilot predictive delay alerts for high-risk routes.""",
 }

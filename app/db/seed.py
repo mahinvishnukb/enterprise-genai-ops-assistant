@@ -170,8 +170,8 @@ def seed() -> None:
         _seed_shipments(db)
         _seed_incidents(db)
 
-        # Keep OperationsData seeded with a handful of rows so the legacy
-        # table exists and doesn't cause errors on older deployments.
+        # migration compat: keep OperationsData seeded so older Render deployments
+        # that still have that table don't error on startup.
         if db.query(OperationsData).count() == 0:
             import random, datetime as dt3
             CITIES = ["Toronto", "Vancouver", "Calgary", "Montreal"]
