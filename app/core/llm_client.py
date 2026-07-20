@@ -99,6 +99,11 @@ def _mock_route(user: str) -> str:
         "breakdown", "distribution", "compare", "comparison",
         "carrier performance", "on-time rate", "risk score",
         "weather impact", "financial loss", "incident rate",
+        # Incident analytics — must beat the generic "incident" sql signal
+        "incident type", "top incident", "incident breakdown",
+        "by incident", "incident analysis", "severity distribution",
+        "incident severity", "by severity", "incident frequency",
+        "financial impact", "resolution time", "incident cost",
     ]
 
     # SQL signals — show/list/find raw rows
@@ -146,12 +151,16 @@ def _mock_sql(user: str) -> str:
 
     # ── Incident queries ───────────────────────────────────────────────────
     if "incident" in u:
-        if "critical" in u:
-            return "SELECT incident_id, carrier, origin, destination, incident_type, estimated_financial_loss_cad FROM incidents WHERE severity_level = 'Critical' ORDER BY estimated_financial_loss_cad DESC LIMIT 20;"
+        if "critical" in u or "severity" in u:
+            return "SELECT incident_id, carrier, origin, destination, incident_type, severity_level, estimated_financial_loss_cad FROM incidents WHERE severity_level IN ('Critical','High') ORDER BY estimated_financial_loss_cad DESC LIMIT 20;"
         if "unresolved" in u or "open" in u or "investigation" in u:
             return "SELECT incident_id, carrier, incident_type, severity_level, incident_status, delay_hours FROM incidents WHERE incident_status != 'Resolved' ORDER BY delay_hours DESC LIMIT 20;"
         if "financial" in u or "loss" in u or "cost" in u:
             return "SELECT carrier, COUNT(*) as incidents, ROUND(SUM(estimated_financial_loss_cad),2) as total_loss_cad FROM incidents GROUP BY carrier ORDER BY total_loss_cad DESC;"
+        if "type" in u or "top" in u or "breakdown" in u or "by type" in u or "most common" in u:
+            return "SELECT incident_type, COUNT(*) as count, ROUND(AVG(estimated_financial_loss_cad),2) as avg_loss_cad, ROUND(AVG(resolution_time_hours),2) as avg_resolution_hours FROM incidents GROUP BY incident_type ORDER BY count DESC;"
+        if "by carrier" in u or "carrier" in u:
+            return "SELECT carrier, COUNT(*) as incidents, ROUND(AVG(estimated_financial_loss_cad),2) as avg_loss_cad, ROUND(AVG(resolution_time_hours),2) as avg_resolution_hours FROM incidents GROUP BY carrier ORDER BY incidents DESC;"
         return "SELECT incident_id, carrier, origin, destination, incident_type, severity_level, incident_status, delay_hours FROM incidents ORDER BY delay_hours DESC LIMIT 30;"
 
     # ── Count / aggregate queries ──────────────────────────────────────────

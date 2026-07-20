@@ -13,4 +13,4 @@ services:
       - key: PYTHON_VERSION
         value: 3.12.0
       - key: DEPLOY_VERSION
-        value: "6"
+        value: "7"

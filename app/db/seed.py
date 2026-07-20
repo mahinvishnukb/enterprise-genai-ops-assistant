@@ -5,8 +5,8 @@ On first startup the seeder reads two CSV files bundled in the repository:
   data/shipments_sample.csv  — 5 000 rows sampled from the full 100K dataset
   data/incidents_sample.csv  — 1 000 rows sampled from the full 25K dataset
 
-If the CSV files are missing (e.g. a bare-clone environment) the seeder falls
-back to a small inline stub so the app still starts without crashing.
+If the CSV files are missing the seeder falls back to 50 shipment stubs and
+20 incident stubs so the app still starts with meaningful analytics data.
 
 Run standalone:  python -m app.db.seed
 """
@@ -18,9 +18,7 @@ from app.db.models import Base, Incident, OperationsData, Shipment
 from app.db.session import SessionLocal, engine
 
 # Resolve the data/ directory relative to the repo root.
-# Two candidates handle different working directories (local vs Render):
-#   1. Relative to this file's location (always correct when __file__ resolves)
-#   2. Relative to the process CWD (fallback for unusual mount layouts)
+# Two candidates handle different working directories (local vs Render).
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 _DATA_DIR = _REPO_ROOT / "data"
 if not _DATA_DIR.exists():
@@ -93,19 +91,19 @@ def _seed_shipments(db) -> int:
                 delivery_performance=r.get("delivery_performance"),
             ))
 
-    # Batch insert in chunks of 500 for speed
     BATCH = 500
     for i in range(0, len(rows), BATCH):
         db.add_all(rows[i:i + BATCH])
         db.commit()
-    print(f"[seed] inserted {len(rows)} shipment rows")
+    print(f"[seed] inserted {len(rows)} shipment rows from CSV")
     return len(rows)
 
 
 def _seed_incidents(db) -> int:
     csv_path = _DATA_DIR / "incidents_sample.csv"
     if not csv_path.exists():
-        print("[seed] incidents_sample.csv not found — skipping incidents")
+        print("[seed] incidents_sample.csv not found — using stub data")
+        _seed_stub_incidents(db)
         return 0
 
     rows = []
@@ -137,33 +135,130 @@ def _seed_incidents(db) -> int:
     for i in range(0, len(rows), BATCH):
         db.add_all(rows[i:i + BATCH])
         db.commit()
-    print(f"[seed] inserted {len(rows)} incident rows")
+    print(f"[seed] inserted {len(rows)} incident rows from CSV")
     return len(rows)
 
 
+# ─── Comprehensive fallback stubs ─────────────────────────────────────────────
+# 50 shipments covering all 5 carriers, 4 statuses, 4 risk categories,
+# 6 weather conditions, and 6 months of dates for trend analysis.
+
 def _seed_stub_shipments(db) -> None:
-    """Minimal inline stub so the app boots without any CSV files present."""
-    import datetime as dt2
+    """50-row stub with full carrier/status/weather/risk coverage."""
+    # fmt: off
+    # (id, carrier, origin, dest, status, delay_h, on_time, risk_score, risk_cat, weather, cost_cad, traffic, date)
+    _D = [
+        # ── UPS ───────────────────────────────────────────────────────────
+        ("SHP000001","UPS","Toronto","Vancouver","Delivered",0,1,12.5,"Low","Clear",77.3,"Low",dt.date(2026,1,3)),
+        ("SHP000002","UPS","Calgary","Montreal","Delivered",0,1,18.2,"Low","Cloudy",74.5,"Low",dt.date(2026,1,15)),
+        ("SHP000003","UPS","Ottawa","Edmonton","Delivered",0,1,9.8,"Low","Clear",81.2,"Low",dt.date(2026,2,1)),
+        ("SHP000004","UPS","Toronto","Calgary","Minor Delay",1.5,0,22.4,"Medium","Rain",79.0,"Medium",dt.date(2026,2,14)),
+        ("SHP000005","UPS","Vancouver","Toronto","Minor Delay",2.1,0,28.7,"Medium","Cloudy",76.8,"High",dt.date(2026,2,28)),
+        ("SHP000006","UPS","Montreal","Vancouver","Delivered",0,1,15.3,"Low","Clear",83.1,"Low",dt.date(2026,3,10)),
+        ("SHP000007","UPS","Halifax","Calgary","Delayed",5.2,0,45.6,"High","Storm",72.4,"High",dt.date(2026,3,22)),
+        ("SHP000008","UPS","Edmonton","Toronto","Delivered",0,1,11.2,"Low","Clear",78.9,"Medium",dt.date(2026,4,5)),
+        ("SHP000009","UPS","Toronto","Montreal","Delivered",0,1,8.5,"Low","Clear",75.6,"Low",dt.date(2026,4,18)),
+        ("SHP000010","UPS","Vancouver","Calgary","Delivered",0,1,19.1,"Low","Fog",80.3,"Medium",dt.date(2026,5,2)),
+        # ── FedEx ─────────────────────────────────────────────────────────
+        ("SHP000011","FedEx","Toronto","Calgary","Delivered",0,1,14.2,"Low","Clear",76.1,"Low",dt.date(2026,1,5)),
+        ("SHP000012","FedEx","Calgary","Vancouver","Minor Delay",1.8,0,24.5,"Medium","Snow",73.8,"Medium",dt.date(2026,1,20)),
+        ("SHP000013","FedEx","Montreal","Edmonton","Delivered",0,1,10.9,"Low","Clear",82.4,"Low",dt.date(2026,2,5)),
+        ("SHP000014","FedEx","Ottawa","Toronto","Delayed",4.5,0,38.7,"High","Storm",70.5,"High",dt.date(2026,2,18)),
+        ("SHP000015","FedEx","Vancouver","Montreal","Delivered",0,1,13.6,"Low","Cloudy",78.2,"Low",dt.date(2026,3,3)),
+        ("SHP000016","FedEx","Toronto","Edmonton","Minor Delay",2.3,0,31.4,"Medium","Rain",77.9,"Medium",dt.date(2026,3,15)),
+        ("SHP000017","FedEx","Calgary","Ottawa","Delivered",0,1,17.8,"Low","Clear",74.7,"Low",dt.date(2026,4,1)),
+        ("SHP000018","FedEx","Edmonton","Vancouver","Critical Delay",12.5,0,68.3,"Critical","Storm",69.2,"High",dt.date(2026,4,14)),
+        ("SHP000019","FedEx","Halifax","Toronto","Delivered",0,1,12.1,"Low","Clear",80.6,"Low",dt.date(2026,4,28)),
+        ("SHP000020","FedEx","Toronto","Vancouver","Delivered",0,1,9.7,"Low","Clear",76.4,"Medium",dt.date(2026,5,8)),
+        # ── DHL ───────────────────────────────────────────────────────────
+        ("SHP000021","DHL","Vancouver","Toronto","Delivered",0,1,11.4,"Low","Clear",79.5,"Low",dt.date(2026,1,8)),
+        ("SHP000022","DHL","Toronto","Montreal","Delivered",0,1,7.8,"Low","Clear",74.3,"Low",dt.date(2026,1,22)),
+        ("SHP000023","DHL","Calgary","Toronto","Minor Delay",1.2,0,21.6,"Medium","Fog",76.8,"Medium",dt.date(2026,2,8)),
+        ("SHP000024","DHL","Montreal","Calgary","Delivered",0,1,16.3,"Low","Clear",81.1,"Low",dt.date(2026,2,22)),
+        ("SHP000025","DHL","Ottawa","Vancouver","Delayed",3.8,0,42.1,"High","Snow",73.2,"High",dt.date(2026,3,7)),
+        ("SHP000026","DHL","Edmonton","Montreal","Delivered",0,1,13.9,"Low","Cloudy",78.7,"Low",dt.date(2026,3,20)),
+        ("SHP000027","DHL","Toronto","Ottawa","Delivered",0,1,8.1,"Low","Clear",75.9,"Low",dt.date(2026,4,3)),
+        ("SHP000028","DHL","Vancouver","Calgary","Delivered",0,1,19.5,"Low","Rain",80.2,"Medium",dt.date(2026,4,17)),
+        ("SHP000029","DHL","Calgary","Halifax","Minor Delay",2.7,0,33.8,"Medium","Storm",72.6,"High",dt.date(2026,5,1)),
+        ("SHP000030","DHL","Montreal","Toronto","Delivered",0,1,10.2,"Low","Clear",77.4,"Low",dt.date(2026,5,12)),
+        # ── Canada Post ───────────────────────────────────────────────────
+        ("SHP000031","Canada Post","Ottawa","Montreal","Delivered",0,1,6.5,"Low","Clear",73.8,"Low",dt.date(2026,1,10)),
+        ("SHP000032","Canada Post","Toronto","Halifax","Delivered",0,1,14.7,"Low","Clear",78.3,"Low",dt.date(2026,1,25)),
+        ("SHP000033","Canada Post","Vancouver","Edmonton","Delivered",0,1,11.8,"Low","Cloudy",75.1,"Medium",dt.date(2026,2,10)),
+        ("SHP000034","Canada Post","Calgary","Ottawa","Minor Delay",1.9,0,26.3,"Medium","Snow",76.4,"Medium",dt.date(2026,2,24)),
+        ("SHP000035","Canada Post","Montreal","Halifax","Delivered",0,1,9.4,"Low","Clear",80.8,"Low",dt.date(2026,3,9)),
+        ("SHP000036","Canada Post","Edmonton","Toronto","Delivered",0,1,15.2,"Low","Clear",74.9,"Low",dt.date(2026,3,23)),
+        ("SHP000037","Canada Post","Toronto","Calgary","Delivered",0,1,17.6,"Low","Rain",79.3,"Medium",dt.date(2026,4,6)),
+        ("SHP000038","Canada Post","Vancouver","Montreal","Delayed",6.1,0,47.8,"High","Storm",71.5,"High",dt.date(2026,4,20)),
+        ("SHP000039","Canada Post","Ottawa","Edmonton","Delivered",0,1,12.9,"Low","Clear",76.7,"Low",dt.date(2026,5,4)),
+        ("SHP000040","Canada Post","Halifax","Vancouver","Delivered",0,1,10.6,"Low","Fog",78.1,"Medium",dt.date(2026,5,15)),
+        # ── Purolator ─────────────────────────────────────────────────────
+        ("SHP000041","Purolator","Calgary","Toronto","Delivered",0,1,15.8,"Low","Clear",77.8,"Low",dt.date(2026,1,12)),
+        ("SHP000042","Purolator","Montreal","Ottawa","Delivered",0,1,8.3,"Low","Clear",74.2,"Low",dt.date(2026,1,27)),
+        ("SHP000043","Purolator","Toronto","Edmonton","Minor Delay",2.4,0,29.6,"Medium","Cloudy",76.5,"Medium",dt.date(2026,2,12)),
+        ("SHP000044","Purolator","Vancouver","Halifax","Delivered",0,1,18.4,"Low","Clear",81.5,"Low",dt.date(2026,2,26)),
+        ("SHP000045","Purolator","Edmonton","Calgary","Delivered",0,1,7.2,"Low","Clear",75.3,"Low",dt.date(2026,3,12)),
+        ("SHP000046","Purolator","Ottawa","Vancouver","Critical Delay",11.8,0,72.5,"Critical","Storm",68.9,"High",dt.date(2026,3,25)),
+        ("SHP000047","Purolator","Halifax","Montreal","Delivered",0,1,11.5,"Low","Cloudy",79.7,"Medium",dt.date(2026,4,8)),
+        ("SHP000048","Purolator","Calgary","Edmonton","Delivered",0,1,5.9,"Low","Clear",73.4,"Low",dt.date(2026,4,22)),
+        ("SHP000049","Purolator","Toronto","Vancouver","Delayed",4.2,0,39.4,"High","Snow",72.1,"High",dt.date(2026,5,6)),
+        ("SHP000050","Purolator","Montreal","Calgary","Minor Delay",1.7,0,23.5,"Medium","Rain",77.6,"Medium",dt.date(2026,5,17)),
+    ]
+    # fmt: on
+    rows = [
+        Shipment(
+            shipment_id=d[0], carrier=d[1], origin=d[2], destination=d[3],
+            shipment_status=d[4], delay_hours=d[5], on_time_delivery=d[6],
+            route_risk_score=d[7], risk_category=d[8], weather_condition=d[9],
+            shipping_cost_cad=d[10], delivery_cost_cad=round(d[10] * 2.54, 2),
+            traffic_level=d[11], shipment_date=d[12],
+        )
+        for d in _D
+    ]
+    db.add_all(rows)
+    db.commit()
+    print(f"[seed] inserted {len(rows)} stub shipment rows")
+
+
+def _seed_stub_incidents(db) -> None:
+    """20-row stub covering all 8 incident types and all 4 severity levels."""
+    # fmt: off
+    # (id, shipment_id, carrier, origin, dest, type, severity, status, delay_h, loss_cad, resolution_h)
+    _D = [
+        ("INC000001","SHP000007","UPS","Halifax","Calgary","Weather Delay","High","Resolved",5.2,2200.0,84.0),
+        ("INC000002","SHP000014","FedEx","Ottawa","Toronto","Mechanical Failure","Medium","Resolved",4.5,1500.0,60.0),
+        ("INC000003","SHP000018","FedEx","Edmonton","Vancouver","Traffic Disruption","Critical","Resolved",12.5,2800.0,96.0),
+        ("INC000004","SHP000025","DHL","Ottawa","Vancouver","Weather Delay","High","Under Investigation",3.8,2100.0,78.0),
+        ("INC000005","SHP000029","DHL","Calgary","Halifax","Failed Delivery Attempt","Low","Resolved",2.7,650.0,24.0),
+        ("INC000006","SHP000038","Canada Post","Vancouver","Montreal","Weather Delay","Critical","Resolved",6.1,2900.0,102.0),
+        ("INC000007","SHP000046","Purolator","Ottawa","Vancouver","Traffic Disruption","Critical","Under Investigation",11.8,2750.0,92.0),
+        ("INC000008","SHP000049","Purolator","Toronto","Vancouver","Damaged Shipment","Medium","Resolved",4.2,1450.0,56.0),
+        ("INC000009","SHP000004","UPS","Toronto","Calgary","Failed Delivery Attempt","Low","Resolved",1.5,380.0,18.0),
+        ("INC000010","SHP000012","FedEx","Calgary","Vancouver","Weather Delay","Medium","Resolved",1.8,1100.0,48.0),
+        ("INC000011","SHP000016","FedEx","Toronto","Edmonton","Customs Hold","Medium","Under Investigation",2.3,1350.0,72.0),
+        ("INC000012","SHP000023","DHL","Calgary","Toronto","Damaged Shipment","Low","Resolved",1.2,520.0,28.0),
+        ("INC000013","SHP000034","Canada Post","Calgary","Ottawa","Lost Package","High","Open",0,1900.0,0),
+        ("INC000014","SHP000043","Purolator","Toronto","Edmonton","Failed Delivery Attempt","Low","Resolved",2.4,290.0,16.0),
+        ("INC000015","SHP000050","Purolator","Montreal","Calgary","Customs Hold","Medium","Resolved",1.7,980.0,44.0),
+        ("INC000016","SHP000005","UPS","Vancouver","Toronto","Damaged Shipment","Medium","Resolved",2.1,1250.0,52.0),
+        ("INC000017","SHP000033","Canada Post","Vancouver","Edmonton","Mechanical Failure","Low","Resolved",0.5,600.0,22.0),
+        ("INC000018","SHP000021","DHL","Vancouver","Toronto","Lost Package","High","Under Investigation",0,1750.0,0),
+        ("INC000019","SHP000036","Canada Post","Edmonton","Toronto","Warehouse Processing Delay","Low","Resolved",1.0,320.0,14.0),
+        ("INC000020","SHP000041","Purolator","Calgary","Toronto","Traffic Disruption","Medium","Resolved",0.8,890.0,36.0),
+    ]
+    # fmt: on
     stubs = [
-        Shipment(shipment_id="SHP000001", carrier="UPS", origin="Toronto",
-                 destination="Vancouver", shipment_status="Delivered",
-                 delay_hours=0, on_time_delivery=1, risk_category="Low",
-                 delivery_performance="On Time",
-                 shipment_date=dt2.date(2026, 3, 1)),
-        Shipment(shipment_id="SHP000002", carrier="FedEx", origin="Calgary",
-                 destination="Montreal", shipment_status="Delayed",
-                 delay_hours=4.5, on_time_delivery=0, risk_category="Medium",
-                 delivery_performance="Delayed",
-                 shipment_date=dt2.date(2026, 3, 5)),
-        Shipment(shipment_id="SHP000003", carrier="DHL", origin="Vancouver",
-                 destination="Edmonton", shipment_status="Minor Delay",
-                 delay_hours=1.2, on_time_delivery=0, risk_category="Low",
-                 delivery_performance="Delayed",
-                 shipment_date=dt2.date(2026, 3, 10)),
+        Incident(
+            incident_id=d[0], shipment_id=d[1], carrier=d[2], origin=d[3],
+            destination=d[4], incident_type=d[5], severity_level=d[6],
+            incident_status=d[7], delay_hours=d[8],
+            estimated_financial_loss_cad=d[9], resolution_time_hours=d[10],
+        )
+        for d in _D
     ]
     db.add_all(stubs)
     db.commit()
-    print("[seed] inserted 3 stub shipment rows")
+    print(f"[seed] inserted {len(stubs)} stub incident rows")
 
 
 def seed() -> None:
@@ -172,28 +267,31 @@ def seed() -> None:
     try:
         current = db.query(Shipment).count()
         if current >= 100:
-            print(f"[seed] {current} shipments already seeded, skipping.")
+            # Full CSV load already done — skip entirely.
+            print(f"[seed] {current} shipments from CSV already present, skipping.")
+            return
+        if current >= 40:
+            # Stub rows (50) already present — skip to avoid clearing them every restart.
+            print(f"[seed] {current} stub rows present, skipping.")
             return
         if current > 0:
-            # Stub rows exist (e.g. first deploy had no CSVs). Clear them before
-            # the real CSV seed to avoid primary-key conflicts (SHP000001 etc.).
-            print(f"[seed] only {current} stub rows — clearing and re-seeding from CSV")
+            # Old 3-row legacy stubs — clear before fresh seed.
+            print(f"[seed] only {current} legacy rows — clearing and re-seeding")
             db.query(Shipment).delete()
             db.query(Incident).delete()
             db.commit()
+
         _seed_shipments(db)
         _seed_incidents(db)
 
-        # migration compat: keep OperationsData seeded so older Render deployments
-        # that still have that table don't error on startup.
+        # migration compat: keep OperationsData seeded so older deployments don't error.
         if db.query(OperationsData).count() == 0:
-            import random, datetime as dt3
+            import random
             CITIES = ["Toronto", "Vancouver", "Calgary", "Montreal"]
             for _ in range(10):
                 o, d = random.sample(CITIES, 2)
                 db.add(OperationsData(origin=o, destination=d, status="on_time",
-                                      delay_days=0,
-                                      shipped_at=dt3.date.today()))
+                                      delay_days=0, shipped_at=dt.date.today()))
             db.commit()
     finally:
         db.close()
