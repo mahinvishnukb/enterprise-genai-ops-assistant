@@ -17,13 +17,22 @@ from pathlib import Path
 from app.db.models import Base, Incident, OperationsData, Shipment
 from app.db.session import SessionLocal, engine
 
-# Resolve the data/ directory relative to the repo root.
-# Two candidates handle different working directories (local vs Render).
-_REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-_DATA_DIR = _REPO_ROOT / "data"
-if not _DATA_DIR.exists():
-    _DATA_DIR = Path.cwd() / "data"
-print(f"[seed] data dir → {_DATA_DIR} (exists={_DATA_DIR.exists()})")
+# Resolve the data/ directory — try every plausible location so the CSV
+# loads reliably on Render, Railway, Fly, local dev, and Docker.
+import os as _os
+_candidates = [
+    Path(__file__).resolve().parent.parent.parent / "data",  # repo root / data
+    Path.cwd() / "data",                                      # CWD / data
+    Path("/opt/render/project/src/data"),                     # Render explicit
+    Path(_os.environ.get("DATA_DIR", "")) if _os.environ.get("DATA_DIR") else None,  # env override
+]
+_DATA_DIR: Path = Path(__file__).resolve().parent.parent.parent / "data"  # fallback
+for _c in _candidates:
+    if _c and _c.exists() and (_c / "shipments_sample.csv").exists():
+        _DATA_DIR = _c
+        break
+print(f"[seed] data dir → {_DATA_DIR} (exists={_DATA_DIR.exists()}, "
+      f"csv={'YES' if (_DATA_DIR / 'shipments_sample.csv').exists() else 'NO'})")
 
 
 def _parse_date(s: str) -> dt.date | None:

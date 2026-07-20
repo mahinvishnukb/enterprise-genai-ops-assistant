@@ -20,6 +20,7 @@ class Settings:
     llm_provider: str = os.getenv("LLM_PROVIDER", "mock")
     openai_api_key: str | None = os.getenv("OPENAI_API_KEY") or None
     anthropic_api_key: str | None = os.getenv("ANTHROPIC_API_KEY") or None
+    groq_api_key: str | None = os.getenv("GROQ_API_KEY") or None
     database_url: str = os.getenv("DATABASE_URL", "sqlite:///./local_dev.db")
     chroma_persist_dir: str = os.getenv("CHROMA_PERSIST_DIR", "./chroma_store")
 

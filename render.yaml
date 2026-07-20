@@ -6,11 +6,33 @@ services:
     startCommand: uvicorn app.api.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
     envVars:
+      # ── LLM Provider ──────────────────────────────────────────────────────
+      # Set LLM_PROVIDER to "groq" and add your GROQ_API_KEY for real AI.
+      # Free tier: 6,000 requests/day. Sign up at console.groq.com
+      # Alternatively: "openai" + OPENAI_API_KEY, "anthropic" + ANTHROPIC_API_KEY
+      # Leave as "mock" for deterministic template responses (no API key needed).
       - key: LLM_PROVIDER
-        value: mock
+        value: groq
+
+      # ── API Keys (add via Render Dashboard → Environment) ─────────────────
+      # Do NOT commit real keys here. Add them in the Render dashboard UI.
+      - key: GROQ_API_KEY
+        value: ""            # ← paste your key in Render Dashboard → Environment
+
+      - key: OPENAI_API_KEY
+        value: ""            # optional, for LLM_PROVIDER=openai
+
+      - key: ANTHROPIC_API_KEY
+        value: ""            # optional, for LLM_PROVIDER=anthropic
+
+      # ── Database ──────────────────────────────────────────────────────────
       - key: DATABASE_URL
         value: sqlite:///./genai_ops.db
+
+      # ── Runtime ───────────────────────────────────────────────────────────
       - key: PYTHON_VERSION
         value: 3.12.0
+
+      # ── Deploy version — bump to force fresh deploy + re-seed ─────────────
       - key: DEPLOY_VERSION
-        value: "7"
+        value: "8"
