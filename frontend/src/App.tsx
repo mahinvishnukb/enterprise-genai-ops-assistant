@@ -378,7 +378,7 @@ const DASH_CARDS = [
 
 function ChartCard({ title, desc, query, icon: Icon, onAskInChat }:{
   title:string; desc:string; query:string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
+  icon: React.ComponentType<{ size?: number | string; className?: string }>;
   onAskInChat:(q:string)=>void;
 }) {
   const [data, setData] = useState<ChatResponse|null>(null);
