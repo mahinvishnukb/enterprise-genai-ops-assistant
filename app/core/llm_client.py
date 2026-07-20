@@ -332,8 +332,8 @@ def _mock_conversation(user: str) -> str:
     greetings = ["hi", "hello", "hey", "good morning", "good afternoon", "howdy"]
     if any(g in u for g in greetings):
         return random.choice([
-            "Hello! I'm your Enterprise GenAI Operations Assistant, powered by the Propgatics Logistics "
-            "Intelligence Platform. I can help you with:\n\n"
+            "Hello! I'm the Propgatics GenAI Operations Assistant — a 4-agent AI system connected to "
+            "the Propgatics Logistics Intelligence Platform. I can help you with:\n\n"
             "• **Shipment data** — query 5,000 real shipments across UPS, FedEx, DHL, Canada Post, Purolator\n"
             "• **Incident intelligence** — 1,000 incident records with severity, financial loss, resolution time\n"
             "• **Analytics & KPIs** — on-time rates, delay trends, carrier benchmarks, risk scores\n"
@@ -371,8 +371,8 @@ def _mock_conversation(user: str) -> str:
 
     if any(w in u for w in ["who built", "who made", "who created", "what is this", "propgatics"]):
         return (
-            "This is the **Enterprise GenAI Operations Assistant**, integrated with the "
-            "**Propgatics Logistics Intelligence Platform** — an end-to-end logistics analytics "
+            "This is the **Propgatics GenAI Operations Assistant** — a production-grade multi-agent "
+            "AI system integrated with the **Propgatics Logistics Intelligence Platform** — an end-to-end logistics analytics "
             "system covering 100K shipments, 25K incidents, 5 Canadian carriers, and real route "
             "risk intelligence.\n\n"
             "The GenAI layer is a production-grade multi-agent system built with FastAPI and React: "

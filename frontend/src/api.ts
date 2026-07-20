@@ -25,10 +25,21 @@ export type StatsResponse = {
 
 const BASE = import.meta.env.VITE_API_URL ?? "";
 
-async function req<T>(url: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${BASE}${url}`, init);
-  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-  return res.json();
+async function req<T>(url: string, init?: RequestInit, timeoutMs = 55000): Promise<T> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const res = await fetch(`${BASE}${url}`, { ...init, signal: controller.signal });
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    return res.json() as Promise<T>;
+  } catch (err) {
+    if ((err as Error).name === "AbortError") {
+      throw new Error("network timeout — Render is waking up, please retry in ~15 seconds");
+    }
+    throw err;
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 export function sendChatMessage(message: string, history?: {role: string; text: string}[]): Promise<ChatResponse> {

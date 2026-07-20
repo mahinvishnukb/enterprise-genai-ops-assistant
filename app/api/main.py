@@ -79,8 +79,11 @@ def on_startup():
 
 
 def _auto_ingest(ka: KnowledgeAgent):
-    # Try disk first (local dev), then fall back to embedded strings (Render/prod)
-    sample_dir = Path(__file__).resolve().parent.parent.parent / "sample_docs"
+    # Try disk first (two candidate paths), then fall back to embedded strings.
+    _file_root = Path(__file__).resolve().parent.parent.parent / "sample_docs"
+    _cwd_root = Path.cwd() / "sample_docs"
+    sample_dir = _file_root if _file_root.exists() else _cwd_root
+    print(f"[startup] sample_dir → {sample_dir} (exists={sample_dir.exists()})")
     loaded = 0
     if sample_dir.exists():
         for p in sorted(sample_dir.glob("*.txt")):
@@ -93,12 +96,15 @@ def _auto_ingest(ka: KnowledgeAgent):
             except Exception as e:
                 print(f"[startup] failed {p.name}: {e}")
     if loaded == 0:
+        print("[startup] no disk docs found — using embedded fallback docs")
         for doc_id, text in _EMBEDDED_DOCS.items():
             try:
                 ka.ingest(doc_id, text)
                 print(f"[startup] ingested embedded:{doc_id}")
             except Exception as e:
                 print(f"[startup] failed embedded:{doc_id}: {e}")
+    chunk_count = len(getattr(ka.vector_store, "_chunks", []))
+    print(f"[startup] ingest complete — {chunk_count} chunks in vector store")
 
 
 # ─── Endpoints ────────────────────────────────────────────────────────────────

@@ -120,10 +120,12 @@ function DataTable({ rows }: { rows: Record<string, unknown>[] }) {
 
 function SQLViewer({ sql }: { sql: string }) {
   const [open, setOpen] = useState(false);
+  // Highlight keywords first, then string literals.
+  // NOTE: do NOT run a number regex after inserting HTML — it would match
+  // "400" inside class="text-sky-400" and corrupt the output.
   const hl = sql
     .replace(/\b(SELECT|FROM|WHERE|ORDER BY|GROUP BY|LIMIT|JOIN|ON|AND|OR|HAVING|AS|COUNT|AVG|SUM|DISTINCT|ROUND|CASE|WHEN|THEN|ELSE|END)\b/g, '<span class="text-sky-400 font-bold">$1</span>')
-    .replace(/('[^']*')/g, '<span class="text-amber-400">$1</span>')
-    .replace(/\b(\d+)\b/g, '<span class="text-emerald-400">$1</span>');
+    .replace(/('[^']*')/g, '<span class="text-amber-400">$1</span>');
   return (
     <div className="mt-2">
       <button onClick={() => setOpen(!open)} className="flex items-center gap-1 text-[10px] text-gray-500 hover:text-gray-300 font-mono transition-colors">
@@ -346,7 +348,7 @@ function StatsPanel({ stats }: { stats: StatsResponse | null }) {
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([{
     id: uid++, role: "assistant", ts: now(),
-    text: "Welcome. I'm your Enterprise GenAI Operations Assistant — a 4-agent system with SQL, Analytics, Knowledge, and Conversation capabilities. Ask me anything.",
+    text: "Welcome to the Propgatics GenAI Operations Assistant — a 4-agent system with SQL, Analytics, Knowledge, and Conversation capabilities. Ask me anything about your logistics data.",
   }]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);

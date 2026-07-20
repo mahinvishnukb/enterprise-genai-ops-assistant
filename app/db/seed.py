@@ -17,9 +17,15 @@ from pathlib import Path
 from app.db.models import Base, Incident, OperationsData, Shipment
 from app.db.session import SessionLocal, engine
 
-# Resolve the data/ directory relative to the repo root
+# Resolve the data/ directory relative to the repo root.
+# Two candidates handle different working directories (local vs Render):
+#   1. Relative to this file's location (always correct when __file__ resolves)
+#   2. Relative to the process CWD (fallback for unusual mount layouts)
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 _DATA_DIR = _REPO_ROOT / "data"
+if not _DATA_DIR.exists():
+    _DATA_DIR = Path.cwd() / "data"
+print(f"[seed] data dir → {_DATA_DIR} (exists={_DATA_DIR.exists()})")
 
 
 def _parse_date(s: str) -> dt.date | None:
@@ -164,9 +170,17 @@ def seed() -> None:
     Base.metadata.create_all(engine)
     db = SessionLocal()
     try:
-        if db.query(Shipment).count() > 0:
-            print("[seed] shipments already seeded, skipping.")
+        current = db.query(Shipment).count()
+        if current >= 100:
+            print(f"[seed] {current} shipments already seeded, skipping.")
             return
+        if current > 0:
+            # Stub rows exist (e.g. first deploy had no CSVs). Clear them before
+            # the real CSV seed to avoid primary-key conflicts (SHP000001 etc.).
+            print(f"[seed] only {current} stub rows — clearing and re-seeding from CSV")
+            db.query(Shipment).delete()
+            db.query(Incident).delete()
+            db.commit()
         _seed_shipments(db)
         _seed_incidents(db)
 
