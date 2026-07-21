@@ -25,6 +25,10 @@ services:
       - key: ANTHROPIC_API_KEY
         value: ""            # optional, for LLM_PROVIDER=anthropic
 
+      # ── Data directory (explicit Render path for CSV loading) ────────────
+      - key: DATA_DIR
+        value: /opt/render/project/src/data
+
       # ── Database ──────────────────────────────────────────────────────────
       - key: DATABASE_URL
         value: sqlite:///./genai_ops.db

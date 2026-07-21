@@ -20,19 +20,37 @@ from app.db.session import SessionLocal, engine
 # Resolve the data/ directory — try every plausible location so the CSV
 # loads reliably on Render, Railway, Fly, local dev, and Docker.
 import os as _os
-_candidates = [
-    Path(__file__).resolve().parent.parent.parent / "data",  # repo root / data
-    Path.cwd() / "data",                                      # CWD / data
-    Path("/opt/render/project/src/data"),                     # Render explicit
-    Path(_os.environ.get("DATA_DIR", "")) if _os.environ.get("DATA_DIR") else None,  # env override
-]
-_DATA_DIR: Path = Path(__file__).resolve().parent.parent.parent / "data"  # fallback
-for _c in _candidates:
-    if _c and _c.exists() and (_c / "shipments_sample.csv").exists():
-        _DATA_DIR = _c
-        break
-print(f"[seed] data dir → {_DATA_DIR} (exists={_DATA_DIR.exists()}, "
-      f"csv={'YES' if (_DATA_DIR / 'shipments_sample.csv').exists() else 'NO'})")
+
+def _find_data_dir() -> Path:
+    # Env override wins — set DATA_DIR in Render Dashboard or render.yaml
+    _env = _os.environ.get("DATA_DIR", "").strip()
+    if _env:
+        p = Path(_env)
+        if p.exists() and (p / "shipments_sample.csv").exists():
+            return p
+
+    # Render sets RENDER=true — use the known Render project path
+    if _os.environ.get("RENDER"):
+        p = Path("/opt/render/project/src/data")
+        if p.exists() and (p / "shipments_sample.csv").exists():
+            return p
+
+    # Standard candidates: relative to this file (most reliable), then CWD
+    candidates = [
+        Path(__file__).resolve().parent.parent.parent / "data",
+        Path.cwd() / "data",
+    ]
+    for p in candidates:
+        if p.exists() and (p / "shipments_sample.csv").exists():
+            return p
+
+    # Fallback — will be reported as missing
+    return Path(__file__).resolve().parent.parent.parent / "data"
+
+_DATA_DIR: Path = _find_data_dir()
+_CSV_AVAILABLE: bool = (_DATA_DIR / "shipments_sample.csv").exists()
+print(f"[seed] data dir → {_DATA_DIR} | RENDER={_os.environ.get('RENDER','n/a')} "
+      f"| csv={'FOUND ✓' if _CSV_AVAILABLE else 'MISSING — will use stubs'}")
 
 
 def _parse_date(s: str) -> dt.date | None:
@@ -275,17 +293,27 @@ def seed() -> None:
     db = SessionLocal()
     try:
         current = db.query(Shipment).count()
+
+        # Already have full CSV data — nothing to do.
         if current >= 100:
-            # Full CSV load already done — skip entirely.
-            print(f"[seed] {current} shipments from CSV already present, skipping.")
+            print(f"[seed] {current} rows already present — skipping.")
             return
+
+        # Have stub rows (50) but CSV is NOW available — upgrade to full dataset.
+        # Have stub rows and CSV is NOT available — keep stubs.
         if current >= 40:
-            # Stub rows (50) already present — skip to avoid clearing them every restart.
-            print(f"[seed] {current} stub rows present, skipping.")
-            return
-        if current > 0:
-            # Old 3-row legacy stubs — clear before fresh seed.
-            print(f"[seed] only {current} legacy rows — clearing and re-seeding")
+            if not _CSV_AVAILABLE:
+                print(f"[seed] {current} stub rows, no CSV found — keeping stubs.")
+                return
+            # CSV is available: clear stubs and reload from CSV.
+            print(f"[seed] {current} stub rows found but CSV is available — upgrading to full CSV load")
+            db.query(Shipment).delete()
+            db.query(Incident).delete()
+            db.commit()
+
+        elif current > 0:
+            # Stale legacy rows (< 40) — always clear and reload.
+            print(f"[seed] clearing {current} legacy rows and reloading")
             db.query(Shipment).delete()
             db.query(Incident).delete()
             db.commit()
