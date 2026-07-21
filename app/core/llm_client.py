@@ -20,6 +20,13 @@ class LLMClient:
         self.provider = provider or settings.llm_provider
 
     def chat(self, system: str, user: str, max_tokens: int = 1024) -> str:
+        # Routing is always handled by the deterministic keyword scorer —
+        # it runs in microseconds vs 300-500ms for an LLM call, and with
+        # 80+ signals it's accurate enough to skip the LLM entirely here.
+        # The real LLM is reserved for the one call that actually answers.
+        if "ROUTER" in system:
+            return _mock_route(user)
+
         if self.provider == "groq":
             return self._call_groq(system, user, max_tokens)
         if self.provider == "openai":
