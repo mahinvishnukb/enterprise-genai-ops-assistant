@@ -400,7 +400,8 @@ const DASH_CARDS = [
 
 function ChartCard({ title, desc, query, icon: Icon, onAskInChat }:{
   title:string; desc:string; query:string;
-  icon: React.ComponentType<{ size?: number | string; className?: string }>;
+  // ElementType is required — Lucide icons are ForwardRefExoticComponent, not ComponentType
+  icon: React.ElementType;
   onAskInChat:(q:string)=>void;
 }) {
   const [data, setData] = useState<ChatResponse|null>(null);
@@ -621,7 +622,7 @@ function HistoryPanel({ history, onSelect }: { history: QueryRecord[]; onSelect:
 
 // ─── Panel: Stats ──────────────────────────────────────────────────────────────
 function StatsPanel({ stats }: { stats: StatsResponse | null }) {
-  const items = stats ? [
+  const items: { icon: React.ElementType; label: string; value: number | string; color: string }[] = stats ? [
     { icon: Hash, label: "DB Rows", value: stats.db_rows, color: "text-sky-400" },
     { icon: Layers, label: "Doc Chunks", value: stats.chunk_count, color: "text-violet-400" },
     { icon: Activity, label: "Queries", value: stats.queries_this_session, color: "text-emerald-400" },
