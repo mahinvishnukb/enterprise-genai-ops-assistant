@@ -39,4 +39,4 @@ services:
 
       # ── Deploy version — bump to force fresh deploy + re-seed ─────────────
       - key: DEPLOY_VERSION
-        value: "8"
+        value: "9"
