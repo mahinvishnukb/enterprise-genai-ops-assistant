@@ -143,6 +143,10 @@ function SQLViewer({ sql }: { sql: string }) {
 
 // ─── Chart layer ──────────────────────────────────────────────────────────────
 const CP = ['#6366f1','#38bdf8','#34d399','#a78bfa','#fbbf24','#fb923c','#f87171','#e879f9'];
+const CARRIER_CLR: Record<string,string> = {
+  'UPS':'#6366f1', 'FedEx':'#38bdf8', 'DHL':'#34d399',
+  'Canada Post':'#fbbf24', 'Purolator':'#fb923c',
+};
 const STATUS_CLR: Record<string,string> = {
   Delivered:'#34d399','Minor Delay':'#fbbf24',Delayed:'#fb923c','Critical Delay':'#f87171',
 };
@@ -171,20 +175,28 @@ function ChartTip({ active, payload, label }: { active?: boolean; payload?: {nam
 
 function SmartChart({ rows, analysisType }: { rows: Record<string,unknown>[]; analysisType?: string }) {
   if (!rows?.length) return null;
-  const H = 220;
+  const H = 260;
 
   if (analysisType === 'carrier_analysis') {
     return (
       <ResponsiveContainer width="100%" height={H}>
-        <ComposedChart data={rows} margin={{ top:4, right:28, bottom:24, left:0 }}>
+        <ComposedChart data={rows} margin={{ top:8, right:36, bottom:28, left:4 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={GRID} />
           <XAxis dataKey="carrier" tick={TICK} />
-          <YAxis yAxisId="pct" domain={[55,90]} tick={TICK} unit="%" width={32} />
-          <YAxis yAxisId="hrs" orientation="right" tick={TICK} unit="h" width={28} />
+          {/* domain [0,100] shows absolute on-time % so bars are proportional */}
+          <YAxis yAxisId="pct" domain={[0, 100]} tick={TICK} unit="%" width={36}
+            label={{ value:'On-time %', angle:-90, position:'insideLeft', offset:14, style:{fill:'#4b5563',fontSize:8} }} />
+          <YAxis yAxisId="hrs" orientation="right" tick={TICK} unit="h" width={32}
+            label={{ value:'Avg delay (h)', angle:90, position:'insideRight', offset:14, style:{fill:'#4b5563',fontSize:8} }} />
           <RCTooltip content={<ChartTip />} />
-          <Legend wrapperStyle={{ fontSize:10, color:'#6b7280', paddingTop:4 }} />
-          <Bar yAxisId="pct" dataKey="on_time_pct" name="On-time %" fill="#6366f1" radius={[3,3,0,0]} maxBarSize={36} />
-          <Line yAxisId="hrs" type="monotone" dataKey="avg_delay_hours" name="Avg delay (h)" stroke="#f87171" strokeWidth={2} dot={{ fill:'#f87171', r:3 }} />
+          <Legend wrapperStyle={{ fontSize:10, color:'#6b7280', paddingTop:6 }} />
+          <Bar yAxisId="pct" dataKey="on_time_pct" name="On-time %" radius={[4,4,0,0]} maxBarSize={48}>
+            {rows.map((r,i) => (
+              <Cell key={i} fill={CARRIER_CLR[r.carrier as string] ?? CP[i % CP.length]} />
+            ))}
+          </Bar>
+          <Line yAxisId="hrs" type="monotone" dataKey="avg_delay_hours" name="Avg delay (h)"
+            stroke="#f87171" strokeWidth={2.5} dot={{ fill:'#f87171', r:4, strokeWidth:2, stroke:'#1f2937' }} />
         </ComposedChart>
       </ResponsiveContainer>
     );
@@ -197,13 +209,13 @@ function SmartChart({ rows, analysisType }: { rows: Record<string,unknown>[]; an
       <ResponsiveContainer width="100%" height={H}>
         <PieChart>
           <Pie data={rows} dataKey="count" nameKey="shipment_status" cx="50%" cy="48%"
-            outerRadius={82} innerRadius={38} paddingAngle={2} label={pctLabel} labelLine={false}>
+            outerRadius={96} innerRadius={44} paddingAngle={2} label={pctLabel} labelLine={false}>
             {rows.map((r, i) => (
               <Cell key={i} fill={STATUS_CLR[r.shipment_status as string] ?? CP[i % CP.length]} />
             ))}
           </Pie>
           <RCTooltip content={<ChartTip />} />
-          <Legend wrapperStyle={{ fontSize:9, color:'#6b7280' }} />
+          <Legend wrapperStyle={{ fontSize:10, color:'#6b7280' }} />
         </PieChart>
       </ResponsiveContainer>
     );
@@ -216,13 +228,13 @@ function SmartChart({ rows, analysisType }: { rows: Record<string,unknown>[]; an
       <ResponsiveContainer width="100%" height={H}>
         <PieChart>
           <Pie data={rows} dataKey="count" nameKey="risk_category" cx="50%" cy="48%"
-            outerRadius={82} innerRadius={38} paddingAngle={2} label={pctLabel} labelLine={false}>
+            outerRadius={96} innerRadius={44} paddingAngle={2} label={pctLabel} labelLine={false}>
             {rows.map((r, i) => (
               <Cell key={i} fill={RISK_CLR[r.risk_category as string] ?? CP[i % CP.length]} />
             ))}
           </Pie>
           <RCTooltip content={<ChartTip />} />
-          <Legend wrapperStyle={{ fontSize:9, color:'#6b7280' }} />
+          <Legend wrapperStyle={{ fontSize:10, color:'#6b7280' }} />
         </PieChart>
       </ResponsiveContainer>
     );
@@ -234,14 +246,13 @@ function SmartChart({ rows, analysisType }: { rows: Record<string,unknown>[]; an
       _label: (r.incident_type as string)?.split(' ').slice(0,2).join(' ') ?? String(r.incident_type),
     }));
     return (
-      <ResponsiveContainer width="100%" height={H}>
-        <BarChart data={data} margin={{ top:4, right:8, bottom:44, left:0 }}>
+      <ResponsiveContainer width="100%" height={H + 20}>
+        <BarChart data={data} margin={{ top:8, right:8, bottom:52, left:4 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={GRID} />
-          <XAxis dataKey="_label" tick={{ fill:'#6b7280', fontSize:8 }} angle={-30} textAnchor="end" interval={0} />
+          <XAxis dataKey="_label" tick={{ fill:'#6b7280', fontSize:8 }} angle={-35} textAnchor="end" interval={0} />
           <YAxis tick={TICK} width={36} />
           <RCTooltip content={<ChartTip />} />
-          <Legend wrapperStyle={{ fontSize:10, color:'#6b7280' }} />
-          <Bar dataKey="count" name="Incidents" radius={[3,3,0,0]} maxBarSize={44}>
+          <Bar dataKey="count" name="Incidents" radius={[4,4,0,0]} maxBarSize={48}>
             {data.map((_, i) => <Cell key={i} fill={CP[i % CP.length]} />)}
           </Bar>
         </BarChart>
@@ -253,23 +264,23 @@ function SmartChart({ rows, analysisType }: { rows: Record<string,unknown>[]; an
     const data = [...rows].reverse();
     return (
       <ResponsiveContainer width="100%" height={H}>
-        <AreaChart data={data} margin={{ top:4, right:28, bottom:16, left:0 }}>
+        <AreaChart data={data} margin={{ top:8, right:36, bottom:16, left:4 }}>
           <defs>
             <linearGradient id="gShip" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#6366f1" stopOpacity={0.35}/>
+              <stop offset="5%" stopColor="#6366f1" stopOpacity={0.4}/>
               <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
             </linearGradient>
             <linearGradient id="gPct" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#34d399" stopOpacity={0.35}/>
+              <stop offset="5%" stopColor="#34d399" stopOpacity={0.4}/>
               <stop offset="95%" stopColor="#34d399" stopOpacity={0}/>
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke={GRID} />
           <XAxis dataKey="month" tick={{ fill:'#6b7280', fontSize:8 }} />
-          <YAxis yAxisId="cnt" tick={TICK} width={36} />
-          <YAxis yAxisId="pct" orientation="right" tick={TICK} unit="%" width={32} />
+          <YAxis yAxisId="cnt" tick={TICK} width={40} />
+          <YAxis yAxisId="pct" orientation="right" domain={[0,100]} tick={TICK} unit="%" width={36} />
           <RCTooltip content={<ChartTip />} />
-          <Legend wrapperStyle={{ fontSize:10, color:'#6b7280' }} />
+          <Legend wrapperStyle={{ fontSize:10, color:'#6b7280', paddingTop:4 }} />
           <Area yAxisId="cnt" type="monotone" dataKey="shipments" name="Shipments" stroke="#6366f1" fill="url(#gShip)" strokeWidth={2} />
           <Area yAxisId="pct" type="monotone" dataKey="on_time_pct" name="On-time %" stroke="#34d399" fill="url(#gPct)" strokeWidth={2} />
         </AreaChart>
@@ -283,20 +294,22 @@ function SmartChart({ rows, analysisType }: { rows: Record<string,unknown>[]; an
     const xKey = analysisType === 'route_analysis' ? 'shipments'
       : analysisType === 'critical_delay_analysis' ? 'critical_delays'
       : 'avg_delay_hours';
-    const data = rows.slice(0,8).map(r => ({
+    const data = rows.slice(0, 10).map(r => ({
       ...r,
       route: hasRoute ? `${r.origin}→${r.destination}` : r.origin,
     }));
-    const barH = Math.max(180, data.length * 30);
+    const barH = Math.max(200, data.length * 32);
     return (
       <ResponsiveContainer width="100%" height={barH}>
-        <BarChart layout="vertical" data={data} margin={{ top:4, right:16, bottom:4, left:4 }}>
+        <BarChart layout="vertical" data={data} margin={{ top:4, right:16, bottom:4, left:8 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={GRID} horizontal={false} />
           <XAxis type="number" tick={{ fill:'#6b7280', fontSize:8 }} />
-          <YAxis dataKey={yKey} type="category" tick={{ fill:'#6b7280', fontSize:8 }} width={110} />
+          <YAxis dataKey={yKey} type="category" tick={{ fill:'#6b7280', fontSize:8 }} width={120} />
           <RCTooltip content={<ChartTip />} />
-          <Bar dataKey={xKey} name={xKey.replace(/_/g,' ')} radius={[0,3,3,0]} maxBarSize={20}>
-            {data.map((_,i) => <Cell key={i} fill={i===0?'#f87171':i===1?'#fb923c':i===2?'#fbbf24':'#6366f1'} />)}
+          <Bar dataKey={xKey} name={xKey.replace(/_/g,' ')} radius={[0,4,4,0]} maxBarSize={22}>
+            {data.map((_,i) => (
+              <Cell key={i} fill={i===0?'#f87171':i===1?'#fb923c':i===2?'#fbbf24':i===3?'#a3e635':'#6366f1'} />
+            ))}
           </Bar>
         </BarChart>
       </ResponsiveContainer>
@@ -304,17 +317,26 @@ function SmartChart({ rows, analysisType }: { rows: Record<string,unknown>[]; an
   }
 
   if (analysisType === 'weather_impact') {
+    const weatherClr: Record<string,string> = {
+      Storm:'#f87171', Snow:'#93c5fd', Rain:'#38bdf8',
+      Fog:'#d1d5db', Cloudy:'#a78bfa', Clear:'#34d399',
+    };
     return (
       <ResponsiveContainer width="100%" height={H}>
-        <ComposedChart data={rows} margin={{ top:4, right:28, bottom:20, left:0 }}>
+        <ComposedChart data={rows} margin={{ top:8, right:36, bottom:24, left:4 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={GRID} />
           <XAxis dataKey="weather_condition" tick={{ fill:'#6b7280', fontSize:8 }} />
-          <YAxis yAxisId="hrs" tick={TICK} unit="h" width={32} />
-          <YAxis yAxisId="pct" orientation="right" tick={TICK} unit="%" width={32} />
+          <YAxis yAxisId="hrs" tick={TICK} unit="h" width={36} />
+          <YAxis yAxisId="pct" orientation="right" domain={[0,100]} tick={TICK} unit="%" width={36} />
           <RCTooltip content={<ChartTip />} />
-          <Legend wrapperStyle={{ fontSize:10, color:'#6b7280' }} />
-          <Bar yAxisId="hrs" dataKey="avg_delay_hours" name="Avg delay (h)" fill="#fbbf24" radius={[3,3,0,0]} maxBarSize={44} />
-          <Line yAxisId="pct" type="monotone" dataKey="on_time_pct" name="On-time %" stroke="#34d399" strokeWidth={2} dot={{ fill:'#34d399', r:3 }} />
+          <Legend wrapperStyle={{ fontSize:10, color:'#6b7280', paddingTop:4 }} />
+          <Bar yAxisId="hrs" dataKey="avg_delay_hours" name="Avg delay (h)" radius={[4,4,0,0]} maxBarSize={48}>
+            {rows.map((r,i) => (
+              <Cell key={i} fill={weatherClr[r.weather_condition as string] ?? CP[i % CP.length]} />
+            ))}
+          </Bar>
+          <Line yAxisId="pct" type="monotone" dataKey="on_time_pct" name="On-time %"
+            stroke="#34d399" strokeWidth={2.5} dot={{ fill:'#34d399', r:4, strokeWidth:2, stroke:'#1f2937' }} />
         </ComposedChart>
       </ResponsiveContainer>
     );
@@ -327,14 +349,14 @@ function SmartChart({ rows, analysisType }: { rows: Record<string,unknown>[]; an
   if (!yCols.length) return null;
   return (
     <ResponsiveContainer width="100%" height={H}>
-      <BarChart data={rows.slice(0,15)} margin={{ top:4, right:8, bottom:20, left:0 }}>
+      <BarChart data={rows.slice(0,15)} margin={{ top:8, right:8, bottom:20, left:4 }}>
         <CartesianGrid strokeDasharray="3 3" stroke={GRID} />
         <XAxis dataKey={xCol} tick={{ fill:'#6b7280', fontSize:8 }} />
         <YAxis tick={TICK} width={36} />
         <RCTooltip content={<ChartTip />} />
         <Legend wrapperStyle={{ fontSize:10, color:'#6b7280' }} />
         {yCols.map((k,i) => (
-          <Bar key={k} dataKey={k} name={k.replace(/_/g,' ')} fill={CP[i%CP.length]} radius={[3,3,0,0]} maxBarSize={44} />
+          <Bar key={k} dataKey={k} name={k.replace(/_/g,' ')} fill={CP[i%CP.length]} radius={[4,4,0,0]} maxBarSize={48} />
         ))}
       </BarChart>
     </ResponsiveContainer>
